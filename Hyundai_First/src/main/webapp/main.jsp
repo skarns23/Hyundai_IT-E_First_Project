@@ -2,11 +2,34 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
 
-
-
-
-
 <h2 style="height: 200px">test</h2>
+
+<!-- 상품 베스트 -->
+<section class="dp-section main-best-seller" id="mainSectionBestSeller">
+	<h2 class="dp-title tit-tab-wrap eng" id="bestTitle">
+		<span class="tit-tab pl113 on" id="brand">
+			<a href="#">WOMAN BEST</a>
+			<button type="button" class="btn_more">전체보기</button>
+		</span>
+		<span class="tit-tab" id="category">
+			<a href="#">MAN BEST</a>
+			<button type="button" class="btn_more">전체보기</button>
+		</span>
+	</h2>
+	<div id="visualSlide10_2" class="visual-slide14">
+		<div id="mBest-tab-cont1" class="main-best-cont on">
+			<div class="dp-tab-wrap cate-group show-btn">
+				<div class="product-tab">						
+					<button type="button" class="on"><span>TOP</span></button>
+					<button type="button"><span>BOTTOM</span></button>
+					<button type="button"><span>OUTER</span></button>
+					<button type="button"><span>ACC</span></button>					
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
 
 <!-- 리뷰 플러스 -->
 <section class="dp-section bg-section main-review-plus">
@@ -60,7 +83,6 @@
 							<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
 							<div class="item-price">
 								<span class="price">117,600</span>
-								<del class="regular">168,000</del>
 							</div>
 						</a>
 					</figcaption>
@@ -115,7 +137,6 @@
 							<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
 							<div class="item-price">
 								<span class="price">117,600</span>
-								<del class="regular">168,000</del>
 							</div>
 						</a>
 					</figcaption>
@@ -170,7 +191,6 @@
 							<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
 							<div class="item-price">
 								<span class="price">117,600</span>
-								<del class="regular">168,000</del>
 							</div>
 						</a>
 					</figcaption>
@@ -225,7 +245,6 @@
 							<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
 							<div class="item-price">
 								<span class="price">117,600</span>
-								<del class="regular">168,000</del>
 							</div>
 						</a>
 					</figcaption>
@@ -280,7 +299,6 @@
 							<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
 							<div class="item-price">
 								<span class="price">117,600</span>
-								<del class="regular">168,000</del>
 							</div>
 						</a>
 					</figcaption>
