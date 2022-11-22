@@ -11,8 +11,16 @@
 			<attribute name="owner.project.facets" value="jst.web"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/dev64/eclipse/lombok.jar"/>
+	<classpathentry kind="lib" path="lib/ons.jar"/>
+	<classpathentry kind="lib" path="lib/oraclepki.jar"/>
+	<classpathentry kind="lib" path="lib/orai18n.jar"/>
+	<classpathentry kind="lib" path="lib/osdt_cert.jar"/>
+	<classpathentry kind="lib" path="lib/osdt_core.jar"/>
+	<classpathentry kind="lib" path="lib/simplefan.jar"/>
+	<classpathentry kind="lib" path="lib/ucp.jar"/>
+	<classpathentry kind="lib" path="lib/xdb6.jar"/>
+	<classpathentry kind="lib" path="lib/ojdbc11.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
