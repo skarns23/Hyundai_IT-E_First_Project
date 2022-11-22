@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
 <Resource
-    name="jdbc/oracle07"
+    name="jdbc/oracle10"
     auth="Container"
     type="javax.sql.DataSource"
     driverClassName="oracle.jdbc.OracleDriver"
-    url="jdbc:oracle:thin:@localhost:1521/xepdb1"
-    username="ace"
-    password="me"
+    url="jdbc:oracle:oci8:@edudb_high"
+    username="j2p2"
+    password="HyundaiDB123"
     maxActive="5"
     maxWait="-1"
      />
