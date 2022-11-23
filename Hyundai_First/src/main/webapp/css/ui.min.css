@@ -6990,7 +6990,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .login-wrap .login-tab .login-group { display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex; position: relative; }
 
-.login-wrap .login-tab .login-group .login-left { width: 50%; padding-right: 100px; }
+.login-wrap .login-tab .login-group .login-left { width: 50%;}
 
 .login-wrap .login-tab .login-group .login-guide { width: 50%; margin-top: -104px; padding: 0 0 283px 100px; border-left: 1px solid #eee; }
 

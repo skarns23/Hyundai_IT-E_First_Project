@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
 <Resource
-    name="jdbc/oracle10"
+    name="jdbc/oracle88"
     auth="Container"
     type="javax.sql.DataSource"
     driverClassName="oracle.jdbc.OracleDriver"
-    url="jdbc:oracle:oci8:@edudb_high"
+    url="jdbc:oracle:thin:@edudb_high"
     username="j2p2"
     password="HyundaiDB123"
     maxActive="5"
