@@ -12,12 +12,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="${contextPath}/css/layout/header.css">
-  <link rel="stylesheet" type="text/css" href="${contextPath}/css/layout/main.css">
-  <link rel="stylesheet" type="text/css" href="${contextPath}/css/layout/footer.css">
+  <link rel="stylesheet" type="text/css" href="${contextPath}/css/ui.min.css" >
 </head>
 <body>
-<div id="container">
   <header id="header">
     <div class="header-inner">
       <div class="header-wrap">
@@ -39,7 +36,7 @@
             <a href="#">마이페이지</a>
           </span>
           <span>
-            <a href="#">장바구니</a>
+            <a href="${contextPath}/product/cart.jsp">장바구니</a>
           </span>
         </nav>
       </div>
