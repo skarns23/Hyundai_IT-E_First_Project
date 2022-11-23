@@ -412,7 +412,7 @@ body.gnb-show #container { position: relative; }
 
 body.gnb-show #container::before { content: ''; position: absolute; top: 154px; left: 0; right: 0; bottom: 0; background-color: rgba(0, 0, 0, 0.8); z-index: 99; }
 
-#container { min-height: 800px; padding: 154px 0 160px; }
+#container { min-height: 800px; padding: 200px 0 160px; }
 
 .non-category #container { padding-top: 120px; }
 
@@ -2314,7 +2314,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .wrap-product-list .selected-filter button .pdColor-color56::before { border: none; }
 
-.wrap-product-list .selected-filter button .pdColor-color56::after { content: 'etc'; position: absolute; left: 0; top: 0; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 13px; color: #999; }
+.wrap-product-list .selected-filter button .pdColor-color56::after { content: 'etc'; position: absolute; left: 0; top: 0;}
 
 .wrap-product-list .list-count { vertical-align: middle; }
 
@@ -2728,9 +2728,9 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .color-check input:checked ~ [class*="pdColor"]:after, .color-check input:checked ~ [class="pdImage"]:after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: rgba(0, 0, 0, 0.2) url("../images/icon_color_check.png") no-repeat 50% 50%; border-radius: 50%; z-index: 2; }
 
-.color-check .soldout { position: absolute; z-index: 2; top: 0; right: 0; bottom: 0; left: 0; padding-top: 16px; height: 30px; background: rgba(0, 0, 0, 0.2); border-radius: 50%; font-family: '돋움', 'noto'; font-size: 11px; color: #fff; text-align: center; line-height: 0; }
+.color-check .soldout { position: absolute; z-index: 2; top: 0; right: 0; bottom: 0; left: 0; padding-top: 16px; height: 30px; background: rgba(0, 0, 0, 0.2); border-radius: 50%; font-size: 11px; color: #fff; text-align: center; line-height: 0; }
 
-.color-check .etc { position: absolute; z-index: 2; top: 0; right: 0; bottom: 0; left: 0; padding-top: 16px; border-radius: 50%; font-family: '돋움', 'noto'; font-size: 11px; color: #666; text-align: center; line-height: 0; }
+.color-check .etc { position: absolute; z-index: 2; top: 0; right: 0; bottom: 0; left: 0; padding-top: 16px; border-radius: 50%; ; font-size: 11px; color: #666; text-align: center; line-height: 0; }
 
 .item-count { position: relative; display: inline-block; padding: 0 34px; border-bottom: 1px solid #ccc; text-align: center; }
 
@@ -3094,9 +3094,9 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .product-view-info { display: table-cell; position: relative; vertical-align: top; z-index: 2; width: 460px; padding-left: 80px; background: #fff; }
 
-.product-view-detail { position: relative; margin-top: 80px; padding-right: 336px; }
+.product-view-detail { position: relative;}
 
-.product-view-detail .product-detail-tab { position: relative; margin-top: -1px; border-right: 1px solid #ddd; }
+.product-view-detail .product-detail-tab { position: relative; margin-top: -1px;}
 
 .product-view-detail .product-detail-tab.sticky .tabs { position: fixed; top: 79px; right: auto; left: auto; }
 
@@ -3168,7 +3168,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .product-view-option .color .txt { position: absolute; top: 18px; right: 0; font-size: 13px; color: #000; }
 
-.product-view-option .size { position: relative; padding-right: 115px; }
+.product-view-option .size { position: relative;}
 
 .product-view-option .size ~ .size { margin-top: 20px; }
 
@@ -3242,9 +3242,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .product-detail-info .info-wrap { max-width: 1000px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
 
-.product-detail-info .info-wrap .html-wrap { font-family: 'Noto', '돋움', Dotum, arial, sans-serif; font-size: 14px; font-weight: 400; color: #666; line-height: 1.6; word-break: break-all; }
-
-.product-detail-info .info-wrap .html-wrap * { font-family: 'Noto', '돋움', Dotum, arial, sans-serif !important; }
+.product-detail-info .info-wrap .html-wrap {font-size: 14px; font-weight: 400; color: #666; line-height: 1.6; word-break: break-all; }
 
 .product-detail-info .info-wrap .html-wrap img { max-width: 100%; }
 
@@ -5834,7 +5832,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .layer-popup21 .popup-util { position: relative; padding: 20px 30px; min-height: 60px; background-color: #f8f3f0; }
 
-.layer-popup21 .popup-util .check-skin span { color: #000000; font-size: 16px; font-weight: 400; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; }
+.layer-popup21 .popup-util .check-skin span { color: #000000; font-size: 16px; font-weight: 400;}
 
 .layer-popup21 .popup-util .btn-close { width: 20px; height: 20px; position: absolute; top: 20px; right: 30px; background: url("../images/btn_layer_close3.png") no-repeat; font-size: 0; }
 
@@ -6990,7 +6988,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .login-wrap .login-tab .login-group { display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex; position: relative; }
 
-.login-wrap .login-tab .login-group .login-left { width: 50%;}
+.login-wrap .login-tab .login-group .login-left { width: 50%; padding-right: 100px; }
 
 .login-wrap .login-tab .login-group .login-guide { width: 50%; margin-top: -104px; padding: 0 0 283px 100px; border-left: 1px solid #eee; }
 
@@ -7972,7 +7970,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .membership-level table tbody td .benefit-mileage .txt-mileage .num em { font-size: 18px; }
 
-.membership-level table tbody td .icon-dot { font-size: 18px; padding: 7px 0; font-family: arial, sans-serif; }
+.membership-level table tbody td .icon-dot { font-size: 18px; padding: 7px 0;}
 
 .membership-level.msl-type02 thead th.th-level { padding-left: 0px; text-align: center; }
 
@@ -9900,7 +9898,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-cont .paymentMethod-HPPay .slide-pagination { vertical-align: middle; text-align: center; }
 
-.order-cont .paymentMethod-HPPay .slide-pagination .swiper-pagination-bullet { width: 30px; height: 30px; margin: 0 5px; background: #fff; border-radius: 1px; color: #888888; font-size: 14px; font-family: Campton; line-height: 30px; }
+.order-cont .paymentMethod-HPPay .slide-pagination .swiper-pagination-bullet { width: 30px; height: 30px; margin: 0 5px; background: #fff; border-radius: 1px; color: #888888; font-size: 14px; line-height: 30px; }
 
 .order-cont .paymentMethod-HPPay .slide-pagination .swiper-pagination-bullet-active { opacity: 1; color: #ffffff; background: #000; }
 
@@ -10400,7 +10398,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .promo-notice-box .promo-notice { display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -moz-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; }
 
-.promo-notice-box .promo-notice dt { position: relative; margin-right: 45px; padding: 0 60px; font-family: #000; font-size: 20px; font-weight: 700; text-align: center; }
+.promo-notice-box .promo-notice dt { position: relative; margin-right: 45px; padding: 0 60px; font-size: 20px; font-weight: 700; text-align: center; }
 
 .promo-notice-box .promo-notice dt::before { content: ''; display: block; width: 40px; height: 40px; margin: 0 auto 20px; background: url("../images/event/icon_notice.png") no-repeat 0 0; }
 
@@ -10468,7 +10466,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .promo-time .time { display: inline-block; font-size: 0; vertical-align: middle; }
 
-.promo-time .time span { display: inline-block; position: relative; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 28px; color: #c2935f; }
+.promo-time .time span { display: inline-block; position: relative; font-size: 28px; color: #c2935f; }
 
 .promo-time .time span + span { padding-left: 20px; }
 
@@ -10978,7 +10976,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .vote-content .vote-box .vote-list li .txt .radio-skin input + span { font-size: 18px; color: #000; }
 
-.vote-content .vote-box .vote-list li .number { display: inline-block; position: absolute; left: 0; top: 0; width: 50px; height: 50px; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 20px; font-weight: 400; color: #c2935f; background: #000; border-radius: 0 0 10px 0; line-height: 50px; text-align: center; }
+.vote-content .vote-box .vote-list li .number { display: inline-block; position: absolute; left: 0; top: 0; width: 50px; height: 50px; font-size: 20px; font-weight: 400; color: #c2935f; background: #000; border-radius: 0 0 10px 0; line-height: 50px; text-align: center; }
 
 .vote-content .vote-box .vote-list li .btn { position: absolute; left: 20px; right: 20px; bottom: 20px; margin: 0; }
 
@@ -11002,7 +11000,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .vote-result-box .vote-result-list li .img img { width: 100%; height: 100%; }
 
-.vote-result-box .vote-result-list li .img .vote-rank { display: inline-block; position: absolute; left: 0; top: 0; width: 42px; height: 42px; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 20px; font-weight: 400; color: #c2935f; background: #000; border-radius: 0 0 10px 0; line-height: 42px; text-align: center; }
+.vote-result-box .vote-result-list li .img .vote-rank { display: inline-block; position: absolute; left: 0; top: 0; width: 42px; height: 42px; font-size: 20px; font-weight: 400; color: #c2935f; background: #000; border-radius: 0 0 10px 0; line-height: 42px; text-align: center; }
 
 .vote-result-box .vote-result-list li .vote-per { position: relative; margin-top: 20px; padding-right: 45px; }
 
@@ -11014,7 +11012,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .vote-result-box .vote-result-list li .vote-per .status-bar span { display: inline-block; height: 10px; background: #c2935f; }
 
-.vote-result-box .vote-result-list li .vote-per .txt-per { position: absolute; right: 0; top: -2px; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 14px; font-weight: 400; color: #000; }
+.vote-result-box .vote-result-list li .vote-per .txt-per { position: absolute; right: 0; top: -2px; font-size: 14px; font-weight: 400; color: #000; }
 
 .attend-content { width: 100%; background: #000; }
 
@@ -11032,7 +11030,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .attend-content .month-attend-box .attend-tbl table td { position: relative; width: 136px; padding: 8px; text-align: center; vertical-align: top; }
 
-.attend-content .month-attend-box .attend-tbl table td .day { display: flex; justify-content: center; align-items: center; width: 120px; height: 120px; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 18px; font-weight: 400; color: #333; background: #fff; border-radius: 50%; }
+.attend-content .month-attend-box .attend-tbl table td .day { display: flex; justify-content: center; align-items: center; width: 120px; height: 120px; font-size: 18px; font-weight: 400; color: #333; background: #fff; border-radius: 50%; }
 
 .attend-content .month-attend-box .attend-tbl table td .day .num { display: block; font-size: 28px; }
 
@@ -11070,11 +11068,11 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .funding-timer .date { display: inline-block; margin-right: 30px; font-size: 20px; color: #fff; vertical-align: middle; }
 
-.funding-timer .day { display: inline-block; margin-right: 30px; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 28px; color: #c2935f; vertical-align: middle; }
+.funding-timer .day { display: inline-block; margin-right: 30px; font-size: 28px; color: #c2935f; vertical-align: middle; }
 
 .funding-timer .time { display: inline-block; font-size: 0; vertical-align: middle; }
 
-.funding-timer .time span { display: inline-block; position: relative; font-family: "ct","Noto","돋움",Dotum,arial,sans-serif; font-size: 28px; color: #c2935f; }
+.funding-timer .time span { display: inline-block; position: relative; font-size: 28px; color: #c2935f; }
 
 .funding-timer .time span + span { padding-left: 20px; }
 
