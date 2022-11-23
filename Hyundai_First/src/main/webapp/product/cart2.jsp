@@ -188,8 +188,8 @@
 
 				<div class="btn-box">
 					<a href="/" class="btn-type4-lg">쇼핑 계속하기</a> <a
-						href="javascript:undefined;" class="btn-type2-lg"
-						onclick="javascript:selectGoodsOrder(0);">선택상품 주문하기</a>
+						href="${contextPath}/product/order.jsp" class="btn-type2-lg"
+						">선택상품 주문하기</a>
 				</div>
 
 				<ul class="txt-list">
