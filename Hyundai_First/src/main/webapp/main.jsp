@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
 
+<div class="container">
 <h2 style="height: 200px">test</h2>
 
 <!-- 상품 베스트 -->
@@ -309,5 +310,5 @@
 	</div>
 </section>
 
-
+</div>
 <%@ include file="layout/footer.jsp"%>
