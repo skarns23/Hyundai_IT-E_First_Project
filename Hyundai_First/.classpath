@@ -13,13 +13,10 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/lombok.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc11.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ons.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/oraclepki.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/orai18n.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/osdt_cert.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/osdt_core.jar"/>
-	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/simplefan.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/tomcat-dbcp-7.0.30.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ucp.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/xdb6.jar"/>
@@ -30,5 +27,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/taglibs-standard-jstlel-1.2.5.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
