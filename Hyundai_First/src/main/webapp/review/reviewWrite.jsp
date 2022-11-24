@@ -37,18 +37,16 @@
                                     <div class="height">
                                         <label for="userInfo1" class="tit">키</label>
                                         <input type="text" id="userInfo1" name="godGodEvlWearInfoList[0].wearInfoSectDetailVal" title="키 입력" placeholder="키" value="" numberonly="" maxlength="3"> cm
-                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">                                   
-                                                                                              
-                                    <label for="userInfo1" class="tit">몸무게</label>
-                                        <input type="text" id="userInfo1" name="godGodEvlWearInfoList[0].wearInfoSectDetailVal" title="몸무게 입력" placeholder="몸무게" value="" numberonly="" maxlength="3"> kg
-                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">
+                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">                                                                   
+                                  </div>
                                 </div>
                                 <div class="cell">
-                                    <div>
-                                        <label class="tit">체형</label>
-                                        
-                                    </div>
-                                </div>
+                                 <div class="height">
+                                        <label for="userInfo1" class="tit">몸무게</label>
+                                        <input type="text" id="userInfo1" name="godGodEvlWearInfoList[0].wearInfoSectDetailVal" title="몸무게 입력" placeholder="몸무게" value="" numberonly="" maxlength="3"> kg
+                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">                                                                   
+                                  </div>
+                            </div>
                             </div>
                             <div class="write-user-info mt10">
 								
