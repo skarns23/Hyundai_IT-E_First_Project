@@ -24,16 +24,16 @@
         <nav class="header-util">
           <!-- 로그인 전 -->
           <span>
-            <a href="#">로그인</a>
+            <a href="${contextPath}/user/login.jsp">로그인</a>
           </span>
           <span>
-            <a href="#">회원가입</a>
+            <a href="${contextPath}/user/register.jsp">회원가입</a>
           </span>
           <!-- //로그인 전 -->
           <!-- 로그인 후 -->
           <!-- //로그인 후 -->
           <span>
-            <a href="#">마이페이지</a>
+            <a href="${contextPath}/user/mypage/mypage.jsp">마이페이지</a>
           </span>
           <span>
             <a href="${contextPath}/product/cart2.jsp">장바구니</a>
@@ -70,7 +70,7 @@
               </a>
             </div>
             <div class="gnb-category">
-              <a href="#">
+              <a href="${contextPath}/review/reviewList.jsp">
                 <span>리뷰플러스</span>
               </a>
             </div>

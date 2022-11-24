@@ -199,7 +199,7 @@
 								</p>
 							</div>
 							<div class="btn-box">
-								<a href="javascript:undefined;" id="btnPayment" class="btn-type2-lg">결제하기</a>
+								<a href="${contextPath}/product/orderComplete.jsp" id="btnPayment" class="btn-type2-lg">결제하기</a>
 							</div>
 						</div>
 					</div>

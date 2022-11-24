@@ -176,9 +176,6 @@
 									<span>툴팁보기</span>
 								</button>
 						</span> <span id="totalDlvAmt" class="num">0</span> 원
-						</span> <span class="symbol-minus">-</span> <span class="price sale">
-							<span class="txt">총 할인금액</span> <span id="totalDcAmt" class="num">97,500</span>
-							원
 						</span> <span class="symbol-eq">=</span> <span class="price total">
 							<span class="txt">결제금액</span> <span id="totalOrdAmt" class="num">227,500</span>
 							원
