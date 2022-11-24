@@ -8,8 +8,8 @@
 
 		<h2 class="page-title type2 tit-tab-wrap eng" id="bestPageTitle">
 			<!-- <span class="sub">판매 인기 상품 TOP30을 소개 합니다.</span> -->
-			<span class="tit-tab on" id="brand"> <a>BRAND</a>
-			</span> <span class="tit-tab" id="category"> <a>CATEGORY</a>
+			<span class="tit-tab on" id="brand"> <a>WOMAN BEST</a>
+			</span> <span class="tit-tab" id="category"> <a>MAN BEST</a>
 			</span>
 		</h2>
 
