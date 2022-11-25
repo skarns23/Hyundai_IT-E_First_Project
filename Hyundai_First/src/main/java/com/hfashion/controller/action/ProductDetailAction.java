@@ -7,17 +7,21 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MainAction implements Action{
+import com.hfashion.dao.ProductDAO;
 
+public class ProductDetailAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/main.jsp";
+		String url = "product/productDetail.jsp";
+			
+		String pno = request.getParameter("pno").trim();
 		
+		ProductDAO productDAO = ProductDAO.getInstance();
+//		ProductVO ProductVO = productDAO
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-			
+		
 	}
-
 }
