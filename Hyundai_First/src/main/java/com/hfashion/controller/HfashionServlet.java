@@ -20,7 +20,7 @@ public class HfashionServlet extends HttpServlet {
 		String command = request.getParameter("command");
 		// command 확인
 		System.out.println("HfashionServlet에서 요청을 받음을 확인 : " + command);
-
+            
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		
