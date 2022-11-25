@@ -8,7 +8,9 @@
 	name = name==null?"":name;
 %>
 <div id="container">
-
+	<javascript>
+		
+	</javascript>
 	<section class="content-wrap">
 		<h2 class="page-title">로그인</h2>
 		
@@ -19,10 +21,7 @@
 			<div id="loginTab" class="login-tab tab-wrap2 ui-tab initialized">
 				<ul class="tabs tab-btn"
 					style="margin: 1em auto; justify-content: center;">
-					<li class="on"><a href="javascript:;" onclick="hPointEnable()";="">H.Point
-							통합회원</a></li>
-					<li><a href="javascript:;">H패션몰 회원</a></li>
-					<li><a href="javascript:;">비회원</a></li>
+					<li class="on"><a href="javascript:;">H패션몰 회원</a></li>
 				</ul>
 
 				<!-- 탭1 H.Point 통합회원 -->
@@ -31,10 +30,9 @@
 						style="justify-content: center; margin: 0 100px;">
 						<div class="login-left tab-wrap3 ui-tab initialized">
 							<ul class="tabs tab-btn">
-								<li class="on"><a href="javascript:;">아이디/비밀번호 로그인</a></li>
-								<li><a href="javascript:;">OTP 인증번호 로그인</a></li>
+								
 							</ul>
-
+							<form method="post" action="${contextPath}/Hfashion?command=login">
 							<!-- 탭1-1 -->
 							<div class="tab-cont on">
 								<ul class="login-input">
@@ -42,7 +40,7 @@
 										<div class="input-box">
 											<input type="text" title="H.Point 아이디"
 												placeholder="H.Point 아이디" class="inp-reset"
-												id="userIdHpoint" name="userId" value=<%=name %>>
+												id="userIdHpoint" name="login_id" value=<%=name %>>
 											<div class="etc">
 												<button type="button" class="btn-clear">
 													<span>지우기</span>
@@ -55,7 +53,7 @@
 										<div class="input-box">
 											<input type="password" title="H.Point 비밀번호"
 												placeholder="H.Point 비밀번호" class="inp-reset"
-												id="passwordHpoint" name="password">
+												id="passwordHpoint" name="login_pw">
 											<div class="etc">
 												<button type="button" class="btn-masking">
 													<span>마스킹</span>
@@ -78,20 +76,20 @@
 										</label>
 									</div>
 									<ul class="links">
-										<li><a href="#" title="새창으로 열림"
+										<li><a href="${contextPath}/Hfashion?command=searchIdForm" title="새창으로 열림"
 											onclick="goHpointFindId();">아이디 찾기</a></li>
-										<li><a href="#" title="새창으로 열림"
+										<li><a href="${contextPath}/Hfashion?command=searchPwForm" title="새창으로 열림"
 											onclick="goHpointFindPwd();">비밀번호 찾기</a></li>
 									</ul>
 								</div>
 
 								<div class="btn-box">
-									<button type="button" class="btn-type2-xlg"
-										onclick="login('Hpoint');">
+									<button type="submit" class="btn-type2-xlg"
+										>
 										<span>로그인</span>
 									</button>
 								</div>
-
+							</form>
 
 
 

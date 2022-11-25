@@ -2,7 +2,6 @@ package com.hfashion.controller.action;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,28 +10,27 @@ import javax.servlet.http.HttpSession;
 import com.hfashion.dao.MemberDAO;
 import com.hfashion.vo.MemberVO;
 
-public class JoinAction implements Action{
+public class LoginAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "Hfashion?command=loginform";
+		String url = "user/login_fail.jsp";
+		HttpSession session = request.getSession();
 		MemberDAO memberDAO = MemberDAO.getInstance();
-		String id = request.getParameter("user_id");
-		String pw = request.getParameter("user_pw");
-		String email = request.getParameter("user_email");
-		String name = request.getParameter("user_name");
-		String phone = request.getParameter("user_phone");
-		MemberVO member = new MemberVO(id,pw,name,email,phone);
+		String id = request.getParameter("login_id");
+		String pw = request.getParameter("login_pw");
+		System.out.println(id+", "+pw);
+		MemberVO member = memberDAO.loginMember(id, pw);
 		System.out.println(member);
-		boolean result = memberDAO.signUp(member);
-		if(!result) {
+		if(member!=null) {
 			url = "Hfashion";
-		}else {
-			HttpSession session =  request.getSession();
-			session.setAttribute("id", id);
+			session.removeAttribute("id");
+			session.setAttribute("loginUser", member);
 		}
+		
 		response.sendRedirect(url);
+		
 		
 	}
 

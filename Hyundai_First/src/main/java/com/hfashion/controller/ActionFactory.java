@@ -2,11 +2,18 @@ package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.JoinAction;
+import com.hfashion.controller.action.LogoutAction;
+import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.MainAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
+import com.hfashion.controller.action.ReviewDetailAction;
 import com.hfashion.controller.action.SignUpAction;
+=======
+import com.hfashion.controller.action.SearchAction;
+import com.hfashion.controller.action.SearchIDFormAction;
+>>>>>>> nam
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -35,6 +42,14 @@ public class ActionFactory {
 			action = new LoginFormAction();
 		}else if(command.equals("reviewdetail")) {
 			action = new ReviewDetailAction();
+		}else if(command.equals("login")) {
+			action = new LoginAction();
+		}else if(command.equals("logout")) {
+			action = new LogoutAction();
+		}else if(command.equals("searchIdForm")) {
+			action = new SearchIDFormAction();
+		}else if(command.equals("searchID")) {
+			action = new SearchAction();
 		}
 		
 		return action;
