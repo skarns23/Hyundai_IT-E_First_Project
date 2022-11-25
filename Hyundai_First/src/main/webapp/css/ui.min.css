@@ -47,7 +47,7 @@ q:before, q:after { content: none; }
 
 button { background: transparent; cursor: pointer; }
 
-input[type=button], input[type=text], input[type=password], input[type=search], input[type=radio], input[type=checkbox], input[type=submit], input[type=tel], input[type=number] { -moz-appearance: none; -webkit-appearance: none; appearance: none; font-family: 'Nanum Pen Script', cursive; font-family: 'Noto Sans KR', sans-serif; border: 0; border-radius: 0; vertical-align: top; outline: none; }
+input[type=button], input[type=text], input[type=password], input[type=search], input[type=radio], input[type=checkbox], input[type=submit], input[type=tel], input[type=number] { -moz-appearance: none; -webkit-appearance: none; appearance: none; font-family: 'Nanum Pen Script', cursive; background : transparent; font-family: 'Noto Sans KR', sans-serif; border: 0; border-radius: 0; vertical-align: top; outline: none; }
  
 button, select, textarea { -moz-appearance: none; -webkit-appearance: none; appearance: none; font-family: 'Nanum Pen Script', cursive; font-family: 'Noto Sans KR', sans-serif; background: transparent; border: 0; border-radius: 0; vertical-align: top; outline: none; }
 
