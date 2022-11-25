@@ -76,7 +76,7 @@
 			<div class="product-view-info">
 				<div class="etc-btn">
 					<button type="button" class="btn-like " onclick="addBukmk(this,addBukmkCallback);" godno="GM0122103109697">
-						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"> 6</strong> <span>좋아요</span>
+						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"></strong> <span>좋아요</span>
 					</button>
 					<span class="bar">|</span>
 					<button type="button" class="btn-share" onclick="layerBox.open('layerShare');">
@@ -102,7 +102,7 @@
 				</p>
 
 				<p class="item-tag">
-					<span class="code">DW2C9WJMB21LRD</span> <span class="tag" style="color:"> 22FW NEW</span>
+					<span class="code">DW2C9WJMB21LRD</span>
 				</p>
 				<p class="item-name">퀼팅 다운 점퍼</p>
 

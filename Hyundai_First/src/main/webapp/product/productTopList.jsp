@@ -17,7 +17,7 @@
 					<figure class="item-box" data-ga-id="GM0122111816388" data-ga-name="플라워 스마일 니트 베스트" data-ga-brand="SJYP" data-ga-price="179100">
 						<div class="item-img">
 							<div class="img-box">
-								<a href="${contextPath}/product/productView.jsp">
+								<a href="${contextPath}/Hfashion?command=detail">
 									<div class="img">
 										<img src="https://cdn.hfashionmall.com/goods/HFBR/22/11/18/GM0122111816388_1_ORGINL.jpg?RS=600x600&amp;AR=0&amp;CS=400x600" alt="플라워 스마일 니트 베스트"
 											onerror="this.src='/hfm_pc/resources/images/temp/pd_430x644.jpg'">
