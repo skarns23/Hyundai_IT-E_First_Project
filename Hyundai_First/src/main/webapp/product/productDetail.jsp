@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
+
 <div id="container">
 	<div class="content-response">
 		<div class="product-view-top">
@@ -82,136 +84,96 @@
 					<button type="button" class="btn-share" onclick="layerBox.open('layerShare');">
 						<span>공유</span>
 					</button>
-					<script type="text/javascript" src="/resources/js/display/sns_share.js?timestamp=20221116145741"></script>
-					<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-
-					<div id="layerShare" class="layer-box layer-share">
-						<button type="button" onclick="jsShareSns('facebook');" class="fb">페이스북</button>
-						<button type="button" onclick="jsShareSns('twitter');" class="tw">트위터</button>
-						<button type="button" onclick="jsShareSns('pinterest');" class="pt">핀터레스트</button>
-						<button type="button" onclick="copyurl();" class="url">URL</button>
-
-						<input type="hidden" id="titleParam" name="titleParam" value=""> <input type="hidden" id="mediaParam" name="mediaParam" value=""> <input type="hidden" id="urlParam"
-							name="urlParam" value=""> <input type="hidden" id="descParam" name="descParam" value=""> <input id="copy-to-url" style="position: absolute; top: -9999em;" readonly="readonly"
-							value="">
-					</div>
 				</div>
 
 				<p class="item-brand">
-					<a href="javascript:void(0);" onclick="goBrandMain(this);" ctgryno="BDMA09A01" ctgryoutpttpcd="" outptlinkurl=""> DKNY WOMEN</a>
+					<a href="#"> ${pVO.pro_gender}</a>
 				</p>
 
 				<p class="item-tag">
-					<span class="code">DW2C9WJMB21LRD</span>
+					<span class="code">${pVO.brand_name}</span>
 				</p>
-				<p class="item-name">퀼팅 다운 점퍼</p>
+				<p class="item-name">${pVO.pro_name}</p>
 
 				<div class="item-price">
 					<p class="price">
-						<span> 1,350,000</span>
+						<span> ${pVO.pro_price_f}</span>
 					</p>
-					<input type="hidden" id="maxDcOnlneGrdCd" value="ALL"> <input type="hidden" id="publiQtyLmitCheck" value="PSB"> <input type="hidden" id="maxPrice" value="1282500"> <input
-						type="hidden" id="minPrice" value="1282500">
-
-
 				</div>
 				<div class="product-view-option">
-
-					<input type="hidden" name="itmNo" id="itmNo0" value=""> <input type="hidden" name="itmNm" id="itmNm0" value=""> <input type="hidden" name="lastSalePrc" godno="GM0122103109697"
-						value="1350000"> <input type="hidden" id="optionCount" value="1">
-					<div class="row size gnrlOpt">
-						<div class="select" name="optSelect0_top">
-							<button type="button" class="sel-btn" onclick="select.trigger('option');">
-								사이즈를 선택하세요. <span class="val"></span>
-							</button>
-							<div class="sel-list">
-								<ul optcd="SIZE_OPT">
-									<li><label> <input type="radio" name="pdSelSize_0" value="IT202210310811357" itmnm="XS" resveorddlivyprearngedate="" totusefulinvqty="24" optvalcd="2"
-											onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="selectGodOpt1(this);" optgodno="GM0122103109697" index="0"> <span> XS</span>
-									</label></li>
-									<li><label> <input type="radio" name="pdSelSize_0" value="IT202210310811358" itmnm="S" resveorddlivyprearngedate="" totusefulinvqty="5" optvalcd="3"
-											onchange="selectActive('pdStickySelSize_0',1,'option');" onclick="selectGodOpt1(this);" optgodno="GM0122103109697" index="0"> <span> S</span>
-									</label></li>
-								</ul>
+					<div class="size-wrap">
+						<c:forEach var="sVO" items="${sList}">
+							<div class="size-btn-wrap">
+								<button id="size${sVO.size_name}" class="size-btn" onclick="optionSelect('${sVO.size_name}')" value="${sVO.size_name}">${sVO.size_name}</button>
 							</div>
-						</div>
+						</c:forEach>
+
 					</div>
 					<div class="option-bot">
-						<input type="hidden" class="minOrdQty" value="1" godno="GM0122103109697"> <input type="hidden" class="maxOrdQty" value="9999" godno="GM0122103109697">
-						<div name="qtyDiv" class="row quantity gnrlOptQty" style="display: none;" godno="GM0122103109697" selectoptionyn="N">
-							<strong class="tit">옵션명</strong> <span class="item-count">
+						<div name="qtyDiv" class="row quantity gnrlOptQty" style="" godno="GM0122080876890" selectoptionyn="Y">
+							<strong class="tit">06</strong> <span class="item-count">
 								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
 									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" godno="GM0122103109697" minordqty="1" maxordqty="9999" class="input-num" value="1" onkeyup="changeQty(this);">
+								</button> <input type="number" name="qtySpinner" godno="GM0122080876890" minordqty="1" maxordqty="6" class="input-num" value="1" onkeyup="changeQty(this);">
 								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
 									<span>더하기</span>
 								</button>
-							</span> <span class="price"> <span class="num">0</span>
-								<button type="button" class="btn-reset" onclick="resetOptionDiv(this);">
-									<span>옵션초기화</span>
-								</button>
-							</span>
-						</div>
-						<div name="qtyDiv" class="row quantity aditQtyDiv" style="display: none;" godno="" selectoptionyn="N">
-							<strong class="tit"> [추가]<span class="name">상품명</span>옵션명
-							</strong> <span class="item-count">
-								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
-									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" class="input-num aditGodQty" value="1" onkeyup="changeQty(this);">
-								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
-									<span>더하기</span>
-								</button>
-							</span> <span class="price"> <span class="num">0</span>
+							</span> <span class="price"> <span class="num">150,500</span>
 								<button type="button" class="btn-reset" onclick="resetOptionDiv(this);">
 									<span>옵션초기화</span>
 								</button>
 							</span>
 						</div>
 
-						<div class="total" style="display: none;">
-							<strong class="tit">합계</strong> <span class="num">0</span>
-						</div>
 
-						<div name="pkupDiv" class="dlv-sel" style="display: none;">
-							<label class="check-skin"> <input type="checkbox" onclick="checkDlvSect(this);" name="dlvSect_top" value="PKUP_DLV" godno="GM0122103109697"> <span>매장수령</span>
-							</label>
-							<button type="button" class="btn-tooltip" onclick="layer.open('layerShopDlv')">
-								<span>매장수령 안내보기</span>
-							</button>
-							<div class="dlv-sel-shop" style="display: none;">
-								<p class="dlvShopInfo"></p>
-								<button onclick="updatePkukShop();">매장변경</button>
-							</div>
+						<div class="total" style="">
+							<strong class="tit">합계</strong> <span class="num">150,500</span>
 						</div>
-
-						<div id="vs-inpage" style="display: block;">
-							<div class="vue-portal-target">
-								<div lang="ko" wovn-ignore="true" class="_reset_232f7 _reset_7c507"></div>
-							</div>
-						</div>
-						<div class="info-guide-box">
-							<p id="resveOrdDlivyDateStr" style="display: none;">출고예정일 :</p>
-						</div>
-
 						<div class="btn-box">
 							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag">
-								<span>장바구니</span>
+								<span>장바구니 보기</span>
 							</button>
 							<button name="btnBuynow" type="button" class="btn-type2-xlg">
-								<span> <input type="hidden" id="godSaleSectCd" value="N"> 바로구매
+								<span> <input type="hidden" id="godSaleSectCd" value="N"> 장바구니 담기
 								</span>
 							</button>
+							<form id="addCartForm" name="addCartForm" action="${contextPath}/Hfashion?command=addCart" method="get" style="display: none;">
+								<input id="pro_no" name="pro_no" value="1"> 
+								<input id="size_name" name="size_name" value=""> 
+								<input id="size_amount" name="size_amount" value="1">
+							</form>
 						</div>
 					</div>
-					<div class="dlv-couponPrice" style="display: none;">
-						<h4 class="tooltip-title">회원/멤버십 쿠폰가 안내</h4>
-						<p class="txt-common">
-							상품 상세 페이지에 있는 쿠폰 다운로드를 받아야<br> 회원/멤버십 쿠폰가를 적용 받을 수 있습니다.
-						</p>
-					</div>
 				</div>
-				<!-- //옵션 선택 -->
+				<div class="info-bot">
+					<ul class="list">
+						<li class="row"><span class="tit">배송비</span> <span> <input type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상 구매시 무료(도서산간추가 3000원)
+								<button type="button" class="btn-tooltip" onclick="tooltip('dlv-hardarea'); $('.list-common.address').niceScroll(dScroll.opt);">툴팁보기</button>
+						</span>
+
+							<div class="dlv-hardarea" style="display: none;">
+								<ul class="txt-list">
+									<li>구매하신 상품에 따라 배송비가 부과됩니다.</li>
+									<li>도서산간 지역은 배송비가 추가 될 수 있습니다.<br> 해당 지역은 FAQ를 통해 확인하실 수 있습니다.
+									</li>
+									<li>H.Point, 한섬마일리지, H.Plus 등의 할인수단으로<br> 배송비 결제가 불가합니다.
+									</li>
+								</ul>
+							</div></li>
+
+						<li><span class="tit">한섬마일리지</span> <span>최대 6% 적립
+								<button type="button" class="btn-tooltip" onclick="tooltip('mileage-info2');">
+									<span>툴팁보기</span>
+								</button>
+								<li><span class="tit">H포인트</span> <span>0.1% 적립
+										<button type="button" class="btn-tooltip" onclick="tooltip('hpoint-info2', null, null,null,null);">
+											<span>툴팁보기</span>
+										</button>
+								</span></li>
+					</ul>
+				</div>
 			</div>
+
 		</div>
 		<div class="product-view-detail">
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">

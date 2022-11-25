@@ -1,5 +1,13 @@
 package com.hfashion.vo;
 
-public class SizeVO {
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
+public class SizeVO {
+	private String size_name;
+	private int size_amount;
+	
+	
 }
