@@ -1,7 +1,10 @@
 package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
+import com.hfashion.controller.action.JoinAction;
+import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.MainAction;
+import com.hfashion.controller.action.SignUpAction;
 
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
@@ -26,7 +29,12 @@ public class ActionFactory {
 
 		}else if(command.equals("productList")) {
 			action = new ProductList();
-
+		}else if (command.equals("signup")) {
+			action = new SignUpAction();
+		}else if (command.equals("join")) {
+			action = new JoinAction();
+		}else if(command.equals("loginform")) {
+			action = new LoginFormAction();
 		}
 		
 		return action;

@@ -22,8 +22,6 @@ public class MemberServlet extends HttpServlet {
 		/* List list=dao.listMembers(); */
 
 		out.print("<html><body>");
-		boolean result = dao.signUp();
-		out.print(result);
 		out.print("</body></html>");
 	}
 }

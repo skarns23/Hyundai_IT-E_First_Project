@@ -3,6 +3,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <%@ include file="../layout/header.jsp"%>
+<%
+	String name = (String)session.getAttribute("id");
+	name = name==null?"":name;
+%>
 <div id="container">
 
 	<section class="content-wrap">
@@ -38,7 +42,7 @@
 										<div class="input-box">
 											<input type="text" title="H.Point 아이디"
 												placeholder="H.Point 아이디" class="inp-reset"
-												id="userIdHpoint" name="userId" value="skarns23">
+												id="userIdHpoint" name="userId" value=<%=name %>>
 											<div class="etc">
 												<button type="button" class="btn-clear">
 													<span>지우기</span>
