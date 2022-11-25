@@ -2,6 +2,7 @@ package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.MainAction;
+import com.hfashion.controller.action.ProductList;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -18,6 +19,8 @@ public class ActionFactory {
 		System.out.println("ActionFactory : " + command);
 		if(command==null) {
 			action = new MainAction();
+		}else if(command.equals("productList")) {
+			action = new ProductList();
 		}
 		
 		return action;
