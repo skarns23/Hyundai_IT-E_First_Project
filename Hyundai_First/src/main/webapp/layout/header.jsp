@@ -50,7 +50,7 @@
               </a>
             </div>
             <div class="gnb-category">
-              <a href="${contextPath}/product/productTopList.jsp">
+              <a href="${contextPath}/Hfashion?command=productList">
                 <span>상의</span>
               </a>
             </div>
