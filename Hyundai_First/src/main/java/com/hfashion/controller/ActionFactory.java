@@ -6,7 +6,6 @@ import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.MainAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
-import com.hfashion.controller.action.ReviewDetailAction;
 import com.hfashion.controller.action.SignUpAction;
 
 public class ActionFactory {
@@ -26,7 +25,6 @@ public class ActionFactory {
 			action = new MainAction();
 		} else if(command.equals("detail")) {
 			action = new ProductDetailAction();
-
 		}else if(command.equals("productList")) {
 			action = new ProductList();
 		}else if (command.equals("signup")) {
