@@ -3144,7 +3144,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .product-view-detail .sticky-option .product-view-option .dlv-sel-shop { display: block; position: relative; margin-top: 10px; }
 
-.product-view-option { margin-top: 40px; padding-top: 40px; border-top: 1px solid #eee; }
+.product-view-option { margin-top: 30px; padding-top: 30px; }
 
 .product-view-option .row ~ .row { margin-top: 10px; }
 
@@ -12342,3 +12342,16 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 .main-back-video{margin-top: 0px; width: 100%; text-align: center;}
 
 /*# sourceMappingURL=ui.min.css.map */
+
+.size-wrap{
+	overflow: hidden;
+}
+
+.size-btn-wrap{
+	border: 1.5px solid #ccc;
+    float: left;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+}
