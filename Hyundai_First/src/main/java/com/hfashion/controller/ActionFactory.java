@@ -33,6 +33,8 @@ public class ActionFactory {
 			action = new JoinAction();
 		}else if(command.equals("loginform")) {
 			action = new LoginFormAction();
+		}else if(command.equals("reviewdetail")) {
+			action = new ReviewDetailAction();
 		}
 		
 		return action;
