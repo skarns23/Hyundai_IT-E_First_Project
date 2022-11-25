@@ -33,6 +33,7 @@ public class ReviewVO {
 	private String pro_no;
 	private String order_no;
 	private String user_id;
+	private String pro_name;
 
     //리뷰넘버
 	public String getR_no() {
@@ -158,6 +159,13 @@ public class ReviewVO {
 
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
+	}
+	public String getPro_name() {
+		return pro_name;
+	}
+
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
 	}
 
 }

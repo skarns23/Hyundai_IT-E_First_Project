@@ -171,7 +171,7 @@
 
 	  <!-- 베스트 리뷰 네번째 사진 -->
 		<div class="review-plus-cont">
-			<!-- <a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');"> -->
+			<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');"> 
 				<figure class="item" data-ga-name="울 캐시미어 컴포트 자켓">
 					<div class="img">
 						<span>
@@ -449,7 +449,7 @@
 			<div class="review-plus-cont grid-item">
 				
 						<div class="product-list-sub">
-							<figure class="item-box">
+			<figure class="item-box">
 								<span class="item-img">
 									<img src="../images/review/cloth.jpg" alt="">
 								</span>
@@ -617,11 +617,13 @@
 					<img src="../images/review/cloth.jpg" alt="">
 				</span>
 				<figcaption class="item-info">
-					<div class="item-brand">TOMMY JEANS</div>
+				<a href="HfashionServlet?command=reviewdetail">
+					<div class="item-brand">${request.reviewVO.title}</div>
 					<div class="item-name">[UNISEX] 퀼팅 체크 리버서블 봄버자켓</div>
 					<div class="item-price">
 										<span class="price">178,800</span>										
 									</div>
+									</a>
 								</figcaption>
 			</figure>
 		</div>
@@ -648,30 +650,14 @@
 		</figure>
 	
 </div>
-<!--하단 리뷰 창 종료-->
-      <!--페이징 부분-->
-			<div class="paging" id="pagingArea">
-			<span>
-						<strong title="현재 페이지">1</strong>
-								<a href="javascript:void(0)" id="page_2" onclick="movePage('2')">2</a>
-								<a href="javascript:void(0)" id="page_3" onclick="movePage('3')">3</a>
-								<a href="javascript:void(0)" id="page_4" onclick="movePage('4')">4</a>
-								<a href="javascript:void(0)" id="page_5" onclick="movePage('5')">5</a>
-								<a href="javascript:void(0)" id="page_6" onclick="movePage('6')">6</a>
-								<a href="javascript:void(0)" id="page_7" onclick="movePage('7')">7</a>
-								<a href="javascript:void(0)" id="page_8" onclick="movePage('8')">8</a>
-								<a href="javascript:void(0)" id="page_9" onclick="movePage('9')">9</a>
-								<a href="javascript:void(0)" id="page_10" onclick="movePage('10')">10</a>
-								</span>
-				<a class="next" href="javascript:void(0)" title="다음 페이지" onclick="movePage('11')">다음 페이지</a>
-				</div>
+
 	</div></div>
 		</div>
 	</section>
-
+      
 
 	<!-- s : 리뷰 작성 / 수정 레이어 팝업-->
-	<!-- <div id="reviewDetail" class="layer-pop lg review-layer" tabindex="0" style="display: none;"><div class="layer-wrap" tabindex="0">
+	 <div id="reviewDetail" class="layer-pop lg review-layer" tabindex="0" style="display: none;"><div class="layer-wrap" tabindex="0">
 		<div class="layer-header">
 			<h2 class="layer-title">REVIEW</h2>
 		</div>
@@ -808,10 +794,10 @@
 						
 		</div>
 		<button type="button" class="btn-layer-close" onclick="reviewDetail.close();">닫기</button>
-	</div></div> -->
-	<!-- <div id="reviewWrite" class="layer-pop lg review-layer" tabindex="0">
+	</div></div>
+	<div id="reviewWrite" class="layer-pop lg review-layer" tabindex="0">
 	</div>
-	 -->
+	
 	</div>
 	
 
