@@ -12,6 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.vo.ImgVO;
 import com.hfashion.vo.ProductVO;
 import com.hfashion.vo.SizeVO;
 
@@ -25,6 +26,7 @@ public class ProductDAO {
 	private DataSource ds = null;
 	private String selectDetail = "{call select_product_detail(?, ?, ?, ?, ?)}";
 	private String selectDetailSize = "{call select_product_detail_size(?, ?)}";
+	private String selectDetailImg = "{call select_pro_detail_img(?, ?)}";
 	
 	private ProductDAO() {
 		try {
@@ -101,6 +103,36 @@ public class ProductDAO {
 		}
 		
 		return sList;
+	}
+	
+	// 신수진 - 상품 상세 정보 이미지 select
+	public List<ImgVO> productDetailImg(String pro_no){
+		List<ImgVO> imgList = new ArrayList<>();
+		
+		try(Connection conn = ds.getConnection();
+				CallableStatement cstmt = conn.prepareCall(selectDetailImg)){
+			cstmt.setString(1, pro_no);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
+			
+			try {
+				cstmt.executeQuery();
+				ResultSet rs = (ResultSet) cstmt.getObject(2);
+				
+				while(rs.next()) {
+					ImgVO imgVO = new ImgVO();
+					String img_loc = rs.getString(2);
+					imgVO.setPro_no(pro_no);
+					imgVO.setImg_loc(img_loc);
+					imgList.add(imgVO);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return imgList;
 	}
 	
 	

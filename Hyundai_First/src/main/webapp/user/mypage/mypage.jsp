@@ -99,14 +99,20 @@
 																		</div>
 																		<div>
 																		
-																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="get">
-																				<input type="hidden" id="proname" value="${item.pro_name}">
-																				<input type="hidden" id="r_check" value=""${item.review_check}""> 
+																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
+																				<input type="hidden" name="proname" value="${item.pro_name}">
+																				<input type="hidden" name="r_check" value="${item.review_check}"> 
+																				<input type="hidden" name="orderno" value="${item.order_no}"> 
+																				<input type="hidden" name="prono" value="${item.pro_no}"> 
+																				<input type="hidden" name="sizename" value="${item.product_option}"> 
 																				
+																			
+												
+												
 																				<input type="submit" class ="btn-type3-sm" value="리뷰작성">
 																			</form>
-																			<button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
-																				<span>후기작성</span>
+																			<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
+																				<span>후기작성</span> -->
 																		</div>
 																	</div>
 																</div>

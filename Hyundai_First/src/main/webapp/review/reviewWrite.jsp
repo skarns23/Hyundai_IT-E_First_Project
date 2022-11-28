@@ -2,28 +2,18 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <!-- 마이페이지 부분에서 받아온다 체크된거만  -->
-<%--    <%
-      /* detail에서 바로 주문해서 받아온 값  */
-      String proname ="";
-      proname = request.getParameter("proname");   
-      String rcheck ="";
-      rcheck = request.getParameter("r_check");  
-      String sizename="";
-      sizenname=request.getParameter("input(변수명)");  
-         String prono="";
-      prono=request.getParameter("input(변수명)");
-         String ordeno="";
-      sizenname=request.getParameter("input(변수명)"); 
-         String orderno="";
-      orderno=request.getParameter("input(변수명)");  
-         String userno="";
-      userno=request.getParameter("input(변수명)"); 
-   %>
-    --%>
+
+  <!--  mypage 받아온 변수ㅅ -->
+ 
 <div id="reviewEdit" class ="layer-pop lg review-layer" tabindex="0" style="display: block;">
 <form name="formm" method="post" action="${contextPath}/Hfashion?command=mypage_reviewwrite">
- <%--  <input type="hidden" id="proname" value="<%=proname%>">     <%=proname%>  --%>
-   <%--  <input type="hidden" id="r_check" value="<%=rcheck%>">     <%=proname%>  --%>
+     
+       <input type="hidden" name="proname" value="${proname}" >   
+       <input type="hidden" name="r_check" value="${r_check}">   
+       <input type="hidden" name="order_no" value="${orderno}">   
+       <input type="hidden" name="pro_no" value="${prono}">   
+       <input type="hidden" name="size_name" value="${sizename}"> 
+      
 <!-- post 방식 -->
 <div class="layer-wrap" tabindex="0">
             <div class="layer-header">
@@ -35,7 +25,7 @@
                         <section class="write-section">
                         <!--1. 상품 -->
                             <h3 class="sub-title">1. 상품</h3>
-                                    <p class="review-product-name"> 다이아 자켓</p>  <!-- 변수로 바꿔줘야함 -->
+                                    <p class="review-product-name">${proname}</p>  <!-- 변수로 바꿔줘야함 -->
                                 </section>
                          <!--2. 리뷰제목 입력 --> 
                         <section class="write-section">
@@ -144,7 +134,7 @@
                 </div>
             </div>
             <!--나중에는 마이페이지로 이동 구현 -->
-            <button type="button" class="btn-layer-close" onclick="location.href='Hfashion?command=reviewlist'">닫기</button>
+            <button type="button" class="btn-layer-close" onclick="location.href='Hfashion?command=mypage'">닫기</button>
         </div>
         </form>
 </div>

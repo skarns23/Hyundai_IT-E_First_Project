@@ -7362,7 +7362,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-links ul li + li:before { content: ''; position: absolute; top: 50%; left: 0; -webkit-transform: translate(0, -50%); -ms-transform: translate(0, -50%); -moz-transform: translate(0, -50%); transform: translate(0, -50%); width: 1px; height: 16px; background: #ddd; }
 
-.order-list-wrap .order-tbl .row { padding: 34px 0; }
+.order-list-wrap .order-tbl .row { padding: 34px 0;}
 
 .order-list-wrap .order-tbl .inner-row { position: relative; }
 
@@ -9246,7 +9246,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-tbl .row, .order-tbl .inner, .order-tbl .info-row { display: table; width: 100%; table-layout: fixed; }
 
-.order-tbl .row { padding: 30px 0; }
+.order-tbl .row { padding: 30px 0 10px; }
 
 .order-tbl .info-row ~ .info-row { padding-top: 24px; }
 
