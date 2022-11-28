@@ -65,7 +65,7 @@
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="${contextPath}/review/reviewList.jsp"> <span>리뷰플러스</span>
+							<a href="${contextPath}/Hfashion?command=reviewlist">  <span>리뷰플러스</span>
 							</a>
 						</div>
 					</div>
