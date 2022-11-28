@@ -41,6 +41,7 @@ public class CharSetEncoding extends HttpFilter implements Filter {
 		// pass the request along the filter chain
 		HttpServletRequest newRequest = (HttpServletRequest)request;
 		newRequest.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		chain.doFilter(newRequest, response);
 		
 		

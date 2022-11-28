@@ -47,7 +47,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 		System.out.println("login filter "+action);
 		System.out.println("PNO  : "+pno);
 		HttpSession session =  req.getSession();
-		
+		System.out.println(req.getPathInfo());
 		MemberVO memberVO = (MemberVO)session.getAttribute("loginUser");
 		System.out.println(memberVO);
 		if(action!=null&&(action.contains("mypage")||action.contains("cart"))&&memberVO==null){

@@ -6,14 +6,14 @@
 
 		<div class="snb-wrap">
 			<h2 class="lnb-title">
-				<a href="${contextPath}/user/mypage/mypage.jsp">MYPAGE</a>
+				<a href="${contextPath}/Hfashion?command=mypage">MYPAGE</a>
 			</h2>
 			<nav id="lnb" class="lnb">
 				<ul>
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/user/mypage/listOrder.jsp">주문</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
 							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
 
 						</ul>

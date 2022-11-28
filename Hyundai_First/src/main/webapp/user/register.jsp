@@ -1,32 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<script src = "js/jquery-3.6.0.min.js"></script>
-<script>
-	$('#mbrId').focusout(function() {
-		let userId = $('#mbrId').val();
-		alert('check');
-		$.ajax({
-			type : "post",
-			data : {
-				userId : userId
-			},
-			dataType : 'json',
-			url : "Hfashion?command=confirmID",
-			success : function(result) {
-				if (result == 0) {
-					$('#descMbrId').html('사용할 수 없는 아이디입니다.');
-					$('#descMbrId').attr('color', 'red');
-				} else {
-					$('#descMbrId').html('');
-				}
-			},
-			error : function() {
-				alert("서버요청실패");
-			}
-		})
-
-	})
-</script>
 <div id="container">
 
 	<!-- content-wrap -->
@@ -116,6 +89,34 @@
 									<p class="txt-form-cmt">6-20자의 영문, 숫자 또는 영문 + 숫자 조합으로 입력 가능</p>
 								</td>
 							</tr>
+							<script type="text/javascript">
+						$(function(){
+							$("#mbrId").focusout(function(){
+								var reg = /^[a-zA-Z0-9_]{5,20}$/;
+								let user_id= $("#mbrId").val();		
+								$.ajax({
+									url:'Hfashion?command=confirmID',
+									data :{user_id : user_id	
+									},
+									success : function(result){
+										var obj = JSON.parse(result);
+										
+										if(obj==1)
+										$("#descMbrId").html('존재하는 아이디입니다.');
+										else{
+											
+											$("#descMbrId").html('사용할 수 있는 아이디입니다.');
+										}									
+										},
+									error : function(e){
+										alert('조회 실패');
+									}
+								})
+							});
+							
+						})
+						
+					</script>
 							<tr class="sns_hide">
 								<th scope="row">비밀번호</th>
 								<td>

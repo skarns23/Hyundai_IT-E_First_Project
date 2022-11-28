@@ -4,7 +4,6 @@
 $(document).ready(function(){
 	cartListAll();
 });
-
 	// 장바구니 목록을 가져오는 함수
 	function cartListAll(){
 

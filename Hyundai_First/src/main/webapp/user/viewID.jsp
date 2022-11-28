@@ -2,12 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-
 <div id="container">
         <!-- content-wrap -->
 <section class="content-wrap">
     <h2 class="page-title">아이디찾기 결과</h2>
-
+		
     <!-- idpw-wrap -->
     <div class="idpw-wrap">
         <ul class="txt-info-group">

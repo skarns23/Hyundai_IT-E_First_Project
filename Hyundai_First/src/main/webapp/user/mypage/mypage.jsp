@@ -8,16 +8,16 @@
 	<section class="content-wrap">
 		<input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
 		<!-- snb -->
-		<div class="snb-wrap">
+				<div class="snb-wrap">
 			<h2 class="lnb-title">
-				<a href="${contextPath}/user/mypage/mypage.jsp">MYPAGE</a>
+				<a href="${contextPath}/Hfashion?command=mypage">MYPAGE</a>
 			</h2>
 			<nav id="lnb" class="lnb">
 				<ul>
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/user/mypage/listOrder.jsp">주문</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
 							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
 
 						</ul>
@@ -98,21 +98,14 @@
 																			</button>
 																		</div>
 																		<div>
-																		
+
 																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
-																				<input type="hidden" name="proname" value="${item.pro_name}">
-																				<input type="hidden" name="r_check" value="${item.review_check}"> 
-																				<input type="hidden" name="orderno" value="${item.order_no}"> 
-																				<input type="hidden" name="prono" value="${item.pro_no}"> 
-																				<input type="hidden" name="sizename" value="${item.product_option}"> 
-																				
-																			
-												
-												
-																				<input type="submit" class ="btn-type3-sm" value="리뷰작성">
+																				<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden" name="orderno"
+																					value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename" value="${item.product_option}"> <input
+																					type="submit" class="btn-type3-sm" value="리뷰작성">
 																			</form>
 																			<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
-																				<span>후기작성</span> -->
+                                                            <span>후기작성</span> -->
 																		</div>
 																	</div>
 																</div>

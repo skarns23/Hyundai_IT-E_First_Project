@@ -7,7 +7,9 @@ import com.hfashion.controller.action.CartDelAllAction;
 import com.hfashion.controller.action.CartFormAction;
 import com.hfashion.controller.action.CartListAllAction;
 import com.hfashion.controller.action.ConfirmIDAction;
+import com.hfashion.controller.action.GetOrderListAction;
 import com.hfashion.controller.action.JoinAction;
+import com.hfashion.controller.action.ListOrderFormAction;
 import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.LogoutAction;
@@ -81,6 +83,11 @@ public class ActionFactory {
 			action = new ConfirmIDAction();
 		}else if(command.equals("cartListAll")) {
 			action = new CartListAllAction();
+		}else if(command.equals("mypage_searchOrder")) {
+			action = new ListOrderFormAction();
+		}else if (command.equals("mypage_searchPeriod")) {
+			action = new GetOrderListAction();
+
 		}
 		return action;
 	}
