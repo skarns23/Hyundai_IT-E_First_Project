@@ -37,9 +37,7 @@ public class CharSetEncoding extends HttpFilter implements Filter {
 	 * @see Filter#doFilter(ServletRequest, ServletResponse, FilterChain)
 	 */
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		// place your code here
-
+		System.out.println("인코딩 필터 적용");
 		// pass the request along the filter chain
 		HttpServletRequest newRequest = (HttpServletRequest)request;
 		newRequest.setCharacterEncoding("UTF-8");

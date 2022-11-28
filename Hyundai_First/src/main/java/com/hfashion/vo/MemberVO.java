@@ -22,6 +22,7 @@ public class MemberVO {
 	private String user_phone;
 	private Date join_date;
 	
+	
 	public MemberVO(String _uid, String _pwd) {
 		this.user_id = _uid;
 		this.user_pw = _pwd;

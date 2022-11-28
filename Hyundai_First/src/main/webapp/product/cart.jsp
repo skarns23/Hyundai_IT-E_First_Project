@@ -77,9 +77,9 @@
 
 			<div class="btn-box">
 				<a href="/" class="btn-type4-lg">쇼핑 계속하기</a> <a
-					href="javascript:void(0);" class="btn-type2-lg">선택상품 주문하기</a>
+					href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
 			</div>
-
+			
 			<ul class="txt-list">
 				<li>장바구니에 담긴 상품은 30일 동안 보관됩니다. 30일이 지난 상품은 자동 삭제됩니다.</li>
 				<li>장바구니에 최대 50개까지 상품 보관이 가능하며, 실제 구매 시에는 가격이나 혜택이 변동될 수 있습니다.</li>
