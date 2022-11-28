@@ -21,6 +21,7 @@ public class ProductDetailAction implements Action {
 		
 		String pro_no = request.getParameter("pno");
 		ProductVO pVO = productDAO.productDetail(pro_no);
+		pVO.setPro_no(pro_no);
 		List<SizeVO> sList = productDAO.productDetailSize(pro_no);
 		
 		request.setAttribute("pVO", pVO);

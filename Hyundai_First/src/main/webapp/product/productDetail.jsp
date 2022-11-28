@@ -100,6 +100,63 @@
 						<span> ${pVO.pro_price_f}</span>
 					</p>
 				</div>
+				
+				<!-- 상품 선택 정보 -->
+				<div class="product-view-option">
+					<div class="row size gnrlOpt">
+						<div class="select" name="optSelect0_top">
+							<button type="button" class="sel-btn" onclick="select.trigger('option');">사이즈를 선택하세요. 
+							<span class="val" id="selSize"></span></button>
+							<div class="sel-list">
+								<ul optcd="SIZE_OPT">
+									<c:forEach var="sVO" items="${sList}">
+										<li>
+											<label> 
+												<input type="radio" name="pdSelSize_0" value="IT202207130656871" itmnm="${sVO.size_name}" resveorddlivyprearngedate="" totusefulinvqty="377" optvalcd="${sVO.size_name}"
+												onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="selectGodOpt1(this);" optgodno="GM0122071371306" index="0"> <span> ${sVO.size_name}</span>
+											</label>
+										</li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div>
+					</div>
+					
+					<div class="option-bot">
+						<input type="hidden" class="minOrdQty" value="1" godno="GM0122071371306"> <input type="hidden" class="maxOrdQty" value="9999" godno="GM0122071371306">
+						<div name="qtyDiv" class="row quantity gnrlOptQty" style="display: none;" godno="GM0122071371306" selectoptionyn="N">
+							<strong class="tit">F</strong> <span class="item-count">
+								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
+									<span>빼기</span>
+								</button> <input type="number" name="qtySpinner" godno="GM0122071371306" minordqty="1" maxordqty="377" class="input-num" value="1" onkeyup="changeQty(this);">
+								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
+									<span>더하기</span>
+								</button>
+							</span> <span class="price"> <span class="num">206,400</span>
+								<button type="button" class="btn-reset" onclick="resetOptionDiv(this);">
+									<span>옵션초기화</span>
+								</button>
+							</span>
+						</div>
+						<div name="qtyDiv" class="row quantity aditQtyDiv" style="" godno="" selectoptionyn="Y">
+							</strong> <span class="item-count">
+								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
+									<span>빼기</span>
+								</button> <input type="number" name="qtySpinner" class="input-num aditGodQty" value="1" onkeyup="changeQty(this);">
+								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
+									<span>더하기</span>
+								</button>
+							</span> 
+						</div>
+
+						<div class="btn-box">
+							<button name="btnBuynow" type="button" class="btn-type2-xlg" onclick="frmSubmit();">
+								<span>장바구니</span>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!--
 				<div class="product-view-option">
 					<div class="size-wrap">
 						<c:forEach var="sVO" items="${sList}">
@@ -133,18 +190,21 @@
 							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag">
 								<span>장바구니 보기</span>
 							</button>
-							<button name="btnBuynow" type="button" class="btn-type2-xlg">
+							<button name="btnBuynow" type="button" class="btn-type2-xlg" onclick="frmSubmit();">
 								<span> <input type="hidden" id="godSaleSectCd" value="N"> 장바구니 담기
 								</span>
 							</button>
-							<form id="addCartForm" name="addCartForm" action="${contextPath}/Hfashion?command=addCart" method="get" style="display: none;">
-								<input id="pro_no" name="pro_no" value="1"> 
-								<input id="size_name" name="size_name" value=""> 
-								<input id="size_amount" name="size_amount" value="1">
-							</form>
 						</div>
 					</div>
 				</div>
+-->
+				<form id="addCartFrm" name="addCartFrm" action="${contextPath}/Hfashion?command=addCart" method="post" style="display: none;">
+					<input id="pro_no" name="pro_no" value="${pVO.pro_no}">
+					<input id="size_name" name="size_name" value=""> 
+					<input id="size_amount" name="size_amount" value="1">
+				</form>
+
+
 				<div class="info-bot">
 					<ul class="list">
 						<li class="row"><span class="tit">배송비</span> <span> <input type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상 구매시 무료(도서산간추가 3000원)
