@@ -16,18 +16,16 @@ public class ReviewDetailAction implements Action{
    public void execute(HttpServletRequest request, HttpServletResponse response)
 		      throws ServletException, IOException {
 		    String url="Hfashion?command=reviewdetail";
-		    
+		    System.out.println("리뷰디테일 액션 수행중");  
 		    String r_no=request.getParameter("R_no");
 		    
 		    ReviewDAO reviewDAO=ReviewDAO.getInstance();
 		    ReviewVO ReviewVO= reviewDAO.selectReview(r_no);
-		    
+		  
 		    request.setAttribute("ReviewVO", ReviewVO);
 		    
 		    RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		    dispatcher.forward(request, response);
-		   
-		 
 		    
 	
 		  }

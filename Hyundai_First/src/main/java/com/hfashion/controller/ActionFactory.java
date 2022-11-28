@@ -12,6 +12,9 @@ import com.hfashion.controller.action.MainAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
 import com.hfashion.controller.action.ReviewDetailAction;
+import com.hfashion.controller.action.ReviewListAction;
+import com.hfashion.controller.action.ReviewWriteAction;
+import com.hfashion.controller.action.ReviewWriteFormAction;
 import com.hfashion.controller.action.SearchAction;
 import com.hfashion.controller.action.SearchIDFormAction;
 import com.hfashion.controller.action.SignUpAction;
@@ -44,6 +47,12 @@ public class ActionFactory {
 			action = new LoginFormAction();
 		}else if(command.equals("reviewdetail")) {
 			action = new ReviewDetailAction();
+		}else if(command.equals("reviewlist")) {
+			action = new ReviewListAction();
+		}else if(command.equals("reviewwriteform")) {
+			action = new ReviewWriteFormAction();
+		}else if(command.equals("mypage_reviewwrite")) {
+			action = new ReviewWriteAction();
 		}else if(command.equals("login")) {
 			action = new LoginAction();
 		}else if(command.equals("logout")) {
