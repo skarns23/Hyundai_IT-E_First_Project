@@ -1,8 +1,6 @@
 package com.hfashion.dao;
 
-/*
- * 작성자 함세강
- */
+
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -33,14 +31,6 @@ public class OrderDAO {
 		}
 		return instance;
 	}
-	
-	public void orderProduct(String postCode, String address, String userId) {
-		
-		
-		
-	}
-	
-	
 	
 
 	public List<OrderVO> getOrderList(String user_id, String start, String end) {

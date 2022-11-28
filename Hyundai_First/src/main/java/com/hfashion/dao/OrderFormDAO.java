@@ -33,7 +33,8 @@ public class OrderFormDAO {
 		List<CartDTO> list = new ArrayList<CartDTO>();
 		
 		
-		String runProcedure = "{call orderForm_package.order_list(?,?)}";
+		String runProcedure = "{call order_form_package.order_list(?,?)}";
+		
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -78,7 +79,7 @@ public class OrderFormDAO {
 	public OrderFormDTO getOrderMember(Connection con, String loginId) {
 		OrderFormDTO dto = new OrderFormDTO();
 		
-		String runProcedure = "{call orderForm_package.order_member(?,?,?,?)}";
+		String runProcedure = "{call order_form_package.order_member(?,?,?,?)}";
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);

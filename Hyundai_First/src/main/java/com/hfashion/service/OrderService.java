@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import javax.naming.NamingException;
 
-import com.hfashion.dao.OrderDAO;
+import com.hfashion.dao.OrderCreditDAO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
 import com.hfashion.vo.OrderDTO;
@@ -27,7 +27,7 @@ public class OrderService {
 	
 	public void orderProductServie (OrderDTO dto) {
 		Connection con = null;
-		OrderDAO dao = null;
+		OrderCreditDAO dao = null;
 		try {
 			con = ConnectionProvider.getConnection();
 			
@@ -35,9 +35,10 @@ public class OrderService {
 			String address = dto.getAddress();
 			String userId = dto.getUserID();
 			
-			dao = OrderDAO.getInstance();
-			dao.orderProduct(postCode, address, userId);
-			
+			dao = OrderCreditDAO.getInstance();
+			con.setAutoCommit(false);
+			dao.orderProduct(con,postCode, address, userId);
+			con.setAutoCommit(true);
 			
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
