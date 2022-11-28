@@ -9,54 +9,11 @@
 				<div id="pdViewSlide" class="product-view-slide" data-slide-length="6">
 					<div class="slide-container swiper-container-horizontal">
 						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-1300px, 0px, 0px); transition-duration: 0ms;">
-							<div class="swiper-slide swiper-slide-duplicate" data-swiper-slide-index="4" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_5_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide swiper-slide-duplicate swiper-slide-prev" data-swiper-slide-index="5" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_6_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide swiper-slide-active" data-swiper-slide-index="0" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_1_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'" data-gtm-vis-first-on-screen-32062759_265="265" data-gtm-vis-first-on-screen-32062759_407="265"
-									data-gtm-vis-recent-on-screen-32062759_265="49351" data-gtm-vis-total-visible-time-32062759_265="2000" data-gtm-vis-recent-on-screen-32062759_407="49352"
-									data-gtm-vis-total-visible-time-32062759_407="2000" data-gtm-vis-has-fired-32062759_265="1" data-gtm-vis-has-fired-32062759_407="1">
-							</div>
-							<div class="swiper-slide swiper-slide-next" data-swiper-slide-index="1" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_2_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'" data-gtm-vis-first-on-screen-32062759_265="265" data-gtm-vis-first-on-screen-32062759_407="265"
-									data-gtm-vis-recent-on-screen-32062759_265="49352" data-gtm-vis-total-visible-time-32062759_265="2000" data-gtm-vis-recent-on-screen-32062759_407="49352"
-									data-gtm-vis-total-visible-time-32062759_407="2000" data-gtm-vis-has-fired-32062759_265="1" data-gtm-vis-has-fired-32062759_407="1">
-							</div>
-							<div class="swiper-slide" data-swiper-slide-index="2" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_3_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide" data-swiper-slide-index="3" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_4_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide" data-swiper-slide-index="4" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_5_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide swiper-slide-duplicate-prev" data-swiper-slide-index="5" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_6_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'">
-							</div>
-							<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active" data-swiper-slide-index="0" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_1_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'" data-gtm-vis-polling-id-32062759_265="241" data-gtm-vis-polling-id-32062759_407="244"
-									data-gtm-vis-recent-on-screen-32062759_265="265" data-gtm-vis-first-on-screen-32062759_265="265" data-gtm-vis-total-visible-time-32062759_265="100"
-									data-gtm-vis-recent-on-screen-32062759_407="265" data-gtm-vis-first-on-screen-32062759_407="265" data-gtm-vis-total-visible-time-32062759_407="100">
-							</div>
-							<div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-next" data-swiper-slide-index="1" style="width: 650px;">
-								<img src="https://cdn.hfashionmall.com/goods/DKBR/22/10/31/GM0122103109697_2_ORGINL.jpg?RS=960x960&amp;AR=0&amp;CS=640x960" alt="퀼팅 다운 점퍼"
-									onerror="this.src='/hfm_pc/resources/images/product/noimage_640x960.jpg'" data-gtm-vis-polling-id-32062759_265="242" data-gtm-vis-polling-id-32062759_407="245"
-									data-gtm-vis-recent-on-screen-32062759_265="265" data-gtm-vis-first-on-screen-32062759_265="265" data-gtm-vis-total-visible-time-32062759_265="100"
-									data-gtm-vis-recent-on-screen-32062759_407="265" data-gtm-vis-first-on-screen-32062759_407="265" data-gtm-vis-total-visible-time-32062759_407="100">
-							</div>
+							<c:forEach var="imgVO" items="${imgList}">
+								<div class="swiper-slide" style="width: 650px;">
+									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
+								</div>
+							</c:forEach>
 						</div>
 						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 					</div>
@@ -97,7 +54,7 @@
 
 				<div class="item-price">
 					<p class="price">
-						<span> ${pVO.pro_price_f}</span>
+						<span> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" /></span>
 					</p>
 				</div>
 				
@@ -142,66 +99,29 @@
 							</strong> <span class="item-count">
 								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
 									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" class="input-num aditGodQty" value="1" onkeyup="changeQty(this);">
+								</button> <input type="number" name="qtySpinner" class="input-num aditGodQty" id="pro_qty" value="1" onkeyup="changeQty(this);">
 								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
 									<span>더하기</span>
 								</button>
 							</span> 
 						</div>
-
+<div class="total">
+        <strong class="tit">합계</strong>
+        <span class="totalPrice">0</span>
+    </div>
 						<div class="btn-box">
-							<button name="btnBuynow" type="button" class="btn-type2-xlg" onclick="frmSubmit();">
+							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag" onclick="frmSubmit();">
 								<span>장바구니</span>
 							</button>
 						</div>
 					</div>
 				</div>
-				<!--
-				<div class="product-view-option">
-					<div class="size-wrap">
-						<c:forEach var="sVO" items="${sList}">
-							<div class="size-btn-wrap">
-								<button id="size${sVO.size_name}" class="size-btn" onclick="optionSelect('${sVO.size_name}')" value="${sVO.size_name}">${sVO.size_name}</button>
-							</div>
-						</c:forEach>
-
-					</div>
-					<div class="option-bot">
-						<div name="qtyDiv" class="row quantity gnrlOptQty" style="" godno="GM0122080876890" selectoptionyn="Y">
-							<strong class="tit">06</strong> <span class="item-count">
-								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
-									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" godno="GM0122080876890" minordqty="1" maxordqty="6" class="input-num" value="1" onkeyup="changeQty(this);">
-								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
-									<span>더하기</span>
-								</button>
-							</span> <span class="price"> <span class="num">150,500</span>
-								<button type="button" class="btn-reset" onclick="resetOptionDiv(this);">
-									<span>옵션초기화</span>
-								</button>
-							</span>
-						</div>
-
-
-						<div class="total" style="">
-							<strong class="tit">합계</strong> <span class="num">150,500</span>
-						</div>
-						<div class="btn-box">
-							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag">
-								<span>장바구니 보기</span>
-							</button>
-							<button name="btnBuynow" type="button" class="btn-type2-xlg" onclick="frmSubmit();">
-								<span> <input type="hidden" id="godSaleSectCd" value="N"> 장바구니 담기
-								</span>
-							</button>
-						</div>
-					</div>
-				</div>
--->
-				<form id="addCartFrm" name="addCartFrm" action="${contextPath}/Hfashion?command=addCart" method="post" style="display: none;">
+				
+				<form id="addCartFrm" name="addCartFrm" action="${contextPath}/Hfashion?command=cart" method="post" style="display: none;">
 					<input id="pro_no" name="pro_no" value="${pVO.pro_no}">
 					<input id="size_name" name="size_name" value=""> 
-					<input id="size_amount" name="size_amount" value="1">
+					<input id="size_amount" name="size_amount" value="">
+					<input type="hidden" name="ex_action" value="detail">
 				</form>
 
 

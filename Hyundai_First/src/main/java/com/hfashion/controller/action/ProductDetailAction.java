@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.dao.ProductDAO;
+import com.hfashion.vo.ImgVO;
 import com.hfashion.vo.ProductVO;
 import com.hfashion.vo.SizeVO;
 
@@ -23,9 +24,11 @@ public class ProductDetailAction implements Action {
 		ProductVO pVO = productDAO.productDetail(pro_no);
 		pVO.setPro_no(pro_no);
 		List<SizeVO> sList = productDAO.productDetailSize(pro_no);
+		List<ImgVO> imgList = productDAO.productDetailImg(pro_no);
 		
 		request.setAttribute("pVO", pVO);
 		request.setAttribute("sList", sList);
+		request.setAttribute("imgList", imgList);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

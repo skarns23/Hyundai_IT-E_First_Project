@@ -1,6 +1,28 @@
 package com.hfashion.controller;
 
-import com.hfashion.controller.action.*;
+import com.hfashion.controller.action.Action;
+import com.hfashion.controller.action.CartAction;
+import com.hfashion.controller.action.CartDelAction;
+import com.hfashion.controller.action.CartDelAllAction;
+import com.hfashion.controller.action.CartFormAction;
+import com.hfashion.controller.action.CartListAllAction;
+import com.hfashion.controller.action.ConfirmIDAction;
+import com.hfashion.controller.action.JoinAction;
+import com.hfashion.controller.action.LoginAction;
+import com.hfashion.controller.action.LoginFormAction;
+import com.hfashion.controller.action.LogoutAction;
+import com.hfashion.controller.action.MainAction;
+import com.hfashion.controller.action.MypageFormAction;
+import com.hfashion.controller.action.OrderAction;
+import com.hfashion.controller.action.ProductDetailAction;
+import com.hfashion.controller.action.ProductListAction;
+import com.hfashion.controller.action.ReviewDetailAction;
+import com.hfashion.controller.action.ReviewListAction;
+import com.hfashion.controller.action.ReviewWriteAction;
+import com.hfashion.controller.action.ReviewWriteFormAction;
+import com.hfashion.controller.action.SearchIDAction;
+import com.hfashion.controller.action.SearchIDFormAction;
+import com.hfashion.controller.action.SignUpAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -47,16 +69,18 @@ public class ActionFactory {
 			action = new OrderAction();
 		}else if(command.equals("cart")) {
 			action = new CartAction();
-		}else if(command.equals("addCart")) {
-			action = new CartInsertAction();
 		}else if(command.equals("delCart")) {
 			action = new CartDelAction();
+		}else if(command.equals("delAllCart")){
+			action = new CartDelAllAction();
 		}else if(command.equals("mypage")) {
 			action = new MypageFormAction();
 		}else if(command.equals("cart")) {
 			action = new CartFormAction();
 		}else if(command.equals("confirmID")) {
 			action = new ConfirmIDAction();
+		}else if(command.equals("cartListAll")) {
+			action = new CartListAllAction();
 		}
 		return action;
 	}
