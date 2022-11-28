@@ -36,9 +36,6 @@
 						<a href="${contextPath}/Hfashion?command=signup">회원가입</a> </c:when> <c:otherwise>
 							<a href="${contextPath}/Hfashion?command=logout">로그아웃</a>
 						</c:otherwise> </c:choose>
-
-
-
 					</span> <span> <a href="${contextPath}/Hfashion?command=mypage">마이페이지</a>
 					</span> <span> <a href="${contextPath}/Hfashion?command=cart">장바구니</a>
 					</span>

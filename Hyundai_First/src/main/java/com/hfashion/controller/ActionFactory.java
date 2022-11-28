@@ -1,26 +1,6 @@
 package com.hfashion.controller;
 
-import com.hfashion.controller.action.Action;
-import com.hfashion.controller.action.CartAction;
-import com.hfashion.controller.action.CartDelAction;
-import com.hfashion.controller.action.CartInsertAction;
-import com.hfashion.controller.action.JoinAction;
-import com.hfashion.controller.action.LoginAction;
-import com.hfashion.controller.action.LoginFormAction;
-import com.hfashion.controller.action.LogoutAction;
-import com.hfashion.controller.action.MainAction;
-import com.hfashion.controller.action.OrderAction;
-import com.hfashion.controller.action.ProductDetailAction;
-import com.hfashion.controller.action.ProductListAction;
-import com.hfashion.controller.action.ReviewDetailAction;
-import com.hfashion.controller.action.SignUpAction;
-import com.hfashion.controller.action.SearchAction;
-import com.hfashion.controller.action.SearchIDFormAction;
-import com.hfashion.controller.action.ReviewListAction;
-import com.hfashion.controller.action.ReviewWriteAction;
-import com.hfashion.controller.action.ReviewWriteFormAction;
-
-
+import com.hfashion.controller.action.*;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -62,7 +42,7 @@ public class ActionFactory {
 		}else if(command.equals("searchIdForm")) {
 			action = new SearchIDFormAction();
 		}else if(command.equals("searchID")) {
-			action = new SearchAction();
+			action = new SearchIDAction();
 		}else if(command.equals("order")) {
 			action = new OrderAction();
 		}else if(command.equals("cart")) {
@@ -71,8 +51,13 @@ public class ActionFactory {
 			action = new CartInsertAction();
 		}else if(command.equals("delCart")) {
 			action = new CartDelAction();
+		}else if(command.equals("mypage")) {
+			action = new MypageFormAction();
+		}else if(command.equals("cart")) {
+			action = new CartFormAction();
+		}else if(command.equals("confirmID")) {
+			action = new ConfirmIDAction();
 		}
-		
 		return action;
 	}
 }
