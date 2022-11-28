@@ -1,6 +1,3 @@
-/**
- * 
- */
 
  function optionSelect(i){
  	var idname = "size"+i;
@@ -10,3 +7,13 @@
 	putValue.value = selSize.value;
  	console.log(putValue.value);
  }
+ 
+function frmSubmit(){
+	var selSize = document.getElementById("selSize");
+	var putValue = selSize.innerHTML;
+	console.log(putValue); 
+	document.getElementById("size_name").value = putValue;
+	
+	
+	document.getElementById("addCartFrm").submit();
+}

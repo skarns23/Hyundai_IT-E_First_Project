@@ -1,10 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<link rel="stylesheet" type="text/css" href="../css/ui.min.css">
-
+<!-- 마이페이지 부분에서 받아온다 체크된거만  -->
+<%--    <%
+      /* detail에서 바로 주문해서 받아온 값  */
+      String proname ="";
+      proname = request.getParameter("proname");   
+      String rcheck ="";
+      rcheck = request.getParameter("r_check");  
+      String sizename="";
+      sizenname=request.getParameter("input(변수명)");  
+         String prono="";
+      prono=request.getParameter("input(변수명)");
+         String ordeno="";
+      sizenname=request.getParameter("input(변수명)"); 
+         String orderno="";
+      orderno=request.getParameter("input(변수명)");  
+         String userno="";
+      userno=request.getParameter("input(변수명)"); 
+   %>
+    --%>
 <div id="reviewEdit" class ="layer-pop lg review-layer" tabindex="0" style="display: block;">
-<input type="hidden" name="godNo" value="GM0122092695369"> 
+<form name="formm" method="post" action="${contextPath}/Hfashion?command=mypage_reviewwrite">
+ <%--  <input type="hidden" id="proname" value="<%=proname%>">     <%=proname%>  --%>
+   <%--  <input type="hidden" id="r_check" value="<%=rcheck%>">     <%=proname%>  --%>
+<!-- post 방식 -->
 <div class="layer-wrap" tabindex="0">
             <div class="layer-header">
                 <h2 class="layer-title">리뷰 작성</h2>
@@ -15,13 +35,13 @@
                         <section class="write-section">
                         <!--1. 상품 -->
                             <h3 class="sub-title">1. 상품</h3>
-                                    <p class="review-product-name">다이아 퀼티드 자켓</p>
+                                    <p class="review-product-name"> 다이아 자켓</p>  <!-- 변수로 바꿔줘야함 -->
                                 </section>
                          <!--2. 리뷰제목 입력 --> 
                         <section class="write-section">
                             <h3 class="sub-title">2. 리뷰 제목을 작성해 주세요. <span class="required">(필수)</span></h3>
                             <div class="input-box">
-                                <input type="text" id="godEvlSj" name="godGodEvl.godEvlSj" maxlength="50" title="리뷰 제목 작성" placeholder="제목을 입력해 주세요." class="inp-reset">
+                                <input type="text"name="r_title" maxlength="50" title="리뷰 제목 작성" placeholder="제목을 입력해 주세요." class="inp-reset">
                                 <div class="etc">
                                     <button type="button" class="btn-clear"><span>지우기</span></button>
                                 </div>
@@ -36,15 +56,15 @@
                                 <div class="cell">
                                     <div class="height">
                                         <label for="userInfo1" class="tit">키</label>
-                                        <input type="text" id="userInfo1" name="godGodEvlWearInfoList[0].wearInfoSectDetailVal" title="키 입력" placeholder="키" value="" numberonly="" maxlength="3"> cm
-                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">                                                                   
+                                        <input type="text" name="height" title="키 입력" placeholder="키" value="" numberonly="" maxlength="3"> cm
+                                                                                                   
                                   </div>
                                 </div>
                                 <div class="cell">
                                  <div class="height">
                                         <label for="userInfo1" class="tit">몸무게</label>
-                                        <input type="text" id="userInfo1" name="godGodEvlWearInfoList[0].wearInfoSectDetailVal" title="몸무게 입력" placeholder="몸무게" value="" numberonly="" maxlength="3"> kg
-                                        <input type="hidden" name="godGodEvlWearInfoList[0].wearInfoSectCd" value="WEAR_INFO_SECT_HG">                                                                   
+                                        <input type="text" name="weight" title="몸무게 입력" placeholder="몸무게" value="" numberonly="" maxlength="3"> kg
+                                                                                      
                                   </div>
                             </div>
                             </div>
@@ -54,7 +74,7 @@
                         </section>
                         <section class="write-section">
                             <h3 class="sub-title">4 . 어떤 점이 좋았나요? <span class="required">(필수)</span></h3>
-                            <textarea cols="30" rows="10" id="godEvlCont" name="godGodEvl.godEvlCont" title="좋은 점 작성" maxlength="1000" placeholder="상품 문의는 상품 정보 우측 하단의 [상품문의] 버튼을 누르시거나, 또는 [MY PAGE > 리뷰 및 문의 > 1:1문의] 메뉴를 이용해 주시기 바랍니다."></textarea>
+                            <textarea cols="30" rows="10" name="r_content" title="좋은 점 작성" maxlength="1000" placeholder="상품 문의는 상품 정보 우측 하단의 [상품문의] 버튼을 누르시거나, 또는 [MY PAGE > 리뷰 및 문의 > 1:1문의] 메뉴를 이용해 주시기 바랍니다."></textarea>
                             <span class="str-length"><span id="reviewContLength">0</span>/1,000</span>
                         </section>
                     </div>
@@ -78,15 +98,13 @@
                             </div>
                             </section>
                         <section class="write-section">
+                        <!--사진첨부-->
                             <h3 class="sub-title">7. 사진을 첨부해 주세요.</h3>
                             <div class="upload-item">
                                 <div class="upload-item-list">
                                     <span class="item-box">
                                             <input type="hidden" name="godGodEvlAtchFileList[0].atchFileNm" value="">
-                                            <input type="hidden" name="godGodEvlAtchFileList[0].atchFileUrl" value="">
-                                            <input type="hidden" name="godGodEvlAtchFileList[0].atchFileTurn" value="">
-                                            <input type="hidden" name="godGodEvlAtchFileList[0].imgRtatNum" value="0">
-                                            <input type="hidden" name="godGodEvlAtchFileNames" value="">
+                                 
                                             <span class="btn-upload">
                                                 <input type="file" name="file" id="file-0" index="0" title="파일 등록" onchange="checkFileSizeAjax(event,this);">
                                             </span>
@@ -117,12 +135,16 @@
                         </ul>
                     </section>
                     <div class="btn-box">
-                        <button type="button" onclick="saveGodEvl();" class="btn-type2-lg"><span>등록</span></button>
+                    <!--등록구현 필요 -->
+                        <button type="button" class="btn-type2-lg">
+                        <input type="submit" value="등록" style= 'font-size:12pt'>
+                        </button>
                     </div>
 
                 </div>
             </div>
-            <button type="button" class="btn-layer-close" onclick="layer.close('reviewEdit');">닫기</button>
+            <!--나중에는 마이페이지로 이동 구현 -->
+            <button type="button" class="btn-layer-close" onclick="location.href='Hfashion?command=reviewlist'">닫기</button>
         </div>
+        </form>
 </div>
-<%@ include file="../layout/footer.jsp"%>

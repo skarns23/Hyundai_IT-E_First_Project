@@ -8,20 +8,19 @@ import java.util.ArrayList;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.hfashion.vo.ReviewVO;
 
 import oracle.jdbc.OracleTypes;
 
-public class ReviewDAO {
+// 윤태영 작성
 
+public class ReviewDAO {
+ 
 	private static ReviewDAO RDAO = new ReviewDAO(); // 인스턴스 생성
 	private DataSource ds = null;
-
-	public static ReviewDAO getInstance() {
-		return RDAO; // 인스턴스 반환
-	}
 
 	// 프로시저 호출
 	public ReviewDAO() {
@@ -30,16 +29,60 @@ public class ReviewDAO {
 			Context envcon = (Context) con.lookup("java:/comp/env");
 			ds = (DataSource) envcon.lookup("jdbc/oracle88");
 
+		} catch (NamingException e) {
+			e.printStackTrace();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	 }
+	// 리뷰생성
+	public void createReview(ReviewVO reviewvo) {
+		String insert = "{call insert_review(?,?,?,?,?,?,?,?,?,?)}";
+		Connection con = null;
+
+		try {
+			con = ds.getConnection();
+			CallableStatement cstmt = con.prepareCall(insert);
+			cstmt.setString(1,reviewvo.getR_title());
+			cstmt.setString(2,reviewvo.getR_content());
+			cstmt.setString(3,reviewvo.getR_img());
+			cstmt.setInt(4,reviewvo.getWeight());
+			cstmt.setInt(5,reviewvo.getHeight());
+			cstmt.setInt(6,reviewvo. getStar_rating());
+			cstmt.setString(7,reviewvo. getSize_name());
+			cstmt.setString(8,reviewvo. getPro_no());
+			cstmt.setString(9,reviewvo. getOrder_no());
+			cstmt.setString(10,reviewvo. getUser_id());
+			cstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
+	// 리뷰수정
+	public ReviewVO updateReview(String R_no) {
+		ReviewVO review = new ReviewVO();
+
+		return review;
 	}
 
+	// 리뷰 삭제
+	public ReviewVO deleteReview(String R_no) {
+		ReviewVO review = new ReviewVO();
+
+		return review;
+	}
+
+// 리뷰 상세 정보  
 	public ReviewVO selectReview(String R_no) {
 		ReviewVO review = new ReviewVO();
 		String sql = "{call select_review(?,?,?,?,?,?,?,?)}";
-		ResultSet rs = null;// result set을 통해 한행으로 출력가능
+
 		try {
+			System.out.println("review dao 실행 중");
 			Connection con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(sql);
 			cstmt.setString(1, R_no);
@@ -50,7 +93,7 @@ public class ReviewDAO {
 			cstmt.registerOutParameter(6, java.sql.Types.VARCHAR);
 			cstmt.registerOutParameter(7, java.sql.Types.VARCHAR);
 			cstmt.registerOutParameter(8, java.sql.Types.VARCHAR);
-			rs = cstmt.executeQuery(); // 조회 이므로
+			ResultSet rs = cstmt.executeQuery(); // 조회 이므로
 			if (rs.next()) {
 				review.setR_no(rs.getString("review_no"));
 				review.setR_title(rs.getString("review_title"));
@@ -64,89 +107,57 @@ public class ReviewDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		System.out.println(review.getR_title());
 		return review;
 	}
 
-	// 전체 리뷰 조회
-	public ArrayList<ReviewVO>ReviewList(String R_no) {
-		ArrayList<ReviewVO>list=new ArrayList<>();
-		String runSP = "{call reviewlist(?,?,?,?,?,?)}"; //프로시저 실행
-		
+// 리뷰 플러스 목록 불러오기	
+	public ArrayList<ReviewVO> ReviewList() {
+		ArrayList<ReviewVO> list = new ArrayList<>();
+		System.out.println("dao확인1");
+		String runSP = "{call review_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
+		System.out.println("dao확인2");
 		try {
-			Connection con = ds.getConnection(); 
+			Connection con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(runSP);
-			cstmt.setString(1,R_no);
-			cstmt.registerOutParameter(2,OracleTypes.CURSOR);
-			ResultSet rs = cstmt.executeQuery(); //result set을 통해 한행으로 출력가능
-		 	while(rs.next()){
-		 		 
-		         String review_title=rs.getString(1);	
-		         String review_img=rs.getString(2);	
-		         String review_content=rs.getString(3);	
-		         String review_size=rs.getString(4);
-		         int star_rating=rs.getInt(5);
-		         String pro_name=rs.getString(6);
-		        
-		         ReviewVO rVO=new ReviewVO();
-		         
-		         rVO.setR_title(review_title);
-			     rVO.setR_img(review_img);
-			     rVO.setR_content(review_content);
-			     rVO.setSize_name(review_size);
-			     rVO.setStar_rating(star_rating);
-                 rVO.setPro_name(pro_name);           
-           		 list.add(rVO);
-		 	}
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			ResultSet rs = (ResultSet) cstmt.getObject(1);
+			// System.out.println(rs.getRow());커서 에서 받은 rs개수 확인
+			while (rs.next()) {
+				String review_title = rs.getString(1);
+				String review_img = rs.getString(2);
+				String review_content = rs.getString(3);
+				String review_size = rs.getString(4);
+				int star_rating = rs.getInt(5);
+				String pro_name = rs.getString(6);
+				int pro_price = rs.getInt(7);
+				String brand_name = rs.getString(8);
+				ReviewVO rVO = new ReviewVO();
+
+				rVO.setR_title(review_title);
+				rVO.setR_img(review_img);
+				rVO.setR_content(review_content);
+				rVO.setSize_name(review_size);
+				rVO.setStar_rating(star_rating);
+				rVO.setPro_name(pro_name);
+				rVO.setPro_price(pro_price);
+				rVO.setBrand_name(brand_name);
+				list.add(rVO);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		catch(SQLException e) {
-            e.printStackTrace();
-         }
-		return list ;
- 	  }
-	
+		return list;
 	}
 
-//	ArrayList<ReviewDAO> ReviewList() {
-//			String runSP ="{call select_allreview(?,?,?,?,?)}";
-//
-//			try {
-//				Connection conn = ds.getConnection();
-//				CallableStatement callableStatement = conn.prepareCall(runSP);
-//				callableStatement.registerOutParameter(1, OracleTypes.CURSOR);
-//				callableSta tement.execute();
-//
-//				ResultSet resultSet = (ResultSet) callableStatement.getObject(1);
-//
-//				while (resultSet.next()) {
-//					System.out.print(resultSet.getString(1) + "   ");
-//					System.out.print(resultSet.getString(2) + "   ");
-//					System.out.println(resultSet.getDouble(3));
-//				}
-//				System.out.println();
-//
-//			} catch (SQLException e) {
-//				System.out.println("프로시저에서 에러 발생!");
-//				System.err.format("SQL State: %s\n%s", e.getSQLState(), e.getMessage());
-//			} catch (Exception e) {
-//				e.printStackTrace();
-//			} finally {
-//
-//			}
-//		}
+	public static ReviewDAO getInstance() {
+		return RDAO; // 인스턴스 반환
+	}
 
-//	public void update(ReviewVO reivewVO) {
-//		String sql = "{call update_review(?,?,?,?,?)}";
-//		try {
-//			Connection conn = ds.getConnection();
-//			CallableStatement callableStatement = conn.prepareCall(sql);
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//	}
-
-
+}
 
 // review 목록
 

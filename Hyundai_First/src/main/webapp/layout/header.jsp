@@ -17,13 +17,17 @@
 	rel="stylesheet">
 <link rel="stylesheet" type="text/css"
 	href="${contextPath}/css/ui.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript" src="${contextPath}/js/ui.js"></script>
+<script type="text/javascript" src="${contextPath}/js/product/product.js"></script>
+<script type="text/javascript" src="${contextPath}/js/product/productCommon.js"></script>
 </head>
 <body>
 	<header id="header">
 		<div class="header-inner">
 			<div class="header-wrap">
 				<h1 class="header-logo">
-					<a href="${contextPath}/main.jsp">H FASHION MALL</a>
+					<a href="${contextPath}/Hfashion">H FASHION MALL</a>
 				</h1>
 				<nav class="header-util">
 					<span> <c:choose>
@@ -36,7 +40,7 @@
 
 
 					</span> <span> <a href="${contextPath}/Hfashion?command=mypage">마이페이지</a>
-					</span> <span> <a href="${contextPath}/product/cart2.jsp">장바구니</a>
+					</span> <span> <a href="${contextPath}/Hfashion?command=cart">장바구니</a>
 					</span>
 				</nav>
 			</div>
@@ -65,7 +69,7 @@
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="${contextPath}/review/reviewList.jsp"> <span>리뷰플러스</span>
+							<a href="${contextPath}/Hfashion?command=reviewlist">  <span>리뷰플러스</span>
 							</a>
 						</div>
 					</div>
