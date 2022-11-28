@@ -24,7 +24,8 @@ public class CartDAO {
 	private DataSource ds = null;
 	private String selectCart = "{call select_cart(?, ?)}";
 	private String insertCart = "{call insert_cart(?, ?, ?, ?)}";
-	
+	private String delCart = "{call del_cart(?, ?, ?)}";
+	private String delAllCart = "{call del_all_cart(?)}";
 	private CartDAO() {
 		try {
 			Context con = new InitialContext();
@@ -91,6 +92,31 @@ public class CartDAO {
 		}
 		
 		return cList;
+	}
+	
+	// 신수진 - 장바구니 1개 목록 삭제
+	public void delCart(String pro_no, String size_name, String user_id) {
+		try(Connection conn = ds.getConnection();
+				CallableStatement cstmt = conn.prepareCall(delCart)){
+			cstmt.setString(1, pro_no);
+			cstmt.setString(2, size_name);
+			cstmt.setString(3, user_id);
+			cstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	// 신수진 - 장바구니 전체 삭제
+	public void delAllCart(String user_id) {
+		try(Connection conn = ds.getConnection();
+				CallableStatement cstmt = conn.prepareCall(delAllCart)){
+			cstmt.setString(1, user_id);
+			cstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static CartDAO getInstance() {

@@ -1,142 +1,138 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<script type="text/javascript" src="${contextPath}/js/product/cart.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	cartListAll();
+});
 
+	// 장바구니 목록을 가져오는 함수
+	function cartListAll(){
+
+		$.ajax({
+			type : 'get',
+			url : 'Hfashion?command=cartListAll',
+			success : function(result){
+				 var obj = JSON.parse(result);
+				 
+				 var tag = "";
+				 if(obj.length == 0){
+					 tag = `
+					 	<div class="nodata">
+						<p class="txt-nodata">장바구니에 담긴 상품이 없습니다.</p>
+						</div>
+						`
+				 }else{
+					 for(var i=0; i<obj.length; i++){
+						 let price = obj[i].pro_price.toLocaleString('ko-KR');
+						 tag += `
+							 <div class="row"><div class="inner"><div class="cell-check"><label class="check-skin only"> <input type="checkbox"><span>선택</span></label>
+							 </div><div class="cell-pd-wrap"><div class="inner-row"><div class="cell-pd"><div class="item-img">
+							 <a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}"> <img src='${contextPath}/\${obj[i].img_loc}'></a>
+							 </div><div class="item-info"><div class="item-label"></div><div class="item-brand">\${obj[i].brand_name}</div>
+							 <div class="item-name"><a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}">\${obj[i].pro_name}</a></div><div class="item-opt">
+							 <span>\${obj[i].size_name}</span><div class="row"><span class="item-count">
+							 <button type="button" class="btn-minus" onclick="quantityCalc('minus');"><span>빼기</span></button> 
+							 <input type="number" name="itmQty" class="input-num" value="\${obj[i].cart_amount}">
+							 <button type="button" class="btn-plus" onclick="quantityCalc('plus');"><span>더하기</span></button></span></div></div></div></div>
+							 <div class="cell-price"><div class="price"><span> <span class="num">\${price}</span> 원</span></div></div></div></div>
+							 <div class="cell-btn">
+							 <button type="button" class="btn-del" id="btn-del" onclick="goodsDel('\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>삭제</span></button></div></div></div>
+							 `
+					 }
+					 tag += `
+					 		<div class="cell-dlv">
+							<div class="inner">
+							<p>
+							<span class="sort">[본사배송]</span> 
+							<span id="godDlvAmt_0_0" class="txt">무료배송</span> 
+							<span class="sub">30,000원 미만 결제시 <br> 2,500원</span>
+							</p>
+							</div>
+							</div>
+							`
+				 }
+				 $(".body").html(tag);
+				 
+			},
+			error : function(e){
+				console.log(e);
+			}
+			
+		})
+	}	
+	
+	// 카트 1개 목록 삭제
+	function goodsDel(pro_no, size_name) {
+		console.log("삭제한다!!");
+		$.ajax({
+			url : 'Hfashion?command=delCart',
+			type : 'post',
+			data : {
+				pno : pro_no,
+				size : size_name
+			},
+			success : function(r) {
+				cartListAll();
+				console.log(r);
+			},
+			error : function(e) {
+				console.log(e);
+			}
+		});
+	}
+	
+	// 카트 전체 삭제
+	function delAllCart() {
+		if (confirm("정말 삭제하시겠습니까?")) {
+			$.ajax({
+				url : 'Hfashion?command=delAllCart',
+				type : 'post',
+				success : function(r){
+					cartListAll();
+					console.log("전체 삭제 성공~");
+					
+				},
+				error : function(e){
+					console.log(e);
+				}
+			});
+		}
+	}
+</script>
 <div id="container">
 	<section class="content-wrap">
 		<h3 class="page-title">장바구니</h3>
 
 		<div id="cartContentList">
-			<div class="tab-wrap">
-				<ul class="tabs tab-btn">
-					<li class="on">
-						<button type="button" onclick="javascript:view('GNRL_DLV');event.stopImmediatePropagation();">
-							<span class="gnrlCartCnt">택배(0)</span>
-						</button>
-					</li>
-				</ul>
-			</div>
-
 			<div id="cartList" class="order-tbl type-cart">
-
-
 				<div class="head">
-					<div class="cell-check">
-						<label class="check-skin only"> <input type="checkbox" class="allChk"> <span>전체 선택</span>
-						</label>
-					</div>
+					<div class="cell-check"></div>
 					<div class="cell-info">상품정보</div>
 					<div class="cell-price">상품금액</div>
-					<div class="cell-btn">선택</div>
+					<div class="cell-btn"></div>
 					<div class="cell-dlv">배송정보</div>
 				</div>
 
-				<!-- 				
-				<div class="body">
-					<div class="nodata">
-						<p class="txt-nodata">장바구니에 담긴 상품이 없습니다.</p>
-					</div>
-				</div>
- -->
 				<!-- body -->
-
 				<div class="body">
-
 					<!-- row -->
-					<c:forEach var="cVO" items="${cList}">
-						<div class="row " id="0" name="tr0_0" gdturn="3" gdidx="0">
-							<div class="inner">
-								<div class="cell-check">
-									<label class="check-skin only"> <input type="checkbox" soldoutyn="N" id="0_0" name="check" value="0" onclick="javascript:check.one(0,0,$(this));event.stopImmediatePropagation();">
-										<span>선택</span>
-									</label>
-								</div>
-
-								<div class="cell-pd-wrap">
-									<!-- 상품 별 정보/가격 -->
-									<div class="inner-row">
-										<div class="cell-pd">
-											<div class="item-img">
-												<a href="${contextPath}/Hfashion/command=detail?pno=${cVO.pro_no}"> <img src='<c:url value='${cVO.img_loc}'></c:url>'>
-												</a>
-											</div>
-											<div class="item-info">
-												<div class="item-label"></div>
-												<div class="item-brand">${cVO.brand_name}</div>
-												<div class="item-name">
-													<a href="${contextPath}/Hfashion/command=detail?pno=${cVO.pro_no}">${cVO.pro_name}</a>
-												</div>
-												<div class="item-opt">
-													<span color="BLACK">${cVO.size_name}</span>
-													<div class="row">
-														<span class="item-count">
-															<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
-																<span>빼기</span>
-															</button> <input type="number" name="itmQty" maxordqty="9999" class="input-num" value="${cVO.cart_amount }">
-															<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
-																<span>더하기</span>
-															</button>
-														</span>
-													</div>
-												</div>
-
-
-											</div>
-										</div>
-										<div class="cell-price">
-											<input type="hidden" id="benefit0_0" prctype="GNRL" amt="97500" crsgrp="" godamt="0" imdtldcamt="97500" cpnamt="0" cpnbamt="0"> <input type="hidden" id="price0_0" price="325000">
-											<div class="price" emplmtddctyn="N">
-												<span> <span class="num" id="orderPrice0_0" cvrprc="325000" saleprc="227500" calcorderprice="227500"><fmt:formatNumber value="${cVO.pro_price}" pattern="#,###" /></span> 원
-												</span>
-											</div>
-										</div>
-									</div>
-									<!-- //상품 별 정보/가격 -->
-								</div>
-								<div class="cell-btn">
-									<!-- 품절은 아니나 매장픽업수령일자가 초과된 경우는 비활성화 처리함. -->
-									<button type="button" class="btn-type4-sm" onclick="javascript:selectGoodsOrder(0,0);">
-										<span>바로구매</span>
-									</button>
-									<button type="button" class="btn-del" id="btn-del" onclick="goodsDel('${cVO.pro_no}', '${cVO.size_name}');">
-										<span>삭제</span>
-									</button>
-								</div>
-							</div>
-						</div>
-					</c:forEach>
 
 					<!-- 배송정보 -->
-					<div class="cell-dlv">
-						<div class="inner">
-
-
-							<span style="display: none" id="dlv554" dlvamt="0" dlvchecked="Y" startindex="0" endindex="0"></span>
-							<p>
-								<span class="sort">[본사배송]</span> <span id="godDlvAmt_0_0" class="txt" dmstcdlvcstplcsn="554" dlvcstlevysectcd="COND_FREE" dmstcdlvcstexmstdramt="30000" dmstcdlvcst="2500" grpindex="0"
-									grpsoldoutyn="N">무료배송</span> <span class="sub">30,000원 미만 결제시 <br> 2,500원
-								</span>
-							</p>
-						</div>
-					</div>
-					<!-- //배송정보 -->
-
 				</div>
-
 				<!-- //body -->
 			</div>
 
 			<div class="tbl-btn">
-				<button type="button" class="btn-type3-m" onclick="">
+				<button type="button" class="btn-type3-m" onclick="cartListAll();">
 					<span>선택삭제</span>
 				</button>
-				<button type="button" class="btn-type3-m" onclick="">
+				<button type="button" class="btn-type3-m" id="delAll" onclick="delAllCart();">
 					<span>전체삭제</span>
 				</button>
 			</div>
 
 			<!-- 최종금액 -->
-			<div class="cart-price" mbratrbcd="">
+			<div class="cart-price">
 				<div class="inner">
 					<span class="price"> <span class="txt">상품금액</span> <span id="totalGodAmt" class="num">0</span> 원
 					</span> <span class="symbol-plus">+</span> <span class="price"> <span class="txt">배송비
@@ -150,11 +146,9 @@
 			</div>
 
 			<div class="btn-box">
-				<a href="/" class="btn-type4-lg">쇼핑 계속하기</a> <a
-					href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
-
+				<a href="/" class="btn-type4-lg">쇼핑 계속하기</a> <a href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
 			</div>
-			
+
 			<ul class="txt-list">
 				<li>장바구니에 담긴 상품은 30일 동안 보관됩니다. 30일이 지난 상품은 자동 삭제됩니다.</li>
 				<li>장바구니에 최대 50개까지 상품 보관이 가능하며, 실제 구매 시에는 가격이나 혜택이 변동될 수 있습니다.</li>
@@ -164,6 +158,36 @@
 					<button type="button" class="point-link" onclick="layer.open('layerSaleInfo')">입점 판매 상품 안내 보기</button>
 				</li>
 			</ul>
+			<div id="layerSaleInfo" class="layer-pop" tabindex="0" style="display: none;">
+				<div class="layer-wrap" tabindex="0">
+					<div class="layer-header">
+						<h2 class="layer-title">입점 판매 상품 안내</h2>
+					</div>
+					<div class="layer-container">
+						<div class="layer-content sale-info">
+							<p class="txt-common">
+								입점 판매 상품 구매 시, <br>아래 내용을 참고해 주시기 바랍니다.
+							</p>
+							<!-- 2021.03.16 수정 -->
+							<ul class="txt-list">
+								<li>H패션몰 입점 파트너 상품들은 장바구니에서 [입점 판매 상품]으로 표시됩니다.</li>
+								<li>[입점 판매 상품]은 쿠폰 이름에 <span class="pcolor">[입점 상품 전용 쿠폰]이 표기된 쿠폰</span>만 사용 가능합니다. 자사 상품과 함께 주문 시 자사 상품 전용 쿠폰 사용은 가능하나 [입점 판매 상품]은 자동으로 할인에서 제외됩니다. (일부 쿠폰 제외)
+								</li>
+								<li>할인적용 제외 자사 전용 쿠폰 예시
+									<ul class="txt-list2">
+										<li>기간한정, 신데렐라 쿠폰, 룰렛 당첨 쿠폰, 무료배송/교환/반품 쿠폰 등 H패션몰 자사브랜드 전용 쿠폰</li>
+									</ul>
+								</li>
+							</ul>
+							<p class="contact-cs">
+								입점 판매 상품 관련 궁금하신 내용은 1:1문의 또는 고객센터(1800-5700)로 문의해<br> 주시기 바랍니다.
+							</p>
+							<!-- //2020.07.29 수정 -->
+						</div>
+					</div>
+					<button type="button" class="btn-layer-close" onclick="layer.close('layerSaleInfo');">닫기</button>
+				</div>
+			</div>
 		</div>
 	</section>
 </div>

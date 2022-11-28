@@ -2395,11 +2395,9 @@ var pieChartSum = function() {
 		[].forEach.call(items, function(item){
 			var rotate = item.querySelector('.rotate');
 			var num = item.querySelector('.num').innerText;
-			var calc = 360 * num / 100;
-			if(calc > 180) item.classList.add('over');
 			item.style.cssText = 'transform:rotate('+roll+'deg);';
-			rotate.style.cssText = 'transform:rotate('+calc+'deg);';
-			roll += calc;
+			rotate.style.cssText = 'transform:rotate('+num+'deg);';
+			roll += num;
 		});
 	});
 }
