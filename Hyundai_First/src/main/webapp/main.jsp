@@ -3,7 +3,7 @@
 
 <div id="container" style="padding-top: 70px;">
 	<section class="dp-section main-back-video">
-		<video muted autoplay loop>
+		<video muted autoplay loop style="width:100%;">
 			<source src="videos/hfashionVideo.mp4" type="video/mp4">
 		</video>
 	</section>

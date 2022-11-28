@@ -1,19 +1,21 @@
 package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
+import com.hfashion.controller.action.CartAction;
+import com.hfashion.controller.action.CartDelAction;
+import com.hfashion.controller.action.CartInsertAction;
 import com.hfashion.controller.action.JoinAction;
-import com.hfashion.controller.action.LogoutAction;
 import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
+import com.hfashion.controller.action.LogoutAction;
 import com.hfashion.controller.action.MainAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
 import com.hfashion.controller.action.ReviewDetailAction;
-import com.hfashion.controller.action.SignUpAction;
-=======
 import com.hfashion.controller.action.SearchAction;
 import com.hfashion.controller.action.SearchIDFormAction;
->>>>>>> nam
+import com.hfashion.controller.action.SignUpAction;
+
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -50,6 +52,12 @@ public class ActionFactory {
 			action = new SearchIDFormAction();
 		}else if(command.equals("searchID")) {
 			action = new SearchAction();
+		}else if(command.equals("cart")) {
+			action = new CartAction();
+		}else if(command.equals("addCart")) {
+			action = new CartInsertAction();
+		}else if(command.equals("delCart")) {
+			action = new CartDelAction();
 		}
 		
 		return action;
