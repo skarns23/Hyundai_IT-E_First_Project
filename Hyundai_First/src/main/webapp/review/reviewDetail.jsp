@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="/layout/header.jsp"%>
 
+   <%
+      /* detail에서 바로 주문해서 받아온 값  */
+      String pro_name ="";
+      pro_name = request.getParameter("proname");   
+      String b_name ="";
+      b_name = request.getParameter("b_name");  
+      
+      System.out.println(pro_name);
+      System.out.println("못받았음 ");
+
+   %>
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
 <div id="container">
 	<!-- s : 리뷰 작성 / 수정 레이어 팝업-->
@@ -45,15 +57,14 @@
 								class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
 						</div>
 						<div class="cont-wrap">
-							<h3 class="title">예뻐요</h3>
+							<h3 class="title">${Rvo.r_title}</h3>
 							<div class="opt-wrap">
 								<p class="point size-m">
 									<span class="ico" style="width: 100%">별점 5점</span>
 								</p>
 							</div>
 							<div class="txt-wrap">
-								<p class="txt">6세 아들 조금 여유있게 8사이즈 샀는데 소매한번 접어입히고 길이랑 폼은 예쁘게
-									여유있어요 스판이라 활동하기에 편한지 입으면 좋아해요</p>
+								<p class="txt">${Rvo.r_content}</p>
 							</div>
 
 						</div>
@@ -67,13 +78,16 @@
 								<div class="item-img">
 									<img
 										src="https://cdn.hfashionmall.com/goods/THBR/22/07/29/GM0122072975341_1_ORGINL.jpg"
-										alt="스트레치 데님 셔츠">
+										alt="스트레치 데님 셔츠"
+										
+										>
 								</div>
+								 
 								<figcaption class="item-info">
-									<div class="item-brand">TOMMY HILFIGER KIDS</div>
-									<div class="item-name">스트레치 데님 셔츠</div>
+									<div class="item-brand"><%=b_name%></div>
+									<div class="item-name"><%=pro_name%></div>
 									<div class="item-price">
-										<span class="price">80,500</span>
+										<span class="price">${Rvo.r_title}</span>
 
 									</div>
 								</figcaption>
@@ -85,12 +99,16 @@
 								<caption>구매 상품 사이즈, 구매옵션</caption>
 								<tbody>
 									<tr>
-										<th scope="row">리뷰 고객님 사이즈</th>
-										<td><span>118cm</span></td>
+										<th scope="row">리뷰 고객님 키</th>
+										<td><span>${Rvo.height}</span></td>
+									</tr>
+									<tr>
+										<th scope="row">리뷰 고객님 몸무게</th>
+										<td><span>${Rvo.weight}</span></td>
 									</tr>
 									<tr>
 										<th scope="row">구매옵션</th>
-										<td><span>08</span> <span class="pdColor-"></span></td>
+										<td><span>${Rvo.size_name}</span> <span class="pdColor-"></span></td>
 									</tr>
 								</tbody>
 							</table>
@@ -110,10 +128,12 @@
 				</section>
 
 			</div>
-			<button type="button" class="btn-layer-close"
-				onclick="reviewDetail.close();">닫기</button>
+		<button type="button" class="btn-layer-close" onclick="location.href='Hfashion?command=reviewlist'">닫기</button>
 		</div>
 	</div>
 	<div id="reviewWrite" class="layer-pop lg review-layer" tabindex="0">
+	  <button type="button" class="btn-type2-lg">
+                        <input type="submit" value="등록" style= 'font-size:12pt'>
+                        </button>
 	</div>
 </div>
