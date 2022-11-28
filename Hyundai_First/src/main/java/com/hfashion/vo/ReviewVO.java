@@ -45,7 +45,7 @@ public class ReviewVO {
 	private String pro_name;
 	private int pro_price;
 	private String brand_name;
-
-   
+	private String img_loc;
+	private String pro_gen;  
 
 }
