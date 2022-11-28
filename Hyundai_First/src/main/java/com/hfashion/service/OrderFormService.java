@@ -10,6 +10,7 @@ import com.hfashion.dao.OrderFormDAO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
 import com.hfashion.vo.CartDTO;
+import com.hfashion.vo.MemberVO;
 import com.hfashion.vo.OrderFormDTO;
 
 /*
@@ -28,7 +29,7 @@ public class OrderFormService {
 	}
 	
 	
-	public OrderFormDTO getOrderForm(String loginId) {
+	public OrderFormDTO getOrderForm(MemberVO memberDTO) {
 		OrderFormDTO dto = null;
 		Connection con =null;
 		List<CartDTO> list = null;
@@ -36,7 +37,21 @@ public class OrderFormService {
 			con = ConnectionProvider.getConnection();
 			
 			OrderFormDAO dao = OrderFormDAO.getInstance();
+			
+			String loginId = memberDTO.getUser_id();
+			
+			System.out.println("서비스에서 loginId : "+loginId);
+			
 			list = dao.getSelectedCart(con,loginId);
+			
+			for (CartDTO cartDTO : list) {
+				System.out.println("final check");
+				System.out.println(cartDTO.getBrandName());
+				System.out.println(cartDTO.getCartAmount());
+				System.out.println(cartDTO.getProName());
+				
+			}
+			
 			dto = dao.getOrderMember(con,loginId);
 			dto.setOrderList(list);
 			

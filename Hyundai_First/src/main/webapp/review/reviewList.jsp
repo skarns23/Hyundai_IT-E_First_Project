@@ -324,7 +324,10 @@
 					href="javascript:void(0);"
 					onclick="moveTabPage('TAB_WOMEN','WOMEN');" id="tabKind_WOMEN"
 					value="WOMEN"><span>WOMEN</span></a>
+					<form action="">
                     <%-- <input type="hidden" id="proname" value="${pro_name}">  --%>
+					<input type="text">
+					</form>
                    <a href="${contextPath}/Hfashion?command=reviewwriteform">  <span>리뷰작성</span>
 			</div>
 			 
