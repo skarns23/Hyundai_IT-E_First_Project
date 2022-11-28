@@ -12355,6 +12355,14 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
     border-radius: 10px;
 }
 
+#addr_button{
+	width:110px; 
+	height : 40px; 
+	background: #eee8dc; 
+	border-radius: 6px;
+}
 
-
+#btnPayment{
+	cursor:pointer;
+}
 

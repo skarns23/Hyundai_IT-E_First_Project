@@ -17,7 +17,7 @@
                <figure class="item-box" data-ga-id="GM0122111816388" data-ga-name="플라워 스마일 니트 베스트" data-ga-brand="SJYP" data-ga-price="179100">
                   <div class="item-img">
                      <div class="img-box">
-                        <a href="${contextPath}/Hfashion?command=detail">   
+                        <a href="${contextPath}/Hfashion?command=detail&pno=${proList.pro_no}">   
                               <img src='<c:url value='${ proList.img_loc}'></c:url>'>
                         </a>
                      </div>
@@ -27,7 +27,7 @@
                         <div class="item-brand"><c:out value="${proList.brand_name}"></c:out></div>
                         <div class="item-name"><c:out value="${proList.pro_name}"></c:out>  </div>
                         <div class="item-price">
-                           <span class="price"> <c:out value="${proList.pro_price}"></c:out>  </span>
+                           <span class="price">  <fmt:formatNumber value="${proList.pro_price}" pattern="#,###" />원</span>
                         </div>
                         <div class="item-label">
                            <span class="label3">신상</span> <span class="label2">할인</span> <span class="label3">쿠폰</span>

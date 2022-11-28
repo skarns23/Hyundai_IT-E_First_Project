@@ -9,15 +9,17 @@ import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.LogoutAction;
 import com.hfashion.controller.action.MainAction;
+import com.hfashion.controller.action.OrderAction;
 import com.hfashion.controller.action.ProductDetailAction;
-import com.hfashion.controller.action.ProductList;
+import com.hfashion.controller.action.ProductListAction;
 import com.hfashion.controller.action.ReviewDetailAction;
+import com.hfashion.controller.action.SignUpAction;
+import com.hfashion.controller.action.SearchAction;
+import com.hfashion.controller.action.SearchIDFormAction;
 import com.hfashion.controller.action.ReviewListAction;
 import com.hfashion.controller.action.ReviewWriteAction;
 import com.hfashion.controller.action.ReviewWriteFormAction;
-import com.hfashion.controller.action.SearchAction;
-import com.hfashion.controller.action.SearchIDFormAction;
-import com.hfashion.controller.action.SignUpAction;
+
 
 
 public class ActionFactory {
@@ -38,7 +40,7 @@ public class ActionFactory {
 		} else if(command.equals("detail")) {
 			action = new ProductDetailAction();
 		}else if(command.equals("productList")) {
-			action = new ProductList();
+			action = new ProductListAction();
 		}else if (command.equals("signup")) {
 			action = new SignUpAction();
 		}else if (command.equals("join")) {
@@ -61,6 +63,8 @@ public class ActionFactory {
 			action = new SearchIDFormAction();
 		}else if(command.equals("searchID")) {
 			action = new SearchAction();
+		}else if(command.equals("order")) {
+			action = new OrderAction();
 		}else if(command.equals("cart")) {
 			action = new CartAction();
 		}else if(command.equals("addCart")) {

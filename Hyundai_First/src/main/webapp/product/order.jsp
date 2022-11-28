@@ -10,31 +10,34 @@
 				</div>
 				<div class="order-tbl type-order">
 					<div class="body">
+					
+					<c:forEach var="orderItems" items="${orderInfo.orderList}">
 						<div class="row">
 							<!-- 패키지 명 -->
 							<!-- //패키지 명 -->
 							<div class="inner">
 								<div class="cell-pd">
 									<div class="item-img">
-										<img src="https://cdn.hfashionmall.com/goods/HFBR/22/08/08/GM0122080877145_0_ORGINL.jpg?RS=135x135&amp;AR=0&amp;CS=90x135" alt=""
-											onerror="javascript:this.src='/hfm_pc/resources/images/temp/pd_86x129.jpg'">
+										<img src='<c:url value="${orderItems.proImage}"></c:url>' alt="">
 									</div>
 									<div class="item-info">
-										<div class="item-brand">DECKE</div>
-										<div class="item-name">튜브 바게트</div>
+										<div class="item-brand"><c:out value="${orderItems.brandName}"></c:out> </div>
+										<div class="item-name"><c:out value="${orderItems.proName}"></c:out></div>
 										<div class="item-opt">
-											<span> BLACK, FR </span>
+											<span><c:out value="${orderItems.proSize}"></c:out></span>
 										</div>
 									</div>
 								</div>
-								<div class="cell-qt">1</div>
+								<div class="cell-qt"><c:out value="${orderItems.cartAmount}"></c:out></div>
 								<div class="cell-price">
 									<div class="price">
-										<span><span class="num">227,500</span> 원</span>
+										<span><span class="num"><fmt:formatNumber value="${orderItems.proPrice*orderItems.cartAmount}" pattern="#,###" /></span> 원</span>
 									</div>
 								</div>
 							</div>
 						</div>
+						</c:forEach>
+						
 						<!-- 배송정보 -->
 						<div class="cell-dlv">
 							<div class="inner">
@@ -55,11 +58,8 @@
 						<h3 class="sec-title">배송지 정보</h3>
 						<div class="tab-wrap2 ui-tab initialized" id="dlvspTabs">
 							<div class="tab-cont on">
-								<div class="btn-box align-right">
-									<button type="button" class="btn-type1-m mem_same" data-type="new">주문자와 동일</button>
-								</div>
 								<div class="bg-box orderer-info">
-									<span class="tit">주문자 정보 </span> <span class="txt">신수진 / 01021389017 / wls3147@naver.com</span>
+									<span class="tit">주문자 정보 </span> <span class="txt"><c:out value="${orderInfo.userName} / ${orderInfo.userEmail} / ${orderInfo.userPhone}"></c:out> </span>
 								</div>
 								<div class="tbl-write no-line">
 									<table>
@@ -110,57 +110,36 @@
 													</div>
 												</td>
 											</tr>
+											
+											
+											
+											<!--@@@여기서 부터 코딩  -->
 											<tr>
 												<th scope="row"><span>배송지 주소 <span class="required">(필수)</span></span></th>
 												<td>
 													<div class="form-group" style="width: 350px;">
 														<div class="input-box">
-															<input type="text" title="우편번호" placeholder="" class="inp-reset inputbox-num" id="newAddrsePostNo" value="" new-validate="required;postno" maxlength="7" readonly="">
+															<input type="text" id="sample6_postcode" placeholder="우편번호">
 														</div>
-														<button type="button" class="btn-type1-m searchPostNo" data-type="new">
-															<span>우편번호</span>
-														</button>
+														<input type="button" id="addr_button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"  ><br>	
 													</div>
 													<div class="input-box">
-														<input type="text" title="주소" placeholder="" class="inp-reset" id="newAddrseBaseAddr" value="" new-validate="required;xssquotation" maxlength="100" readonly="">
+														<input type="text" id="sample6_address" placeholder="주소"><br>
 													</div>
 													<div class="input-box">
-														<input type="text" title="상세주소" placeholder="" class="inp-reset" id="newAddrseDetailAddr" name="addrseDetailAddr" value="" new-validate="required;xssquotation" maxlength="100">
+														<input type="text" id="sample6_detailAddress" placeholder="상세주소">
+														<input type="hidden" id="sample6_extraAddress" placeholder="참고항목">
 														<div class="etc">
 															<button type="button" class="btn-clear">
 																<span>지우기</span>
 															</button>
 														</div>
 													</div>
-												</td>
+												</td>		
 											</tr>
-											<tr>
-												<th scope="row"><span>배송 요청사항</span></th>
-												<td>
-													<div class="input-box">
-														<div class="select">
-															<button type="button" class="sel-btn" onclick="select.trigger();">배송기사에게 전달되는 메시지입니다. 선택해주세요.</button>
-															<div class="sel-list">
-																<ul>
-																	<li><label><input type="radio" name="newDlvMemo" value="" onchange="toggleShow();" checked=""> <span>배송기사에게 전달되는 메시지입니다. 선택해주세요.</span></label></li>
-																	<li><label><input type="radio" name="newDlvMemo" value="부재시, 전화주시거나 또는 문자 주세요." onchange="toggleShow();"> <span>부재시, 전화주시거나 또는 문자 주세요.</span></label></li>
-																	<li><label><input type="radio" name="newDlvMemo" value="부재시, 경비실에 맡겨주세요." onchange="toggleShow();"> <span>부재시, 경비실에 맡겨주세요.</span></label></li>
-																	<li><label><input type="radio" name="newDlvMemo" value="부재시, 문앞에 놓아주세요." onchange="toggleShow();"> <span>부재시, 문앞에 놓아주세요.</span></label></li>
-																	<li><label><input type="radio" name="newDlvMemo" value="selfInput" onchange="toggleShow();"> <span>직접입력</span></label></li>
-																</ul>
-															</div>
-														</div>
-													</div>
-													<div class="input-box selfInput" style="display: none;">
-														<input type="text" title="요청사항 직접입력" placeholder="" class="inp-reset dlvMemoInput" id="newDlvMemoInput" maxlength="100">
-														<div class="etc">
-															<button type="button" class="btn-clear">
-																<span>지우기</span>
-															</button>
-														</div>
-													</div>
-												</td>
-											</tr>
+											
+											
+											
 										</tbody>
 									</table>
 								</div>
@@ -183,12 +162,12 @@
 					<div class="total-payment">
 						<div class="inner">
 							<ul class="payment-info">
-								<li class="total"><span class="tit">최종결제금액</span> <span class="num"><span class="paySum">163,800</span> 원</span></li>
-								<li><span class="tit">상품금액</span> <span class="num"><span>227,500</span> 원</span></li>
-								<li><span class="tit">배송비 <!-- 2020.08.14 -->
+								<li class="total"><span class="tit">최종결제금액</span> <span class="num"><span class="paySum"><fmt:formatNumber value="${orderInfo.totalPrice}" pattern="#,###"></fmt:formatNumber>   </span> 원</span></li>
+								<li><span class="tit">상품금액</span> <span class="num"><span><fmt:formatNumber value="${orderInfo.totalPrice}" pattern="#,###"></fmt:formatNumber></span> 원</span></li>
+								<li><span class="tit">배송비 
 										<button type="button" class="btn-tooltip" onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
 											<span>툴팁보기</span>
-										</button> <!-- 2020.08.14 -->
+										</button> 
 								</span> <span class="num"><span id="deliverySum">0</span> 원</span></li>
 							</ul>
 							<div class="payment-agree">
@@ -198,8 +177,9 @@
 									</label>
 								</p>
 							</div>
+							<!--여기도 코딩  -->
 							<div class="btn-box">
-								<a href="${contextPath}/product/orderComplete.jsp" id="btnPayment" class="btn-type2-lg">결제하기</a>
+								<a id="btnPayment" class="btn-type2-lg" onclick="order()" >결제하기</a>
 							</div>
 						</div>
 					</div>
@@ -209,4 +189,97 @@
 		</section>
 	</form>
 </div>
+
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+ 
+<button >form문 동적 생성 및 submit 처리</button>
+ 
+<script>
+	/*함세강*/
+	/*동적으로 form 태그를 생성해서 데이터를 넘기는 과정*/
+    function order() {
+    	var tag_postcode= $('#sample6_postcode').val();
+    	var tag_address= $('#sample6_address').val();
+    	var tag_detailAddress= $('#sample6_detailAddress').val();
+    	var total_address = tag_address+" "+tag_detailAddress;
+    	console.log(tag_postcode);
+    	console.log(tag_address);
+    	console.log(tag_detailAddress);
+    	console.log(total_address);
+    	alert("check");
+        var data_form = $('<form></form>');
+ 
+        data_form.attr("name", "test_form");
+        data_form.attr("method", "post");
+        data_form.attr("action", "${contextPath}/Hfashion?command=order") ;
+ 
+        data_form.append($('<input/>', {type: 'hidden', name: 'postCode', value: tag_postcode}));
+        data_form.append($('<input/>', {type: 'hidden', name: 'address', value: total_address}));
+        
+        
+        
+ 		
+        data_form.appendTo('body');
+ 
+        data_form.submit();
+    }
+</script>
+
+
+
+<!--출처 : 다음 api  -->
+<script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+</script>
+
+
 <%@ include file="../layout/footer.jsp"%>
