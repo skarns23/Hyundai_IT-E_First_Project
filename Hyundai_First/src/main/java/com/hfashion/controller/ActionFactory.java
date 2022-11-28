@@ -1,19 +1,20 @@
 package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
+import com.hfashion.controller.action.CartFormAction;
+import com.hfashion.controller.action.ConfirmIDAction;
 import com.hfashion.controller.action.JoinAction;
 import com.hfashion.controller.action.LogoutAction;
 import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
 import com.hfashion.controller.action.MainAction;
+import com.hfashion.controller.action.MypageFormAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductList;
 import com.hfashion.controller.action.ReviewDetailAction;
 import com.hfashion.controller.action.SignUpAction;
-=======
-import com.hfashion.controller.action.SearchAction;
+import com.hfashion.controller.action.SearchIDAction;
 import com.hfashion.controller.action.SearchIDFormAction;
->>>>>>> nam
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -49,9 +50,14 @@ public class ActionFactory {
 		}else if(command.equals("searchIdForm")) {
 			action = new SearchIDFormAction();
 		}else if(command.equals("searchID")) {
-			action = new SearchAction();
+			action = new SearchIDAction();
+		}else if(command.equals("mypage")) {
+			action = new MypageFormAction();
+		}else if(command.equals("cart")) {
+			action = new CartFormAction();
+		}else if(command.equals("confirmID")) {
+			action = new ConfirmIDAction();
 		}
-		
 		return action;
 	}
 }

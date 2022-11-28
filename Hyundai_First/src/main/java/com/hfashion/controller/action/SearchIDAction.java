@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.hfashion.dao.MemberDAO;
 import com.hfashion.vo.MemberVO;
 
-public class SearchAction implements Action{
+public class SearchIDAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

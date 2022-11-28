@@ -1,17 +1,44 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<script src = "js/jquery-3.6.0.min.js"></script>
+<script>
+	$('#mbrId').focusout(function() {
+		let userId = $('#mbrId').val();
+		alert('check');
+		$.ajax({
+			type : "post",
+			data : {
+				userId : userId
+			},
+			dataType : 'json',
+			url : "Hfashion?command=confirmID",
+			success : function(result) {
+				if (result == 0) {
+					$('#descMbrId').html('사용할 수 없는 아이디입니다.');
+					$('#descMbrId').attr('color', 'red');
+				} else {
+					$('#descMbrId').html('');
+				}
+			},
+			error : function() {
+				alert("서버요청실패");
+			}
+		})
+
+	})
+</script>
 <div id="container">
 
 	<!-- content-wrap -->
 	<section class="content-wrap">
 		<h2 class="page-title">회원가입</h2>
 		<form id="addMbrForm" name="addMbrForm" action="${contextPath}/Hfashion?command=join" method="post">
-			<input type="hidden" name="calMemberAge" id="calMemberAge"> <input type="hidden" id="pwdCheck"> <input type="hidden" id="mobilNo" name="mbr.mobilNo"> <input type="hidden" name="mbrIdCntc.idCntcTpCd" id="idCntcTpCd" value=""> <input type="hidden" name="mbrIdCntc.toknId" id="idCntcToknId" value="">
-			<input type="hidden" name="mbrIdCntc.loginId" value=""> <input type="hidden" id="wlfrAuthYn" value=""> <input type="hidden" id="wlfrMbrName" value=""> <input type="hidden" id="wlfrMbrMobileNo" value="">
+			<input type="hidden" name="calMemberAge" id="calMemberAge"> <input type="hidden" id="pwdCheck"> <input type="hidden" id="mobilNo" name="mbr.mobilNo"> <input type="hidden"
+				name="mbrIdCntc.idCntcTpCd" id="idCntcTpCd" value=""> <input type="hidden" name="mbrIdCntc.toknId" id="idCntcToknId" value=""> <input type="hidden" name="mbrIdCntc.loginId"
+				value=""> <input type="hidden" id="wlfrAuthYn" value=""> <input type="hidden" id="wlfrMbrName" value=""> <input type="hidden" id="wlfrMbrMobileNo" value="">
 			<!-- join-wrap -->
 			<div class="join-wrap">
-				
+
 
 				<h3 class="sec-title mt0">필수 정보</h3>
 				<div class="tbl-write">
@@ -38,7 +65,7 @@
 									<p class="txt-invalid" style="display: block;" id="descMbrNm"></p>
 								</td>
 							</tr>
-							
+
 							<tr>
 								<th scope="row">이메일</th>
 								<td>
@@ -59,18 +86,18 @@
 								<td>
 									<div class="form-group">
 										<div class="input-box" id="divMobileNumber">
-											<input type="text" name ="user_phone" title="휴대폰번호" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="" class="inp-reset">
+											<input type="text" name="user_phone" title="휴대폰번호" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="" class="inp-reset">
 											<div class="etc">
 												<button type="button" class="btn-clear" id="mobilClear">
 													<span>지우기</span>
 												</button>
 											</div>
 										</div>
-										
+
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMobileNumber"></p>
 
-					
+
 									<p class="txt-invalid" style="display: block;" id="descCerti_str"></p>
 								</td>
 							</tr>
@@ -109,8 +136,7 @@
 										</div>
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMbrPw"></p>
-									<p class="txt-form-cmt">영문, 숫자, 특수문자 3가지 종류 8-15자 또는 2종류 이상
-										조합 10-15자로 사용 가능</p>
+									<p class="txt-form-cmt">영문, 숫자, 특수문자 3가지 종류 8-15자 또는 2종류 이상 조합 10-15자로 사용 가능</p>
 
 									<div class="input-box" id="divMbrCheckPw">
 										<input type="password" title="비밀번호 확인" name="user_pw_ck" id="mbrCheckPw" maxlength="15" onblur="passwordCheckResult();" placeholder="비밀번호 확인" class="inp-reset">
