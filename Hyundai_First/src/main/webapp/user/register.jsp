@@ -102,10 +102,10 @@
 										var obj = JSON.parse(result);
 										
 										if(obj==1)
-										$("#descMbrId").html('존재하는 아이디입니다.');
+										$("#descMbrId").html('사용할 수 없는 아이디입니다.');
 										else{
 											
-											$("#descMbrId").html('사용할 수 있는 아이디입니다.');
+											$("#descMbrId").html('사용가능한 아이디입니다.');
 										}									
 										},
 									error : function(e){
@@ -170,7 +170,11 @@
 		</form>
 		<!-- //join-wrap -->
 	</section>
-
+<script>
+$(function(){
+	
+})
+</script>
 
 </div>
 <%@ include file="../layout/footer.jsp"%>

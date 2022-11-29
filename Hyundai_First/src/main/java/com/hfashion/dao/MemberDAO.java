@@ -13,6 +13,8 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.util.ConnectionProvider;
+import com.hfashion.util.JdbcUtil;
 import com.hfashion.vo.MemberVO;
 
 import oracle.jdbc.OracleType;
@@ -24,10 +26,12 @@ import oracle.jdbc.OracleTypes;
 public class MemberDAO {
 	private static MemberDAO mDAO = new MemberDAO();
 	private DataSource ds = null;
-	private String insert = "{call insert_member(?,?,?,?,?)}";
-	private String confirm = "{? = call confirm_fid(?)}";
-	private String login = "{call login_member(?,?,?)}";
-	private String findId = "{call find_id_date(?,?,?,?,?)}";
+	private String insert = "{call mem_pack.insert_member(?,?,?,?,?)}";
+	private String confirm = "{? = call mem_pack.confirm_fid(?)}";
+	private String login = "{call mem_pack.login_member(?,?,?)}";
+	private String findId = "{call mem_pack.find_id_date(?,?,?,?,?)}";
+	private String updatePW = "{call mem_pack.update_member_pw(?,?)}";
+	private String outMember = "{call mem_pack.out_member(?)}";
 	private MemberDAO() {
 		try {
 			Context con = new InitialContext();
@@ -75,7 +79,7 @@ public class MemberDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		// ID 존재하면 false , 없으면 true
+		// ID 사용할 수 있으면 , 없으면 true
 		return result == 1 ? false : true;
 	}
 
@@ -131,7 +135,39 @@ public class MemberDAO {
 	public static MemberDAO getInstance() {
 		return mDAO;
 	}
-	
-	
+	public int secessionMember(String user_id) {
+		int result = 0;
+		 try {
+			 Connection conn = ConnectionProvider.getConnection();
+			 CallableStatement cstmt = conn.prepareCall(outMember);
+			 cstmt.setString(1, user_id);
+			 result = cstmt.executeUpdate();
+			 JdbcUtil.close(cstmt);
+			 JdbcUtil.close(conn);
+		 }catch (SQLException e) {
+			 e.printStackTrace();
+		 }catch (Exception e) {
+			 e.printStackTrace();
+		 }
+		return result;
+		
+	}
+	public int updatePW(String user_id, String update_pw) {
+		int result = 0;
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			CallableStatement cstmt = conn.prepareCall(updatePW);
+			cstmt.setString(1, user_id);
+			cstmt.setString(2, update_pw);
+			result = cstmt.executeUpdate();
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(conn);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
 
 }

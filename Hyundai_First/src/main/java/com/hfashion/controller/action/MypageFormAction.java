@@ -38,8 +38,9 @@ public class MypageFormAction implements Action{
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(new Date());
 		DateFormat dateFormat = new SimpleDateFormat("yy/MM/dd");
-		
+		cal.add(Calendar.DATE, 1);
 		String end = dateFormat.format(cal.getTime());
+		cal.add(Calendar.DATE, -1);
 		cal.add(Calendar.MONTH, -1);
 		String start = dateFormat.format(cal.getTime());
 

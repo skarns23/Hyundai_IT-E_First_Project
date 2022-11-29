@@ -23,8 +23,8 @@
 					<li>
 						<div class="menu-depth1">회원정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/user/mypage/pwdConfirm.jsp">회원정보 수정</a></li>
-							<li><a href="${contextPath}/user/mypage/memberSecession.jsp">회원 탈퇴</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_pwConfirmpage">회원정보 수정</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_OutForm">회원 탈퇴</a></li>
 						</ul>
 					</li>
 
@@ -97,6 +97,8 @@
 	</section>
 	<script type="text/javascript">
                   $(function(){
+                	 $('#dateEnd').val(new Date().toISOString().slice(0, 7));
+                	 $('#dateStart').val(new Date().toISOString().slice(0, 7));
                 	  function date_add(sDate, nDays) {
                 		    var yy = parseInt(sDate.substr(0, 4), 10);
                 		    var mm = parseInt(sDate.substr(5, 2), 10);
@@ -110,6 +112,7 @@
                 		 
                 		    return '' + yy + '-' +  mm  + '-' + dd;
                 		}
+                	  console.log(new Date());
                      $("#search_period").click(function(){
                        
                         const start_date = $("#dateStart").val();
