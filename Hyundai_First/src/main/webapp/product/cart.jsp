@@ -24,8 +24,12 @@ $(document).ready(function(){
 					 for(var i=0; i<obj.length; i++){
 						 let price = obj[i].pro_price.toLocaleString('ko-KR');
 						 tag += `
-							 <div class="row"><div class="inner"><div class="cell-check"><label class="check-skin only"> <input type="checkbox"><span>선택</span></label>
-							 </div><div class="cell-pd-wrap"><div class="inner-row"><div class="cell-pd"><div class="item-img">
+							 <div class="row"><div class="inner"><div class="cell-check"><label class="check-skin only"> `
+						 tag += `<input type="checkbox"`
+						 if(obj[i].selected == 1) {
+							 tag += `checked`
+						 }
+						 tag += ` onclick="optSelUpdate('\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>선택</span></label></div><div class="cell-pd-wrap"><div class="inner-row"><div class="cell-pd"><div class="item-img">
 							 <a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}"> <img src='${contextPath}/\${obj[i].img_loc}'></a>
 							 </div><div class="item-info"><div class="item-label"></div><div class="item-brand">\${obj[i].brand_name}</div>
 							 <div class="item-name"><a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}">\${obj[i].pro_name}</a></div><div class="item-opt">
@@ -60,7 +64,7 @@ $(document).ready(function(){
 		})
 	}	
 	
-	// 카트 1개 목록 삭제
+	// 장바구니 1개 목록 삭제
 	function goodsDel(pro_no, size_name) {
 		console.log("삭제한다!!");
 		$.ajax({
@@ -80,7 +84,7 @@ $(document).ready(function(){
 		});
 	}
 	
-	// 카트 전체 삭제
+	// 장바구니 전체 삭제
 	function delAllCart() {
 		if (confirm("정말 삭제하시겠습니까?")) {
 			$.ajax({
@@ -97,6 +101,28 @@ $(document).ready(function(){
 			});
 		}
 	}
+	
+	// 장바구니 1개 목록 선택
+	function optSelUpdate(pro_no, size_name){		
+		$.ajax({
+			url : 'Hfashion?command=cartSelUpdate',
+			type : 'post',
+			data : {
+				pno : pro_no,
+				size : size_name
+			},
+			success : function(result){
+				cartListAll();
+			},
+			error : function(result){
+				console.log(e);
+			}	
+		})
+	}
+	
+	
+	
+	
 </script>
 <div id="container">
 	<section class="content-wrap">
@@ -122,9 +148,6 @@ $(document).ready(function(){
 			</div>
 
 			<div class="tbl-btn">
-				<button type="button" class="btn-type3-m" onclick="cartListAll();">
-					<span>선택삭제</span>
-				</button>
 				<button type="button" class="btn-type3-m" id="delAll" onclick="delAllCart();">
 					<span>전체삭제</span>
 				</button>
