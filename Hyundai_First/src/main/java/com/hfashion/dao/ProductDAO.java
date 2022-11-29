@@ -13,7 +13,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import com.hfashion.vo.ImgVO;
-import com.hfashion.vo.ProductVO;
+import com.hfashion.vo.ProductDTO;
 import com.hfashion.vo.SizeVO;
 
 import oracle.jdbc.OracleTypes;
@@ -41,8 +41,8 @@ public class ProductDAO {
 	}
 	
 	// 신수진 - 상품 상세 정보 select
-	public ProductVO productDetail(String pro_no){
-		ProductVO pVO = new ProductVO();
+	public ProductDTO productDetail(String pro_no){
+		ProductDTO pVO = new ProductDTO();
 		
 		try(Connection conn = ds.getConnection(); 
 				CallableStatement cstmt = conn.prepareCall(selectDetail);){

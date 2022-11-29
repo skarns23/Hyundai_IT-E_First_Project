@@ -8,9 +8,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hfashion.service.ProductListService;
+import com.hfashion.service.ProductService;
 import com.hfashion.vo.CategoryDTO;
-import com.hfashion.vo.ProductTestVO;
+import com.hfashion.vo.ProductDTO;
+
 
 public class ProductListAction implements Action{
 
@@ -18,13 +19,11 @@ public class ProductListAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String url = "product/productList.jsp";
-		ProductListService productService = ProductListService.getInstance();
-		
+		ProductService productService = ProductService.getInstance();
 		String category = request.getParameter("category");
-		
 		CategoryDTO dto = new CategoryDTO(category);
 		
-		List<ProductTestVO> list = productService.productGetList(dto);
+		List<ProductDTO> list = productService.productGetListService(dto);
 		
 		request.setAttribute("productList", list);
 		
