@@ -10,6 +10,7 @@ import com.hfashion.dao.ProdcutTestDAO;
 import com.hfashion.dao.ProductDAO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
+import com.hfashion.vo.CategoryDTO;
 import com.hfashion.vo.ProductTestVO;
 
 /*
@@ -28,14 +29,16 @@ public class ProductListService {
 	
 	
 	//상품 목록 불러 오는 메서드
-	public List<ProductTestVO> productGetList(){
+	public List<ProductTestVO> productGetList(CategoryDTO dto){
 		List<ProductTestVO> list=null;
 		Connection con = null;
+		
+		String category = dto.getCategory();
 		
 		try {
 			con = ConnectionProvider.getConnection();
 			ProdcutTestDAO dao = ProdcutTestDAO.getInstance();
-			list = dao.ProductList(con);
+			list = dao.ProductList(con,category);
 
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
