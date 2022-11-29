@@ -2,6 +2,7 @@ package com.hfashion.controller;
 
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.CartAction;
+import com.hfashion.controller.action.CartCntUpdateAction;
 import com.hfashion.controller.action.CartDelAction;
 import com.hfashion.controller.action.CartDelAllAction;
 import com.hfashion.controller.action.CartFormAction;
@@ -80,6 +81,8 @@ public class ActionFactory {
 			action = new CartListAllAction();
 		}else if(command.equals("cartSelUpdate")) {
 			action = new CartSelUpdateAction();
+		}else if(command.equals("cartCntUpdate")) {
+			action = new CartCntUpdateAction();
 		}else if(command.equals("mypage")) {
 			action = new MypageFormAction();
 		}else if(command.equals("cart")) {

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
-
 <div id="container">
 	<div class="content-response">
 		<div class="product-view-top">
@@ -9,16 +8,15 @@
 				<div id="pdViewSlide" class="product-view-slide" data-slide-length="6">
 					<div class="slide-container swiper-container-horizontal">
 						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-1300px, 0px, 0px); transition-duration: 0ms;">
-							
-							
+
+
 							<c:forEach var="imgVO" items="${imgList}">
-								<div id = "detail_swiper-slide" class="swiper-slide">
+								<div id="detail_swiper-slide" class="swiper-slide">
 									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
-									
 								</div>
 							</c:forEach>
-							
-						
+
+
 						</div>
 						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 					</div>
@@ -58,24 +56,26 @@
 				<p class="item-name">${pVO.pro_name}</p>
 
 				<div class="item-price">
+					<input type="hidden" id="pro-price" value="${pVO.pro_price}">
 					<p class="price">
 						<span> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" /></span>
 					</p>
 				</div>
-				
+
 				<!-- 상품 선택 정보 -->
 				<div class="product-view-option">
 					<div class="row size gnrlOpt">
 						<div class="select" name="optSelect0_top">
-							<button type="button" class="sel-btn" onclick="select.trigger('option');">사이즈를 선택하세요. 
-							<span class="val" id="selSize"></span></button>
+							<button type="button" class="sel-btn" onclick="select.trigger('option');">
+								사이즈를 선택하세요. <span class="val" id="selSize"></span>
+							</button>
 							<div class="sel-list">
 								<ul optcd="SIZE_OPT">
 									<c:forEach var="sVO" items="${sList}">
 										<li>
 											<label> 
-												<input type="radio" name="pdSelSize_0" value="IT202207130656871" itmnm="${sVO.size_name}" resveorddlivyprearngedate="" totusefulinvqty="377" optvalcd="${sVO.size_name}"
-												onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="selectGodOpt1(this);" optgodno="GM0122071371306" index="0"> <span> ${sVO.size_name}</span>
+												<input type="radio" onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="showTotal();"> 
+												<span>${sVO.size_name}</span>
 											</label>
 										</li>
 									</c:forEach>
@@ -83,23 +83,8 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="option-bot">
-						<input type="hidden" class="minOrdQty" value="1" godno="GM0122071371306"> <input type="hidden" class="maxOrdQty" value="9999" godno="GM0122071371306">
-						<div name="qtyDiv" class="row quantity gnrlOptQty" style="display: none;" godno="GM0122071371306" selectoptionyn="N">
-							<strong class="tit">F</strong> <span class="item-count">
-								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
-									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" godno="GM0122071371306" minordqty="1" maxordqty="377" class="input-num" value="1" onkeyup="changeQty(this);">
-								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
-									<span>더하기</span>
-								</button>
-							</span> <span class="price"> <span class="num">206,400</span>
-								<button type="button" class="btn-reset" onclick="resetOptionDiv(this);">
-									<span>옵션초기화</span>
-								</button>
-							</span>
-						</div>
 						<div name="qtyDiv" class="row quantity aditQtyDiv" style="" godno="" selectoptionyn="Y">
 							</strong> <span class="item-count">
 								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
@@ -108,12 +93,11 @@
 								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
 									<span>더하기</span>
 								</button>
-							</span> 
+							</span>
 						</div>
-<div class="total">
-        <strong class="tit">합계</strong>
-        <span class="totalPrice">0</span>
-    </div>
+						<div class="total" style="display: none;">
+							<strong class="tit">합계</strong> <span class="num"> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" /> </span>
+						</div>
 						<div class="btn-box">
 							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag" onclick="frmSubmit();">
 								<span>장바구니</span>
@@ -121,12 +105,10 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<form id="addCartFrm" name="addCartFrm" action="${contextPath}/Hfashion?command=cart" method="post" style="display: none;">
-					<input id="pro_no" name="pro_no" value="${pVO.pro_no}">
-					<input id="size_name" name="size_name" value=""> 
-					<input id="size_amount" name="size_amount" value="">
-					<input type="hidden" name="ex_action" value="detail">
+					<input id="pro_no" name="pro_no" value="${pVO.pro_no}"> <input id="size_name" name="size_name" value=""> <input id="size_amount" name="size_amount" value=""> <input
+						type="hidden" name="ex_action" value="detail">
 				</form>
 
 

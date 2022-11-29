@@ -27,6 +27,7 @@ public class CartDAO {
 	private String delCart = "{call del_cart(?, ?, ?)}";
 	private String delAllCart = "{call del_all_cart(?)}";
 	private String selUpdateCart = "{call sel_update_cart(?, ?, ?)}";
+	private String cntUpdateCart = "{call amount_update_cart(?, ?, ?, ?)}";
 	
 	private CartDAO() {
 		try {
@@ -128,6 +129,20 @@ public class CartDAO {
 			cstmt.setString(1, user_id);
 			cstmt.setString(2, pro_no);
 			cstmt.setString(3, size_name);
+			cstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 신수진 - 장바구니 상품 수량 변경
+	public void cntUpdateCart(String user_id, String pro_no, String size_name, int cnt) {
+		try(Connection conn = ds.getConnection();
+				CallableStatement cstmt = conn.prepareCall(cntUpdateCart)){
+			cstmt.setInt(1, cnt);
+			cstmt.setString(2, user_id);
+			cstmt.setString(3, pro_no);
+			cstmt.setString(4, size_name);
 			cstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

@@ -9284,7 +9284,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-tbl.type-order .body .cell-dlv { position: absolute; top: 0; right: 0; bottom: 0; border-left: 1px solid #eee; }
 
-.order-tbl.type-order .cell-info, .order-tbl.type-order .cell-pd { width: 680px; }
+.order-tbl.type-order .cell-info, .order-tbl.type-order .cell-pd { width: 680px; overflow: hidden;}
 
 .order-tbl.type-order .cell-qt { width: 80px; }
 
@@ -9368,7 +9368,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-tbl .plural .cell-btn { border-left: 1px solid #eee; }
 
-.order-tbl .item-img { position: absolute; top: 10px; left: 20px; }
+.order-tbl .item-img { position: absolute; top: 0px; left: 20px; }
 
 .order-tbl .item-img img { width: 86px; height: 129px; }
 

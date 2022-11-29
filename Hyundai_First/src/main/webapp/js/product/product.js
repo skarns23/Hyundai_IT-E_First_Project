@@ -654,17 +654,8 @@ function insertReport(rpTpCd, rpCont, godNo, godEvlTurn) {
  */
 function selectGodOpt1(obj){
     var nowItmNo = $(obj).val();
-    //var selectedItmNo = $('#itmNo0').val();
     var optGodNo = $(obj).attr("optGodNo"); // 추후 패키지일때도 고려 해야함
-    //var nowQty =parseInt($("input[name='qtySpinner'][godNo='"+optGodNo+"']").eq(0).val());
-
-    //if(nowItmNo==selectedItmNo){//같은 옵션 클릭 인지 확인후 수량+1
-    //    $("input[name='qtySpinner'][godNo='"+optGodNo+"']").val(nowQty+1);
-    //    calculatePriceEach(optGodNo);
-    //    calculateTotalPrice();
-//
-    //    return;
-    //}
+ 
 
     var index = parseInt($(obj).attr("index"));
 
@@ -672,11 +663,6 @@ function selectGodOpt1(obj){
     var hasOpt3 = $("#hasOpt3").val();
     if(!hasOpt2) hasOpt2="N";
     if(!hasOpt3) hasOpt3="N";
-
-    //if($(obj).val()){//초기화시
-    //    resetSelectOption(index);
-    //    return;
-    //}
 
     for(var i=0; i < index ; i++){
         var pdSelSize = $("[name='pdSelSize_"+i+"']:checked").val();
@@ -1060,22 +1046,16 @@ function calculateTotalPrice(){
 
     var totalPrice = 0;
 
-    var $optionDiv =$(".option-bot").eq(0);
+    var p = $("#pro-price").val();
+    var qty = $("#pro_qty").val();
+    
+    console.log(p);
+    var totalPrice = p*qty;
+    totalPrice = totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-    $optionDiv.find("div[name='qtyDiv']").each(function(){
-        var selectOptionYn =$(this).attr("selectOptionYn");
-        var godNo = $(this).attr("godNo");
-
-        if(selectOptionYn=='Y'){
-            var qty = parseInt($(this).find("[name='qtySpinner']").val());
-            var salePrc = $("[name='lastSalePrc'][godNo='"+godNo+"']").eq(0).val();
-            totalPrice += salePrc * qty;
-        }
-    });
-
-    totalPrice=addComma(totalPrice);
-    $(".total .num").html(totalPrice);
-
+    $(".num").text(totalPrice);
+    
+   
 }
 
 

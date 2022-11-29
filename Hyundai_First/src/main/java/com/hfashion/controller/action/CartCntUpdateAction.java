@@ -10,20 +10,20 @@ import javax.servlet.http.HttpSession;
 import com.hfashion.dao.CartDAO;
 import com.hfashion.vo.MemberVO;
 
-public class CartSelUpdateAction implements Action{
+public class CartCntUpdateAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		CartDAO cartDAO = CartDAO.getInstance();
 		
+		int cnt = Integer.parseInt(request.getParameter("cnt"));
 		String pro_no = request.getParameter("pno");
 		String size_name = request.getParameter("size");
 		HttpSession session = request.getSession();
 		MemberVO member = (MemberVO) session.getAttribute("loginUser");
 		String user_id = member.getUser_id();
 		
-		cartDAO.selUpdateCart(pro_no, size_name, user_id);
+		cartDAO.cntUpdateCart(user_id, pro_no, size_name, cnt);
 		
 	}
 
