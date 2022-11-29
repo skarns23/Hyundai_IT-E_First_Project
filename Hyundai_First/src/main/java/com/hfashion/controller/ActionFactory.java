@@ -6,6 +6,7 @@ import com.hfashion.controller.action.CartDelAction;
 import com.hfashion.controller.action.CartDelAllAction;
 import com.hfashion.controller.action.CartFormAction;
 import com.hfashion.controller.action.CartListAllAction;
+import com.hfashion.controller.action.CartSelUpdateAction;
 import com.hfashion.controller.action.ConfirmIDAction;
 import com.hfashion.controller.action.GetOrderListAction;
 import com.hfashion.controller.action.JoinAction;
@@ -75,14 +76,16 @@ public class ActionFactory {
 			action = new CartDelAction();
 		}else if(command.equals("delAllCart")){
 			action = new CartDelAllAction();
+		}else if(command.equals("cartListAll")) {
+			action = new CartListAllAction();
+		}else if(command.equals("cartSelUpdate")) {
+			action = new CartSelUpdateAction();
 		}else if(command.equals("mypage")) {
 			action = new MypageFormAction();
 		}else if(command.equals("cart")) {
 			action = new CartFormAction();
 		}else if(command.equals("confirmID")) {
 			action = new ConfirmIDAction();
-		}else if(command.equals("cartListAll")) {
-			action = new CartListAllAction();
 		}else if(command.equals("mypage_searchOrder")) {
 			action = new ListOrderFormAction();
 		}else if (command.equals("mypage_searchPeriod")) {
