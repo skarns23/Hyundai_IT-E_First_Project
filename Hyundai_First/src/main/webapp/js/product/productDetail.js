@@ -10,3 +10,7 @@ function frmSubmit(){
 	
 	document.getElementById("addCartFrm").submit();
 }
+
+function showTotal(){
+	$(".total").show();
+}

@@ -12,7 +12,7 @@ $(document).ready(function(){
 			url : 'Hfashion?command=cartListAll',
 			success : function(result){
 				 var obj = JSON.parse(result);
-				 
+				 var totalPrice = 0;
 				 var tag = "";
 				 if(obj.length == 0){
 					 tag = `
@@ -22,24 +22,31 @@ $(document).ready(function(){
 						`
 				 }else{
 					 for(var i=0; i<obj.length; i++){
-						 let price = obj[i].pro_price.toLocaleString('ko-KR');
+						 if(obj[i].selected == 1){
+							 totalPrice += obj[i].pro_price * obj[i].cart_amount;
+						 }
+						 
+						 let price = obj[i].pro_price * obj[i].cart_amount;
+						 price = price.toLocaleString('ko-KR');
+						 
 						 tag += `
 							 <div class="row"><div class="inner"><div class="cell-check"><label class="check-skin only"> `
-						 tag += `<input type="checkbox"`
+						 tag += `<input type="checkbox" class="chk"`
 						 if(obj[i].selected == 1) {
 							 tag += `checked`
 						 }
-						 tag += ` onclick="optSelUpdate('\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>선택</span></label></div><div class="cell-pd-wrap"><div class="inner-row"><div class="cell-pd"><div class="item-img">
+						 tag += ` onclick="optSelUpdate('\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>선택</span></label></div><div class="cell-pd-wrap"><div class="inner-row"><div class="cell-pd"><div class="item-img" style="top: 15px;">
 							 <a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}"> <img src='${contextPath}/\${obj[i].img_loc}'></a>
 							 </div><div class="item-info"><div class="item-label"></div><div class="item-brand">\${obj[i].brand_name}</div>
 							 <div class="item-name"><a href="${contextPath}/Hfashion?command=detail&pno=\${obj[i].pro_no}">\${obj[i].pro_name}</a></div><div class="item-opt">
 							 <span>\${obj[i].size_name}</span><div class="row"><span class="item-count">
-							 <button type="button" class="btn-minus" onclick="quantityCalc('minus');"><span>빼기</span></button> 
-							 <input type="number" name="itmQty" class="input-num" value="\${obj[i].cart_amount}">
-							 <button type="button" class="btn-plus" onclick="quantityCalc('plus');"><span>더하기</span></button></span></div></div></div></div>
+							 <button type="button" class="btn-minus" onclick="quantityCalc('minus'); cntUpdate(\${i},'\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>빼기</span></button> 
+							 <input type="number" id="itmQty\${i}" class="input-num" value="\${obj[i].cart_amount}" onkeyup="changeQty(this);">
+							 <button type="button" class="btn-plus" onclick="quantityCalc('plus'); cntUpdate(\${i}, '\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>더하기</span></button></span></div></div></div></div>
 							 <div class="cell-price"><div class="price"><span> <span class="num">\${price}</span> 원</span></div></div></div></div>
 							 <div class="cell-btn">
 							 <button type="button" class="btn-del" id="btn-del" onclick="goodsDel('\${obj[i].pro_no}', '\${obj[i].size_name}');"><span>삭제</span></button></div></div></div>
+							 <input type="hidden" id="pro-price" value="\${obj[i].pro_price}">
 							 `
 					 }
 					 tag += `
@@ -54,7 +61,21 @@ $(document).ready(function(){
 							</div>
 							`
 				 }
+	
 				 $(".body").html(tag);
+				 $("#totalGodAmt").text(totalPrice.toLocaleString('ko-KR'));
+				 
+				 if(totalPrice == 0){
+					 $("#totalDlvAmt").text("0");
+				 }else if(totalPrice < 30000){
+					 totalPrice += 2500;
+					 $("#totalDlvAmt").text("2,500");
+				 }else{
+					 $("#totalDlvAmt").text("0");
+				 }
+				 $("#totalOrdAmt").text(totalPrice.toLocaleString('ko-KR'));
+				 
+				 
 				 
 			},
 			error : function(e){
@@ -114,13 +135,32 @@ $(document).ready(function(){
 			success : function(result){
 				cartListAll();
 			},
-			error : function(result){
+			error : function(e){
 				console.log(e);
 			}	
 		})
 	}
 	
-	
+	// 장바구니 수량 변경하기
+	function cntUpdate(i, pro_no, size_name){
+		var cnt = document.getElementById("itmQty"+i).value;
+		
+		$.ajax({
+			url : 'Hfashion?command=cartCntUpdate',
+			type : 'post',
+			data : {
+				cnt : cnt,
+				pno : pro_no,
+				size : size_name
+			},
+			success : function(result){
+				cartListAll();
+			},
+			error : function(e){
+				console.log(e);
+			}
+		});
+	}	
 	
 	
 </script>
@@ -168,7 +208,7 @@ $(document).ready(function(){
 			</div>
 
 			<div class="btn-box">
-				<a href="/" class="btn-type4-lg">쇼핑 계속하기</a> <a href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
+				<a href="${contextPath}/Hfashion" class="btn-type4-lg" id="test">쇼핑 계속하기</a> <a href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
 			</div>
 
 			<ul class="txt-list">
