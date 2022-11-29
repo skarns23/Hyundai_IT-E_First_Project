@@ -19,6 +19,7 @@ import com.hfashion.controller.action.MypageFormAction;
 import com.hfashion.controller.action.OrderAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductListAction;
+import com.hfashion.controller.action.ProductSortAction;
 import com.hfashion.controller.action.ReviewDetailAction;
 import com.hfashion.controller.action.ReviewListAction;
 import com.hfashion.controller.action.ReviewWriteAction;
@@ -90,8 +91,12 @@ public class ActionFactory {
 			action = new ListOrderFormAction();
 		}else if (command.equals("mypage_searchPeriod")) {
 			action = new GetOrderListAction();
-
+		}else if (command.equals("productSort")) {
+			action = new ProductSortAction();
 		}
+		
+		
+		
 		return action;
 	}
 }

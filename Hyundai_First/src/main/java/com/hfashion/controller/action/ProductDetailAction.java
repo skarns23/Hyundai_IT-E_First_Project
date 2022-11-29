@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.dao.ProductDAO;
 import com.hfashion.vo.ImgVO;
-import com.hfashion.vo.ProductVO;
+import com.hfashion.vo.ProductDTO;
 import com.hfashion.vo.SizeVO;
 
 public class ProductDetailAction implements Action {
@@ -21,7 +21,7 @@ public class ProductDetailAction implements Action {
 		ProductDAO productDAO = ProductDAO.getInstance();
 		
 		String pro_no = request.getParameter("pno");
-		ProductVO pVO = productDAO.productDetail(pro_no);
+		ProductDTO pVO = productDAO.productDetail(pro_no);
 		pVO.setPro_no(pro_no);
 		List<SizeVO> sList = productDAO.productDetailSize(pro_no);
 		List<ImgVO> imgList = productDAO.productDetailImg(pro_no);
