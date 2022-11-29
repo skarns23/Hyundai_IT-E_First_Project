@@ -16,6 +16,9 @@ import com.hfashion.vo.ReviewVO;
 import oracle.jdbc.OracleTypes;
 
 // 윤태영 작성
+  
+
+
 
 public class ReviewDAO {
 
@@ -23,16 +26,7 @@ public class ReviewDAO {
 	private DataSource ds = null;
 
 	// 프로시저 호출
-  
-
-	
-	
-	
-	
-
-	
-	
-	
+ 
    public ReviewDAO() {
 		try {
 			Context con = new InitialContext();
@@ -57,17 +51,31 @@ public class ReviewDAO {
 			con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(insert);
 			cstmt.setString(1, reviewvo.getR_title());
+		   System.out.println("#####################");
 			cstmt.setString(2, reviewvo.getR_content());
 			cstmt.setString(3, reviewvo.getR_img());
+			System.out.println(reviewvo.getR_img());
+			/*
+			 * System.out.println("#############"); System.out.println(reviewvo.getR_img());
+			 * System.out.println("#############");
+			 */
 			cstmt.setInt(4, reviewvo.getWeight());
+			System.out.println("#############");
 			cstmt.setInt(5, reviewvo.getHeight());
+			System.out.println("#############");
 			cstmt.setInt(6, reviewvo.getStar_rating());
+			System.out.println("#############");
 			cstmt.setString(7, reviewvo.getSize_name());
+			System.out.println("#############");
 			cstmt.setString(8, reviewvo.getPro_no());
+			System.out.println("#############");
 			cstmt.setString(9, reviewvo.getOrder_no());
+			System.out.println("#############");
 			cstmt.setString(10, reviewvo.getUser_id());
+			System.out.println("#############");
 			cstmt.executeUpdate();
-
+			System.out.println("#############");
+			System.out.println("되나");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -144,7 +152,7 @@ public class ReviewDAO {
 				String img_roc = rs.getString(10);
 				String pro_gen = rs.getString(11);
 				ReviewVO rVO = new ReviewVO();
-
+     
 				rVO.setR_no(review_no);
 				rVO.setR_title(review_title);
 				rVO.setR_img(review_img);
@@ -182,6 +190,9 @@ public class ReviewDAO {
 			while (rs.next()) {
 				String review_no = rs.getString(1);
 				int review_like=rs.getInt(2);
+				System.out.print(review_no);
+				System.out.print(review_like);
+				System.out.println();
 				String review_title = rs.getString(3);
 				String review_img = rs.getString(4);
 				String review_content = rs.getString(5);

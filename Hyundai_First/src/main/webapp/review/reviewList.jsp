@@ -29,7 +29,7 @@
 								<figure class="item" data-ga-name="아이코닉 토트백">
 									<div class="img">
 										<span> <img
-											src="https://cdn.hfashionmall.com/contents/review/3335083497366996.jpeg?RS=300"
+											src='<c:url value='${rvList.img_loc}'></c:url>'
 											alt="" style="transform: rotate(0deg)">
 									</div>
 								</figure>
@@ -42,7 +42,7 @@
 										<span class="item-rank rank-top">BEST <span
 											class="state">REVIEW</span></span>
 											 <span class="item-img"> 
-											<img src='<c:url value='${ rvbestlist.img_loc}'></c:url>'>									
+											<img src='<c:url value='${rvbestlist.img_loc}'></c:url>'>									
 									</span>								
 									</a>
 									<figcaption class="item-info">
@@ -133,7 +133,7 @@
 
 								<figure class="item-box">
 									<span class="item-img"> <img
-										src='<c:url value='${ rvList.img_loc}'></c:url>'>
+										src='<c:url value='${rvList.r_img}'></c:url>'>
 									</span>
 									<figcaption class="item-info">
 										<div class="item-brand">${rvList.brand_name}</div>
@@ -152,7 +152,7 @@
 
 									<span> 
 									<img
-										src="https://cdn.hfashionmall.com/contents/review/3484288227933705.jpg?RS=200&amp;AO=1"
+										src='<c:url value='${rvList.img_loc}'></c:url>'
 										alt="" style="transform: rotate(90deg)">
 										<form action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvList.r_no}" method="post">
 		                                  <!-- 리뷰 디테일 jsp로 변수 전달 -->

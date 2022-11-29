@@ -23,7 +23,7 @@ import lombok.ToString;
 //	    order_detail_order_order_no     VARCHAR2(20) NOT NULL, 
 //	    order_detail_order_user_user_id VARCHAR2(30) NOT NULL
 //	--  ERROR: Column name length exceeds maximum allowed length(30) 
-//	);
+//	);	
 @Getter
 @Setter
 @ToString

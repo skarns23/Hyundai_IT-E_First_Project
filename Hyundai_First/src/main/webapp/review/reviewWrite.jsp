@@ -1,19 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+
+
 <!-- 마이페이지 부분에서 받아온다 체크된거만  -->
 
   <!--  mypage 받아온 변수ㅅ -->
  
 <div id="reviewEdit" class ="layer-pop lg review-layer" tabindex="0" style="display: block;">
-<form name="formm" method="post" action="${contextPath}/Hfashion?command=mypage_reviewwrite">
+<form name="formm" method="post" encType ="multipart/form-data" action="${contextPath}/Hfashion?command=mypage_reviewwrite&proname=${proname}&r_check=${r_check}&order_no=${order_no}&pro_no=${pro_no}&size_name=${size_name}" >
      
        <input type="hidden" name="proname" value="${proname}" >   
        <input type="hidden" name="r_check" value="${r_check}">   
        <input type="hidden" name="order_no" value="${orderno}">   
        <input type="hidden" name="pro_no" value="${prono}">   
-       <input type="hidden" name="size_name" value="${sizename}"> 
-      
+       <input type="hidden" name="size_name" value="${sizename}">      
 <!-- post 방식 -->
 <div class="layer-wrap" tabindex="0">
             <div class="layer-header">
@@ -92,17 +93,18 @@
                             <h3 class="sub-title">7. 사진을 첨부해 주세요.</h3>
                             <div class="upload-item">
                                 <div class="upload-item-list">
-                                    <span class="item-box">
+                                   <!--  <span class="item-box">
                                             <input type="hidden" name="godGodEvlAtchFileList[0].atchFileNm" value="">
                                  
                                             <span class="btn-upload">
-                                                <input type="file" name="file" id="file-0" index="0" title="파일 등록" onchange="checkFileSizeAjax(event,this);">
+                                                <input type="file" name="filename " id="file-0" index="0" title="파일 등록">
                                             </span>
-                                        </span>
+                                        </span> -->
                                     
+                                     <input type="file" name="filename" title="파일 등록"> 
+                                       
                                     
-                                    
-                                    
+                                   
                                     </div>
                                 <p class="txt">* 이미지 첨부 시 10M 이하의 jpg, png, gif 파일을 최대 5장까지 등록하실 수 있습니다.</p>
                             </div>
@@ -127,7 +129,7 @@
                     <div class="btn-box">
                     <!--등록구현 필요 -->
                         <button type="button" class="btn-type2-lg">
-                        <input type="submit" value="등록" style= 'font-size:12pt'>
+                        <input type="submit" value="등록">
                         </button>
                     </div>
 
