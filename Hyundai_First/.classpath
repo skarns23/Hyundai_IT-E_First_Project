@@ -29,5 +29,6 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/taglibs-standard-spec-1.2.5.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/gson-2.8.6.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

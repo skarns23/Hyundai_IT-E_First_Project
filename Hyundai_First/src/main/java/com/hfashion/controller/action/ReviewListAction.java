@@ -30,7 +30,7 @@ public class ReviewListAction implements Action{
 			     ArrayList<ReviewVO> reviewList= reviewDAO.ReviewList();
 			     ArrayList<ReviewVO> bestreviewList= bestreviewDAO.BestReviewList();
 			    // reviewdao의 reviewlist 메소드 실행후 reviewlist에 저장			  
-			    
+	           		    
 			     request.setAttribute("BestReviewList", bestreviewList);
 			     request.setAttribute("ReviewList", reviewList);
 			    
