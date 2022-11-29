@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/layout/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/layout/header.jsp"%>
 <div id="container">
 	<section class="content-wrap">
 
@@ -22,10 +21,8 @@
 					<li>
 						<div class="menu-depth1">회원정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/user/mypage/pwdConfirm.jsp">회원정보
-									수정</a></li>
-							<li><a href="${contextPath}/user/mypage/memberSecession.jsp">회원
-									탈퇴</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_pwConfirmpage">회원정보 수정</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_OutForm">회원 탈퇴</a></li>
 						</ul>
 					</li>
 
@@ -39,13 +36,7 @@
 			<div class="write-wrap">
 				<h4 class="sec-title mt0">회원정보</h4>
 
-				<form action="/secured/mypage/updateMemberAction" method="post"
-					id="updateForm">
-					<input type="hidden" name="refererUrlType" value=""> <input
-						type="hidden" name="_csrf"
-						value="6a5a0df1-e36a-4ec6-bb46-e061b1389d24"> <input
-						type="hidden" id="pwdCheck"> <input type="hidden"
-						id="snsCd" name="snsCd">
+				<form action="Hfashion?command=updatePW" method="post" id="updateForm">
 					<div class="tbl-write">
 
 						<table>
@@ -57,90 +48,36 @@
 							<tbody>
 								<tr class="tr-txt">
 									<th scope="row">아이디</th>
-									<td id="mbrId">ska*****</td>
+									<td id="mbrId">${sessionScope.loginUser.user_id}</td>
 								</tr>
 								<tr class="tr-txt">
 									<th scope="row">이름</th>
-									<td id="mbrNm">남*현</td>
+									<td id="mbrNm">${sessionScope.loginUser.user_name}</td>
 								</tr>
 								<tr>
-									<th scope="row">비밀번호</th>
+									<th scope="row">새 비밀번호</th>
 									<td class="w-full">
-										<button type="button" class="btn-type1-m" id="showChangePw">
-											<span>비밀번호 변경</span>
-										</button>
-
-										<div id="pwEditArea" class="toggle-box">
-											<div class="edit-info-wrap">
-												<div class="input-box" id="divMbrPw">
-													<input type="password" id="mbrPw" title="새 비밀번호"
-														placeholder="새 비밀번호" class="inp-reset" maxlength="15">
-													<div class="etc">
-														<!-- [D]비밀번호 안전도 : 안전 -->
-														<span class="txt-pw-level" id="pwdHigh">안전</span>
-														<!-- [D]비밀번호 안전도 : 보통 -->
-														<span class="txt-pw-level" id="pwdNormal">보통</span>
-
-														<button type="button" class="btn-masking" tabindex="-1">
-															<span>마스킹</span>
-														</button>
-														<button type="button" class="btn-clear" tabindex="-1">
-															<span>지우기</span>
-														</button>
-													</div>
-												</div>
-												<div class="input-box" id="divMbrCheckPw">
-													<input type="password" id="mbrPwRe" title="새 비밀번호 확인"
-														placeholder="새 비밀번호 확인" class="inp-reset" maxlength="15">
-													<div class="etc">
-														<!-- [D]비밀번호 안전도 : 안전-->
-														<span class="txt-pw-level" id="checkPwdHigh">안전</span>
-														<!-- [D]비밀번호 안전도 : 보통 -->
-														<span class="txt-pw-level" id="checkPwdNormal">보통</span>
-
-														<button type="button" class="btn-masking" tabindex="-1">
-															<span>마스킹</span>
-														</button>
-														<button type="button" class="btn-clear" tabindex="-1">
-															<span>지우기</span>
-														</button>
-													</div>
-												</div>
-												<p class="txt-invalid" style="display: block;"
-													id="descMbrPw">
-													<!--유효성 검사 메시지 출력-->
-												</p>
-												<p class="txt-form-cmt">영문, 숫자, 특수문자 3가지 종류 8-15자 또는 2종류
-													이상 조합 10-15자로 사용 가능</p>
-
-												<div class="btn-box align-left">
-													<button type="button" class="btn-type4-m"
-														onclick="javascript:document.querySelector('#pwEditArea').classList.remove('open');">
-														<span>취소</span>
-													</button>
-													<button type="button" class="btn-type2-m"
-														id="modifyPassword">
-														<span>비밀번호 변경</span>
-													</button>
-												</div>
-											</div>
+										<div class="input-box" id="divMbrPw">
+											<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15"  placeholder="" class="inp-reset" required>
 										</div>
+										<p class="txt-invalid" style="display: block;" id="descMbrPw"></p>
+										<p class="txt-form-cmt">영문, 숫자, 특수문자 조합 8-15자로 사용 가능</p>
+										<div class="input-box" id="divMbrCheckPw">
+											<input type="password" title="비밀번호 확인" name="user_pw_ck" id="mbrCheckPw" maxlength="15" placeholder="비밀번호 확인" class="inp-reset" required>
+										</div>
+										<p class="txt-invalid" style="display: block;" id="descMbrCheckPw"></p>
 									</td>
 								</tr>
 								<tr>
 									<th scope="row">휴대폰번호</th>
-									<td class="w-full"><input type="hidden" name="mbr.mobilNo"
-										value="" disabled=""> <span class="txt-tbl-phone"
-										id="lbMobileNo">010-****-3372</span></td>
+									<td class="w-full"><input type="hidden" name="mbr.mobilNo" value="" disabled=""> <span class="txt-tbl-phone" id="lbMobileNo">${sessionScope.loginUser.user_phone}</span></td>
 								</tr>
 								<tr>
 									<th scope="row">이메일</th>
 									<td>
 										<div class="email-box">
 											<div class="input-box invalid">
-												<input type="text" title="이메일" id="mbrEmail"
-													placeholder="이메일을 입력해주세요." class="inp-reset"
-													value="ska*****@*****.***" disabled="">
+												<input type="text" title="이메일" id="mbrEmail" placeholder="이메일을 입력해주세요." class="inp-reset" value="${sessionScope.loginUser.user_email}" disabled="">
 												<div class="etc">
 													<button type="button" class="btn-clear">
 														<span>지우기</span>
@@ -148,25 +85,42 @@
 												</div>
 											</div>
 										</div>
-										<p class="txt-invalid" style="display: block;"
-											id="msgMbrEmail"></p>
+										<p class="txt-invalid" style="display: block;" id="msgMbrEmail"></p>
 									</td>
 								</tr>
 							</tbody>
 						</table>
 					</div>
-				</form>
+				
 			</div>
 			<!-- //write-wrap -->
 			<div class="btn-box">
-				<button type="button" class="btn-type2-lg" onclick="formSubmit();"
-					style="width: 250px;">
+				<button type="submit" class="btn-type2-lg" id="btn_update"  style="width: 250px;">
 					<span>회원정보 수정</span>
 				</button>
-
+</form>
 			</div>
 		</div>
 		<!-- //snb-content-wrap -->
 	</section>
+	<script>
+	$(function(){
+		let btn_update = $("#btn_update");
+		$("#mbrCheckPw").focusout(function(){
+			var update_pw = $("#mbrPw").val();
+			let check_pw = $("#mbrCheckPw").val();
+			btn_update.attr('disabled',true);
+			if(update_pw.length<8){
+				$("#descMbrCheckPw").html("비밀번호 사용불가");
+			}else if(update_pw===check_pw){
+					$("#descMbrCheckPw").html("비밀번호 일치");
+					btn_update.attr('disabled',false);
+			}else {
+				$("#descMbrCheckPw").html("비밀번호가 일치하지 않습니다.");
+			}
+			
+		});
+	})
+	</script>
 </div>
-<%@ include file="/layout/footer.jsp" %>
+<%@ include file="/layout/footer.jsp"%>

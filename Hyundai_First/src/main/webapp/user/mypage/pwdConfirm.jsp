@@ -20,8 +20,8 @@
 					<li>
 						<div class="menu-depth1">회원정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/user/mypage/pwdConfirm.jsp">회원정보 수정</a></li>
-							<li><a href="${contextPath}/user/mypage/memberSecession.jsp">회원 탈퇴</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_pwConfirmpage">회원정보 수정</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_OutForm">회원 탈퇴</a></li>
 						</ul>
 					</li>
 
@@ -55,7 +55,7 @@
 								<td>
 									<div class="input-box">
 										<input type="password" title="비밀번호" name="mbr.mbrPw"
-											id="mbrPw" maxlength="15" autocomplete="off"
+											id="mbrPw" minlength = "8" maxlength="15" autocomplete="off"
 											placeholder="비밀번호를 입력해주세요." class="inp-reset">
 										<div class="etc">
 											<button type="button" class="btn-clear">
@@ -70,10 +70,24 @@
 					</table>
 				</form>
 			</div>
-
+			<script>
+			$(function(){
+				$("#btn_login").click(function(){
+					const user_pw = "${sessionScope.loginUser.user_pw}";
+					let check_pw = $("#mbrPw").val();
+					if(user_pw==check_pw){
+							location.href="Hfashion?command=mypage_updateForm";
+					}else {
+							$("#descMbrPw").html("비밀번호가 일치하지 않습니다.");
+					}
+					console.log(user_pw);
+					console.log(check_pw);
+				})
+			})
+			</script>
 			<div class="btn-box">
-				<button type="button" class="btn-type2-lg"
-					onclick="javascript:checkPwd();return false;">
+				<button type="button" class="btn-type2-lg" id = "btn_login"
+					>
 					<span>확인</span>
 				</button>
 			</div>
