@@ -21,299 +21,84 @@
 			<div class="rp-count-box">
 				<div class="review-plus-list">
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					<div class="review-plus-cont">
-						<a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
-							<figure class="item" data-ga-name="아이코닉 토트백">
-								<div class="img">
-									<span> <img
-										src="https://cdn.hfashionmall.com/contents/review/3335083497366996.jpeg?RS=300"
-										alt="" style="transform: rotate(0deg)">
-									</span>
-								</div>
-							</figure>
-						</a>
-						<div class="product-list-sub">
+					<c:forEach var="rvbestlist" items="${BestReviewList}">
+						<!-- rvbestlist 변수 선언 -->
+						<div class="review-plus-cont">
 							<a href="javascript:undefined;"
 								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
+								<figure class="item" data-ga-name="아이코닉 토트백">
+									<div class="img">
+										<span> <img
+											src="https://cdn.hfashionmall.com/contents/review/3335083497366996.jpeg?RS=300"
+											alt="" style="transform: rotate(0deg)">
+									</div>
+								</figure>
 							</a>
-							<figure class="item-box">
+							<div class="product-list-sub">
 								<a href="javascript:undefined;"
 									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
-									<span class="item-rank rank-top">BEST <span
-										class="state">REVIEW</span></span> <span class="item-img"> <img
-										src="https://cdn.hfashionmall.com/goods/THBR/22/09/30/GM0122093098215_1_ORGINL.jpg"
-										alt="">
-								</span>
 								</a>
-								<figcaption class="item-info">
-									<a href="javascript:undefined;"
-										onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
-									</a><a href="javascript:void(0)"
-										onclick="goGodDetail('GM0122093098215')">
-										<div class="item-brand">TOMMY HILFIGER WOMEN</div>
-										<div class="item-name">아이코닉 토트백</div>
-										<div class="item-price">
-											<span class="price">255,000</span>
-										</div>
+								<figure class="item-box">
+										<span class="item-rank rank-top">BEST <span
+											class="state">REVIEW</span></span>
+											 <span class="item-img"> 
+											<img src='<c:url value='${ rvbestlist.img_loc}'></c:url>'>									
+									</span>								
 									</a>
+									<figcaption class="item-info">
+										<a href="javascript:undefined;"
+											onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
+										</a><a href="javascript:void(0)"
+											onclick="goGodDetail('GM0122093098215')">
+											<form
+												action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvbestlist.r_no}"
+												method="post">
+												<!-- 리뷰 디테일 jsp로 변수 전달 -->
+												<input type="hidden" name="proname"
+													value="${rvbestlist.pro_name}"> <input type="hidden"
+													name="b_name" value="${rvbestlist.brand_name}"> <input
+													type="hidden" name="img_loc" value="${rvbestlist.img_loc}">
+												<input type="submit" value="리뷰 상세보기">
+											</form>
+											<div class="item-brand">${rvbestlist.brand_name}</div>
+											<div class="item-name">${rvbestlist.pro_name}</div>
+											<div class="item-price">
+												<span class="price">${rvbestlist.pro_price}</span>
+											</div>
+										</a>
+									</figcaption>
+								</figure>
+							</div>
+							<figure class="item">
+								<figcaption class="info">
+									<div class="point-wrap">
+										<div class="point">
+											<span class="ico" style="width: 100%">별점</span>
+										</div>
+										<div class="item-color">
+											<span class="color" style="font-size: 13px;">${rvbestlist.size_name}
+											</span>
+										</div>
+									</div>
+									<div class="item-comment">
+										<span class="comment-txt"> ${rvbestlist.r_content}</span>
+									</div>
 								</figcaption>
 							</figure>
-						</div>
-						<figure class="item">
-							<figcaption class="info">
-								<div class="point-wrap">
-									<div class="point">
-										<span class="ico" style="width: 100%">별점</span>
-									</div>
-									<div class="item-color">
-										<span class="color" style="font-size: 13px;">OS / BROWN</span>
-									</div>
-								</div>
-								<div class="item-comment">
-									<span class="comment-txt"> 사진에서 보여지고 상상했던 그대로네요 이뻐요 뭐
-										설명할게 없고 그냥 같아요! 가벼워서 좋네요</span>
-								</div>
-							</figcaption>
-						</figure>
 
-					</div>
+						</div>
+					</c:forEach>
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					<div class="review-plus-cont">
-						<a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122052053509','3');">
-							<figure class="item" data-ga-name="리버스 슬럽 크루넥 티셔츠">
-								<div class="img">
-									<span> <img
-										src="https://cdn.hfashionmall.com/contents/review/953936694979117.jpeg?RS=300"
-										alt="" style="transform: rotate(0deg)">
-									</span>
-								</div>
-							</figure>
-						</a>
-						<div class="product-list-sub">
-							<a href="javascript:undefined;"
-								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122052053509','3');">
-							</a>
-							<figure class="item-box">
-								<a href="javascript:undefined;"
-									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122052053509','3');">
-									<span class="item-rank rank-top">BEST <span
-										class="state">REVIEW</span></span> <span class="item-img"> <img
-										src="https://cdn.hfashionmall.com/goods/THBR/22/05/20/GM0122052053509_1_ORGINL.jpg"
-										alt="">
-								</span>
-								</a>
-								<figcaption class="item-info">
-									<a href="javascript:undefined;"
-										onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122052053509','3');">
-									</a><a href="javascript:void(0)"
-										onclick="goGodDetail('GM0122052053509')">
-										<div class="item-brand">TOMMY JEANS</div>
-										<div class="item-name">리버스 슬럽 크루넥 티셔츠</div>
-										<div class="item-price">
-											<span class="price">117,600</span>
-
-										</div>
-									</a>
-								</figcaption>
-							</figure>
-						</div>
-						<figure class="item">
-							<figcaption class="info">
-								<div class="point-wrap">
-									<div class="point">
-										<span class="ico" style="width: 100%">별점</span>
-									</div>
-									<div class="item-color">
-										<span class="color" style="font-size: 13px;">S / BLUE</span>
-									</div>
-								</div>
-								<div class="item-comment">
-									<span class="comment-txt"> 일부러 S샀는데 좀 큰 것 같아요 그래도 너무
-										예쁩니다 여기저기 매치해서 잘 입을 것 같아요</span>
-								</div>
-							</figcaption>
-						</figure>
-
-					</div>
+					
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					<div class="review-plus-cont">
-						<a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122082683823','44');">
-							<figure class="item" data-ga-name="케이블 가디건">
-								<div class="img">
-									<span> <img
-										src="https://cdn.hfashionmall.com/contents/review/3065809911036803.jpg?RS=300"
-										alt="" style="transform: rotate(0deg)">
-									</span>
-								</div>
-							</figure>
-						</a>
-						<div class="product-list-sub">
-							<a href="javascript:undefined;"
-								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122082683823','44');">
-							</a>
-							<figure class="item-box">
-								<a href="javascript:undefined;"
-									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122082683823','44');">
-									<span class="item-rank rank-top">BEST <span
-										class="state">REVIEW</span></span> <span class="item-img"> <img
-										src="https://cdn.hfashionmall.com/goods/THBR/22/08/26/GM0122082683823_1_ORGINL.jpg"
-										alt="">
-								</span>
-								</a>
-								<figcaption class="item-info">
-									<a href="javascript:undefined;"
-										onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122082683823','44');">
-									</a><a href="javascript:void(0)"
-										onclick="goGodDetail('GM0122082683823')">
-										<div class="item-brand">TOMMY HILFIGER KIDS</div>
-										<div class="item-name">케이블 가디건</div>
-										<div class="item-price">
-											<span class="price">145,000</span>
-										</div>
-									</a>
-								</figcaption>
-							</figure>
-						</div>
-						<figure class="item">
-							<figcaption class="info">
-								<div class="point-wrap">
-									<div class="point">
-										<span class="ico" style="width: 100%">별점</span>
-									</div>
-									<div class="item-color">
-										<span class="color" style="font-size: 13px;">14 / Stony
-											Beige</span>
-									</div>
-								</div>
-								<div class="item-comment">
-									<span class="comment-txt"> 162 55사이즈 14 잘 맞아요 저는 위쪽 단추 다
-										잠그고 입는게 이뻤어요~! 봄가을에 단독으로 입기 좋을 것 같고 겨울에도 이너로 입어도 예쁠 것 같아용</span>
-								</div>
-							</figcaption>
-						</figure>
-
-					</div>
+					
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					<div class="review-plus-cont">
-						<a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122100599924','2');">
-							<figure class="item" data-ga-name="릭 첼시 부츠">
-								<div class="img">
-									<span> <img
-										src="https://cdn.hfashionmall.com/contents/review/3078125472234223.jpg?RS=300"
-										alt="" style="transform: rotate(90deg)">
-									</span>
-								</div>
-							</figure>
-						</a>
-						<div class="product-list-sub">
-							<a href="javascript:undefined;"
-								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122100599924','2');">
-							</a>
-							<figure class="item-box">
-								<a href="javascript:undefined;"
-									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122100599924','2');">
-									<span class="item-rank rank-top">BEST <span
-										class="state">REVIEW</span></span> <span class="item-img"> <img
-										src="https://cdn.hfashionmall.com/goods/DKBR/22/10/05/GM0122100599924_1_ORGINL.jpg"
-										alt="">
-								</span>
-								</a>
-								<figcaption class="item-info">
-									<a href="javascript:undefined;"
-										onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122100599924','2');">
-									</a><a href="javascript:void(0)"
-										onclick="goGodDetail('GM0122100599924')">
-										<div class="item-brand">DKNY WOMEN</div>
-										<div class="item-name">릭 첼시 부츠</div>
-										<div class="item-price">
-											<span class="price">395,000</span>
-										</div>
-									</a>
-								</figcaption>
-							</figure>
-						</div>
-						<figure class="item">
-							<figcaption class="info">
-								<div class="point-wrap">
-									<div class="point">
-										<span class="ico" style="width: 100%">별점</span>
-									</div>
-									<div class="item-color">
-										<span class="color" style="font-size: 13px;">6 / BLACK</span>
-									</div>
-								</div>
-								<div class="item-comment">
-									<span class="comment-txt"> 신발이 멋스럽고 예뻐요 탄탄하면서도 무겁지않아서 더
-										좋습니다 ! 작게나오진않고 살짝 낙낙합니당</span>
-								</div>
-							</figcaption>
-						</figure>
-
-					</div>
+					
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					<div class="review-plus-cont">
-						<a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0121051057660','17');">
-							<figure class="item" data-ga-name="플로우">
-								<div class="img">
-									<span> <img
-										src="https://cdn.hfashionmall.com/contents/review/3241505004172715.jpeg?RS=300"
-										alt="" style="transform: rotate(0deg)">
-									</span>
-								</div>
-							</figure>
-						</a>
-						<div class="product-list-sub">
-							<a href="javascript:undefined;"
-								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0121051057660','17');">
-							</a>
-							<figure class="item-box">
-								<a href="javascript:undefined;"
-									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0121051057660','17');">
-									<span class="item-rank rank-top">BEST <span
-										class="state">REVIEW</span></span> <span class="item-img"> <img
-										src="https://cdn.hfashionmall.com/goods/HFBR/21/05/10/GM0121051057660_0_ORGINL.jpg"
-										alt="">
-								</span>
-								</a>
-								<figcaption class="item-info">
-									<a href="javascript:undefined;"
-										onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0121051057660','17');">
-									</a><a href="javascript:void(0)"
-										onclick="goGodDetail('GM0121051057660')">
-										<div class="item-brand">DECKE</div>
-										<div class="item-name">플로우</div>
-										<div class="item-price">
-											<span class="price">117,500</span>
-
-										</div>
-									</a>
-								</figcaption>
-							</figure>
-						</div>
-						<figure class="item">
-							<figcaption class="info">
-								<div class="point-wrap">
-									<div class="point">
-										<span class="ico" style="width: 100%">별점</span>
-									</div>
-									<div class="item-color">
-										<span class="color" style="font-size: 13px;">FR /
-											YELLOW GREY</span>
-									</div>
-								</div>
-								<div class="item-comment">
-									<span class="comment-txt"> 실물이 더 예쁜데 사진에 안 담기네요ㅜㅜㅜ 광없이
-										매트하면서 부드러운 가죽이에요 사이즈도 딱 좋고 넘 이뻐요</span>
-								</div>
-							</figcaption>
-						</figure>
-
-					</div>
+					
+					
+					
+				<!--      여기까지 -->
 				</div>
 			</div>
 			<div class="dp-tab">
@@ -374,7 +159,7 @@
 										 <input type="hidden" name="proname" value="${rvList.pro_name}">
 										 <input type="hidden" name="b_name" value="${rvList.brand_name}"> 
 										  <input type="hidden" name="img_loc" value="${rvList.img_loc}"> 
-										 <input type="submit" value="제출">
+										 <input type="submit" value="리뷰 상세보기">
 										</form>
 									</span>
 								</div>
