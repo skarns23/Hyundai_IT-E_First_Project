@@ -24,8 +24,15 @@ public class ReviewDAO {
 
 	// 프로시저 호출
   
+
+	
+	
+	
 	
 
+	
+	
+	
    public ReviewDAO() {
 		try {
 			Context con = new InitialContext();
@@ -39,6 +46,7 @@ public class ReviewDAO {
 		}
 	 }
 	
+   
     
 	// 리뷰생성
 	public void createReview(ReviewVO reviewvo) {
@@ -156,15 +164,62 @@ public class ReviewDAO {
 		}
 		return list;
 	}
+	//best리뷰 불러오기
+	public ArrayList<ReviewVO> BestReviewList() {
+		ArrayList<ReviewVO> bestlist = new ArrayList<>();
+		System.out.println("dao확인1");
+		String sql = "{call bestreview_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
+		System.out.println("dao확인2");
+		
+		
+		try {
+			Connection con = ds.getConnection();
+			CallableStatement cstmt = con.prepareCall(sql);
+			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.executeQuery();
+			ResultSet rs = (ResultSet) cstmt.getObject(1);
+			// System.out.println(rs.getRow());커서 에서 받은 rs개수 확인
+			while (rs.next()) {
+				String review_no = rs.getString(1);
+				int review_like=rs.getInt(2);
+				String review_title = rs.getString(3);
+				String review_img = rs.getString(4);
+				String review_content = rs.getString(5);
+				String review_size = rs.getString(6);
+				int star_rating = rs.getInt(7);
+				String pro_name = rs.getString(8);
+				int pro_price = rs.getInt(9);
+				String brand_name = rs.getString(10);
+				String img_loc = rs.getString(11);
+				String pro_gen = rs.getString(12);
+				System.out.println("베스트리뷰 리스트 확인중");
+				System.out.println(img_loc);
+				ReviewVO brVO = new ReviewVO();
+
+				brVO.setR_no(review_no);
+				brVO.setR_like(review_like);
+				brVO.setR_title(review_title);
+				brVO.setR_img(review_img);
+				brVO.setR_content(review_content);
+				brVO.setSize_name(review_size);
+				brVO.setStar_rating(star_rating);
+				brVO.setPro_name(pro_name);
+				brVO.setPro_price(pro_price);
+				brVO.setBrand_name(brand_name);
+				brVO.setImg_loc(img_loc);
+				brVO.setPro_gen(pro_gen);
+				bestlist.add(brVO);
+				System.out.println(bestlist);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return bestlist;
+	}
 
 	public static ReviewDAO getInstance() {
 		return RDAO; // 인스턴스 반환
 	}
 
 }
-
-// review 목록
-
-// 리뷰 삭제 delete
-// 리뷰 목록
-// 리뷰 수정 update

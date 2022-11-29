@@ -12367,4 +12367,8 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 #btnPayment{
 	cursor:pointer;
 }
+#detail_swiper-slide{
+	width: 485px; 
+	margin-left: 165px;
+}
 

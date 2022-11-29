@@ -26,6 +26,8 @@ public class CartDAO {
 	private String insertCart = "{call insert_cart(?, ?, ?, ?)}";
 	private String delCart = "{call del_cart(?, ?, ?)}";
 	private String delAllCart = "{call del_all_cart(?)}";
+	private String selUpdateCart = "{call sel_update_cart(?, ?, ?)}";
+	
 	private CartDAO() {
 		try {
 			Context con = new InitialContext();
@@ -79,8 +81,8 @@ public class CartDAO {
 					int pro_price = rs.getInt(6);
 					String brand_name = rs.getString(7);
 					String img_loc = rs.getString(8);
-					System.out.println(cart_amount + " " + size_name + " " + id + " " + pro_no + " " + pro_name + " " + pro_price + " " + brand_name + " " + img_loc);
-					cVO = new CartVO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc);
+					int selected = rs.getInt(9);
+					cVO = new CartVO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc, selected);
 					cList.add(cVO);
 				}
 			} catch(SQLException e) {
@@ -113,6 +115,19 @@ public class CartDAO {
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(delAllCart)){
 			cstmt.setString(1, user_id);
+			cstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	// 신수진 - 장바구니 선택 상태 변경
+	public void selUpdateCart(String pro_no, String size_name, String user_id) {
+		try(Connection conn = ds.getConnection();
+				CallableStatement cstmt = conn.prepareCall(selUpdateCart)){
+			cstmt.setString(1, user_id);
+			cstmt.setString(2, pro_no);
+			cstmt.setString(3, size_name);
 			cstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();

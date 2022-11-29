@@ -24,18 +24,19 @@ public class ProdcutTestDAO {
 	}
 	
 	
-	public List<ProductTestVO> ProductList(Connection con) {
+	public List<ProductTestVO> ProductList(Connection con, String category) {
 		List<ProductTestVO> list = new ArrayList<ProductTestVO>();
 		
 		
-		String runSP = "{call product_pack.pro_list(?)}";
+		String runProcedure = "{call product_pack.pro_list(?,?)}";
 		try {
-			CallableStatement cstmt = con.prepareCall(runSP);
+			CallableStatement cstmt = con.prepareCall(runProcedure);
 			
-			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
+			cstmt.setString(1, category);
+			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
 			cstmt.execute();
 			
-			ResultSet rs = (ResultSet)cstmt.getObject(1);
+			ResultSet rs = (ResultSet)cstmt.getObject(2);
 			
 			while(rs.next()) {
 				String pro_no = rs.getString(1);

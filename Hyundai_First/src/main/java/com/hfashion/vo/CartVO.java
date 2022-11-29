@@ -14,8 +14,9 @@ public class CartVO {
 	private int pro_price;
 	private String brand_name;
 	private String img_loc;
+	private int selected;
 	
-	public CartVO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, int pro_price, String brand_name, String img_loc) {
+	public CartVO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, int pro_price, String brand_name, String img_loc, int selected) {
 		this.cart_amount = cart_amount;
 		this.size_name = size_name;
 		this.user_id = user_id;
@@ -24,6 +25,7 @@ public class CartVO {
 		this.pro_price = pro_price;
 		this.brand_name = brand_name;
 		this.img_loc = img_loc;
+		this.selected = selected;
 	}
 	
 	public CartVO(String pro_no, String size_name, int cart_amount, String user_id) {

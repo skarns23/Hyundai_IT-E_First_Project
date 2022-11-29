@@ -8,9 +8,10 @@
       pro_name = request.getParameter("proname");   
       String b_name ="";
       b_name = request.getParameter("b_name");  
-      
+      String img_loc="";
+      img_loc=request.getParameter("img_loc"); 
       System.out.println(pro_name);
-      System.out.println("못받았음 ");
+      System.out.println("못받았음 ");     
 
    %>
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
@@ -70,6 +71,8 @@
 						</div>
 
 					</div>
+					<input type="hidden" name="img_loc" value="${img_loc}" >   
+
 					<div class="column-wrap">
 						<section class="review-item"
 							onclick="goGodDetail('GM0122072975341');">
@@ -77,7 +80,7 @@
 							<figure>
 								<div class="item-img">
 									<img
-										src="https://cdn.hfashionmall.com/goods/THBR/22/07/29/GM0122072975341_1_ORGINL.jpg"
+										 src="https://cdn.hfashionmall.com/goods/THBR/22/07/29/GM0122072975341_1_ORGINL.jpg" 
 										alt="스트레치 데님 셔츠"
 										
 										>

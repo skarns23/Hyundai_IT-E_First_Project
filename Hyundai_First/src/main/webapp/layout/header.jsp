@@ -50,19 +50,19 @@
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="${contextPath}/Hfashion?command=productList"> <span>상의</span>
+							<a href="${contextPath}/Hfashion?command=productList&category=1"> <span>상의</span>
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="#"> <span>하의</span>
+							<a href="${contextPath}/Hfashion?command=productList&category=2"> <span>하의</span>
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="#"> <span>아우터</span>
+							<a href="${contextPath}/Hfashion?command=productList&category=3"> <span>아우터</span>
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="#"> <span>ACC</span>
+							<a href="${contextPath}/Hfashion?command=productList&category=4"> <span>ACC</span>
 							</a>
 						</div>
 						<div class="gnb-category">

@@ -9,11 +9,16 @@
 				<div id="pdViewSlide" class="product-view-slide" data-slide-length="6">
 					<div class="slide-container swiper-container-horizontal">
 						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-1300px, 0px, 0px); transition-duration: 0ms;">
+							
+							
 							<c:forEach var="imgVO" items="${imgList}">
-								<div class="swiper-slide" style="width: 650px;">
+								<div id = "detail_swiper-slide" class="swiper-slide">
 									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
+									
 								</div>
 							</c:forEach>
+							
+						
 						</div>
 						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 					</div>
@@ -257,5 +262,8 @@
 		</div>
 	</div>
 </div>
+
+
+
 
 <%@ include file="../layout/footer.jsp"%>

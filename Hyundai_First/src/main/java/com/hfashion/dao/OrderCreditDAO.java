@@ -18,9 +18,14 @@ public class OrderCreditDAO {
 	}
 	
 	public void orderProduct(Connection con, String postCode, String address, String userId) {
-		String runProcedure = "{call order_package.order_porcess}"; 
+		String runProcedure = "{call order_package.order_porcess(?,?,?)}"; 
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
+			
+			cstmt.setString(1, postCode);
+			cstmt.setString(2, address);
+			cstmt.setString(3, userId);
+			
 			cstmt.execute();
 			System.out.println("결제 성공");
 		} catch (SQLException e) {
