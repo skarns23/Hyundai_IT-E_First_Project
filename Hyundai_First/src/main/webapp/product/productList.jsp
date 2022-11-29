@@ -4,9 +4,9 @@
 <div id="container">
    <section class="content-response">
       <h2 class="dp-title tit-tab-wrap eng" id="bestTitle">
-         <span class="tit-tab pl113 on" id="brand"> <a href="#">ALL</a>
-         </span> <span class="tit-tab" id="category"> <a href="#">WOMAN</a>
-         </span> <span class="tit-tab" id="category"> <a href="#">MAN</a>
+         <span class="tit-tab pl113 on" id="gender3"> <a href="#" class="gender">ALL</a>
+         </span> <span class="tit-tab" id="gender1" value="1"> <a href="#" class="gender">WOMAN</a>
+         </span> <span class="tit-tab" id="gender2"> <a href="#" class="gender">MAN</a>
          </span>
       </h2>
       <div class="wrap-product-list">
@@ -41,6 +41,22 @@
          </div>
    </section>
 </div>
+
+<script>
+$('.gender').click( function(){
+	
+	var cate_no = $('#gender1').val();
+	alert(cate_no);
+	
+	
+	
+	
+});
+
+
+
+
+</script>
 
 
 <%@ include file="../layout/footer.jsp"%>

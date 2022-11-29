@@ -18,6 +18,7 @@ import com.hfashion.vo.OrderFormDTO;
 
 
 
+
 /*
  * 작성자 함세강
  * */
@@ -28,11 +29,7 @@ public class OrderAction implements Action{
 		
 
 		if(request.getMethod().equals("GET")) {
-			System.out.println("GET");
-			
-
 			String url = "product/order.jsp";
-			
 			
 			HttpSession session = request.getSession();
 			
@@ -60,7 +57,6 @@ public class OrderAction implements Action{
 			
 			MemberVO memberDTO = (MemberVO)session.getAttribute("loginUser");
 			
-			System.out.println("POST");
 			String postCode = request.getParameter("postCode");
 			String address = request.getParameter("address");
 
@@ -75,10 +71,7 @@ public class OrderAction implements Action{
 			response.sendRedirect(url);
 			
 		}
-		
-		
-		
-		
+
 	}
 
 }

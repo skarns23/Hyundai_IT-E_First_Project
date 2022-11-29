@@ -213,7 +213,7 @@
         var data_form = $('<form></form>');
  
         data_form.attr("name", "test_form");
-        data_form.attr("method", "post");
+        data_form.attr("method", "POST");
         data_form.attr("action", "${contextPath}/Hfashion?command=order") ;
  
         data_form.append($('<input/>', {type: 'hidden', name: 'postCode', value: tag_postcode}));
