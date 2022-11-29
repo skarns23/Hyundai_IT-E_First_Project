@@ -49,7 +49,7 @@
 				<div class="period-calendar">
 					<div class="period-input">
 
-						<input type="date" name="dateStart" id="dateStart" class="inp-datepicker datepicker hasDatepicker" title="시작일" value="2022-01-01">
+						<input type="date" name="dateStart" id="dateStart" class="inp-datepicker datepicker hasDatepicker" title="시작일" value="2022-09-01">
 					</div>
 					<div class="period-input">
 						<input type="date" name="dateEnd" id="dateEnd" class="inp-datepicker datepicker hasDatepicker" title="종료일" value="2022-11-28">
@@ -97,10 +97,24 @@
 	</section>
 	<script type="text/javascript">
                   $(function(){
+                	  function date_add(sDate, nDays) {
+                		    var yy = parseInt(sDate.substr(0, 4), 10);
+                		    var mm = parseInt(sDate.substr(5, 2), 10);
+                		    var dd = parseInt(sDate.substr(8), 10);
+                		 
+                		    d = new Date(yy, mm - 1, dd + nDays);
+                		 
+                		    yy = d.getFullYear();
+                		    mm = d.getMonth() + 1; mm = (mm < 10) ? '0' + mm : mm;
+                		    dd = d.getDate(); dd = (dd < 10) ? '0' + dd : dd;
+                		 
+                		    return '' + yy + '-' +  mm  + '-' + dd;
+                		}
                      $("#search_period").click(function(){
-                        
-                        let start_date = $("#dateStart").val();
-                        let end_date = $("#dateEnd").val();
+                       
+                        const start_date = $("#dateStart").val();
+                        const end_date = date_add($("#dateEnd").val(),1);
+                        console.log(end_date);
                         if(start_date>=end_date){
                            alert("종료일이 시작일보다 앞일 수 없습니다.");
                            return ;
@@ -120,10 +134,7 @@
                               }else {
                                  var row ="";
                               for (var i = 0; i < obj.length; i++) {
-                                 console.log(obj[i].order_no);
-                                 console.log(obj[i].pro_no);
                                  let price = obj[i].pro_price.toLocaleString('ko-KR');
-                                 console.log(price);
                                  row += `<div class='row'><div class='inner'><div class='cell-pd-wrap'><div class='inner-row'><div class='info-row'><div class='cell-pd'><div class='item-img' godno='GM0122062466107'>
                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'> <img src='${contextPath}/\${obj[i].img_url}'></a></div><div class='item-info'><div class='item-brand'>
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].brand_name} </a></div><div class=item-name clear-ellipsis>
@@ -133,8 +144,8 @@
                                                   </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>주문날짜<br> <span class='txt-cmt pcolor'>\${obj[i].order_date}</span></div></div></div><div class='cell-btn'><div class='cell-inner'><div class='cell-inner'><div class='btns'>
                                                       <button type='button' class='btn-type3-sm'><span>주문취소</span></button></div><div>
                                                       <form action='${contextPath}/Hfashion?command=reviewwriteform' method='get'><input type='hidden' id='proname' value=${obj[i].pro_name}> <input type='hidden' id='r_check' value=${obj[i].review_check}> <input type='submit'class='btn-type3-sm' value='리뷰작성'>
-                                                      </form></div></div></div></div></div></div></div></div></div>`
-                                                
+                                                      </form></div></div></div></div></div></div></div></div></div>`;
+                                               
                               }
                               	
                               }

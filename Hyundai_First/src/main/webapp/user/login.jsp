@@ -158,7 +158,7 @@
 								<li>
 									<div class="input-box">
 										<input type="text" title="휴대폰번호" placeholder="휴대폰번호"
-											class="inp-reset" maxlength="11" id="nonMobilNo">
+											class="inp-reset" maxlength="11" id="nonMobilNo" >
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>

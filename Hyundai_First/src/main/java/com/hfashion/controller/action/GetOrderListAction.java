@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hfashion.dao.OrderDAO;
 import com.hfashion.vo.OrderVO;
 
@@ -19,6 +20,7 @@ public class GetOrderListAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		OrderDAO orderDAO = OrderDAO.getInstance();
 		String start_date = request.getParameter("start_date").replace('-', '/').substring(2);
 		String end_date = request.getParameter("end_date").replace('-', '/').substring(2);
@@ -30,7 +32,7 @@ public class GetOrderListAction implements Action{
 		for(OrderVO oVO : orderList) {
 			System.out.println(oVO);
 		}
-		Gson gson = new Gson();
+		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String value = gson.toJson(orderList);
 		PrintWriter out = response.getWriter();
 		out.print(value);

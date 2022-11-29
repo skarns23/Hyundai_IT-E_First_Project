@@ -19,10 +19,10 @@ public class ConfirmIDAction implements Action {
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		int result = memberDAO.confirmID(userId)?0:1;
 		System.out.println("확인하는 아이디 : "+userId);
-		if(result==1) {
-			System.out.println("이미 존재하는 아이디입니다.");
+		if(result==1 || userId==null || userId.length()<6) {
+			System.out.println("사용할 수 없는 아이디입니다.");
 		}else {
-			System.out.println("존재하지 않는 아이디입니다.");
+			System.out.println("사용할 수 있는 아이디입니다.");
 		}
 		Gson gson = new Gson();
 		String value = gson.toJson(result);

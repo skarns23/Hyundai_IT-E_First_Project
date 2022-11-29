@@ -27,7 +27,7 @@
 								<td>
 									<div class="input-box" id="divMbrNm">
 										<!-- [D]정상일 경우 class(valid) 추가 -->
-										<input type="text" title="이름" name="user_name" id="mbrNm" maxlength="30" onblur="mbrNameCheckResult();" placeholder="" class="inp-reset">
+										<input type="text" title="이름" name="user_name" id="mbrNm" minlength="2" maxlength="20" onblur="mbrNameCheckResult();" placeholder="" class="inp-reset" required>
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>
@@ -43,7 +43,7 @@
 								<th scope="row">이메일</th>
 								<td>
 									<div class="input-box" id="divMbrEmail">
-										<input type="text" title="이메일" name="user_email" id="mbrEmail" maxlength="100" placeholder="" class="inp-reset" value="">
+										<input type="text" title="이메일" name="user_email" id="mbrEmail" maxlength="100" placeholder="" class="inp-reset" value="" required>
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>
@@ -59,7 +59,7 @@
 								<td>
 									<div class="form-group">
 										<div class="input-box" id="divMobileNumber">
-											<input type="text" name="user_phone" title="휴대폰번호" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="" class="inp-reset">
+											<input type="text" name="user_phone" title="휴대폰번호" id="mobileNumber" maxlength="11" onblur="mobileNumberCheckResult();" placeholder="" class="inp-reset" required>
 											<div class="etc">
 												<button type="button" class="btn-clear" id="mobilClear">
 													<span>지우기</span>
@@ -78,7 +78,7 @@
 								<th scope="row">아이디</th>
 								<td>
 									<div class="input-box" id="divMbrId">
-										<input type="text" title="아이디" name="user_id" id="mbrId" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset">
+										<input type="text" title="아이디" name="user_id" id="mbrId" minlength = "6"maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset" required>
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>
@@ -121,7 +121,7 @@
 								<th scope="row">비밀번호</th>
 								<td>
 									<div class="input-box" id="divMbrPw">
-										<input type="password" title="비밀번호" name="user_pw" id="mbrPw" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset">
+										<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset" required> 
 										<div class="etc">
 											<!-- [D]비밀번호 안전도 : 안전-->
 											<span class="txt-pw-level" id="pwdHigh">안전</span>
@@ -137,7 +137,7 @@
 										</div>
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMbrPw"></p>
-									<p class="txt-form-cmt">영문, 숫자, 특수문자 3가지 종류 8-15자 또는 2종류 이상 조합 10-15자로 사용 가능</p>
+									<p class="txt-form-cmt">영문, 숫자, 특수문자 조합 8-15자로 사용 가능</p>
 
 									<div class="input-box" id="divMbrCheckPw">
 										<input type="password" title="비밀번호 확인" name="user_pw_ck" id="mbrCheckPw" maxlength="15" onblur="passwordCheckResult();" placeholder="비밀번호 확인" class="inp-reset">
