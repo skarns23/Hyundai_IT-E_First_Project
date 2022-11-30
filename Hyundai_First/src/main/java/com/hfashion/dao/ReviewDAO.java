@@ -5,12 +5,16 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.util.ConnectionProvider;
+import com.hfashion.util.JdbcUtil;
+import com.hfashion.vo.ReviewDTO;
 import com.hfashion.vo.ReviewVO;
 
 import oracle.jdbc.OracleTypes;
@@ -26,16 +30,14 @@ public class ReviewDAO {
 	// 프로시저 호출s
 	
 	public ReviewDAO() {
-		try {
-			Context con = new InitialContext();
-			Context envcon = (Context) con.lookup("java:/comp/env");
-			ds = (DataSource) envcon.lookup("jdbc/oracle88");
-
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		/*
+		 * try { Context con = new InitialContext(); Context envcon = (Context)
+		 * con.lookup("java:/comp/env"); ds = (DataSource)
+		 * envcon.lookup("jdbc/oracle88");
+		 * 
+		 * } catch (NamingException e) { e.printStackTrace(); } catch (Exception e) {
+		 * e.printStackTrace(); }
+		 */
 	 }
 	
   
@@ -45,7 +47,7 @@ public class ReviewDAO {
 		Connection con = null;
 
 		try {
-			con = ds.getConnection();
+			con = ConnectionProvider.getConnection();
 			CallableStatement cstmt = con.prepareCall(insert);
 			cstmt.setString(1, reviewvo.getR_title());
 		   System.out.println("#####################");
@@ -73,6 +75,8 @@ public class ReviewDAO {
 			cstmt.executeUpdate();
 			System.out.println("#############");
 			System.out.println("되나");
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -100,7 +104,7 @@ public class ReviewDAO {
 
 		try {
 			System.out.println("review dao 실행 중");
-			Connection con = ds.getConnection();
+			Connection con = ConnectionProvider.getConnection();
 
 			CallableStatement cstmt = con.prepareCall(detail);
 			cstmt.setString(1, R_no);
@@ -117,6 +121,9 @@ public class ReviewDAO {
 				review.setStar_rating(rs.getInt(6));
 				review.setSize_name(rs.getString(7));
 			}
+			JdbcUtil.close(rs);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -130,7 +137,7 @@ public class ReviewDAO {
 		String sql = "{call review_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
 		System.out.println("dao확인2");
 		try {
-			Connection con = ds.getConnection();
+			Connection con = ConnectionProvider.getConnection();
 			CallableStatement cstmt = con.prepareCall(sql);
 			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
 			cstmt.executeQuery();
@@ -163,8 +170,14 @@ public class ReviewDAO {
 				rVO.setPro_gen(pro_gen);
 				list.add(rVO);
 			}
+			JdbcUtil.close(rs);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -178,7 +191,7 @@ public class ReviewDAO {
 		
 		
 		try {
-			Connection con = ds.getConnection();
+			Connection con = ConnectionProvider.getConnection();
 			CallableStatement cstmt = con.prepareCall(sql);
 			cstmt.registerOutParameter(1, OracleTypes.CURSOR);
 			cstmt.executeQuery();
@@ -219,13 +232,60 @@ public class ReviewDAO {
 				bestlist.add(brVO);
 				System.out.println(bestlist);
 			}
+			JdbcUtil.close(rs);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
 
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return bestlist;
 	}
-
+	
+	
+	public List<ReviewDTO> getOptionalReview(String pro_no, int height, int weight,String size){
+		List<ReviewDTO> result = new ArrayList<>();
+		String sql = "{call search_review(?,?,?,?,?)}";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			CallableStatement cstmt = conn.prepareCall(sql);
+			cstmt.setString(1, pro_no);
+			cstmt.setInt(2, height);
+			cstmt.setInt(3, weight);
+			cstmt.setString(4, size);
+			cstmt.registerOutParameter(5, OracleTypes.CURSOR);
+			cstmt.execute();
+			ResultSet rs = (ResultSet)cstmt.getObject(5);
+			while(rs.next()) {
+				String reivew_no = rs.getString(1);
+				int review_like = rs.getInt(2);
+				String review_title = rs.getString(3);
+				String review_content = rs.getString(4);
+				String review_img = rs.getString(5);
+				String review_date = rs.getString(6);
+				int r_weight = rs.getInt(7);
+				int r_height = rs.getInt(8);
+				int star_rating = rs.getInt(9);
+				String r_szie = rs.getString(10);
+				String order_no = rs.getString(11);
+				String user_id = rs.getString(12);
+				ReviewDTO rv = new ReviewDTO(reivew_no, review_like, review_title, review_content, review_img, review_date, r_weight, r_height, star_rating, r_szie, order_no, user_id);
+				result.add(rv);
+			}
+			JdbcUtil.close(rs);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(conn);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	public static ReviewDAO getInstance() {
 		return RDAO; // 인스턴스 반환
 	}
