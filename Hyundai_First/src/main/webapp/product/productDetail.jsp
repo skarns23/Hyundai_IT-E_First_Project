@@ -4,23 +4,19 @@
 <div id="container">
 	<div class="content-response">
 		<div class="product-view-top">
-			<div class="product-view-img">
-				<div id="pdViewSlide" class="product-view-slide" data-slide-length="6">
-					<div class="slide-container swiper-container-horizontal">
-						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-1300px, 0px, 0px); transition-duration: 0ms;">
-
+		<div class="product-view-img">
+				<div id="pdViewSlide" class="product-view-slide">
+					<div class="swiper-container">
+						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-2600px, 0px, 0px); transition-duration: 0ms;">
 
 							<c:forEach var="imgVO" items="${imgList}">
 								<div id="detail_swiper-slide" class="swiper-slide">
 									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
 								</div>
 							</c:forEach>
-
-
 						</div>
-						<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 					</div>
-					<div class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets">
+					<div class="swiper-pagination">
 						<button type="button" class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1">1</button>
 						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2">2</button>
 						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3">3</button>
@@ -29,11 +25,47 @@
 						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6">6</button>
 					</div>
 					<div class="slide-nav type6">
-						<button type="button" class="slide-nav-prev" tabindex="0" role="button" aria-label="Previous slide">이전</button>
-						<button type="button" class="slide-nav-next" tabindex="0" role="button" aria-label="Next slide">다음</button>
+						<button type="button" class="slide-nav-prev">이전</button>
+						<button type="button" class="slide-nav-next">다음</button>
 					</div>
 				</div>
 			</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
+    </script>
+    <script>
+
+        var mySwiper = new Swiper('.swiper-container', {
+            // 슬라이드를 버튼으로 움직일 수 있습니다.
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+            },
+
+            // 현재 페이지를 나타내는 스크롤이 생깁니다. 클릭하면 이동합니다.
+            scrollbar: {
+                el: '.swiper-scrollbar',
+                draggable: true,
+            },
+
+            // 3초마다 자동으로 슬라이드가 넘어갑니다. 1초 = 1000
+            autoplay: {
+                delay: 3000,
+            },
+        });
+        var mySwiper = new Swiper('.swiper-container', {
+
+            // 여기에 옵션을 넣어야 합니다.
+
+        });
+    </script>
+
+
 
 			<div class="product-view-info">
 				<div class="etc-btn">
