@@ -29,7 +29,7 @@
 								<figure class="item" data-ga-name="아이코닉 토트백">
 									<div class="img">
 										<span> <img
-											src='<c:url value='${rvList.img_loc}'></c:url>'
+											src='${contextPath}/\images/review/${rvbestlist.r_img}'
 											alt="" style="transform: rotate(0deg)">
 									</div>
 								</figure>
@@ -57,7 +57,8 @@
 												<input type="hidden" name="proname"
 													value="${rvbestlist.pro_name}"> <input type="hidden"
 													name="b_name" value="${rvbestlist.brand_name}"> <input
-													type="hidden" name="img_loc" value="${rvbestlist.img_loc}">
+													type="hidden" name="img_loc" value="${rvbestlist.img_loc}" style="transform:rotate(90deg);">
+													<input type="hidden" name="r_img" value="${rvbestlist.r_img}" style="transform:rotate(90deg);">
 												<input type="submit" value="리뷰 상세보기">
 											</form>
 											<div class="item-brand">${rvbestlist.brand_name}</div>
@@ -133,7 +134,8 @@
 
 								<figure class="item-box">
 									<span class="item-img"> <img
-										src='<c:url value='${rvList.r_img}'></c:url>'>
+										src='${contextPath}/\images/review/${rvList.r_img}' style="width:100%;height:100%"> 
+									
 									</span>
 									<figcaption class="item-info">
 										<div class="item-brand">${rvList.brand_name}</div>
@@ -151,14 +153,15 @@
 								<div class="img">
 
 									<span> 
+									<!-- 상품이미지 -->
 									<img
-										src='<c:url value='${rvList.img_loc}'></c:url>'
-										alt="" style="transform: rotate(90deg)">
+										src='<c:url value='${rvList.img_loc}'></c:url>' alt="" > 
 										<form action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvList.r_no}" method="post">
 		                                  <!-- 리뷰 디테일 jsp로 변수 전달 -->
 										 <input type="hidden" name="proname" value="${rvList.pro_name}">
 										 <input type="hidden" name="b_name" value="${rvList.brand_name}"> 
 										  <input type="hidden" name="img_loc" value="${rvList.img_loc}"> 
+										  <input type="hidden" name="r_img" value="${rvList.r_img}" style="transform:rotate(90deg);">
 										 <input type="submit" value="리뷰 상세보기">
 										</form>
 									</span>

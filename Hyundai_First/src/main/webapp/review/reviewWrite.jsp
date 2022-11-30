@@ -129,7 +129,7 @@
                     <div class="btn-box">
                     <!--등록구현 필요 -->
                         <button type="button" class="btn-type2-lg">
-                        <input type="submit" value="등록">
+                        <input type="submit" value="등록" style="font-size:25px">
                         </button>
                     </div>
 
