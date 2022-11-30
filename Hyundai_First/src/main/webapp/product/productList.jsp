@@ -4,7 +4,7 @@
 <div id="container">
    <section class="content-response">
       <h2 class="dp-title tit-tab-wrap eng" id="bestTitle">
-         <span class="tit-tab pl113 on" > <a href="#" class="gender" id="공용" value="">ALL</a>
+         <span class="tit-tab pl113 on" > <a href="#" class="gender" id="공용">ALL</a>
          </span> <span class="tit-tab"  value="1"> <a href="#" class="gender" id="여성">WOMAN</a>
          </span> <span class="tit-tab" > <a href="#" class="gender" id="남성">MAN</a>
          </span>
@@ -27,7 +27,7 @@
                         <div class="item-brand"><c:out value="${proList.brand_name}"></c:out></div>
                         <div class="item-name"><c:out value="${proList.pro_name}"></c:out>  </div>
                         <div class="item-price">
-                           <span class="price">  <fmt:formatNumber value="${proList.pro_price}" pattern="#,###" />원</span>
+                           <span class="price">  <fmt:formatNumber value="${proList.pro_price}" pattern="#,###" /> 원</span>
                         </div>
                         <div class="item-label">
                            <span class="label3">신상</span> <span class="label2">할인</span> <span class="label3">쿠폰</span>
@@ -70,7 +70,8 @@ $('.gender').click( function(){
 			alert("len " + obj[0].pro_name);
 			var tag="";
 			for(var i=0; i<obj.length; i++){
-				
+				let price = obj[i].pro_price;
+				price = price.toLocaleString('ko-KR');
 				tag += `
 					<li godno="GM0122111816388">
 	               <!-- 대형 이미지 클래스 product-sp-->
@@ -87,7 +88,7 @@ $('.gender').click( function(){
 	                        <div class="item-brand">\${obj[i].brand_name}</div>
 	                        <div class="item-name">\${obj[i].pro_name}</div>
 	                        <div class="item-price">
-	                           <span class="price">  원</span>
+	                           <span class="price">\${price} 원</span>
 	                        </div>
 	                        <div class="item-label">
 	                           <span class="label3">신상</span> <span class="label2">할인</span> <span class="label3">쿠폰</span>

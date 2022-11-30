@@ -28,6 +28,7 @@ public class ProductService {
 		return instance;
 	}
 	
+	
 	//상품 목록 불러 오는 메서드
 	public List<ProductDTO> productGetListService(CategoryDTO dto){
 		List<ProductDTO> list=null;
@@ -43,7 +44,6 @@ public class ProductService {
 		} finally {
 			JdbcUtil.close(con);
 		}
-		
 
 		return list; 
 	}
@@ -69,7 +69,6 @@ public class ProductService {
 		} finally {
 			JdbcUtil.close(con);
 		}
-		
 		
 		return list;
 	}
