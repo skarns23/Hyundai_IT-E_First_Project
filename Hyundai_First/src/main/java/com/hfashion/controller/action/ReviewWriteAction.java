@@ -37,6 +37,7 @@ public class ReviewWriteAction implements Action {
 		MultipartRequest multi = null;
 		int maxSize = 10 * 1024 * 1024; // 사진 size//10MB String path="/image"; ServletContext
 		String savePath =request.getSession().getServletContext().getRealPath("/images/review"); // 저장 폴더 경로
+		System.out.println(savePath);
 		try {
 			multi = new MultipartRequest(request, savePath, maxSize, "UTF-8", new DefaultFileRenamePolicy()); // 객체 생성시 바로 파일 업로드 																																																				// 완료
 		} catch (Exception e) {
@@ -44,6 +45,8 @@ public class ReviewWriteAction implements Action {
 		}		
 		String fileName = multi.getFilesystemName("filename"); // 파일 이름 받아오기
 		String fileFullPath = savePath + File.separator + fileName;//파일 경로 설정
+		String tempPath="images/review"+fileName;
+		System.out.println();
 		//System.out.println(fileFullPath);
 		String star = "3";
 	
@@ -69,7 +72,8 @@ public class ReviewWriteAction implements Action {
 			RV_VO.setR_title(title);
 			RV_VO.setR_content(content);
 	        //RV_VO.setR_img(request.getParameter("r_img"));   // 이미지 일단 1값으로 구현			
-			RV_VO.setR_img(fileFullPath); // 이미지 일단 1값으로 구현
+//			RV_VO.setR_img(fileFullPath); // 이미지 일단 1값으로 구현
+			RV_VO.setR_img(fileName); // 이미지 일단 1값으로 구현
 			RV_VO.setWeight(Integer.parseInt(multi.getParameter("weight")));
 			RV_VO.setHeight(Integer.parseInt(multi.getParameter("height")));
 			RV_VO.setStar_rating(Integer.parseInt(star));

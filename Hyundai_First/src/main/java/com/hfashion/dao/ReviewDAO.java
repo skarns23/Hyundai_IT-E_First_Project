@@ -16,18 +16,16 @@ import com.hfashion.vo.ReviewVO;
 import oracle.jdbc.OracleTypes;
 
 // 윤태영 작성
-  
-
-
+ 
 
 public class ReviewDAO {
 
+	
 	private static ReviewDAO RDAO = new ReviewDAO(); // 인스턴스 생성
 	private DataSource ds = null;
-
-	// 프로시저 호출
- 
-   public ReviewDAO() {
+	// 프로시저 호출s
+	
+	public ReviewDAO() {
 		try {
 			Context con = new InitialContext();
 			Context envcon = (Context) con.lookup("java:/comp/env");
@@ -40,8 +38,7 @@ public class ReviewDAO {
 		}
 	 }
 	
-   
-    
+  
 	// 리뷰생성
 	public void createReview(ReviewVO reviewvo) {
 		String insert = "{call insert_review(?,?,?,?,?,?,?,?,?,?)}";
