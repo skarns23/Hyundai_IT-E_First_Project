@@ -42,7 +42,6 @@ public class ProductSortDAO {
 			
 			ResultSet rs = (ResultSet)cstmt.getObject(2);
 			
-			System.out.println("DAO 호출성공");
 			
 			while(rs.next()) {
 				String pro_no = rs.getString(1);

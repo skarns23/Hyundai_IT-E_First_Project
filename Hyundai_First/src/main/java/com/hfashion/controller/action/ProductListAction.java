@@ -21,7 +21,7 @@ public class ProductListAction implements Action{
 		String url = "product/productList.jsp";
 		ProductService productService = ProductService.getInstance();
 		String category = request.getParameter("category");
-		CategoryDTO dto = new CategoryDTO(category);
+		CategoryDTO dto = new CategoryDTO(category);//수정 필요!//설명할 수 없기 때문
 		
 		List<ProductDTO> list = productService.productGetListService(dto);
 		

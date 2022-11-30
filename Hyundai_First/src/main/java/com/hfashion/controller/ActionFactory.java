@@ -1,6 +1,6 @@
 package com.hfashion.controller;
 
-<<<<<<< HEAD
+
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.CartAction;
 import com.hfashion.controller.action.CartCntUpdateAction;
