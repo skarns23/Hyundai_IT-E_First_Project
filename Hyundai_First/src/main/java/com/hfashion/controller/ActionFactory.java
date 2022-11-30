@@ -1,37 +1,4 @@
 package com.hfashion.controller;
-import com.hfashion.controller.action.Action;
-import com.hfashion.controller.action.CartAction;
-import com.hfashion.controller.action.CartCntUpdateAction;
-import com.hfashion.controller.action.CartDelAction;
-import com.hfashion.controller.action.CartDelAllAction;
-import com.hfashion.controller.action.CartFormAction;
-import com.hfashion.controller.action.CartListAllAction;
-import com.hfashion.controller.action.CartSelUpdateAction;
-import com.hfashion.controller.action.ConfirmIDAction;
-import com.hfashion.controller.action.GetOrderListAction;
-import com.hfashion.controller.action.JoinAction;
-import com.hfashion.controller.action.ListOrderFormAction;
-import com.hfashion.controller.action.LoginAction;
-import com.hfashion.controller.action.LoginFormAction;
-import com.hfashion.controller.action.LogoutAction;
-import com.hfashion.controller.action.MainAction;
-import com.hfashion.controller.action.MemberOutAction;
-import com.hfashion.controller.action.MemberOutFormAction;
-import com.hfashion.controller.action.MypageFormAction;
-import com.hfashion.controller.action.OrderAction;
-import com.hfashion.controller.action.ProductDetailAction;
-import com.hfashion.controller.action.ProductListAction;
-import com.hfashion.controller.action.ProductSortAction;
-import com.hfashion.controller.action.PwConfirmFormAction;
-import com.hfashion.controller.action.ReviewDetailAction;
-import com.hfashion.controller.action.ReviewListAction;
-import com.hfashion.controller.action.ReviewWriteAction;
-import com.hfashion.controller.action.ReviewWriteFormAction;
-import com.hfashion.controller.action.SearchIDAction;
-import com.hfashion.controller.action.SearchIDFormAction;
-import com.hfashion.controller.action.SignUpAction;
-import com.hfashion.controller.action.UpdateFormAction;
-import com.hfashion.controller.action.UpdatePWAction;
 import com.hfashion.controller.action.*;
 
 public class ActionFactory {
@@ -113,6 +80,8 @@ public class ActionFactory {
 			action = new MemberOutAction();
 		}else if (command.equals("joinsuccess")) {
 			action = new JoinSuccessAction();
+		}else if(command.equals("orderComplete")) {
+			action = new OrderCompleteAction();
 		}
 		
 		

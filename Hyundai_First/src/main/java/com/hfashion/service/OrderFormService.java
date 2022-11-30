@@ -43,24 +43,21 @@ public class OrderFormService {
 			System.out.println("서비스에서 loginId : "+loginId);
 			
 			list = dao.getSelectedCart(con,loginId);
-			
-			for (CartDTO cartDTO : list) {
-				System.out.println("final check");
-				System.out.println(cartDTO.getBrandName());
-				System.out.println(cartDTO.getCartAmount());
-				System.out.println(cartDTO.getProName());
 				
-			}
-			
 			dto = dao.getOrderMember(con,loginId);
 			dto.setOrderList(list);
 			
 			int totalPrice = 0;
+			int deliveryFee = 0;
 			for (CartDTO cartDTO : list) {
 				totalPrice += cartDTO.getProPrice()*cartDTO.getCartAmount();
 			}
 			
+			if(totalPrice<30000) {deliveryFee=2500; totalPrice+=deliveryFee;}
+			
+			
 			dto.setTotalPrice(totalPrice);
+			dto.setDeliveryFee(deliveryFee);
 			
 			
 			return dto;
