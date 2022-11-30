@@ -16,7 +16,7 @@ public class JoinAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "Hfashion?command=loginform";
+		String url = "Hfashion?command=joinsuccess";
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		String id = request.getParameter("user_id");
 		String pw = request.getParameter("user_pw");
@@ -27,7 +27,7 @@ public class JoinAction implements Action{
 		System.out.println(member);
 		boolean result = memberDAO.signUp(member);
 		if(!result) {
-			url = "Hfashion";
+			url = "Hfashion?command=signup";
 		}else {
 			HttpSession session =  request.getSession();
 			session.setAttribute("id", id);

@@ -162,7 +162,7 @@
 					</table>
 				</div>
 				<div class="btn-box">
-					<button type="submit" class="btn-type2-lg">
+					<button type="submit" id = "btn_join"class="btn-type2-lg">
 						<span>가입하기</span>
 					</button>
 				</div>
@@ -172,7 +172,21 @@
 	</section>
 <script>
 $(function(){
-	
+	let btn_update = $("#btn_join");
+	$("#mbrCheckPw").focusout(function(){
+		var update_pw = $("#mbrPw").val();
+		let check_pw = $("#mbrCheckPw").val();
+		btn_update.attr('disabled',true);
+		if(update_pw.length<8){
+			$("#descMbrCheckPw").html("비밀번호 사용불가");
+		}else if(update_pw===check_pw){
+				$("#descMbrCheckPw").html("비밀번호 일치");
+				btn_update.attr('disabled',false);
+		}else {
+			$("#descMbrCheckPw").html("비밀번호가 일치하지 않습니다.");
+		}
+		
+	});
 })
 </script>
 

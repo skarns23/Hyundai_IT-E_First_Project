@@ -1,11 +1,13 @@
 package com.hfashion.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
 import com.hfashion.dao.MemberDAO;
 import com.hfashion.vo.MemberVO;
 /*
@@ -32,10 +34,14 @@ public class UpdatePWAction implements Action{
 				request.getSession().setAttribute("loginUser", mVO);
 			}
 		}
+		Gson gson = new Gson();
 		url =  result ==0 ?"Hfashion?command=mypage_updateForm":url;
+		String value = gson.toJson(url);
 		System.out.println("UpdatePWAction : "+url);
-		System.out.println(result);
-		response.sendRedirect(url);
+		PrintWriter out = response.getWriter();
+		out.print(value);
+		System.out.println(value);
+		//response.sendRedirect(url);
 	}
 
 }
