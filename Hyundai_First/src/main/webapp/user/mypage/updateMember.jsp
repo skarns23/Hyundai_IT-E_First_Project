@@ -95,7 +95,7 @@
 			</div>
 			<!-- //write-wrap -->
 			<div class="btn-box">
-				<button type="submit" class="btn-type2-lg" id="btn_update"  style="width: 250px;">
+				<button type="submit" class="btn-type2-lg" id="btn_update" disabled="true" style="width: 250px;">
 					<span>회원정보 수정</span>
 				</button>
 </form>
@@ -120,6 +120,9 @@
 			}
 			
 		});
+		btn_update.click(function(){
+			
+		})
 	})
 	</script>
 </div>

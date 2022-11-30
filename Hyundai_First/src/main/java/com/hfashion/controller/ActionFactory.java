@@ -1,5 +1,4 @@
 package com.hfashion.controller;
-
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.CartAction;
 import com.hfashion.controller.action.CartCntUpdateAction;
@@ -33,6 +32,8 @@ import com.hfashion.controller.action.SearchIDFormAction;
 import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
+import com.hfashion.controller.action.*;
+
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
 	public ActionFactory() {
@@ -110,6 +111,8 @@ public class ActionFactory {
 			action = new MemberOutFormAction();
 		}else if (command.equals("mypage_sucession")) {
 			action = new MemberOutAction();
+		}else if (command.equals("joinsuccess")) {
+			action = new JoinSuccessAction();
 		}
 		
 		
