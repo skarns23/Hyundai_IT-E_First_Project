@@ -1,4 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<script type="text/javascript">
+ window.history.forward();
+ function noBack(){window.history.forward();}
+</script>
+
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
+
+
 <%@ include file="../layout/header.jsp"%>
 <div id="container">
 	<form action="approve" name="orderDTO" id="orderDTO" method="post">
@@ -73,7 +82,7 @@
 												<th scope="row"><span>수신자명 <span class="required">(필수)</span></span></th>
 												<td>
 													<div class="input-box">
-														<input type="text" title="수신자명" placeholder="" class="inp-reset" id="newAddrseNm" name="addrseNm" value="" new-validate="required;xssquotation">
+														<input type="text" title="수신자명" placeholder="" class="inp-reset" id="newAddrseNm" name="addrseNm" value="${orderInfo.userName}" new-validate="required; xssquotation">
 														<div class="etc">
 															<button type="button" class="btn-clear">
 																<span>지우기</span>
@@ -87,7 +96,7 @@
 												<td>
 													<div class="input-box">
 														<input type="hidden" class="inputbox-num" title="" id="newAddrseMobilNationNo" value="82"> <input type="text" title="휴대폰번호" placeholder="" class="inp-reset inputbox-num"
-															id="newAddrseMobilNo" name="addrseMobilNo" value="" new-validate="required;digit;rangelength:10 11;digit;phone;" maxlength="11">
+															id="newAddrseMobilNo" name="addrseMobilNo" value="${orderInfo.userPhone}" new-validate="required;digit;rangelength:10 11;digit;phone;" maxlength="11">
 														<div class="etc">
 															<button type="button" class="btn-clear">
 																<span>지우기</span>
@@ -96,20 +105,7 @@
 													</div>
 												</td>
 											</tr>
-											<tr>
-												<th scope="row"><span>전화번호</span></th>
-												<td>
-													<div class="input-box">
-														<input type="hidden" class="inputbox-num" title="" id="newAddrseTelNationNo" value="82"> <input type="text" title="전화번호" placeholder="" class="inp-reset inputbox-num"
-															id="newAddrseTelNo" name="addrseTelNo" value="" new-validate="digit;rangelength:9 11;tel;" maxlength="11">
-														<div class="etc">
-															<button type="button" class="btn-clear">
-																<span>지우기</span>
-															</button>
-														</div>
-													</div>
-												</td>
-											</tr>
+											
 											
 											
 											
@@ -168,15 +164,9 @@
 										<button type="button" class="btn-tooltip" onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
 											<span>툴팁보기</span>
 										</button> 
-								</span> <span class="num"><span id="deliverySum">0</span> 원</span></li>
+								</span> <span class="num"><span id="deliverySum"><fmt:formatNumber value="${orderInfo.deliveryFee}" pattern="#,###"></fmt:formatNumber></span> 원</span></li>
 							</ul>
-							<div class="payment-agree">
-								<p>
-									<label class="check-skin"> <input type="checkbox" id="btnAgreePurchase"> <span><span style="font-size: 14px">주문하실상품,가격,배송정보,할인정보등을 확인하였으며,구매에동의하십니까?<br>(전자상거래법제8조제2항)
-										</span></span>
-									</label>
-								</p>
-							</div>
+							
 							<!--여기도 코딩  -->
 							<div class="btn-box">
 								<a id="btnPayment" class="btn-type2-lg" onclick="order()" >결제하기</a>
@@ -191,11 +181,8 @@
 </div>
 
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
-
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
  
-<button >form문 동적 생성 및 submit 처리</button>
  
 <script>
 	/*함세강*/
@@ -209,7 +196,26 @@
     	console.log(tag_address);
     	console.log(tag_detailAddress);
     	console.log(total_address);
-    	alert("check");
+    	
+    	if(tag_postcode==''){
+    		alert("우편번호를 입력하세요!")
+    		return;
+    	}
+    	
+    	if(tag_address==''){
+    		alert("주소를 입력하세요!")
+    		return;
+    	}
+    	
+    	if(tag_detailAddress==''){
+    		alert("상세주소를 입력하세요!")
+    		return;
+    	}
+    	
+    	
+    	
+    	
+    	
         var data_form = $('<form></form>');
  
         data_form.attr("name", "test_form");

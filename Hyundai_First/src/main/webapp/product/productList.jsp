@@ -66,12 +66,10 @@ $('.gender').click( function(){
 			gender : genderVal,
 			category : categoryNo
 		},
-		//dataType: 'json',
 		success: function(result){
 			//alert("ajax 는 쉬운것이다!")
 			
 			var obj = JSON.parse(result);
-			
 			
 			//alert(obj);
 			//console.log(obj);
