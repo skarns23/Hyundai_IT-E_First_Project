@@ -3,7 +3,11 @@
 <%@ include file="/layout/header.jsp"%>
 
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
-
+<script>
+function frmSubmit(i){
+	$("#frm"+i).submit();
+}
+</script>
 <div id="container">
 	<div class="breadcrumb-wrap"></div>
 	<!-- <script type="text/javascript" src="/js/sns.js"></script> -->
@@ -23,7 +27,7 @@
 					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
 					<c:forEach var="rvbestlist" items="${BestReviewList}">
 						<!-- rvbestlist 변수 선언 -->
-						<div class="review-plus-cont">
+						<div class="review-plus-cont" onclick="frmSubmit('${rvbestlist.r_no}');">
 							<a href="javascript:undefined;"
 								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
 								<figure class="item" data-ga-name="아이코닉 토트백">
@@ -52,14 +56,15 @@
 											onclick="goGodDetail('GM0122093098215')">
 											<form
 												action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvbestlist.r_no}"
-												method="post">
+												method="post"
+												id = "frm${rvbestlist.r_no}">
 												<!-- 리뷰 디테일 jsp로 변수 전달 -->
 												<input type="hidden" name="proname"
 													value="${rvbestlist.pro_name}"> <input type="hidden"
 													name="b_name" value="${rvbestlist.brand_name}"> <input
 													type="hidden" name="img_loc" value="${rvbestlist.img_loc}" style="transform:rotate(90deg);">
 													<input type="hidden" name="r_img" value="${rvbestlist.r_img}" style="transform:rotate(90deg);">
-												<input type="submit" value="리뷰 상세보기">
+											
 											</form>
 											<div class="item-brand">${rvbestlist.brand_name}</div>
 											<div class="item-name">${rvbestlist.pro_name}</div>
@@ -128,13 +133,13 @@
 
 					<!--일반리뷰 반복 시작 -->
 					<c:forEach var="rvList" items="${ReviewList}">
-						<%-- 			<div class="review-plus-cont grid-item ${rvList.pro_gender}" style="float:left"> --%>
-						<div class="review-plus-cont grid-item" style="float: left">
+						
+						<div class="review-plus-cont grid-item" style="float: left" onclick="frmSubmit('${rvList.r_no}');">						
 							<div class="product-list-sub">
 
 								<figure class="item-box">
-									<span class="item-img"> <img
-										src='${contextPath}/\images/review/${rvList.r_img}' style="width:100%;height:100%"> 
+									<span class="item-img"> <img src='<c:url value='${rvList.img_loc}'></c:url>' alt="" > 
+									
 									
 									</span>
 									<figcaption class="item-info">
@@ -155,14 +160,15 @@
 									<span> 
 									<!-- 상품이미지 -->
 									<img
-										src='<c:url value='${rvList.img_loc}'></c:url>' alt="" > 
-										<form action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvList.r_no}" method="post">
+										src='${contextPath}/\images/review/${rvList.r_img}' style="width:100%;height:100%"> 
+										<form action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvList.r_no}" method="post"
+										id ="frm${rvList.r_no}">
 		                                  <!-- 리뷰 디테일 jsp로 변수 전달 -->
 										 <input type="hidden" name="proname" value="${rvList.pro_name}">
 										 <input type="hidden" name="b_name" value="${rvList.brand_name}"> 
 										  <input type="hidden" name="img_loc" value="${rvList.img_loc}"> 
 										  <input type="hidden" name="r_img" value="${rvList.r_img}" style="transform:rotate(90deg);">
-										 <input type="submit" value="리뷰 상세보기">
+										
 										</form>
 									</span>
 								</div>

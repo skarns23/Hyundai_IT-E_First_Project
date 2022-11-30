@@ -11,20 +11,19 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.util.JdbcUtil;
 import com.hfashion.vo.ReviewVO;
 
 import oracle.jdbc.OracleTypes;
 
 // 윤태영 작성
- 
 
 public class ReviewDAO {
 
-	
 	private static ReviewDAO RDAO = new ReviewDAO(); // 인스턴스 생성
 	private DataSource ds = null;
 	// 프로시저 호출s
-	
+
 	public ReviewDAO() {
 		try {
 			Context con = new InitialContext();
@@ -36,9 +35,8 @@ public class ReviewDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	 }
-	
-  
+	}
+
 	// 리뷰생성
 	public void createReview(ReviewVO reviewvo) {
 		String insert = "{call insert_review(?,?,?,?,?,?,?,?,?,?)}";
@@ -48,7 +46,7 @@ public class ReviewDAO {
 			con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(insert);
 			cstmt.setString(1, reviewvo.getR_title());
-		   System.out.println("#####################");
+			System.out.println("#####################");
 			cstmt.setString(2, reviewvo.getR_content());
 			cstmt.setString(3, reviewvo.getR_img());
 			System.out.println(reviewvo.getR_img());
@@ -73,6 +71,9 @@ public class ReviewDAO {
 			cstmt.executeUpdate();
 			System.out.println("#############");
 			System.out.println("되나");
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -117,6 +118,9 @@ public class ReviewDAO {
 				review.setStar_rating(rs.getInt(6));
 				review.setSize_name(rs.getString(7));
 			}
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
+			JdbcUtil.close(rs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -149,7 +153,7 @@ public class ReviewDAO {
 				String img_roc = rs.getString(10);
 				String pro_gen = rs.getString(11);
 				ReviewVO rVO = new ReviewVO();
-     
+
 				rVO.setR_no(review_no);
 				rVO.setR_title(review_title);
 				rVO.setR_img(review_img);
@@ -163,20 +167,23 @@ public class ReviewDAO {
 				rVO.setPro_gen(pro_gen);
 				list.add(rVO);
 			}
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
+			JdbcUtil.close(rs);
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
 	}
-	//best리뷰 불러오기
+
+	// best리뷰 불러오기
 	public ArrayList<ReviewVO> BestReviewList() {
 		ArrayList<ReviewVO> bestlist = new ArrayList<>();
 		System.out.println("dao확인1");
 		String sql = "{call bestreview_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
 		System.out.println("dao확인2");
-		
-		
+
 		try {
 			Connection con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(sql);
@@ -186,7 +193,7 @@ public class ReviewDAO {
 			// System.out.println(rs.getRow());커서 에서 받은 rs개수 확인
 			while (rs.next()) {
 				String review_no = rs.getString(1);
-				int review_like=rs.getInt(2);
+				int review_like = rs.getInt(2);
 				System.out.print(review_no);
 				System.out.print(review_like);
 				System.out.println();
@@ -219,7 +226,9 @@ public class ReviewDAO {
 				bestlist.add(brVO);
 				System.out.println(bestlist);
 			}
-
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(con);
+			JdbcUtil.close(rs);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
