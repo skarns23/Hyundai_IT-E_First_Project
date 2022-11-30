@@ -29,7 +29,7 @@ public class ProductDetailAction implements Action {
 		request.setAttribute("pVO", pVO);
 		request.setAttribute("sList", sList);
 		request.setAttribute("imgList", imgList);
-		
+		request.setAttribute("imgSize", imgList.size());
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 	}

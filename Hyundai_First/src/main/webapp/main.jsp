@@ -1,13 +1,79 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
+<style>
+#video-box{
+width: 100%; overflow: hidden; height: 840px; margin: 0px auto; position: relative;
+}
 
-<div id="container" style="padding-top: 70px;">
-	<section class="dp-section main-back-video">
+.arrow-down {
+position: absolute; top: 90%; width: 100%; 
+}
+
+.arrow-down a{
+margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
+}
+
+#arrow {
+  padding-top: 70px;
+}
+#arrow span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb 1.5s infinite;
+  animation: sdb 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+</style>
+<div id="container" style="padding-top: 90px;">
+	<section class="dp-section main-back-video" id="video-box">
 		<video muted autoplay loop style="width:100%;">
 			<source src="videos/hfashionVideo.mp4" type="video/mp4">
 		</video>
+		<!-- 
+		<div class="arrow-down">
+            <a id="arrow" href="#ranking">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+     -->
 	</section>
-	<section class="dp-section main-keyword-ranking">
+	<section class="dp-section main-keyword-ranking" id="ranking">
 		<div class="keyword-ranking">
 			<h2 class="title">KEYWORD RANKING</h2>
 			<ul id="mainCnrKeywordRanking" class="list" style="">
@@ -2328,7 +2394,11 @@
 		</div>
 	</section>
 </div>
-
+<div class="fixed-btn">
+	
+	
+	<button type="button" class="top" onclick="scrollMov(0, 200);"><span>TOP</span></button>
+</div>
 
 
 

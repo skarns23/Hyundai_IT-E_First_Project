@@ -5,14 +5,15 @@
 	<div class="content-response">
 		<div class="product-view-top">
 		<div class="product-view-img">
-				<div id="pdViewSlide" class="product-view-slide">
+				<div id="pdViewSlide" class="product-view-slide" data-slide-length="${imgSize}">
 					<div class="swiper-container">
-						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(-2600px, 0px, 0px); transition-duration: 0ms;">
+						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
 
 							<c:forEach var="imgVO" items="${imgList}">
-								<div id="detail_swiper-slide" class="swiper-slide">
-									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
-								</div>
+								<c:set var="i" value="${i+1}"/>
+									<div class="swiper-slide swiper-slide-duplicate" style="text-align: center;" data-swiper-slide-index="${i}">
+										<img src="${contextPath}/${imgVO.img_loc}" style="width: 535.5px; ">
+									</div>
 							</c:forEach>
 						</div>
 					</div>
@@ -25,9 +26,9 @@
 						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6">6</button>
 					</div>
 					<div class="slide-nav type6">
-						<button type="button" class="slide-nav-prev">이전</button>
-						<button type="button" class="slide-nav-next">다음</button>
-					</div>
+          	<button type="button" class="slide-nav-prev" tabindex="0" role="button" aria-label="Previous slide">이전</button>
+            <button type="button" class="slide-nav-next" tabindex="0" role="button" aria-label="Next slide">다음</button>
+         	</div>
 				</div>
 			</div>
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js">
@@ -37,8 +38,8 @@
         var mySwiper = new Swiper('.swiper-container', {
             // 슬라이드를 버튼으로 움직일 수 있습니다.
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.slide-nav-prev',
+                prevEl: '.slide-nav-next',
             },
 
             // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.

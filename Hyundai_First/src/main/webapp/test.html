@@ -3,68 +3,107 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <title>스와이퍼 예제</title>
+    <title>Document</title>
+    <style>
+        .img-cover {
+            position: absolute;
+            top: 58px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+        a {
+  padding-top: 60px;
+}
+a span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin-left: -23px;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  box-sizing: border-box;
+}
+a span::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  content: '';
+  width: 16px;
+  height: 16px;
+  margin: -12px 0 0 -8px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  box-sizing: border-box;
+}
+a span::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  content: '';
+  width: 44px;
+  height: 44px;
+  box-shadow: 0 0 0 0 rgba(255,255,255,.1);
+  border-radius: 100%;
+  opacity: 0;
+  -webkit-animation: sdb 3s infinite;
+  animation: sdb 3s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  60% {
+    box-shadow: 0 0 0 60px rgba(255,255,255,.1);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+    </style>
 </head>
 
 <body>
-    <div class="swiper-container">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">
-                <img src="images/product/11.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="images/product/102.jpg" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="images/product/101.jpg" alt="">
+    <div class="img-cover">
+        <div class="arrow-down">
+            <a href="#about">
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+
         </div>
-        <!-- If we need pagination -->
-        <div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
-        <div class="swiper-scrollbar"></div>
     </div>
-
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js">
-    </script>
-    <script>
-
-        var mySwiper = new Swiper('.swiper-container', {
-            // 슬라이드를 버튼으로 움직일 수 있습니다.
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-
-            // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
-            pagination: {
-                el: '.swiper-pagination',
-                type: 'bullets',
-            },
-
-            // 현재 페이지를 나타내는 스크롤이 생깁니다. 클릭하면 이동합니다.
-            scrollbar: {
-                el: '.swiper-scrollbar',
-                draggable: true,
-            },
-
-            // 3초마다 자동으로 슬라이드가 넘어갑니다. 1초 = 1000
-            autoplay: {
-                delay: 3000,
-            },
-        });
-        var mySwiper = new Swiper('.swiper-container', {
-
-            // 여기에 옵션을 넣어야 합니다.
-
-        });
-    </script>
 </body>
 
 </html>
