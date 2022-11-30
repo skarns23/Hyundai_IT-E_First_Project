@@ -10,6 +10,8 @@
       b_name = request.getParameter("b_name");  
       String img_loc="";
       img_loc=request.getParameter("img_loc"); 
+      String r_img="";
+      r_img=request.getParameter("r_img"); 
       System.out.println(pro_name);
       System.out.println("못받았음 ");     
 
@@ -33,23 +35,23 @@
 									style="transition-duration: 0ms; transform: translate3d(-800px, 0px, 0px);">
 									<li
 										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
-										data-swiper-slide-index="1" style="width: 400px;"><img
-										src="https://cdn.hfashionmall.com/contents/review/2340456459650473.jpg?RS=400&amp;AO=1"
-										style="transform: rotate(90deg)"></li>
+										data-swiper-slide-index="1" style="width: 400px; overflow: hidden"><img
+										src='${contextPath}/\images/review/<%=r_img%>' 
+										style="width:100%;height:100%"></li>
 									<li
 										class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next"
-										data-swiper-slide-index="0" style="width: 400px;"><img
-										src="https://cdn.hfashionmall.com/contents/review/2166442984415459.jpg?RS=400&amp;AO=1"
-										style="transform: rotate(90deg)"></li>
+										data-swiper-slide-index="0" style="width: 400px; overflow: hidden""><img
+										src='${contextPath}/\images/review/<%=r_img%>' 
+										style="width:100%;height:100%"></li>
 									<li class="swiper-slide swiper-slide-active"
-										data-swiper-slide-index="1" style="width: 400px;"><img
-										src="https://cdn.hfashionmall.com/contents/review/2340456459650473.jpg?RS=400&amp;AO=1"
-										style="transform: rotate(90deg)"></li>
+										data-swiper-slide-index="1" style="width: 400px;overflow: hidden""><img
+										src='${contextPath}/\images/review/<%=r_img%>' 
+										style="width:100%;height:100%"></li>
 									<li
 										class="swiper-slide swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev"
-										data-swiper-slide-index="0" style="width: 400px;"><img
-										src="https://cdn.hfashionmall.com/contents/review/2166442984415459.jpg?RS=400&amp;AO=1"
-										style="transform: rotate(90deg)"></li>
+										data-swiper-slide-index="0" style="width: 400px; overflow: hidden""><img
+										src='${contextPath}/\images/review/<%=r_img%>' 
+										style="width:100%;height:100%"></li>
 								</ul>
 								<span class="swiper-notification" aria-live="assertive"
 									aria-atomic="true"></span>
@@ -80,7 +82,7 @@
 							<figure>
 								<div class="item-img">
 									<img
-										 src="https://cdn.hfashionmall.com/goods/THBR/22/07/29/GM0122072975341_1_ORGINL.jpg" 
+										 src='${contextPath}<%=img_loc %>' 
 										alt="스트레치 데님 셔츠"
 										
 										>
