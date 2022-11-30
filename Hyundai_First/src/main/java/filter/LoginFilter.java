@@ -44,12 +44,8 @@ public class LoginFilter extends HttpFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest)request;
 		String action = request.getParameter("command");
 		String pno = request.getParameter("pro_no");
-		System.out.println("login filter "+action);
-		System.out.println("PNO  : "+pno);
 		HttpSession session =  req.getSession();
-		System.out.println(req.getPathInfo());
 		MemberVO memberVO = (MemberVO)session.getAttribute("loginUser");
-		System.out.println(memberVO);
 		if(action!=null&&(action.contains("mypage")||action.contains("cart"))&&memberVO==null){
 			if(request.getParameter("ex_action")!=null)
 				action = request.getParameter("ex_action")+"&pno="+pno;

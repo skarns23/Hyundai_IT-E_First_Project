@@ -19,7 +19,7 @@ import oracle.jdbc.OracleType;
 import oracle.jdbc.OracleTypes;
 
 public class OrderDAO {
-	private String getOrderList = "{call get_order_list(?,?,?,?)}";
+	private String getOrderList = "{call order_pack.get_order_list(?,?,?,?)}";
 	private static OrderDAO instance = null;
 
 	private OrderDAO() {

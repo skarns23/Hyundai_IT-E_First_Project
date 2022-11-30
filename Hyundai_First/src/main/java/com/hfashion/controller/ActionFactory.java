@@ -82,6 +82,8 @@ public class ActionFactory {
 			action = new JoinSuccessAction();
 		}else if(command.equals("orderComplete")) {
 			action = new OrderCompleteAction();
+		}else if (command.equals("reviewSearch")) {
+			action = new ReviewSearchAction();
 		}
 		
 		
