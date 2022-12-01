@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
 <script>
@@ -83,7 +82,6 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
          </div>
          <script src="https://unpkg.com/swiper/swiper-bundle.min.js">
 
-
     </script>
          <script>
 
@@ -118,8 +116,6 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 
         });
     </script>
-
-
 
          <div class="product-view-info">
             <div class="etc-btn">
@@ -279,6 +275,9 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
                      </div>
                      <div class="opt"></div>
                   </div>
+                  								<div id="reviewNodata" class="nodata" style="display  a: none;">
+									지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다. (상품구매시)
+								</div>
                   <div id="allReviewList" class="board-list board-review ui-fold"
                      style="">
                      <ul class="list-content">
@@ -289,9 +288,12 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
          </div>
       </div>
    </div>
+
 </div>
 
+<!-- 장바구니 담기 모달 -->
 <div id="layerShoppingBag" class="layer-pop" tabindex="0" style="display: none;">
+
    <div class="layer-wrap" tabindex="0">
       <div class="layer-header">
          <h2 class="layer-title">장바구니 담기 완료</h2>
@@ -313,6 +315,7 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
       </div>
       <button type="button" class="btn-layer-close" onclick="layer.close('layerShoppingBag');">닫기</button>
    </div>
+
 </div>
 
 
@@ -365,34 +368,79 @@ function insert_like(review_no){
    $.ajax({
        url : 'Hfashion?command=goodinsert', // 연결 url
          type: 'post',        
-        data : {
-          r_no : r_no,
-        },      
-        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
-           var result = JSON.parse(obj);
-             
-             if(result[1]==0){
-                alert("이 상품은 이미 '좋아요'가 눌렸습니다");
-             } else{
-            	 get_review(); // 리뷰 필터 호출
-            	 //alert("좋아요 개수:"+result[0]);
-                  alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
-             }
-          /*  alert(result[0]);
-           alert(result[1]);    */               
-        },
-       error: 
-          function (e){
-             console.log(e);
-            alert("로그인 이후에 이용해주세요")                  
-          }
-      
-   });
- };
- 
- 
+	     data : {
+	    	r_no : r_no,
+	     },		
+	     success : function(obj){      					//ajax통신 성공시 넘어오는 데이터 통째 이름 =data
+	    	 var result = JSON.parse(obj);
+	          
+	          if(result[1]==0){
+	        	  alert("이 상품은 이미 '좋아요'가 눌렸습니다");
+	          } else{
+	        	  alert("좋아요 개수:"+result[0]);
+	        	  alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
+	          }
+	    	/*  alert(result[0]);
+	    	 alert(result[1]);	 */     	    
+	    	 $(this).addClass("on");
+	     },
+	    error: 
+		    function (e){
+	    		console.log(e);
+		      alert("로그인 이후에 이용해주세요")                  
+		    }
+		
+	});
+ }
 
 </script>
+<script>
+$(document).ready(function(){
+	get_review();
+	$("#btn_search").click(get_review);
+})
+
+	function get_review() {
+		var pro_no = ${pVO.pro_no};
+		var height = $("#search_height").val();
+		var weight = $("#search_weight").val();
+		var val_size = $("#btn_size").text();
+		$.ajax({
+			url : "Hfashion?command=reviewSearch",
+			data : {
+				pro_no : pro_no,
+				height : height,
+				weight : weight,
+				pro_size : val_size
+			},
+			success : function(result) {
+				 var obj = JSON.parse(result);
+				 console.log(obj);
+				 
+				 if(obj.length == 0){
+					 $("#reviewNodata").css("display", "block");
+				 }
+				 var row ="";
+				 for(var i = 0; i<obj.length;i++){
+					 row +=`<li class='on'><div class='list-row fold-header'><div class='cell-title'><ul class='etc-info'><li><span class='point size-m'><span class='ico' style='width: 100%'>별점 \${obj[i].start_rating}점</span></span></li>
+					        <li><button type='button' class='btn-like2' onclick='addGodEvlLikeCount(this,addLikeList);' godevlturn='1' reviewgodno='GM0122092795931'><span class='like-count' likecnt='1'>\${obj[i].review_like}</span>
+				          </button></li><li><span class='date'>\${obj[i].review_date}</span></li></ul><p class='title-review'>\${obj[i].review_title}<i class='icon-attach'>이미지 첨부</i></p><button type='button' class='btn-fold'>열기</button>
+				    </div></div><div class='fold-cont open'><div class='review-group'><ul class='review-prd-info'><li><div class='prd-name'>\${obj[i].user_id}</div></li>
+				        <li><div class='prd-option'>\${obj[i].height}cm , \${obj[i].weight}kg &nbsp;<em class='prd-option-color'> <span class='pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg'> / &nbsp; 구매옵션 : \${obj[i].product_option}</span></em>
+				          </div></li></ul><ul class='files'><li class='img-file'><button type='button' onclick='layerViewImg();' style='background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);'>
+				            <img src='https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg' alt='7AE074DE-6EE9-4107-BFFF-4E1874F1AB83' style='transform: rotate(0deg);'></button>
+				        </li></ul><div class='txt-box'>\${obj[i].review_content}</div><div class='review-report'>
+				        <button type='button' class='btn-report' onclick='alert('로그인 후 참여 가능합니다.');location.href='/public/member/login''></button></div></div></div></li>`;
+				 }
+				 $(".list-content").html(row);
+			},
+			error : function(e) {
+				alert('조회 실패');
+			}
+		})
+	}
+</script>
+
 
 
 

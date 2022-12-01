@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/layout/header.jsp"%>
-
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
+<style>
+.item-size{
+  margin-top: 10px;
+ 	font-size: 12px;
+ 	font-weight: 300;
+}
+</style>
 <script>
 function frmSubmit(i){
 	$("#frm"+i).submit();
@@ -71,18 +77,23 @@ function frmSubmit(i){
 											<div class="item-price">
 												<span class="price"><fmt:formatNumber value="${rvbestlist.pro_price}" pattern="#,###" /></span>
 											</div>
+											<div class="item-size">
+												<span>${rvbestlist.size_name}</span>
+											</div>
 										</a>
 									</figcaption>
 								</figure>
 							</div>
 							<figure class="item">
 								<figcaption class="info">
+
 									<div class="point-wrap">									
 										<div class="item-color">
 											<span class="color" style="font-size: 13px;">SIZE: ${rvbestlist.size_name}          좋아요 수: ${rvbestlist.r_like}
 											</span>
 										</div>
 									</div>
+
 									<div class="item-comment">
 										<span class="comment-txt"> ${rvbestlist.r_content}</span>
 									</div>
@@ -91,28 +102,13 @@ function frmSubmit(i){
 
 						</div>
 					</c:forEach>
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					
-					
+
 				<!--      여기까지 -->
 				</div>
 			</div>
 			<div class="dp-tab">
 				<a href="javascript:void(0);" onclick="moveTabPage('','ALL');"
-					id="tabKind_ALL" value="ALL" class="on"><span>ALL</span></a> <a
-					href="javascript:void(0);" onclick="moveTabPage('TAB_MEN','MEN');"
-					id="tabKind_MEN" value="MEN"><span>MEN</span></a> <a
-					href="javascript:void(0);"
-					onclick="moveTabPage('TAB_WOMEN','WOMEN');" id="tabKind_WOMEN"
-					value="WOMEN"><span>WOMEN</span></a>
-
+					id="tabKind_ALL" value="ALL" class="on"><span>ALL</span></a> 
 			</div>
 
 
@@ -172,19 +168,9 @@ function frmSubmit(i){
 									</span>
 								</div>
 							</figure>
-							<figure class="item">
-								<figcaption class="info">
-									<div class="point-wrap">
-										
-										
-									</div>
-								</figcaption>
-							</figure>
+
 						</div>
 					</c:forEach>
-
-
-					<!--일반리뷰 반복 끝 -->
 
 				</div>
 			</div>
