@@ -96,6 +96,10 @@ public class ActionFactory {
 			action = new CancleOrderAction();
 		}else if(command.equals("orderCancleForm")) {
 			action = new OrderCancleFormActin();
+		}else if(command.equals("searchPwForm")) {
+			action = new SearchPWFormAction();
+		}else if(command.equals("searchPW")) {
+			action = new SearchPWAction();
 		}
 		return action;
 	}

@@ -94,8 +94,9 @@
 																	<div class="cell-inner">
 																		<div class="btns">
 																			<c:choose>
+																			
 																				<c:when test ="${item.order_check==0}">
-																						<button type="button" class="btn-type3-sm" onclick="orderCancle('${item.order_no}, '${item.pro_no}', '${item.product_option}','${sessionScope.loginUser.user_id}');">
+																						<button type="button" class="btn-type3-sm" onclick="orderCancle('${item.order_no}', '${item.pro_no}', '${item.product_option}','${sessionScope.loginUser.user_id}')">
 																				<span>주문취소</span>
 																			</button>
 																				</c:when>
@@ -189,7 +190,7 @@ function orderCancle(o_no, p_no,p_size,user_id){
 				var row = "";
 				var tag = "#order_"+o_no+"_"+p_no+"_"+p_size;
 				row = `<div class='cell-inner'><div class='cell-inner'><div class='btns'><span class='btn-type3-sm'>주문취소완료</span></div><div></div>
-					  </div></div>`
+					  </div></div>`;
 				$(tag).html(row);
 				alert('주문취소 성공');
 			}else
@@ -199,6 +200,6 @@ function orderCancle(o_no, p_no,p_size,user_id){
 			console.log(e)
 		}
 	})
-}
+};
 </script>
 <%@ include file="/layout/footer.jsp"%>

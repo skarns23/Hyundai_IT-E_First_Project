@@ -77,9 +77,9 @@
 									</div>
 									<ul class="links">
 										<li><a href="${contextPath}/Hfashion?command=searchIdForm" title="새창으로 열림"
-											onclick="goHpointFindId();">아이디 찾기</a></li>
+											>아이디 찾기</a></li>
 										<li><a href="${contextPath}/Hfashion?command=searchPwForm" title="새창으로 열림"
-											onclick="goHpointFindPwd();">비밀번호 찾기</a></li>
+											>비밀번호 찾기</a></li>
 									</ul>
 								</div>
 
@@ -90,118 +90,12 @@
 									</button>
 								</div>
 							</form>
-
-
-
 							</div>
-
-							<!-- 탭1-2 -->
-							<div class="tab-cont">
-								<ul class="login-input">
-									<li>
-										<div class="input-box">
-											<input type="text" title="OTP 인증번호" placeholder="OTP 인증번호"
-												class="inp-reset" id="otpNo" maxlength="8">
-											<div class="etc">
-												<button type="button" class="btn-clear">
-													<span>지우기</span>
-												</button>
-											</div>
-										</div>
-										<p class="txt-invalid" id="descOtp"></p>
-									</li>
-								</ul>
-
-								<div class="btn-box">
-									<button type="button" class="btn-type2-xlg"
-										onclick="login('otp');">
-										<span>로그인</span>
-									</button>
-								</div>
-
-								<dl class="txt-group">
-									<dt>OTP 인증번호 로그인 방법</dt>
-									<dd>
-										<ol class="txt-list number">
-											<li>1. H.Point 앱 실행</li>
-											<li>2. MENU &gt; 설정 &gt; OTP 인증번호 발급 클릭</li>
-											<li>3. 발급된 인증번호 입력</li>
-										</ol>
-									</dd>
-								</dl>
-							</div>
-						</div>
-
-
-					</div>
-				</div>
-
-				<!-- 탭2 H패션몰 회원 -->
-
-				<!-- 탭3 비회원 -->
-				<div class="tab-cont">
-					<div class="login-group nomem">
-						<div class="login-left">
-							<ul class="login-input">
-								<li>
-									<div class="input-box">
-										<input type="text" title="이름" placeholder="이름"
-											class="inp-reset" maxlength="30" id="nonMbrNm">
-										<div class="etc">
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
-									</div>
-									<p class="txt-invalid" id="descNonMbrNm"></p>
-								</li>
-								<li>
-									<div class="input-box">
-										<input type="text" title="휴대폰번호" placeholder="휴대폰번호"
-											class="inp-reset" maxlength="11" id="nonMobilNo" >
-										<div class="etc">
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
-									</div>
-									<p class="txt-invalid" id="descNonMobilNo"></p>
-								</li>
-								<li>
-									<div class="input-box">
-										<input type="text" title="주문번호" placeholder="주문번호"
-											class="inp-reset" maxlength="17" id="nonOrdNo">
-										<div class="etc">
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
-									</div>
-									<p class="txt-invalid" id="descNonOrdNo"></p>
-								</li>
-							</ul>
-
-							<div class="btn-box">
-								<button type="button" class="btn-type2-xlg"
-									onclick="nonMemberOrder(); return false;">
-									<span>주문 조회</span>
-								</button>
-							</div>
-
-							<p class="txt-login-guide">주문번호를 모르신다면, 고객센터 1800-5700로
-								문의해주시기 바랍니다.</p>
-						</div>
-
-						<div class="login-guide">
-							<p class="txt-login">
-								비회원으로 구매 건의<br> 주문/배송 조회만 가능합니다.
-							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 			<script>
-				//tab.active('#loginTab', 0);
 			</script>
 		</div>
 		<!-- //login-wrap -->
