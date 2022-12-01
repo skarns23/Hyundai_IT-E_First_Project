@@ -75,7 +75,7 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 	</section>
 	<section class="dp-section main-keyword-ranking" id="ranking">
 		<div class="keyword-ranking">
-			<h2 class="title">KEYWORD RANKING</h2>
+			<h2 class="title">BEST RANKING</h2>
 			<ul id="mainCnrKeywordRanking" class="list" style="">
 				<li class="active"><a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="category"> <span class="num">1</span> <span class="name">타미</span> <span
 						class="state-mid">상승</span>
@@ -366,7 +366,11 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 			</div>
 		</div>
 	</section>
-	<section class="dp-section main-best-seller" id="mainSectionBestSeller" style="">
+	
+	
+	
+<!-- 삭제 시작!! -->
+	<!-- <section class="dp-section main-best-seller" id="mainSectionBestSeller" style="">
 
 		<h2 class="dp-title tit-tab-wrap eng" id="bestTitle">
 			<span class="tit-tab pl113 on" id="brand"> <a href="javascript:undefined;">BRAND BEST</a>
@@ -376,7 +380,7 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 			</span>
 		</h2>
 		<div id="visualSlide10_2" class="visual-slide14">
-			<!-- 탭 콘텐츠1 -->
+			탭 콘텐츠1
 			<div id="mBest-tab-cont1" class="main-best-cont on">
 				<div class="slide-container product-list cont1">
 					<ul id="ulBestKwdCnrGodList1" class="swiper-wrapper slick-initialized slick-slider slick-dotted">
@@ -2012,7 +2016,7 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 					</span>
 				</div>
 			</div>
-			<!-- 탭 콘텐츠2 -->
+			탭 콘텐츠2
 			<div id="mBest-tab-cont2" class="main-best-cont">
 
 				<div class="product-tab">
@@ -2052,6 +2056,8 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 
 		</div>
 	</section>
+	
+	
 	<section class="dp-section main-pick-tube">
 		<h2 class="dp-title eng">
 			<a href="/article/list?contType=htv" class="link"> H - TV</a>
@@ -2165,7 +2171,10 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 				<span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
 			</div>
 		</div>
-	</section>
+	</section> -->
+	<!-- 삭제끝 -->
+	
+	
 	<section class="dp-section bg-section main-review-plus">
 		<h2 class="dp-title">
 			BEST REVIEW

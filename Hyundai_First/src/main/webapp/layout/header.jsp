@@ -54,7 +54,7 @@
 				<div class="header-wrap">
 					<div class="gnb-menu">
 						<div class="gnb-category">
-							<a href="${contextPath}/product/productBestList.jsp"> <span>베스트</span>
+							<a href="${contextPath}/Hfashion?command=best"> <span>베스트</span>
 							</a>
 						</div>
 						<div class="gnb-category">

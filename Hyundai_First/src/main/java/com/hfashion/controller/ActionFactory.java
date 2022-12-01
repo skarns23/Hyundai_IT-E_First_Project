@@ -84,6 +84,10 @@ public class ActionFactory {
 			action = new OrderCompleteAction();
 		}else if (command.equals("reviewSearch")) {
 			action = new ReviewSearchAction();
+		}else if (command.equals("best")) {
+			action = new ProductBestAction();
+		}else if (command.equals("bestSort")) {
+			action = new ProductBestSortAction();
 		}
 		
 		
