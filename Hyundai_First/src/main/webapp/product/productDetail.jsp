@@ -395,6 +395,7 @@ function insert_like(review_no){
           }
       
    });
+
  };
  
  
