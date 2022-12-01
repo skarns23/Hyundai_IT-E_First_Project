@@ -373,30 +373,30 @@ function insert_like(review_no){
    $.ajax({
        url : 'Hfashion?command=goodinsert', // 연결 url
          type: 'post',        
-        data : {
-          r_no : r_no,
-        },      
-        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
-           var result = JSON.parse(obj);
-             
-             if(result[1]==0){
-                alert("이 상품은 이미 '좋아요'가 눌렸습니다");
-             } else{
-                alert("좋아요 개수:"+result[0]);
-                alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
-             }
-          /*  alert(result[0]);
-           alert(result[1]);    */            
-           $(this).addClass("on");
-           get_review();
-        },
-       error: 
-          function (e){
-             console.log(e);
-            alert("로그인 이후에 이용해주세요")                  
-          }
-      
-   });
+	     data : {
+	    	r_no : r_no,
+	     },		
+	     success : function(obj){      					//ajax통신 성공시 넘어오는 데이터 통째 이름 =data
+	    	 var result = JSON.parse(obj);
+	          
+	          if(result[1]==0){
+	        	  alert("이 상품은 이미 '좋아요'가 눌렸습니다");
+	          } else{
+	        	  alert("좋아요 개수:"+result[0]);
+	        	  alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
+	          }
+	    	/*  alert(result[0]);
+	    	 alert(result[1]);	 */     	    
+	    	 $(this).addClass("on");
+	    	 get_review();
+	     },
+	    error: 
+		    function (e){
+	    		console.log(e);
+		      alert("로그인 이후에 이용해주세요")                  
+		    }
+		
+	});
  };
  
 </script>

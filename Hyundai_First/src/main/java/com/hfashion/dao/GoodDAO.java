@@ -34,7 +34,7 @@ public class GoodDAO {
 	}
     // 좋아요 테이블에 리뷰 넘버와 유저아이디 삽입 DAO 
 	public int goodinsert(String R_no, String user_id) {
-		String sql = "{call update_good(?,?)}"; // good테이블에 값저장
+		String sql = "{call good_pack.update_good(?,?)}"; // good테이블에 값저장
 		int result = 0;
 		try {
 
@@ -57,7 +57,7 @@ public class GoodDAO {
 	// 좋아요 개수 호출 DAO
     public int SelectLike(String R_no) {
     	int like=0;
-        String selectlike="{call select_like(?,?)}";
+        String selectlike="{call good_pack.select_good(?,?)}";
     	// 좋아요개수 호출 프로 시저 실행
         
         try {

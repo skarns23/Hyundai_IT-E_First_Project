@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
@@ -41,7 +39,7 @@ public class ReviewDAO {
   
 	// 리뷰생성
 	public void createReview(ReviewVO reviewvo) {
-		String insert = "{call insert_review(?,?,?,?,?,?,?,?,?,?)}";
+		String insert = "{call review_pack.insert_review(?,?,?,?,?,?,?,?,?,?)}";
 		Connection con = null;
 
 		try {
@@ -84,7 +82,7 @@ public class ReviewDAO {
 	// 리뷰 상세 정보  
 	public ReviewVO Reviewdetail(String R_no) {
 		ReviewVO review = new ReviewVO();
-		String detail = "{call review_detail(?,?)}";
+		String detail = "{call review_pack.review_detail(?,?)}";
 
 		try {
 			System.out.println("review dao 실행 중");
@@ -119,7 +117,7 @@ public class ReviewDAO {
 	public ArrayList<ReviewVO> ReviewList() {
 		ArrayList<ReviewVO> list = new ArrayList<>();
 		System.out.println("dao확인1");
-		String sql = "{call review_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
+		String sql = "{call review_pack.review_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
 		System.out.println("dao확인2");
 		try {
 			Connection con = ConnectionProvider.getConnection();
@@ -175,7 +173,7 @@ public class ReviewDAO {
 	public ArrayList<ReviewVO> BestReviewList() {
 		ArrayList<ReviewVO> bestlist = new ArrayList<>();
 		System.out.println("dao확인1");
-		String sql = "{call bestreview_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
+		String sql = "{call review_pack.bestreview_list(?)}"; // 프로시저 실행(커서는 ? 하나 객체이므로)
 		System.out.println("dao확인2");
 
 		try {
@@ -237,7 +235,7 @@ public class ReviewDAO {
 	
 	public List<ReviewDTO> getOptionalReview(String pro_no, int height, int weight,String size){
 		List<ReviewDTO> result = new ArrayList<>();
-		String sql = "{call search_review(?,?,?,?,?)}";
+		String sql = "{call review_pack.search_review(?,?,?,?,?)}";
 		try {
 			Connection conn = ConnectionProvider.getConnection();
 			CallableStatement cstmt = conn.prepareCall(sql);
