@@ -51,7 +51,7 @@ public class OrderAction implements Action{
 		
 		
 		if(request.getMethod().equals("POST")) {
-			String url = "product/orderComplete.jsp";
+			String url = "Hfashion?command=orderComplete";
 			
 			HttpSession session = request.getSession();
 			

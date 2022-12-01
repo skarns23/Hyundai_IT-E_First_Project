@@ -8,14 +8,15 @@
 	<div class="content-response">
 		<div class="product-view-top">
 			<div class="product-view-img">
-				<div id="pdViewSlide" class="product-view-slide">
+				<div id="pdViewSlide" class="product-view-slide" data-slide-length="${imgSize}">
+
 					<div class="swiper-container">
-						<div id="productImgSlide" class="swiper-wrapper"
-							style="transform: translate3d(-2600px, 0px, 0px); transition-duration: 0ms;">
+						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
 
 							<c:forEach var="imgVO" items="${imgList}">
-								<div id="detail_swiper-slide" class="swiper-slide">
-									<img src='<c:url value='${imgVO.img_loc}'></c:url>'>
+								<c:set var="i" value="${i+1}" />
+								<div class="swiper-slide swiper-slide-duplicate" style="text-align: center;" data-swiper-slide-index="${i}">
+									<img src="${contextPath}/${imgVO.img_loc}" style="width: 535.5px;">
 								</div>
 							</c:forEach>
 						</div>
@@ -36,20 +37,22 @@
 							tabindex="0" role="button" aria-label="Go to slide 6">6</button>
 					</div>
 					<div class="slide-nav type6">
-						<button type="button" class="slide-nav-prev">이전</button>
-						<button type="button" class="slide-nav-next">다음</button>
+						<button type="button" class="slide-nav-prev" tabindex="0" role="button" aria-label="Previous slide">이전</button>
+						<button type="button" class="slide-nav-next" tabindex="0" role="button" aria-label="Next slide">다음</button>
 					</div>
 				</div>
 			</div>
 			<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
+
     </script>
 			<script>
+
 
         var mySwiper = new Swiper('.swiper-container', {
             // 슬라이드를 버튼으로 움직일 수 있습니다.
             navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
+                nextEl: '.slide-nav-prev',
+                prevEl: '.slide-nav-next',
             },
 
             // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
@@ -120,9 +123,8 @@
 							<div class="sel-list">
 								<ul optcd="SIZE_OPT">
 									<c:forEach var="sVO" items="${sList}">
-										<li><label> <input type="radio"
-												onchange="selectActive('pdStickySelSize_0',0,'option');"
-												onclick="showTotal();"> <span>${sVO.size_name}</span>
+
+										<li><label> <input type="radio" onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="showTotal();"> <span>${sVO.size_name}</span>
 										</label></li>
 									</c:forEach>
 								</ul>
@@ -147,8 +149,9 @@
 							</span>
 						</div>
 						<div class="total" style="display: none;">
-							<strong class="tit">합계</strong> <span class="num"> <fmt:formatNumber
-									value="${pVO.pro_price}" pattern="#,###" />
+
+							<strong class="tit">합계</strong> <span class="num"> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" />
+
 							</span>
 						</div>
 						<div class="btn-box">
@@ -225,40 +228,28 @@
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
+
 								<div class="select">
-									<button type="button" class="sel-btn"
-										onclick="select.trigger();">최신순</button>
-									<div id="reviewSortFilter" class="sel-list">
-										<ul>
-											<li><label><input type="radio" name="rvList"
-													value="new"> <span>최신순</span></label></li>
-											<li><label><input type="radio" name="rvList"
-													value="like"> <span>공감순</span></label></li>
-										</ul>
-									</div>
+
+									<input type="number" id="search_height" placeholder="키" default='' />
 								</div>
 								<div class="select">
-									<button type="button" class="sel-btn on"
-										onclick="select.trigger();">S</button>
+									<input type="number" id="search_weight" placeholder="몸무게" value='' />
+								</div>
+								<div class="select">
+									<span>사이즈</span>
+									<button type="button" id="btn_size" class="sel-btn on" placeholder="사이즈선택" onclick="select.trigger();"></button>
 									<div class="sel-list">
 										<ul>
-											<li><label> <input type="radio" name="optValCd1"
-													value="XS"> <span>XS</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="S"> <span>S</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="M"> <span>M</span>
-											</label></li>
-											<li><label> <input type="radio" name="optValCd1"
-													value="L"> <span>L</span>
-											</label></li>
+											<c:forEach var="sVO" items="${sList}">
+												<li><label> <input type="radio" name="optValCd1" value="${sVO.size_name}"><span>${sVO.size_name}</span>
+												</label></li>
+											</c:forEach>
+
 										</ul>
 									</div>
 								</div>
-								<button type="button" class="btn-type1-sm"
-									onclick="getReviewList('1','F','F',null);">
+								<button type="button" class="btn-type1-sm" id="btn_search">
 									<span>필터적용</span>
 								</button>
 							</div>
@@ -333,6 +324,7 @@
 		</div>
 	</div>
 </div>
+
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -374,7 +366,35 @@ function insert_like(){
  }
 
 </script>
+<script>
+$(document).ready(function(){
+	get_review();
+	$("#btn_search").click(get_review);
+})
 
+	function get_review() {
+		var pro_no = ${pVO.pro_no};
+		var height = $("#search_height").val();
+		var weight = $("#search_weight").val();
+		var val_size = $("#btn_size").text();
+		$.ajax({
+			url : "Hfashion?command=reviewSearch",
+			data : {
+				pro_no : pro_no,
+				height : height,
+				weight : weight,
+				pro_size : val_size
+			},
+			success : function(result) {
+				 var obj = JSON.parse(result);
+				 console.log(obj);
+			},
+			error : function(e) {
+				alert('조회 실패');
+			}
+		})
+	}
+</script>
 
 
 

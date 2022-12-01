@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		$(".gender").click(function(){
+			$(".tit-tab").removeClass('on');
+			$(this).parents().addClass('on');
+		})
+		
+	});
+</script>
 
 <div id="container">
    <section class="content-response">
@@ -48,9 +58,7 @@ $('.gender').click( function(){
 	
 	var genderVal = $(this).attr("id");
 	var categoryNo = $('#categoryNo').val();
-	alert(genderVal);
-	alert(categoryNo);
-	
+
 	$.ajax({
 		url: 'Hfashion?command=productSort',
 		type: 'GET',
@@ -58,16 +66,13 @@ $('.gender').click( function(){
 			gender : genderVal,
 			category : categoryNo
 		},
-		//dataType: 'json',
 		success: function(result){
 			//alert("ajax 는 쉬운것이다!")
 			
 			var obj = JSON.parse(result);
 			
-			
 			//alert(obj);
 			//console.log(obj);
-			alert("len " + obj[0].pro_name);
 			var tag="";
 			for(var i=0; i<obj.length; i++){
 				let price = obj[i].pro_price;
@@ -100,25 +105,14 @@ $('.gender').click( function(){
 	            </li>
 				`
 			}
-			
-			alert(tag)
 			$("#productsList").html(tag);
 
 		},
 		error:function(){
 			alert("ajax 에러다 요녀석아");
 		}
-		
-		
-		
 	});
-	
-	
 });
-
-
-
-
 </script>
 
 

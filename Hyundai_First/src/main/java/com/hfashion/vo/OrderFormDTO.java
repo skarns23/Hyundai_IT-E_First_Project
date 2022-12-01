@@ -19,4 +19,5 @@ public class OrderFormDTO {
 	private String userEmail;
 	private List<CartDTO> orderList = new ArrayList<CartDTO>(); 
 	private int totalPrice;
+	private int deliveryFee;
 }
