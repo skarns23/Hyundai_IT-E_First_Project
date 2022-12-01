@@ -71,7 +71,7 @@ $('.gender').click( function(){
 			
 			var obj = JSON.parse(result);
 			
-			//alert(obj);
+			alert(obj);
 			//console.log(obj);
 			var tag="";
 			for(var i=0; i<obj.length; i++){
