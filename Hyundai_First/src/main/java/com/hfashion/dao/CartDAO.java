@@ -22,12 +22,12 @@ import oracle.jdbc.OracleTypes;
 public class CartDAO {
 	private static CartDAO cDAO = new CartDAO();
 	private DataSource ds = null;
-	private String selectCart = "{call select_cart(?, ?)}";
-	private String insertCart = "{call update_or_insert_cart(?, ?, ?, ?)}";
-	private String delCart = "{call del_cart(?, ?, ?)}";
-	private String delAllCart = "{call del_all_cart(?)}";
-	private String selUpdateCart = "{call sel_update_cart(?, ?, ?)}";
-	private String cntUpdateCart = "{call amount_update_cart(?, ?, ?, ?)}";
+	private String selectCart = "{call cart_pack.select_cart(?, ?)}";
+	private String insertCart = "{call cart_pack.update_or_insert_cart(?, ?, ?, ?)}";
+	private String delCart = "{call cart_pack.del_cart(?, ?, ?)}";
+	private String delAllCart = "{call cart_pack.del_all_cart(?)}";
+	private String selUpdateCart = "{call cart_pack.sel_update_cart(?, ?, ?)}";
+	private String cntUpdateCart = "{call cart_pack.amount_update_cart(?, ?, ?, ?)}";
 	
 	private CartDAO() {
 		try {

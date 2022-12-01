@@ -150,8 +150,6 @@
 					<div class="order-links">
 						<ul>
 							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문 조회</a></li>
-							<li>주문 취소 <span class="num">0</span>건
-							</a></li>
 						</ul>
 					</div>
 					<div class="slide-util">
