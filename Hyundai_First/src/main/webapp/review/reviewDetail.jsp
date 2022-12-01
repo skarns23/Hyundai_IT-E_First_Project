@@ -60,12 +60,7 @@
 								class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
 						</div>
 						<div class="cont-wrap">
-							<h3 class="title">${Rvo.r_title}</h3>
-							<div class="opt-wrap">
-								<p class="point size-m">
-									<span class="ico" style="width: 100%">별점 5점</span>
-								</p>
-							</div>
+							<h3 class="title">${Rvo.r_title}</h3>							
 							<div class="txt-wrap">
 								<p class="txt">${Rvo.r_content}</p>
 							</div>

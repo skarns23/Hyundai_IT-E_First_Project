@@ -77,12 +77,9 @@ function frmSubmit(i){
 							</div>
 							<figure class="item">
 								<figcaption class="info">
-									<div class="point-wrap">
-										<div class="point">
-											<span class="ico" style="width: 100%">별점</span>
-										</div>
+									<div class="point-wrap">									
 										<div class="item-color">
-											<span class="color" style="font-size: 13px;">${rvbestlist.size_name}
+											<span class="color" style="font-size: 13px;">SIZE: ${rvbestlist.size_name}          좋아요 수: ${rvbestlist.r_like}
 											</span>
 										</div>
 									</div>
@@ -144,7 +141,9 @@ function frmSubmit(i){
 									</span>
 									<figcaption class="item-info">
 										<div class="item-brand">${rvList.brand_name}</div><span>좋아요 ${rvList.r_like}</span>
+										
 										<div class="item-name">${rvList.pro_name}</div>
+										<span class="color">SIZE ${rvList.size_name}</span>
 										<div class="item-price">
 											<span class="price"><fmt:formatNumber value="${rvList.pro_price}" pattern="#,###" /></span>
 
@@ -176,13 +175,8 @@ function frmSubmit(i){
 							<figure class="item">
 								<figcaption class="info">
 									<div class="point-wrap">
-										<div class="point">
-											<span class="ico" style="width: 100%">${rvList.star_rating}
-											</span>
-										</div>
-										<div class="item-color">
-											<span class="color">${rvList.size_name}</span>
-										</div>
+										
+										
 									</div>
 								</figcaption>
 							</figure>
@@ -192,23 +186,6 @@ function frmSubmit(i){
 
 					<!--일반리뷰 반복 끝 -->
 
-
-					<!-- 페이징 부분 -->
-					<div class="paging" id="pagingArea">
-						<span> <strong title="현재 페이지">1</strong> <a
-							href="javascript:void(0)" id="page_2" onclick="movePage('2')">2</a>
-							<a href="javascript:void(0)" id="page_3" onclick="movePage('3')">3</a>
-							<a href="javascript:void(0)" id="page_4" onclick="movePage('4')">4</a>
-							<a href="javascript:void(0)" id="page_5" onclick="movePage('5')">5</a>
-							<a href="javascript:void(0)" id="page_6" onclick="movePage('6')">6</a>
-							<a href="javascript:void(0)" id="page_7" onclick="movePage('7')">7</a>
-							<a href="javascript:void(0)" id="page_8" onclick="movePage('8')">8</a>
-							<a href="javascript:void(0)" id="page_9" onclick="movePage('9')">9</a>
-							<a href="javascript:void(0)" id="page_10"
-							onclick="movePage('10')">10</a>
-						</span> <a class="next" href="javascript:void(0)" title="다음 페이지"
-							onclick="movePage('11')">다음 페이지</a>
-					</div>
 				</div>
 			</div>
 		</div>
