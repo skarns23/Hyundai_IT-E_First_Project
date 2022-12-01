@@ -1,4 +1,3 @@
 function showTotal(){
 	$(".total").show();
 }
-

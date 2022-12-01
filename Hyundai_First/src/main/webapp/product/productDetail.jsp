@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
 <script>
@@ -39,6 +40,9 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 }
 
 </script>
+
+<script type="text/javascript"
+	src="${contextPath}/js/product/productDetail.js"></script>
 <div id="container">
 	<div class="content-response">
 		<div class="product-view-top">
@@ -57,12 +61,19 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 						</div>
 					</div>
 					<div class="swiper-pagination">
-						<button type="button" class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button" aria-label="Go to slide 1">1</button>
-						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 2">2</button>
-						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 3">3</button>
-						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 4">4</button>
-						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 5">5</button>
-						<button type="button" class="swiper-pagination-bullet" tabindex="0" role="button" aria-label="Go to slide 6">6</button>
+						<button type="button"
+							class="swiper-pagination-bullet swiper-pagination-bullet-active"
+							tabindex="0" role="button" aria-label="Go to slide 1">1</button>
+						<button type="button" class="swiper-pagination-bullet"
+							tabindex="0" role="button" aria-label="Go to slide 2">2</button>
+						<button type="button" class="swiper-pagination-bullet"
+							tabindex="0" role="button" aria-label="Go to slide 3">3</button>
+						<button type="button" class="swiper-pagination-bullet"
+							tabindex="0" role="button" aria-label="Go to slide 4">4</button>
+						<button type="button" class="swiper-pagination-bullet"
+							tabindex="0" role="button" aria-label="Go to slide 5">5</button>
+						<button type="button" class="swiper-pagination-bullet"
+							tabindex="0" role="button" aria-label="Go to slide 6">6</button>
 					</div>
 					<div class="slide-nav type6">
 						<button type="button" class="slide-nav-prev" tabindex="0" role="button" aria-label="Previous slide">이전</button>
@@ -71,9 +82,12 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 				</div>
 			</div>
 			<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
-				
-			</script>
+
+
+    </script>
 			<script>
+
+
         var mySwiper = new Swiper('.swiper-container', {
             // 슬라이드를 버튼으로 움직일 수 있습니다.
             navigation: {
@@ -109,11 +123,14 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 
 			<div class="product-view-info">
 				<div class="etc-btn">
-					<button type="button" class="btn-like " onclick="addBukmk(this,addBukmkCallback);" godno="GM0122103109697">
-						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"></strong> <span>좋아요</span>
+					<button type="button" class="btn-like "
+						onclick="addBukmk(this,addBukmkCallback);" godno="GM0122103109697">
+						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"></strong>
+						<span>좋아요</span>
 					</button>
 					<span class="bar">|</span>
-					<button type="button" class="btn-share" onclick="layerBox.open('layerShare');">
+					<button type="button" class="btn-share"
+						onclick="layerBox.open('layerShare');">
 						<span>공유</span>
 					</button>
 				</div>
@@ -130,7 +147,8 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 				<div class="item-price">
 					<input type="hidden" id="pro-price" value="${pVO.pro_price}">
 					<p class="price">
-						<span> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" /></span>
+						<span> <fmt:formatNumber value="${pVO.pro_price}"
+								pattern="#,###" /></span>
 					</p>
 				</div>
 
@@ -138,12 +156,14 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 				<div class="product-view-option">
 					<div class="row size gnrlOpt">
 						<div class="select" name="optSelect0_top">
-							<button type="button" class="sel-btn" onclick="select.trigger('option');">
+							<button type="button" class="sel-btn"
+								onclick="select.trigger('option');">
 								사이즈를 선택하세요. <span class="val" id="selSize"></span>
 							</button>
 							<div class="sel-list">
 								<ul optcd="SIZE_OPT">
 									<c:forEach var="sVO" items="${sList}">
+
 										<li><label> <input type="radio" onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="showTotal();"> <span>${sVO.size_name}</span>
 										</label></li>
 									</c:forEach>
@@ -153,22 +173,30 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 					</div>
 
 					<div class="option-bot">
-						<div name="qtyDiv" class="row quantity aditQtyDiv" style="" godno="" selectoptionyn="Y">
+						<div name="qtyDiv" class="row quantity aditQtyDiv" style=""
+							godno="" selectoptionyn="Y">
 							</strong> <span class="item-count">
-								<button type="button" class="btn-minus" onclick="quantityCalc('minus');">
+								<button type="button" class="btn-minus"
+									onclick="quantityCalc('minus');">
 									<span>빼기</span>
-								</button> <input type="number" name="qtySpinner" class="input-num aditGodQty" id="pro_qty" value="1" onkeyup="changeQty(this);">
-								<button type="button" class="btn-plus" onclick="quantityCalc('plus');">
+								</button> <input type="number" name="qtySpinner"
+								class="input-num aditGodQty" id="pro_qty" value="1"
+								onkeyup="changeQty(this);">
+								<button type="button" class="btn-plus"
+									onclick="quantityCalc('plus');">
 									<span>더하기</span>
 								</button>
 							</span>
 						</div>
 						<div class="total" style="display: none;">
+
 							<strong class="tit">합계</strong> <span class="num"> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" />
+
 							</span>
 						</div>
 						<div class="btn-box">
 							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag" onclick="addCart('${pVO.pro_no}');">
+
 								<span>장바구니</span>
 							</button>
 						</div>
@@ -182,26 +210,33 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 
 				<div class="info-bot">
 					<ul class="list">
-						<li class="row"><span class="tit">배송비</span> <span> <input type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상 구매시 무료(도서산간추가 3000원)
-								<button type="button" class="btn-tooltip" onclick="tooltip('dlv-hardarea'); $('.list-common.address').niceScroll(dScroll.opt);">툴팁보기</button>
+						<li class="row"><span class="tit">배송비</span> <span> <input
+								type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상
+								구매시 무료(도서산간추가 3000원)
+								<button type="button" class="btn-tooltip"
+									onclick="tooltip('dlv-hardarea'); $('.list-common.address').niceScroll(dScroll.opt);">툴팁보기</button>
 						</span>
 
 							<div class="dlv-hardarea" style="display: none;">
 								<ul class="txt-list">
 									<li>구매하신 상품에 따라 배송비가 부과됩니다.</li>
-									<li>도서산간 지역은 배송비가 추가 될 수 있습니다.<br> 해당 지역은 FAQ를 통해 확인하실 수 있습니다.
+									<li>도서산간 지역은 배송비가 추가 될 수 있습니다.<br> 해당 지역은 FAQ를 통해
+										확인하실 수 있습니다.
 									</li>
-									<li>H.Point, 한섬마일리지, H.Plus 등의 할인수단으로<br> 배송비 결제가 불가합니다.
+									<li>H.Point, 한섬마일리지, H.Plus 등의 할인수단으로<br> 배송비 결제가
+										불가합니다.
 									</li>
 								</ul>
 							</div></li>
 
 						<li><span class="tit">한섬마일리지</span> <span>최대 6% 적립
-								<button type="button" class="btn-tooltip" onclick="tooltip('mileage-info2');">
+								<button type="button" class="btn-tooltip"
+									onclick="tooltip('mileage-info2');">
 									<span>툴팁보기</span>
 								</button>
 								<li><span class="tit">H포인트</span> <span>0.1% 적립
-										<button type="button" class="btn-tooltip" onclick="tooltip('hpoint-info2', null, null,null,null);">
+										<button type="button" class="btn-tooltip"
+											onclick="tooltip('hpoint-info2', null, null,null,null);">
 											<span>툴팁보기</span>
 										</button>
 								</span></li>
@@ -213,13 +248,15 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 		<div class="product-view-detail">
 			<div class="product-detail-tab tab-wrap2 anchor-wrap">
 				<!-- 상품 상세 정보 -->
-				<section id="tabContentReview" class="anchor-section product-detail-review">
+				<section id="tabContentReview"
+					class="anchor-section product-detail-review">
 					<h3 class="sec-title">리뷰</h3>
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
 								<div class="select">
 									<input type="number" id="search_height" placeholder="키" default='' style="width: 80px;" />cm
+
 								</div>
 								<div class="select">
 									<input type="number" id="search_weight" placeholder="몸무게" value='' style="width: 80px;" />kg
@@ -242,17 +279,22 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 							</div>
 							<div class="opt"></div>
 						</div>
-						<div id="allReviewList" class="board-list board-review ui-fold" style="">
+						<div id="allReviewList" class="board-list board-review ui-fold"
+							style="">
 							<ul class="list-content">
 								<li class="on">
 									<div class="list-row fold-header">
 										<div class="cell-title">
 											<ul class="etc-info">
-												<li><span class="point size-m"><span class="ico" style="width: 100%">별점 5점</span></span></li>
+												<li><span class="point size-m"><span class="ico"
+														style="width: 100%">별점 5점</span></span></li>
 												<li>
-													<button type="button" class="btn-like2" onclick="addGodEvlLikeCount(this,addLikeList);" godevlturn="1" reviewgodno="GM0122092795931">
-														<span class="like-count" likecnt="1"> 1</span>
+													<!-- 좋아요 버튼 기능 수정\  -->
+
+													<button type="button" class="btn-like2" id="insert_like" onclick="test();">
+														<span class="like-count"> 1</span>
 													</button>
+													<div id="like_result">${board.like_it}</div>
 												</li>
 												<li><span class="date">2022.10.25</span></li>
 											</ul>
@@ -271,21 +313,29 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 												<li>
 													<div class="prd-option">
 
-														&nbsp;155cm ,통통한편 &nbsp;/ &nbsp; 구매옵션 : S<em class="prd-option-color"> <span class="pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg">BLACK</span>
+														&nbsp;155cm ,통통한편 &nbsp;/ &nbsp; 구매옵션 : S<em
+															class="prd-option-color"> <span
+															class="pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg">BLACK</span>
 														</em>
 													</div>
 												</li>
 											</ul>
 											<ul class="files">
 												<li class="img-file">
-													<button type="button" onclick="layerViewImg();" style="background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);">
-														<img src="https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg" alt="7AE074DE-6EE9-4107-BFFF-4E1874F1AB83" style="transform: rotate(0deg);">
+													<button type="button" onclick="layerViewImg();"
+														style="background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);">
+														<img
+															src="https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg"
+															alt="7AE074DE-6EE9-4107-BFFF-4E1874F1AB83"
+															style="transform: rotate(0deg);">
 													</button>
 												</li>
 											</ul>
-											<div class="txt-box">배송 빨라요. 촉감이 부드러워요. 기본 아이템이로 딱입니다. 다른 색도 구매하고 싶어요. 코디하기 좋습니다.</div>
+											<div class="txt-box">배송 빨라요. 촉감이 부드러워요. 기본 아이템이로 딱입니다.
+												다른 색도 구매하고 싶어요. 코디하기 좋습니다.</div>
 											<div class="review-report">
-												<button type="button" class="btn-report" onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'"></button>
+												<button type="button" class="btn-report"
+													onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'"></button>
 											</div>
 										</div>
 									</div>
@@ -298,6 +348,7 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 		</div>
 	</div>
 </div>
+
 <div id="layerShoppingBag" class="layer-pop" tabindex="0" style="display: none;">
 	<div class="layer-wrap" tabindex="0">
 		<div class="layer-header">
@@ -316,13 +367,54 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 						<span>장바구니 보기</span>
 					</button>
 				</div>
-
-
 			</div>
 		</div>
 		<button type="button" class="btn-layer-close" onclick="layer.close('layerShoppingBag');">닫기</button>
 	</div>
 </div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function(){
+	$("#insert_like").click(function(){
+		insert_like();
+	})
+});
+
+
+
+function insert_like(){	
+	var r_no=97; //임의 지정
+	 
+	$.ajax({
+		 url : 'Hfashion?command=goodinsert', // 연결 url
+         type: 'post',        
+	     data : {
+	    	r_no : r_no,
+	     },		
+	     success : function(obj){      					//ajax통신 성공시 넘어오는 데이터 통째 이름 =data
+	    	 var result = JSON.parse(obj);
+	          
+	          if(result[1]==0){
+	        	  alert("이 상품은 이미 '좋아요'가 눌렸습니다");
+	          } else{
+	        	  alert("좋아요 개수:"+result[0]);
+	        	  alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
+	          }
+	    	/*  alert(result[0]);
+	    	 alert(result[1]);	 */     	    	
+	     },
+	    error: 
+		    function (e){
+	    		console.log(e);
+		      alert("로그인 이후에 이용해주세요")                  
+		    }
+		
+	});
+ }
+
+</script>
 <script>
 $(document).ready(function(){
 	get_review();
