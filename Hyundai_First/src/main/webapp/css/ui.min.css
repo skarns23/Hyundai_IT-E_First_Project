@@ -3351,7 +3351,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .product-detail-review-list .board-list.board-review.ui-fold .fold-header .btn-fold::before { right: 20px; }
 
-.product-detail-review-list .board-list.board-review.ui-fold .fold-header .cell-title { padding: 34px 20px; }
+.product-detail-review-list .board-list.board-review.ui-fold .fold-header .cell-title { padding: 30px 20px 10px; }
 
 .product-detail-review-list .board-list.board-review.ui-fold .fold-header .cell-title .etc-info { margin-bottom: 20px; }
 
@@ -6372,7 +6372,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .review-plus-list .review-plus-cont .item-color .color { overflow: hidden; height: 16px; max-height: 16px; line-height: 16px; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; text-overflow: ellipsis; white-space: normal; font-size: 13px; }
 
-.review-plus-list .review-plus-cont .item-comment { padding: 0px 30px 30px; }
+.review-plus-list .review-plus-cont .item-comment { padding: 20px 30px 10px; }
 
 .review-plus-list .review-plus-cont .item-comment .comment-txt { overflow: hidden; height: 66px; max-height: 66px; line-height: 22px; display: block; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; text-overflow: ellipsis; white-space: normal; word-break: break-all; }
 
@@ -6549,7 +6549,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .review-plus .rp-count-box .review-plus-head .tooltip-area .btn-tooltip { vertical-align: middle; }
 
-.review-plus .rp-count-box .review-plus-list .review-plus-cont .item .info .point-wrap { padding: 20px 30px 16px; }
+.review-plus .rp-count-box .review-plus-list .review-plus-cont .item .info .point-wrap { padding: 10px 20px 25px; }
 
 .review-plus .rp-count-box .review-plus-list .review-plus-cont .product-list-sub { border-bottom: 1px solid #f5f5f5; }
 
@@ -6639,7 +6639,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .review-layer .review-detail .review-content .cont-wrap .opt-wrap { position: relative; }
 
-.review-layer .review-detail .review-content .cont-wrap .txt-wrap { margin-top: 45px; }
+.review-layer .review-detail .review-content .cont-wrap .txt-wrap { margin-top: 45px; height: 310px;}
 
 .review-layer .review-detail .review-content .cont-wrap .txt-wrap .writer-info { position: relative; margin: 0 0 20px; }
 
@@ -7355,7 +7355,7 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 
 .order-links ul { display: -webkit-box; display: -moz-box; display: -webkit-flex; display: -ms-flexbox; display: flex; }
 
-.order-links ul li { position: relative; width: 50%; text-align: center; }
+.order-links ul li { position: relative; width: 100%; text-align: center; }
 
 .order-links ul li a { border-bottom: 1px solid; }
 
@@ -12368,4 +12368,59 @@ select.select-sm { height: 30px; padding-left: 10px; background-color: #fff; bac
 #btnPayment{
 	cursor:pointer;
 }
+#video-box{
+width: 100%; overflow: hidden; height: 840px; margin: 0px auto; position: relative;
+}
 
+.arrow-down {
+position: absolute; top: 88.5%; width: 100%; 
+}
+
+.arrow-down a{
+margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
+}
+
+#arrow {
+  padding-top: 70px;
+}
+#arrow span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-left: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  -webkit-animation: sdb 1.5s infinite;
+  animation: sdb 1.5s infinite;
+  box-sizing: border-box;
+}
+@-webkit-keyframes sdb {
+  0% {
+    -webkit-transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}
+@keyframes sdb {
+  0% {
+    transform: rotate(-45deg) translate(0, 0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(-45deg) translate(-20px, 20px);
+    opacity: 0;
+  }
+}

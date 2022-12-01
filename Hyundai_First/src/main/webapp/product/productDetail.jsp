@@ -275,9 +275,9 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
                      </div>
                      <div class="opt"></div>
                   </div>
-                  								<div id="reviewNodata" class="nodata" style="display : none;">
-									지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다. (상품구매시)
-								</div>
+                                          <div id="reviewNodata" class="nodata" style="display : none;">
+                           지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다. (상품구매시)
+                        </div>
                   <div id="allReviewList" class="board-list board-review ui-fold"
                      style="">
                      <ul class="list-content">
@@ -322,29 +322,29 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 <script type="text/javascript">
 
 $(document).ready(function(){
-	get_review();
-	$("#btn_search").click(get_review);
+   get_review();
+   $("#btn_search").click(get_review);
 });
 
 function get_review() {
-	var pro_no = ${pVO.pro_no};
-	var height = $("#search_height").val();
-	var weight = $("#search_weight").val();
-	var val_size = $("#btn_size").text();
-	$.ajax({
-		url : "Hfashion?command=reviewSearch",
-		data : {
-			pro_no : pro_no,
-			height : height,
-			weight : weight,
-			pro_size : val_size
-		},
-		success : function(result) {
-			 var obj = JSON.parse(result);
-			 console.log(obj);
-			 if(obj.length == 0){
-	                $("#reviewNodata").css("display", "block");
-	             }
+   var pro_no = ${pVO.pro_no};
+   var height = $("#search_height").val();
+   var weight = $("#search_weight").val();
+   var val_size = $("#btn_size").text();
+   $.ajax({
+      url : "Hfashion?command=reviewSearch",
+      data : {
+         pro_no : pro_no,
+         height : height,
+         weight : weight,
+         pro_size : val_size
+      },
+      success : function(result) {
+          var obj = JSON.parse(result);
+          console.log(obj);
+          if(obj.length == 0){
+                   $("#reviewNodata").css("display", "block");
+                }
 
 			 var row ="";
 			 for(var i = 0; i<obj.length;i++){
@@ -366,35 +366,36 @@ function get_review() {
 	})
 }
 
-function insert_like(review_no){	
-	var r_no=review_no; //임의 지정
-	 alert(review_no);
-	$.ajax({
-		 url : 'Hfashion?command=goodinsert', // 연결 url
+function insert_like(review_no){   
+   var r_no=review_no; //임의 지정
+    alert(review_no);
+   $.ajax({
+       url : 'Hfashion?command=goodinsert', // 연결 url
          type: 'post',        
-	     data : {
-	    	r_no : r_no,
-	     },		
-	     success : function(obj){      					//ajax통신 성공시 넘어오는 데이터 통째 이름 =data
-	    	 var result = JSON.parse(obj);
-	          
-	          if(result[1]==0){
-	        	  alert("이 상품은 이미 '좋아요'가 눌렸습니다");
-	          } else{
-	        	  alert("좋아요 개수:"+result[0]);
-	        	  alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
-	          }
-	    	/*  alert(result[0]);
-	    	 alert(result[1]);	 */     	    
-	    	 $(this).addClass("on");
-	     },
-	    error: 
-		    function (e){
-	    		console.log(e);
-		      alert("로그인 이후에 이용해주세요")                  
-		    }
-		
-	});
+        data : {
+          r_no : r_no,
+        },      
+        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
+           var result = JSON.parse(obj);
+             
+             if(result[1]==0){
+                alert("이 상품은 이미 '좋아요'가 눌렸습니다");
+             } else{
+                alert("좋아요 개수:"+result[0]);
+                alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
+             }
+          /*  alert(result[0]);
+           alert(result[1]);    */            
+           $(this).addClass("on");
+        },
+       error: 
+          function (e){
+             console.log(e);
+            alert("로그인 이후에 이용해주세요")                  
+          }
+      
+   });
+
  };
  
  

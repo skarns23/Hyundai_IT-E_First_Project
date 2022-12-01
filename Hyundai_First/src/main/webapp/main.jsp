@@ -1,63 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
-<style>
-#video-box{
-width: 100%; overflow: hidden; height: 840px; margin: 0px auto; position: relative;
-}
 
-.arrow-down {
-position: absolute; top: 90%; width: 100%; 
-}
-
-.arrow-down a{
-margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
-}
-
-#arrow {
-  padding-top: 70px;
-}
-#arrow span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  margin-left: -12px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-animation: sdb 1.5s infinite;
-  animation: sdb 1.5s infinite;
-  box-sizing: border-box;
-}
-@-webkit-keyframes sdb {
-  0% {
-    -webkit-transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}
-@keyframes sdb {
-  0% {
-    transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}
-</style>
 <div id="container" style="padding-top: 90px;">
 	<section class="dp-section main-back-video" id="video-box">
 		<video muted autoplay loop style="width:100%;">
@@ -75,9 +18,11 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 	</section>
 	<section class="dp-section main-keyword-ranking" id="ranking">
 		<div class="keyword-ranking">
-			<h2 class="title">BEST RANKING</h2>
+			<h2 class="title">BEST <br>RANKING</h2>
 			<ul id="mainCnrKeywordRanking" class="list" style="">
-				<li class="active"><a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="category"> <span class="num">1</span> <span class="name">타미</span> <span
+				<c:forEach var="blist" items="${bestItemList}">
+				<c:set var="i" value="${i+1}"></c:set>
+				<li class="active"><a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="category"> <span class="num">${i}</span> <span class="name">${blist.productName}</span> <span
 						class="state-mid">상승</span>
 				</a>
 					<div class="brand open" style="height: 197.25px;">
@@ -85,153 +30,32 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122080576703"
 								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122080576703&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122080576703%22%2C%22GM0122080576705%22%2C%22GM0121070567067%22%2C%22GM0121070567063%22%2C%22GM0122091490058%22%2C%22GM0121110195519%22%2C%22GM0121110195520%22%2C%22GM0122090787781%22%2C%22GM0122090787780%22%2C%22115317205%22%5D&amp;keyword=%ED%83%80%EB%AF%B8">
 								<figure data-ga-id="GM0122080576703" data-ga-name="피마 코튼 캐시미어 크루넥 스웨터" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="219000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/05/GM0122080576703_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="피마 코튼 캐시미어 크루넥 스웨터"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY HILFIGER MEN</figcaption>
+									<img src="${contextPath}/${blist.mainImgslist.get(0)}">
+									
 								</figure>
 							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122080576705"
 								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122080576705&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122080576703%22%2C%22GM0122080576705%22%2C%22GM0121070567067%22%2C%22GM0121070567063%22%2C%22GM0122091490058%22%2C%22GM0121110195519%22%2C%22GM0121110195520%22%2C%22GM0122090787781%22%2C%22GM0122090787780%22%2C%22115317205%22%5D&amp;keyword=%ED%83%80%EB%AF%B8">
 								<figure data-ga-id="GM0122080576705" data-ga-name="피마 코튼 캐시미어 크루넥 스웨터" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="219000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/05/GM0122080576705_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="피마 코튼 캐시미어 크루넥 스웨터"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY HILFIGER MEN</figcaption>
+									<img src="${contextPath}/${blist.mainImgslist.get(1)}">
+									
 								</figure>
 							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122091490058"
 								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122091490058&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122080576703%22%2C%22GM0122080576705%22%2C%22GM0121070567067%22%2C%22GM0121070567063%22%2C%22GM0122091490058%22%2C%22GM0121110195519%22%2C%22GM0121110195520%22%2C%22GM0122090787781%22%2C%22GM0122090787780%22%2C%22115317205%22%5D&amp;keyword=%ED%83%80%EB%AF%B8">
 								<figure data-ga-id="GM0122091490058" data-ga-name="[ALASKA Series] 알래스카 푸퍼" data-ga-brand="TOMMY JEANS" data-ga-price="378000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/09/14/GM0122091490058_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="[ALASKA Series] 알래스카 푸퍼"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
+									<img src="${contextPath}/${blist.mainImgslist.get(2)}">
+									
 								</figure>
 							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122090787780"
 								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122090787780&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122080576703%22%2C%22GM0122080576705%22%2C%22GM0121070567067%22%2C%22GM0121070567063%22%2C%22GM0122091490058%22%2C%22GM0121110195519%22%2C%22GM0121110195520%22%2C%22GM0122090787781%22%2C%22GM0122090787780%22%2C%22115317205%22%5D&amp;keyword=%ED%83%80%EB%AF%B8">
 								<figure data-ga-id="GM0122090787780" data-ga-name="크롭 다운 푸퍼 (2way)" data-ga-brand="TOMMY JEANS" data-ga-price="358000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/09/07/GM0122090787780_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="크롭 다운 푸퍼 (2way)"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
+									<img src="${contextPath}/${blist.mainImgslist.get(1)}">
+									
 								</figure>
 							</a>
 						</div>
 					</div> <a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="link">더보기</a></li>
-				<li class=""><a href="javascript:void(0)" onclick="fn_searchLink('가디건'); return false;" class="category"> <span class="num">2</span> <span class="name">가디건</span> <span class="state-mid">상승</span>
-				</a>
-					<div class="brand " style="display: block; height: 0px;">
-						<div class="inner" id="hotKwdGod1">
-							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122101201742"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122101201742&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0121042754811%22%2C%22GM0121042754809%22%2C%22GM0122101201742%22%2C%22GM0122101201743%22%2C%22GM0120111025644%22%2C%22GM0122082280611%22%2C%22GM0122082280610%22%2C%22GM0121052761287%22%2C%22GM0122061663557%22%2C%22GM0122061663556%22%5D&amp;keyword=%EA%B0%80%EB%94%94%EA%B1%B4">
-								<figure data-ga-id="GM0122101201742" data-ga-name="라운드 넥 니트 가디건" data-ga-brand="SJYP" data-ga-price="269100">
-									<img src="https://cdn.hfashionmall.com//goods/HFBR/22/10/12/GM0122101201742_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="라운드 넥 니트 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>SJYP</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122101201743"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122101201743&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0121042754811%22%2C%22GM0121042754809%22%2C%22GM0122101201742%22%2C%22GM0122101201743%22%2C%22GM0120111025644%22%2C%22GM0122082280611%22%2C%22GM0122082280610%22%2C%22GM0121052761287%22%2C%22GM0122061663557%22%2C%22GM0122061663556%22%5D&amp;keyword=%EA%B0%80%EB%94%94%EA%B1%B4">
-								<figure data-ga-id="GM0122101201743" data-ga-name="라운드 넥 니트 가디건" data-ga-brand="SJYP" data-ga-price="269100">
-									<img src="https://cdn.hfashionmall.com//goods/HFBR/22/10/12/GM0122101201743_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="라운드 넥 니트 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>SJYP</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122082280611"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122082280611&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0121042754811%22%2C%22GM0121042754809%22%2C%22GM0122101201742%22%2C%22GM0122101201743%22%2C%22GM0120111025644%22%2C%22GM0122082280611%22%2C%22GM0122082280610%22%2C%22GM0121052761287%22%2C%22GM0122061663557%22%2C%22GM0122061663556%22%5D&amp;keyword=%EA%B0%80%EB%94%94%EA%B1%B4">
-								<figure data-ga-id="GM0122082280611" data-ga-name="울 믹스 브이넥 가디건" data-ga-brand="TOMMY JEANS" data-ga-price="198000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/22/GM0122082280611_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="울 믹스 브이넥 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122082280610"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122082280610&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0121042754811%22%2C%22GM0121042754809%22%2C%22GM0122101201742%22%2C%22GM0122101201743%22%2C%22GM0120111025644%22%2C%22GM0122082280611%22%2C%22GM0122082280610%22%2C%22GM0121052761287%22%2C%22GM0122061663557%22%2C%22GM0122061663556%22%5D&amp;keyword=%EA%B0%80%EB%94%94%EA%B1%B4">
-								<figure data-ga-id="GM0122082280610" data-ga-name="울 믹스 브이넥 가디건" data-ga-brand="TOMMY JEANS" data-ga-price="198000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/22/GM0122082280610_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="울 믹스 브이넥 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div> <a href="javascript:void(0)" onclick="fn_searchLink('가디건'); return false;" class="link">더보기</a></li>
-				<li class=""><a href="javascript:void(0)" onclick="fn_searchLink('데님'); return false;" class="category"> <span class="num">3</span> <span class="name">데님</span> <span class="state-mid">상승</span>
-				</a>
-					<div class="brand " style="display: block; height: 0px;">
-						<div class="inner" id="hotKwdGod2">
-							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GP8Z21122308189"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GP8Z21122308189&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0121060262257%22%2C%22GM0121060262258%22%2C%22GM0121051758844%22%2C%22GM0121021938760%22%2C%22GM0120112427038%22%2C%22GM0120111926751%22%2C%22GM0121050356662%22%2C%22GP8Z21122308189%22%2C%22GM0121021036902%22%2C%22GM0120100517133%22%5D&amp;keyword=%EB%8D%B0%EB%8B%98">
-								<figure data-ga-id="GP8Z21122308189" data-ga-name="[게스] 원워시 슬림스키니 OM1D0253" data-ga-brand="GUESS" data-ga-price="45000">
-									<img src="https://cdn.hfashionmall.com//goods/HFBR/21/12/23/GP8Z21122308189_0_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="[게스] 원워시 슬림스키니 OM1D0253"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>GUESS</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div> <a href="javascript:void(0)" onclick="fn_searchLink('데님'); return false;" class="link">더보기</a></li>
-				<li class=""><a href="javascript:void(0)" onclick="fn_searchLink('볼캡'); return false;" class="category"> <span class="num">4</span> <span class="name">볼캡</span> <span class="state-mid">상승</span>
-				</a>
-					<div class="brand " style="display: block; height: 0px;">
-						<div class="inner" id="hotKwdGod3">
-							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122072072623"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122072072623&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122021821521%22%2C%22GM0122021821524%22%2C%22GM0122072072623%22%2C%22GM0122072072624%22%2C%22GP4W22090686964%22%2C%22GM0120122929811%22%2C%22GM0120121628859%22%2C%22114735701%22%2C%22114735703%22%2C%22GP4W22060360120%22%5D&amp;keyword=%EB%B3%BC%EC%BA%A1">
-								<figure data-ga-id="GM0122072072623" data-ga-name="에스태블리시드 캡" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="55000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/07/20/GM0122072072623_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="에스태블리시드 캡"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY HILFIGER MEN</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122072072624"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122072072624&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122021821521%22%2C%22GM0122021821524%22%2C%22GM0122072072623%22%2C%22GM0122072072624%22%2C%22GP4W22090686964%22%2C%22GM0120122929811%22%2C%22GM0120121628859%22%2C%22114735701%22%2C%22114735703%22%2C%22GP4W22060360120%22%5D&amp;keyword=%EB%B3%BC%EC%BA%A1">
-								<figure data-ga-id="GM0122072072624" data-ga-name="에스태블리시드 캡" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="55000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/07/20/GM0122072072624_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="에스태블리시드 캡"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY HILFIGER MEN</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GP4W22090686964"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GP4W22090686964&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122021821521%22%2C%22GM0122021821524%22%2C%22GM0122072072623%22%2C%22GM0122072072624%22%2C%22GP4W22090686964%22%2C%22GM0120122929811%22%2C%22GM0120121628859%22%2C%22114735701%22%2C%22114735703%22%2C%22GP4W22060360120%22%5D&amp;keyword=%EB%B3%BC%EC%BA%A1">
-								<figure data-ga-id="GP4W22090686964" data-ga-name="남녀공용 CKJ 모노그램 패치 로고 볼캡 K509904-268 K509904268" data-ga-brand="Calvin Klein Accessories" data-ga-price="58650">
-									<img src="https://cdn.hfashionmall.com//goods/PVBR/22/09/06/GP4W22090686964_0_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="남녀공용 CKJ 모노그램 패치 로고 볼캡 K509904-268 K509904268"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>Calvin Klein Accessories</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GP4W22060360120"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GP4W22060360120&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122021821521%22%2C%22GM0122021821524%22%2C%22GM0122072072623%22%2C%22GM0122072072624%22%2C%22GP4W22090686964%22%2C%22GM0120122929811%22%2C%22GM0120121628859%22%2C%22114735701%22%2C%22114735703%22%2C%22GP4W22060360120%22%5D&amp;keyword=%EB%B3%BC%EC%BA%A1">
-								<figure data-ga-id="GP4W22060360120" data-ga-name="남녀공용 CKJ 데님 볼캡 HX0265-447 HX0265447" data-ga-brand="Calvin Klein Accessories" data-ga-price="69000">
-									<img src="https://cdn.hfashionmall.com//goods/PVBR/22/06/03/GP4W22060360120_0_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="남녀공용 CKJ 데님 볼캡 HX0265-447 HX0265447"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>Calvin Klein Accessories</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div> <a href="javascript:void(0)" onclick="fn_searchLink('볼캡'); return false;" class="link">더보기</a></li>
-				<li class=""><a href="javascript:void(0)" onclick="fn_searchLink('니트'); return false;" class="category"> <span class="num">5</span> <span class="name">니트</span> <span class="state-mid">상승</span>
-				</a>
-					<div class="brand " style="display: block; height: 0px;">
-						<div class="inner" id="hotKwdGod4">
-							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122082280610"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122082280610&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122082280610%22%2C%22GM0122082280611%22%2C%22GM0122071972374%22%2C%22GM0122072173207%22%2C%22GM0122071972376%22%2C%22GM0122091489770%22%2C%22GM0122090788004%22%2C%22GM0122082683759%22%2C%22GM0121072770714%22%2C%22GM0121072770715%22%5D&amp;keyword=%EB%8B%88%ED%8A%B8">
-								<figure data-ga-id="GM0122082280610" data-ga-name="울 믹스 브이넥 가디건" data-ga-brand="TOMMY JEANS" data-ga-price="198000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/22/GM0122082280610_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="울 믹스 브이넥 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122082280611"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122082280611&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122082280610%22%2C%22GM0122082280611%22%2C%22GM0122071972374%22%2C%22GM0122072173207%22%2C%22GM0122071972376%22%2C%22GM0122091489770%22%2C%22GM0122090788004%22%2C%22GM0122082683759%22%2C%22GM0121072770714%22%2C%22GM0121072770715%22%5D&amp;keyword=%EB%8B%88%ED%8A%B8">
-								<figure data-ga-id="GM0122082280611" data-ga-name="울 믹스 브이넥 가디건" data-ga-brand="TOMMY JEANS" data-ga-price="198000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/08/22/GM0122082280611_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="울 믹스 브이넥 가디건"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122071972374"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122071972374&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122082280610%22%2C%22GM0122082280611%22%2C%22GM0122071972374%22%2C%22GM0122072173207%22%2C%22GM0122071972376%22%2C%22GM0122091489770%22%2C%22GM0122090788004%22%2C%22GM0122082683759%22%2C%22GM0121072770714%22%2C%22GM0121072770715%22%5D&amp;keyword=%EB%8B%88%ED%8A%B8">
-								<figure data-ga-id="GM0122071972374" data-ga-name="릴렉스 에센셜 니트" data-ga-brand="TOMMY JEANS" data-ga-price="124600">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/07/19/GM0122071972374_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="릴렉스 에센셜 니트"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY JEANS</figcaption>
-								</figure>
-							</a> <a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122072173207"
-								clicklogurl="https://lc.recopick.com/1/banner/2734/pick?uid=93719615.1667805260852&amp;source=&amp;pick=GM0122072173207&amp;method=75&amp;channel=empty&amp;reco_type=search-item&amp;product_type=R&amp;reco_list=%5B%22GM0122082280610%22%2C%22GM0122082280611%22%2C%22GM0122071972374%22%2C%22GM0122072173207%22%2C%22GM0122071972376%22%2C%22GM0122091489770%22%2C%22GM0122090788004%22%2C%22GM0122082683759%22%2C%22GM0121072770714%22%2C%22GM0121072770715%22%5D&amp;keyword=%EB%8B%88%ED%8A%B8">
-								<figure data-ga-id="GM0122072173207" data-ga-name="피마 캐시미어 블렌드 케이블 니트" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="239000">
-									<img src="https://cdn.hfashionmall.com//goods/THBR/22/07/21/GM0122072173207_1_ORGINL.jpg?RS=180x180&amp;AR=0&amp;CS=120x180" alt="피마 캐시미어 블렌드 케이블 니트"
-										onerror="this.src='/resources/images/temp/pd_430x644.jpg'">
-									<figcaption>TOMMY HILFIGER MEN</figcaption>
-								</figure>
-							</a>
-						</div>
-					</div> <a href="javascript:void(0)" onclick="fn_searchLink('니트'); return false;" class="link">더보기</a></li>
+				</c:forEach>
+				
 			</ul>
 		</div>
 		<div class="keyword-items">

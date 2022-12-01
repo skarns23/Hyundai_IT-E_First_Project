@@ -66,8 +66,13 @@
 							<div class="txt-wrap">
 								<p class="txt">${Rvo.r_content}</p>
 							</div>
-
+							<div class="item-color" style="text-align: right; padding-right: 5px;">
+											<button type="button" class="btn-like2" onclick="insert_like(96);">
+												<span class="like-count">16</span>
+											</button>
+										</div>
 						</div>
+						
 
 					</div>
 					<input type="hidden" name="img_loc" value="${img_loc}" >   
