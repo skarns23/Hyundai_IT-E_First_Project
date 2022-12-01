@@ -100,6 +100,7 @@ public class OrderFormDAO {
 			dto.setUserEmail(userEmail);
 			dto.setUserPhone(userPhone);
 			
+			JdbcUtil.close(cstmt);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
