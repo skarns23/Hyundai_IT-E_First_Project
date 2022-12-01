@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+<script>
+$(document).ready(function(){
+	$(".gender").click(function(){
+		$(".tit-tab").removeClass('on');
+		$(this).parents().addClass('on');
+	})
+});
+</script>
 
 <div id="container">
 

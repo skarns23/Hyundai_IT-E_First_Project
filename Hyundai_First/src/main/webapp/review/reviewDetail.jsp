@@ -60,17 +60,19 @@
 								class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
 						</div>
 						<div class="cont-wrap">
+
 							<h3 class="title">${Rvo.r_title}</h3>
-							<div class="opt-wrap">
-								<p class="point size-m">
-									<span class="ico" style="width: 100%">별점 5점</span>
-								</p>
-							</div>
+
 							<div class="txt-wrap">
 								<p class="txt">${Rvo.r_content}</p>
 							</div>
-
+							<div class="item-color" style="text-align: right; padding-right: 5px;">
+											<button type="button" class="btn-like2" onclick="insert_like(96);">
+												<span class="like-count">16</span>
+											</button>
+										</div>
 						</div>
+						
 
 					</div>
 					<input type="hidden" name="img_loc" value="${img_loc}" >   

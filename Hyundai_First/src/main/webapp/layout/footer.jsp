@@ -7,10 +7,9 @@
 			<div class="box">
 				<p class="tit">ABOUT</p>
 				<ul class="list">
-					<li><a href="javascript:void(0);"
-						onclick="goCompanyIntroPage()">회사소개</a></li>
-					<li><a href="/public/cspage/shopInfo">매장안내</a></li>
-					<li><a href="/public/cspage/home">고객센터</a></li>
+					<li><a href="https://www.handsome.co.kr/ko/main.do">회사소개</a></li>
+					<li><a href="https://www.hfashionmall.com/public/cspage/shopInfo">매장안내</a></li>
+					<li><a href="https://www.hfashionmall.com/public/cspage/home">고객센터</a></li>
 					<li><button type="button"
 							onclick="termsShow('H패션몰 서비스 이용약관', '/public/cspage/terms?type=terms', '/public/cspage/terms?type=terms2', '/public/cspage/terms?type=terms3', '/public/cspage/terms?type=terms4','이용약관',null, 'POST');">이용약관</button></li>
 				</ul>
@@ -18,8 +17,8 @@
 			<div class="box">
 				<p class="tit">HELP</p>
 				<ul class="list">
-					<li><a href="/public/member/membershipInfo/hfm">회원혜택</a></li>
-					<li><a href="/public/member/membershipInfo/hs">한섬 VVIP 혜택</a></li>
+					<li><a href="https://www.hfashionmall.com/public/member/membershipInfo/hfm">회원혜택</a></li>
+					<li><a href="https://www.hfashionmall.com/public/member/membershipInfo/hs">한섬 VVIP 혜택</a></li>
 					<li><button type="button" onclick="privacyTerms();">
 							<strong class="privacy">개인정보처리방침</strong>
 						</button></li>

@@ -1,63 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="layout/header.jsp"%>
-<style>
-#video-box{
-width: 100%; overflow: hidden; height: 840px; margin: 0px auto; position: relative;
-}
 
-.arrow-down {
-position: absolute; top: 90%; width: 100%; 
-}
-
-.arrow-down a{
-margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
-}
-
-#arrow {
-  padding-top: 70px;
-}
-#arrow span {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 24px;
-  height: 24px;
-  margin-left: -12px;
-  border-left: 1px solid #fff;
-  border-bottom: 1px solid #fff;
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  -webkit-animation: sdb 1.5s infinite;
-  animation: sdb 1.5s infinite;
-  box-sizing: border-box;
-}
-@-webkit-keyframes sdb {
-  0% {
-    -webkit-transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}
-@keyframes sdb {
-  0% {
-    transform: rotate(-45deg) translate(0, 0);
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    transform: rotate(-45deg) translate(-20px, 20px);
-    opacity: 0;
-  }
-}
-</style>
 <div id="container" style="padding-top: 90px;">
 	<section class="dp-section main-back-video" id="video-box">
 		<video muted autoplay loop style="width:100%;">
@@ -75,7 +18,7 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 	</section>
 	<section class="dp-section main-keyword-ranking" id="ranking">
 		<div class="keyword-ranking">
-			<h2 class="title">BEST RANKING</h2>
+			<h2 class="title">BEST <br>RANKING</h2>
 			<ul id="mainCnrKeywordRanking" class="list" style="">
 				<li class="active"><a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="category"> <span class="num">1</span> <span class="name">타미</span> <span
 						class="state-mid">상승</span>

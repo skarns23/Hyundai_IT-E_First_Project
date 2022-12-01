@@ -1,12 +1,13 @@
 package com.hfashion.controller;
 import com.hfashion.controller.action.Action;
+import com.hfashion.controller.action.CancleOrderAction;
 import com.hfashion.controller.action.CartAction;
 import com.hfashion.controller.action.CartCntUpdateAction;
 import com.hfashion.controller.action.CartDelAction;
 import com.hfashion.controller.action.CartDelAllAction;
-import com.hfashion.controller.action.CartFormAction;
 import com.hfashion.controller.action.CartListAllAction;
 import com.hfashion.controller.action.CartSelUpdateAction;
+import com.hfashion.controller.action.ConfirmEmailAction;
 import com.hfashion.controller.action.ConfirmIDAction;
 import com.hfashion.controller.action.GetOrderListAction;
 import com.hfashion.controller.action.JoinAction;
@@ -20,7 +21,10 @@ import com.hfashion.controller.action.MemberOutAction;
 import com.hfashion.controller.action.MemberOutFormAction;
 import com.hfashion.controller.action.MypageFormAction;
 import com.hfashion.controller.action.OrderAction;
+import com.hfashion.controller.action.OrderCancleFormActin;
 import com.hfashion.controller.action.OrderCompleteAction;
+import com.hfashion.controller.action.ProductBestAction;
+import com.hfashion.controller.action.ProductBestSortAction;
 import com.hfashion.controller.action.ProductDetailAction;
 import com.hfashion.controller.action.ProductListAction;
 import com.hfashion.controller.action.ProductSortAction;
@@ -36,7 +40,6 @@ import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
 import com.hfashion.controller.action.goodInsertAction;
-import com.hfashion.controller.action.*;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -95,8 +98,6 @@ public class ActionFactory {
 			action = new CartCntUpdateAction();
 		}else if(command.equals("mypage")) {
 			action = new MypageFormAction();
-		}else if(command.equals("cart")) {
-			action = new CartFormAction();
 		}else if(command.equals("confirmID")) {
 			action = new ConfirmIDAction();
 		}else if(command.equals("mypage_searchOrder")) {
@@ -129,6 +130,10 @@ public class ActionFactory {
 			action = new ProductBestSortAction();
 		}else if(command.equals("confirmEmail")) {
 			action = new ConfirmEmailAction();
+		}else if(command.equals("orderCancle")) {
+			action = new CancleOrderAction();
+		}else if(command.equals("orderCancleForm")) {
+			action = new OrderCancleFormActin();
 		}
 		return action;
 	}

@@ -17,8 +17,8 @@
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
-							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
+							
 
 						</ul>
 					</li>
@@ -89,13 +89,13 @@
 																	</div>
 																</div>
 															</div>
-															<div class="cell-btn">
+															<div class="cell-btn" id="order_${item.order_no}_${item.pro_no}_${item.product_option}">
 																<div class="cell-inner">
 																	<div class="cell-inner">
 																		<div class="btns">
 																			<c:choose>
 																				<c:when test ="${item.order_check==0}">
-																						<button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
+																						<button type="button" class="btn-type3-sm" onclick="orderCancle('${item.order_no}, '${item.pro_no}', '${item.product_option}','${sessionScope.loginUser.user_id}');">
 																				<span>주문취소</span>
 																			</button>
 																				</c:when>
@@ -103,13 +103,15 @@
 																						<span class="btn-type3-sm">구매확정</span>
 																				</c:when>
 																				<c:otherwise>
-																					<span class="btn-type3-sm">구매취소</span>
+																					<span class="btn-type3-sm">주문취소완료</span>
 																				</c:otherwise>
 																			</c:choose>
 																			
 																		</div>
 																		<div>
 																			<c:choose>
+																			<c:when test="${item.order_check==2}">                                       	
+                                       </c:when>
 																			<c:when test= "${item.review_check==0}">
 																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
 																				<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden" name="orderno"
@@ -119,8 +121,7 @@
 																			<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
                                                             <span>후기작성</span> -->
                                        </c:when>
-                                       <c:when test="${item.order_check==2}">                                       	
-                                       </c:when>
+                                       
                                        <c:otherwise>
                                        	<span class="btn-type3-sm">후기작성 완료</span>
                                        </c:otherwise>
@@ -148,9 +149,7 @@
 					</div>
 					<div class="order-links">
 						<ul>
-							<li><a href="/secured/mypage/listOrder">주문/배송 조회</a></li>
-							<li><a href="/secured/mypage/listClaimOrder">취소/교환/반품 <span class="num">0</span>건
-							</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문 조회</a></li>
 						</ul>
 					</div>
 					<div class="slide-util">
@@ -164,3 +163,40 @@
 		</div>
 	</section>
 </div>
+<script>
+$(function(){
+	
+});
+
+function orderCancle(o_no, p_no,p_size,user_id){
+	$.ajax({
+		url : 'Hfashion?command=orderCancle',
+		data : {
+				user_id : user_id,
+				pro_no : p_no,
+				order_no : o_no,
+				pro_size : p_size
+		},
+		success : function(result){
+			console.log(user_id);
+			console.log(o_no);
+			console.log(p_no);
+			console.log(p_size);
+			var obj = JSON.parse(result);
+			if(obj==1){
+				var row = "";
+				var tag = "#order_"+o_no+"_"+p_no+"_"+p_size;
+				row = `<div class='cell-inner'><div class='cell-inner'><div class='btns'><span class='btn-type3-sm'>주문취소완료</span></div><div></div>
+					  </div></div>`
+				$(tag).html(row);
+				alert('주문취소 성공');
+			}else
+				alert('주문취소 실패 ')
+		},
+		error : function(e){
+			console.log(e)
+		}
+	})
+}
+</script>
+<%@ include file="/layout/footer.jsp"%>
