@@ -78,23 +78,9 @@ public class ReviewDAO {
 			e.printStackTrace();
 		}
 
-	}
+	} 
 
-	// 리뷰수정
-	public ReviewVO updateReview(String R_no) {
-		ReviewVO review = new ReviewVO();
-
-		return review;
-	}
-
-	// 리뷰 삭제
-	public ReviewVO deleteReview(String R_no) {
-		ReviewVO review = new ReviewVO();
-
-		return review;
-	}
-
-// 리뷰 상세 정보  
+	// 리뷰 상세 정보  
 	public ReviewVO Reviewdetail(String R_no) {
 		ReviewVO review = new ReviewVO();
 		String detail = "{call review_detail(?,?)}";
@@ -126,7 +112,7 @@ public class ReviewDAO {
 		}
 		return review;
 	}
-
+        
 // 리뷰 플러스 목록 불러오기	
 	public ArrayList<ReviewVO> ReviewList() {
 		ArrayList<ReviewVO> list = new ArrayList<>();
@@ -152,6 +138,7 @@ public class ReviewDAO {
 				String brand_name = rs.getString(9);
 				String img_roc = rs.getString(10);
 				String pro_gen = rs.getString(11);
+				int review_like=rs.getInt(12);
 				ReviewVO rVO = new ReviewVO();
 
 				rVO.setR_no(review_no);
@@ -165,6 +152,7 @@ public class ReviewDAO {
 				rVO.setBrand_name(brand_name);
 				rVO.setImg_loc(img_roc);
 				rVO.setPro_gen(pro_gen);
+				rVO.setR_like(review_like);
 				list.add(rVO);
 			}
 			JdbcUtil.close(cstmt);

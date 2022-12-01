@@ -1,6 +1,5 @@
 package com.hfashion.controller.action;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -46,8 +45,8 @@ public class ReviewWriteAction implements Action {
 		}
 		String fileName = multi.getFilesystemName("filename"); // 파일 이름 받아오기
 
-		String fileFullPath = savePath + File.separator + fileName;// 파일 경로 설정
-		System.out.println(fileFullPath);
+		//String fileFullPath = savePath + File.separator + fileName;// 파일 경로 설정
+		//System.out.println(fileFullPath);
 		String star = "3";
 
 		System.out.println(multi.getParameter("proname"));
@@ -60,7 +59,7 @@ public class ReviewWriteAction implements Action {
 		// 리뷰 체크 가 1이면 마이페이지 주문 목록으로 돌아감
 
 		System.out.println("#########");
-		System.out.println(fileFullPath);
+		//System.out.println(fileFullPath);
 		System.out.println("#########");
 		if (r_check == 1) {
 			url = "Hfashion?command=mypage";

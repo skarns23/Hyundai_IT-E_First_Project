@@ -133,7 +133,7 @@ function frmSubmit(i){
 
 					<!--일반리뷰 반복 시작 -->
 					<c:forEach var="rvList" items="${ReviewList}">
-						
+			          	   
 						<div class="review-plus-cont grid-item" style="float: left" onclick="frmSubmit('${rvList.r_no}');">						
 							<div class="product-list-sub">
 
@@ -143,7 +143,7 @@ function frmSubmit(i){
 									
 									</span>
 									<figcaption class="item-info">
-										<div class="item-brand">${rvList.brand_name}</div>
+										<div class="item-brand">${rvList.brand_name}</div><span>좋아요 ${rvList.r_like}</span>
 										<div class="item-name">${rvList.pro_name}</div>
 										<div class="item-price">
 											<span class="price">${rvList.pro_price}</span>

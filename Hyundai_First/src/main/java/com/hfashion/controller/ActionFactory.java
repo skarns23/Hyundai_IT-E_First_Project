@@ -10,6 +10,7 @@ import com.hfashion.controller.action.CartSelUpdateAction;
 import com.hfashion.controller.action.ConfirmIDAction;
 import com.hfashion.controller.action.GetOrderListAction;
 import com.hfashion.controller.action.JoinAction;
+import com.hfashion.controller.action.JoinSuccessAction;
 import com.hfashion.controller.action.ListOrderFormAction;
 import com.hfashion.controller.action.LoginAction;
 import com.hfashion.controller.action.LoginFormAction;
@@ -32,7 +33,7 @@ import com.hfashion.controller.action.SearchIDFormAction;
 import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
-import com.hfashion.controller.action.*;
+import com.hfashion.controller.action.goodInsertAction;
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -113,6 +114,8 @@ public class ActionFactory {
 			action = new MemberOutAction();
 		}else if (command.equals("joinsuccess")) {
 			action = new JoinSuccessAction();
+		}else if(command.equals("goodinsert")) {
+			action = new goodInsertAction();
 		}
 		
 		
