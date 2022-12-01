@@ -20,6 +20,7 @@ public class ProductDTO {
 	private String brand_name;
 	private String img_loc;
 	private String category;
+	private String reviewCnt;
 	
 	public ProductDTO(String pro_no) {
 		this.pro_no = pro_no;

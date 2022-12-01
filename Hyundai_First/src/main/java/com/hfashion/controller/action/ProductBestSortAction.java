@@ -9,43 +9,31 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.hfashion.service.ProductService;
+import com.hfashion.service.ProductBestService;
 import com.hfashion.vo.ProductDTO;
-import com.hfashion.vo.ProductSortDTO;
 
 /*
  * 함세강 작성
  */
-public class ProductSortAction implements Action{
+public class ProductBestSortAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String gender = request.getParameter("gender");
-		String category = request.getParameter("category");
-		
 		List<ProductDTO> list = null;
-		ProductSortDTO dto = new ProductSortDTO(gender,category);
 		
-		ProductService productService = ProductService.getInstance();
+		String gender = request.getParameter("gender");
 		
-		list = productService.productGetSortList(dto);
+		ProductBestService pbs = ProductBestService.getInstance();
 		
-		
-		System.out.println("ajax 확인 ");
-		System.out.println(gender);
-		System.out.println(category);
-		
-		for (ProductDTO productDTO : list) {
-			String str = productDTO.getPro_name();
-			System.out.println(str);
-		}
-		
+		list = pbs.productBestSortListService(gender);
+
 		Gson gson = new Gson();
 		String value = gson.toJson(list);
 		PrintWriter out = response.getWriter();
 		out.print(value);
-
+		
+		
 	}
 
 }
