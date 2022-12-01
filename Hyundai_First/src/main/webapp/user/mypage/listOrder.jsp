@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/layout/header.jsp"%>
-
+<style>
+input[type=date]{
+		border: none;
+    font-size: 10px;
+    font-family: 'Noto Sans KR';
+    padding: 10px;
+}
+</style>
 <div id="container">
-	<div class="breadcrumb-wrap"></div>
 	<section class="content-wrap">
 		<input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
 		<!-- snb -->
@@ -15,8 +21,7 @@
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
-							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
 
 						</ul>
 					</li>
@@ -61,18 +66,21 @@
 				</div>
 			</div>
 			<div class="order-list-wrap order-slide-section">
+			
 				<div class="order-tbl order-history order-slide">
+					
 					<div class="slide-container noswipe">
+					
 						<!-- 전체한번만 노출 -->
 						<div class="swiper-wrapper">
 							<!--  슬라이드 단위 주문 3건씩 노출 -->
 							<div class="swiper-slide">
 								<!-- body -->
 								<div class="body">
-								<div class="nodata">
-                                    <p class="txt-nodata">주문/배송 내역이 없습니다.</p>
-                                 </div>
-                                 </div>
+									<div class="nodata">
+										<p class="txt-nodata">주문/배송 내역이 없습니다.</p>
+									</div>
+								</div>
 							</div>
 						</div>
 						<!-- 전체한번만 노출 -->
@@ -81,8 +89,7 @@
 					</div>
 					<div class="order-links">
 						<ul>
-							<li><a href="/secured/mypage/listOrder">주문/배송 조회</a></li>
-							<li><a href="/secured/mypage/listClaimOrder">주문 취소</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
 						</ul>
 					</div>
 					<div class="slide-util">
@@ -148,7 +155,6 @@
                                                       <button type='button' class='btn-type3-sm'><span>주문취소</span></button></div><div>
                                                       <form action='${contextPath}/Hfashion?command=reviewwriteform' method='get'><input type='hidden' id='proname' value=${obj[i].pro_name}> <input type='hidden' id='r_check' value=${obj[i].review_check}> <input type='submit'class='btn-type3-sm' value='리뷰작성'>
                                                       </form></div></div></div></div></div></div></div></div></div>`;
-                                               
                               }
                               	
                               }
@@ -164,7 +170,7 @@
                   })
                   
                </script>
-               <script>
+	<script>
                	
                </script>
 </div>

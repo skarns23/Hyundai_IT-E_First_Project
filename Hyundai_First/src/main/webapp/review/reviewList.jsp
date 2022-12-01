@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/layout/header.jsp"%>
-
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
+<style>
+.item-size{
+  margin-top: 10px;
+ 	font-size: 12px;
+ 	font-weight: 300;
+}
+</style>
 <script>
 function frmSubmit(i){
 	$("#frm"+i).submit();
@@ -71,21 +77,23 @@ function frmSubmit(i){
 											<div class="item-price">
 												<span class="price"><fmt:formatNumber value="${rvbestlist.pro_price}" pattern="#,###" /></span>
 											</div>
+											<div class="item-size">
+												<span>${rvbestlist.size_name}</span>
+											</div>
 										</a>
 									</figcaption>
 								</figure>
 							</div>
 							<figure class="item">
 								<figcaption class="info">
-									<div class="point-wrap">
-										<div class="point">
-											<span class="ico" style="width: 100%">별점</span>
-										</div>
+
+									<div class="point-wrap">									
 										<div class="item-color">
-											<span class="color" style="font-size: 13px;">${rvbestlist.size_name}
+											<span class="color" style="font-size: 13px;">SIZE: ${rvbestlist.size_name}          좋아요 수: ${rvbestlist.r_like}
 											</span>
 										</div>
 									</div>
+
 									<div class="item-comment">
 										<span class="comment-txt"> ${rvbestlist.r_content}</span>
 									</div>
@@ -94,28 +102,13 @@ function frmSubmit(i){
 
 						</div>
 					</c:forEach>
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-					
-					
-					
+
 				<!--      여기까지 -->
 				</div>
 			</div>
 			<div class="dp-tab">
 				<a href="javascript:void(0);" onclick="moveTabPage('','ALL');"
-					id="tabKind_ALL" value="ALL" class="on"><span>ALL</span></a> <a
-					href="javascript:void(0);" onclick="moveTabPage('TAB_MEN','MEN');"
-					id="tabKind_MEN" value="MEN"><span>MEN</span></a> <a
-					href="javascript:void(0);"
-					onclick="moveTabPage('TAB_WOMEN','WOMEN');" id="tabKind_WOMEN"
-					value="WOMEN"><span>WOMEN</span></a>
-
+					id="tabKind_ALL" value="ALL" class="on"><span>ALL</span></a> 
 			</div>
 
 
@@ -144,7 +137,9 @@ function frmSubmit(i){
 									</span>
 									<figcaption class="item-info">
 										<div class="item-brand">${rvList.brand_name}</div><span>좋아요 ${rvList.r_like}</span>
+										
 										<div class="item-name">${rvList.pro_name}</div>
+										<span class="color">SIZE ${rvList.size_name}</span>
 										<div class="item-price">
 											<span class="price"><fmt:formatNumber value="${rvList.pro_price}" pattern="#,###" /></span>
 
@@ -173,42 +168,10 @@ function frmSubmit(i){
 									</span>
 								</div>
 							</figure>
-							<figure class="item">
-								<figcaption class="info">
-									<div class="point-wrap">
-										<div class="point">
-											<span class="ico" style="width: 100%">${rvList.star_rating}
-											</span>
-										</div>
-										<div class="item-color">
-											<span class="color">${rvList.size_name}</span>
-										</div>
-									</div>
-								</figcaption>
-							</figure>
+
 						</div>
 					</c:forEach>
 
-
-					<!--일반리뷰 반복 끝 -->
-
-
-					<!-- 페이징 부분 -->
-					<div class="paging" id="pagingArea">
-						<span> <strong title="현재 페이지">1</strong> <a
-							href="javascript:void(0)" id="page_2" onclick="movePage('2')">2</a>
-							<a href="javascript:void(0)" id="page_3" onclick="movePage('3')">3</a>
-							<a href="javascript:void(0)" id="page_4" onclick="movePage('4')">4</a>
-							<a href="javascript:void(0)" id="page_5" onclick="movePage('5')">5</a>
-							<a href="javascript:void(0)" id="page_6" onclick="movePage('6')">6</a>
-							<a href="javascript:void(0)" id="page_7" onclick="movePage('7')">7</a>
-							<a href="javascript:void(0)" id="page_8" onclick="movePage('8')">8</a>
-							<a href="javascript:void(0)" id="page_9" onclick="movePage('9')">9</a>
-							<a href="javascript:void(0)" id="page_10"
-							onclick="movePage('10')">10</a>
-						</span> <a class="next" href="javascript:void(0)" title="다음 페이지"
-							onclick="movePage('11')">다음 페이지</a>
-					</div>
 				</div>
 			</div>
 		</div>

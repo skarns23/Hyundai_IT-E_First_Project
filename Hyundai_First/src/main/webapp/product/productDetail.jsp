@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
 <script>
@@ -83,7 +82,6 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
          </div>
          <script src="https://unpkg.com/swiper/swiper-bundle.min.js">
 
-
     </script>
          <script>
 
@@ -118,8 +116,6 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 
         });
     </script>
-
-
 
          <div class="product-view-info">
             <div class="etc-btn">
@@ -279,6 +275,9 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
                      </div>
                      <div class="opt"></div>
                   </div>
+                                          <div id="reviewNodata" class="nodata" style="display : none;">
+                           지금 첫 리뷰를 작성해주세요.<br> 포토리뷰 1,000포인트, 텍스트 리뷰 300포인트를 증정합니다. (상품구매시)
+                        </div>
                   <div id="allReviewList" class="board-list board-review ui-fold"
                      style="">
                      <ul class="list-content">
@@ -289,9 +288,12 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
          </div>
       </div>
    </div>
+
 </div>
 
+<!-- 장바구니 담기 모달 -->
 <div id="layerShoppingBag" class="layer-pop" tabindex="0" style="display: none;">
+
    <div class="layer-wrap" tabindex="0">
       <div class="layer-header">
          <h2 class="layer-title">장바구니 담기 완료</h2>
@@ -313,6 +315,7 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
       </div>
       <button type="button" class="btn-layer-close" onclick="layer.close('layerShoppingBag');">닫기</button>
    </div>
+
 </div>
 
 
@@ -339,6 +342,10 @@ function get_review() {
       success : function(result) {
           var obj = JSON.parse(result);
           console.log(obj);
+          if(obj.length == 0){
+                   $("#reviewNodata").css("display", "block");
+                }
+
           var row ="";
           for(var i = 0; i<obj.length;i++){
              row +=`<li class='on'><div class='list-row fold-header'><div class='cell-title'><ul class='etc-info'><li><span class='point size-m'><span class='ico' style='width: 100%'>별점 \${obj[i].start_rating}점</span></span></li>
@@ -378,7 +385,8 @@ function insert_like(review_no){
                 alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
              }
           /*  alert(result[0]);
-           alert(result[1]);    */               
+           alert(result[1]);    */            
+           $(this).addClass("on");
         },
        error: 
           function (e){
@@ -392,6 +400,8 @@ function insert_like(review_no){
  
 
 </script>
+
+
 
 
 
