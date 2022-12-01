@@ -20,4 +20,5 @@ public class OrderVO {
 	private String pro_no;
 	private Date  order_date;
 	private String img_url;
+	private int order_check;
 }

@@ -32,6 +32,7 @@ public class MemberDAO {
 	private String findId = "{call mem_pack.find_id_date(?,?,?,?,?)}";
 	private String updatePW = "{call mem_pack.update_member_pw(?,?)}";
 	private String outMember = "{call mem_pack.out_member(?)}";
+	private String confirmEmail = "{?=call mem_pack.check_email(?)}";
 	private MemberDAO() {
 		try {
 			Context con = new InitialContext();
@@ -165,6 +166,26 @@ public class MemberDAO {
 		}catch (SQLException e) {
 			e.printStackTrace();
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
+	public int confirmEmail(String p_email) {
+		int result = 0;
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			CallableStatement cstmt = conn.prepareCall(confirmEmail);
+			cstmt.registerOutParameter(1, java.sql.Types.INTEGER);
+			cstmt.setString(2, p_email);
+			cstmt.execute();
+			result = cstmt.getInt(1);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(conn);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return result;

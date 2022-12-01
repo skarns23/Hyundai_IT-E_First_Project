@@ -127,10 +127,9 @@ public class ActionFactory {
 			action = new ProductBestAction();
 		}else if (command.equals("bestSort")) {
 			action = new ProductBestSortAction();
+		}else if(command.equals("confirmEmail")) {
+			action = new ConfirmEmailAction();
 		}
-		
-		
-		
 		return action;
 	}
 }
