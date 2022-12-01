@@ -50,8 +50,9 @@ public class LoginFilter extends HttpFilter implements Filter {
 			if(request.getParameter("ex_action")!=null)
 				action = request.getParameter("ex_action")+"&pno="+pno;
 			String url = req.getRequestURL()+"?command=loginform";
-			
-
+			System.out.println();
+			System.out.println(url);
+			System.out.println(action);
 			session.setAttribute("redirectURL",action);
 			HttpServletResponse res = (HttpServletResponse)response;
 			res.sendRedirect(url);

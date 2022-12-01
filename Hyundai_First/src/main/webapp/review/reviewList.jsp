@@ -69,7 +69,7 @@ function frmSubmit(i){
 											<div class="item-brand">${rvbestlist.brand_name}</div>
 											<div class="item-name">${rvbestlist.pro_name}</div>
 											<div class="item-price">
-												<span class="price">${rvbestlist.pro_price}</span>
+												<span class="price"><fmt:formatNumber value="${rvbestlist.pro_price}" pattern="#,###" /></span>
 											</div>
 										</a>
 									</figcaption>
@@ -146,7 +146,7 @@ function frmSubmit(i){
 										<div class="item-brand">${rvList.brand_name}</div>
 										<div class="item-name">${rvList.pro_name}</div>
 										<div class="item-price">
-											<span class="price">${rvList.pro_price}</span>
+											<span class="price"><fmt:formatNumber value="${rvList.pro_price}" pattern="#,###" /></span>
 
 										</div>
 									</figcaption>

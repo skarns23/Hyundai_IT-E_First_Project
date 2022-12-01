@@ -63,15 +63,15 @@ margin-top: -24px; text-align: center; font-size: 48px; color: #ffffff;
 		<video muted autoplay loop style="width:100%;">
 			<source src="videos/hfashionVideo.mp4" type="video/mp4">
 		</video>
-		<!-- 
+		
 		<div class="arrow-down">
-            <a id="arrow" href="#ranking">
+            <a id="arrow" href="#ranking" onclick="scrollMov(900, 100)">
                 <span></span>
                 <span></span>
                 <span></span>
             </a>
         </div>
-     -->
+     
 	</section>
 	<section class="dp-section main-keyword-ranking" id="ranking">
 		<div class="keyword-ranking">
