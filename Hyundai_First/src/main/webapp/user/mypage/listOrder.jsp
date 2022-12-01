@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@include file="/layout/header.jsp"%>
-
+<style>
+input[type=date]{
+		border: none;
+    font-size: 10px;
+    font-family: 'Noto Sans KR';
+    padding: 10px;
+}
+</style>
 <div id="container">
-	<div class="breadcrumb-wrap"></div>
 	<section class="content-wrap">
 		<input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
 		<!-- snb -->
