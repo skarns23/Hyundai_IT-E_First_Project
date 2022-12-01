@@ -75,8 +75,6 @@ $(document).ready(function(){
 				 }
 				 $("#totalOrdAmt").text(totalPrice.toLocaleString('ko-KR'));
 				 
-				 
-				 
 			},
 			error : function(e){
 				console.log(e);

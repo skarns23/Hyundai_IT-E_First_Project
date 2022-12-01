@@ -1,6 +1,45 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
+<script>
+function addCart(pno){
+	
+	var selSize = document.getElementById("selSize");
+	var size = selSize.innerHTML;
+	var cnt = document.getElementById("pro_qty").value;
+	
+	if(size == ""){
+		alert("옵션을 다시 선택해 주세요.");
+		return false;
+	}
+var uid = '<%=request.getSession().getAttribute("loginUser")%>';
+	if(uid == 'null'){
+		window.location.replace("Hfashion?command=cart&ex_action=detail&pro_no="+pno);
+		return false; 
+	}
+
+	
+	$.ajax({
+		url : 'Hfashion?command=cart',
+		type : 'post',
+		data : {
+			pro_no : pno,
+			size_name : size,
+			size_amount : cnt,
+			ex_action : 'detail'
+		},
+		success : function(result){
+			$("#layerShoppingBag").css("display", "block");
+			
+		},
+		error : function(e){
+			console.log(e)
+		}
+	})
+}
+
+</script>
 
 <script type="text/javascript"
 	src="${contextPath}/js/product/productDetail.js"></script>
@@ -44,6 +83,7 @@
 			</div>
 			<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
 
+
     </script>
 			<script>
 
@@ -51,8 +91,8 @@
         var mySwiper = new Swiper('.swiper-container', {
             // 슬라이드를 버튼으로 움직일 수 있습니다.
             navigation: {
-                nextEl: '.slide-nav-prev',
-                prevEl: '.slide-nav-next',
+                nextEl: '.slide-nav-next',
+                prevEl: '.slide-nav-prev',
             },
 
             // 현재 페이지를 나타내는 점이 생깁니다. 클릭하면 이동합니다.
@@ -155,22 +195,17 @@
 							</span>
 						</div>
 						<div class="btn-box">
-							<button name="btnShoppingBag" type="button"
-								class="btn-type4-xlg btnShoppingBag" onclick="frmSubmit();">
+							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag" onclick="addCart('${pVO.pro_no}');">
+
 								<span>장바구니</span>
 							</button>
 						</div>
 					</div>
 				</div>
 
-				<form id="addCartFrm" name="addCartFrm"
-					action="${contextPath}/Hfashion?command=cart" method="post"
-					style="display: none;">
-					<input id="pro_no" name="pro_no" value="${pVO.pro_no}"> <input
-						id="size_name" name="size_name" value=""> <input
-						id="size_amount" name="size_amount" value=""> <input
-						type="hidden" name="ex_action" value="detail">
-				</form>
+				<input type="hidden" id="size_name" name="size_name" value=""> <input type="hidden" id="size_amount" name="size_amount" value=""> <input type="hidden" name="ex_action"
+					value="detail">
+
 
 
 				<div class="info-bot">
@@ -216,39 +251,28 @@
 				<section id="tabContentReview"
 					class="anchor-section product-detail-review">
 					<h3 class="sec-title">리뷰</h3>
-					<div class="review-total">
-						<div class="member-total-point">
-							<h4 class="tit">사용자 총 평점</h4>
-							<p class="point size-l">
-								<span class="ico" style="width: 96%;">별점</span> <span
-									class="num">4.8</span>
-							</p>
-						</div>
-					</div>
 					<div class="product-detail-review-list">
 						<div class="head">
 							<div id="prdReviewFilter" class="opt">
-
 								<div class="select">
+									<input type="number" id="search_height" placeholder="키" default='' style="width: 80px;" />cm
 
-									<input type="number" id="search_height" placeholder="키" default='' />
 								</div>
 								<div class="select">
-									<input type="number" id="search_weight" placeholder="몸무게" value='' />
+									<input type="number" id="search_weight" placeholder="몸무게" value='' style="width: 80px;" />kg
 								</div>
 								<div class="select">
-									<span>사이즈</span>
-									<button type="button" id="btn_size" class="sel-btn on" placeholder="사이즈선택" onclick="select.trigger();"></button>
+									<button type="button" id="btn_size" class="sel-btn" onclick="select.trigger();">사이즈</button>
 									<div class="sel-list">
 										<ul>
 											<c:forEach var="sVO" items="${sList}">
 												<li><label> <input type="radio" name="optValCd1" value="${sVO.size_name}"><span>${sVO.size_name}</span>
 												</label></li>
 											</c:forEach>
-
 										</ul>
 									</div>
 								</div>
+
 								<button type="button" class="btn-type1-sm" id="btn_search">
 									<span>필터적용</span>
 								</button>
@@ -324,6 +348,31 @@
 		</div>
 	</div>
 </div>
+
+<div id="layerShoppingBag" class="layer-pop" tabindex="0" style="display: none;">
+	<div class="layer-wrap" tabindex="0">
+		<div class="layer-header">
+			<h2 class="layer-title">장바구니 담기 완료</h2>
+		</div>
+		<div class="layer-container">
+			<div class="layer-content layer-shopping-bag">
+				<p class="txt">
+					해당 상품이 장바구니에 담겼습니다.<br>장바구니로 이동하시겠습니까?
+				</p>
+				<div class="btn-box">
+					<button type="button" onclick="layer.close('layerShoppingBag');" class="btn-type4-lg">
+						<span>계속 쇼핑하기</span>
+					</button>
+					<button type="button" onclick="location.href='${contextPath}/Hfashion?command=cart'" class="btn-type2-lg">
+						<span>장바구니 보기</span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<button type="button" class="btn-layer-close" onclick="layer.close('layerShoppingBag');">닫기</button>
+	</div>
+</div>
+
 
 <script type="text/javascript">
 
