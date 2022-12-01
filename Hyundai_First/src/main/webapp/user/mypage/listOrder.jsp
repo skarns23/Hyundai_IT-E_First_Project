@@ -145,16 +145,19 @@ input[type=date]{
                                  var row ="";
                               for (var i = 0; i < obj.length; i++) {
                                  let price = obj[i].pro_price.toLocaleString('ko-KR');
+                                 var d_val = obj[i].cancle_date;
+                                 var txt = '취소날짜';
+                                 if(!obj[i].cancle_date){
+                                	 d_val = obj[i].order_date;
+                                	 txt = '주문날짜';
+                                 }
                                  row += `<div class='row'><div class='inner'><div class='cell-pd-wrap'><div class='inner-row'><div class='info-row'><div class='cell-pd'><div class='item-img' godno='GM0122062466107'>
                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'> <img src='${contextPath}/\${obj[i].img_url}'></a></div><div class='item-info'><div class='item-brand'>
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].brand_name} </a></div><div class=item-name clear-ellipsis>
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].pro_name}</a></div><div class='item-opt'>
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'><span>\${obj[i].product_option}</span> <span>수량 : \${obj[i].order_amount} </a></div><div class="item-btn"></div>
                                                 </div></div><div class='cell-price'><div class='cell-inner'><div class='price'><span><span class='num'>\${price}</span> 원</span>
-                                                  </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>주문날짜<br> <span class='txt-cmt pcolor'>\${obj[i].order_date}</span></div></div></div><div class='cell-btn'><div class='cell-inner'><div class='cell-inner'><div class='btns'>
-                                                      <button type='button' class='btn-type3-sm'><span>주문취소</span></button></div><div>
-                                                      <form action='${contextPath}/Hfashion?command=reviewwriteform' method='get'><input type='hidden' id='proname' value=${obj[i].pro_name}> <input type='hidden' id='r_check' value=${obj[i].review_check}> <input type='submit'class='btn-type3-sm' value='리뷰작성'>
-                                                      </form></div></div></div></div></div></div></div></div></div>`;
+                                                  </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>\${txt}<br> <span class='txt-cmt pcolor'>\${d_val}</span></div></div></div></div></div></div></div></div></div></div>`;
                               }
                               	
                               }
