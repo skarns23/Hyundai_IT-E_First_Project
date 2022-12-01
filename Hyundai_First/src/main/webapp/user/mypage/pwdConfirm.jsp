@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="/layout/header.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/layout/header.jsp"%>
 <div id="container">
 	<section class="content-wrap">
 		<div class="snb-wrap">
@@ -12,8 +11,9 @@
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
-							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
+							
+
 
 						</ul>
 					</li>
@@ -39,10 +39,8 @@
 			</div>
 
 			<div class="tbl-write">
-				<form method="post" action="/secured/mypage/updateMember"
-					id="checkPwdForm">
-					<input type="hidden" name="_csrf"
-						value="f38905a6-11d9-48ad-a9b6-282f7e502314">
+				<form method="post" action="/secured/mypage/updateMember" id="checkPwdForm">
+					<input type="hidden" name="_csrf" value="f38905a6-11d9-48ad-a9b6-282f7e502314">
 					<table>
 						<caption>비밀번호 확인</caption>
 						<colgroup>
@@ -54,9 +52,7 @@
 								<th scope="row">비밀번호</th>
 								<td>
 									<div class="input-box">
-										<input type="password" title="비밀번호" name="mbr.mbrPw"
-											id="mbrPw" minlength = "8" maxlength="15" autocomplete="off"
-											placeholder="비밀번호를 입력해주세요." class="inp-reset">
+										<input type="password" title="비밀번호" name="mbr.mbrPw" id="mbrPw" minlength="8" maxlength="15" autocomplete="off" placeholder="비밀번호를 입력해주세요." class="inp-reset">
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>
@@ -71,23 +67,25 @@
 				</form>
 			</div>
 			<script>
-			$(function(){
-				$("#btn_login").click(function(){
-					const user_pw = "${sessionScope.loginUser.user_pw}";
-					let check_pw = $("#mbrPw").val();
-					if(user_pw==check_pw){
-							location.href="Hfashion?command=mypage_updateForm";
-					}else {
-							$("#descMbrPw").html("비밀번호가 일치하지 않습니다.");
-					}
-					console.log(user_pw);
-					console.log(check_pw);
+				$(function() {
+					$("#btn_login")
+							.click(
+									function() {
+										const user_pw = "${sessionScope.loginUser.user_pw}";
+										let check_pw = $("#mbrPw").val();
+										if (user_pw == check_pw) {
+											location.href = "Hfashion?command=mypage_updateForm";
+										} else {
+											$("#descMbrPw").html(
+													"비밀번호가 일치하지 않습니다.");
+										}
+										console.log(user_pw);
+										console.log(check_pw);
+									})
 				})
-			})
 			</script>
 			<div class="btn-box">
-				<button type="button" class="btn-type2-lg" id = "btn_login"
-					>
+				<button type="button" class="btn-type2-lg" id="btn_login">
 					<span>확인</span>
 				</button>
 			</div>
@@ -96,4 +94,4 @@
 		<!-- //snb-content-wrap -->
 	</section>
 </div>
-<%@ include file="/layout/footer.jsp" %>
+<%@ include file="/layout/footer.jsp"%>

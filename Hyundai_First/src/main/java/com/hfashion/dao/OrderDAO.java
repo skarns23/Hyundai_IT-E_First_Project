@@ -20,6 +20,7 @@ import oracle.jdbc.OracleTypes;
 
 public class OrderDAO {
 	private String getOrderList = "{call order_package.get_order_list(?,?,?,?)}";
+	private String cancleOrder = "{call order_package.order_cancle(?,?,?,?)}";
 	private static OrderDAO instance = null;
 
 	private OrderDAO() {
@@ -32,7 +33,26 @@ public class OrderDAO {
 		return instance;
 	}
 	
-
+	public int cancleOrder(String order_no,String user_id, String pro_no, String size_name) {
+		int result = 0;
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			CallableStatement cstmt = conn.prepareCall(cancleOrder);
+			cstmt.setString(1, order_no);
+			cstmt.setString(2, user_id);
+			cstmt.setString(3, pro_no);
+			cstmt.setString(4, size_name);
+			result = cstmt.executeUpdate();
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(conn);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return result;
+	}
 	public List<OrderVO> getOrderList(String user_id, String start, String end) {
 		List<OrderVO> result = new ArrayList<>();
 		System.out.println("getOrderList 메서드 실행");

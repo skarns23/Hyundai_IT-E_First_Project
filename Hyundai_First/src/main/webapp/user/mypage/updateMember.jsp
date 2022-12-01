@@ -13,8 +13,9 @@
 					<li>
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
-							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문</a></li>
-							<li><a href="${contextPath}/user/mypage/listClaimOrder.jsp">주문취소</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
+							
+
 
 						</ul>
 					</li>
@@ -58,7 +59,7 @@
 									<th scope="row">새 비밀번호</th>
 									<td class="w-full">
 										<div class="input-box" id="divMbrPw">
-											<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15"  placeholder="" class="inp-reset" required>
+											<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15" placeholder="" class="inp-reset" required>
 										</div>
 										<p class="txt-invalid" style="display: block;" id="descMbrPw"></p>
 										<p class="txt-form-cmt">영문, 숫자, 특수문자 조합 8-15자로 사용 가능</p>
@@ -91,39 +92,38 @@
 							</tbody>
 						</table>
 					</div>
-				
 			</div>
 			<!-- //write-wrap -->
 			<div class="btn-box">
 				<button type="submit" class="btn-type2-lg" id="btn_update" disabled="true" style="width: 250px;">
 					<span>회원정보 수정</span>
 				</button>
-</form>
+				</form>
 			</div>
 		</div>
 		<!-- //snb-content-wrap -->
 	</section>
 	<script>
-	$(function(){
-		let btn_update = $("#btn_update");
-		$("#mbrCheckPw").focusout(function(){
-			var update_pw = $("#mbrPw").val();
-			let check_pw = $("#mbrCheckPw").val();
-			btn_update.attr('disabled',true);
-			if(update_pw.length<8){
-				$("#descMbrCheckPw").html("비밀번호 사용불가");
-			}else if(update_pw===check_pw){
+		$(function() {
+			let btn_update = $("#btn_update");
+			$("#mbrCheckPw").focusout(function() {
+				var update_pw = $("#mbrPw").val();
+				let check_pw = $("#mbrCheckPw").val();
+				btn_update.attr('disabled', true);
+				if (update_pw.length < 8) {
+					$("#descMbrCheckPw").html("비밀번호 사용불가");
+				} else if (update_pw === check_pw) {
 					$("#descMbrCheckPw").html("비밀번호 일치");
-					btn_update.attr('disabled',false);
-			}else {
-				$("#descMbrCheckPw").html("비밀번호가 일치하지 않습니다.");
-			}
-			
-		});
-		btn_update.click(function(){
-			
+					btn_update.attr('disabled', false);
+				} else {
+					$("#descMbrCheckPw").html("비밀번호가 일치하지 않습니다.");
+				}
+
+			});
+			btn_update.click(function() {
+
+			})
 		})
-	})
 	</script>
 </div>
 <%@ include file="/layout/footer.jsp"%>
