@@ -62,7 +62,6 @@ public class MainBrandItemDAO {
 				
 				dto.setMainImgslist(imgList);
 				
-				
 				list.add(dto);
 				
 			}

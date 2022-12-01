@@ -67,12 +67,9 @@ $('.gender').click( function(){
 			category : categoryNo
 		},
 		success: function(result){
-			//alert("ajax 는 쉬운것이다!")
-			
+
 			var obj = JSON.parse(result);
 			
-			alert(obj);
-			//console.log(obj);
 			var tag="";
 			for(var i=0; i<obj.length; i++){
 				let price = obj[i].pro_price;
