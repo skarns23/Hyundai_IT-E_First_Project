@@ -387,6 +387,7 @@ function insert_like(review_no){
 	    	/*  alert(result[0]);
 	    	 alert(result[1]);	 */     	    
 	    	 $(this).addClass("on");
+	    	 get_review();
 	     },
 	    error: 
 		    function (e){
@@ -397,12 +398,7 @@ function insert_like(review_no){
 	});
  };
  
- 
-
 </script>
-
-
-
 
 
 <%@ include file="../layout/footer.jsp"%>
