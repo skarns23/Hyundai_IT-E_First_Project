@@ -42,7 +42,7 @@ public class goodInsertAction implements Action {
 //	    obj.put("like", like); // 좋아요 수 저장("key", value)값으로 저장 해서 전달 
 	    System.out.println(value);
 //	    response.setContentType("application/x-json; charset=UTF-8");// POST 방식 전송시 한글 깨질 수있음 방지
-	    System.out.println("인서트 액션 작업 완료 전");
+//	    System.out.println("인서트 액션 작업 완료 전");
 	    PrintWriter out = response.getWriter();
 	    out.print(value);
 	    System.out.println("인서트 액션 작업 완료 후");
