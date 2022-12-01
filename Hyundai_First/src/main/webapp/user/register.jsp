@@ -91,6 +91,22 @@
 							</tr>
 							<script type="text/javascript">
 						$(function(){
+							$("#mbrEmail").focusout(function(){
+								$.ajax({
+									url : 'Hfashion?command=confirmEmail',
+									data : {
+											email : $("#mbrEmail").val()
+									},
+									success : function(result){
+										var obj = JSON.parse(result);
+										if(obj==0)
+											$("#descMbrEmail").html('사용가능한 이메일입니다.');
+										else
+											$("#descMbrEmail").html('사용할 수 없는 이메일입니다.');
+									}
+								})
+							})
+							
 							$("#mbrId").focusout(function(){
 								var reg = /^[a-zA-Z0-9_]{5,20}$/;
 								let user_id= $("#mbrId").val();		

@@ -93,19 +93,38 @@
 																<div class="cell-inner">
 																	<div class="cell-inner">
 																		<div class="btns">
-																			<button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
+																			<c:choose>
+																				<c:when test ="${item.order_check==0}">
+																						<button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
 																				<span>주문취소</span>
 																			</button>
+																				</c:when>
+																				<c:when test = "${item.order_check==1}">
+																						<span class="btn-type3-sm">구매확정</span>
+																				</c:when>
+																				<c:otherwise>
+																					<span class="btn-type3-sm">구매취소</span>
+																				</c:otherwise>
+																			</c:choose>
+																			
 																		</div>
 																		<div>
-
+																			<c:choose>
+																			<c:when test= "${item.review_check==0}">
 																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
 																				<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden" name="orderno"
-																					value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename" value="${item.product_option}"> <input
-																					type="submit" class="btn-type3-sm" value="리뷰작성">
+																					value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename" value="${item.product_option}"> 
+																					<button type="submit" class="btn-type3-sm" >리뷰작성</button>
 																			</form>
 																			<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
                                                             <span>후기작성</span> -->
+                                       </c:when>
+                                       <c:when test="${item.order_check==2}">                                       	
+                                       </c:when>
+                                       <c:otherwise>
+                                       	<span class="btn-type3-sm">후기작성 완료</span>
+                                       </c:otherwise>
+                                      </c:choose>
 																		</div>
 																	</div>
 																</div>

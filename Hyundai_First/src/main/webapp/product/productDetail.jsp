@@ -218,52 +218,6 @@
 						</div>
 						<div id="allReviewList" class="board-list board-review ui-fold" style="">
 							<ul class="list-content">
-								<li class="on">
-									<div class="list-row fold-header">
-										<div class="cell-title">
-											<ul class="etc-info">
-												<li><span class="point size-m"><span class="ico" style="width: 100%">별점 5점</span></span></li>
-												<li>
-													<button type="button" class="btn-like2" onclick="addGodEvlLikeCount(this,addLikeList);" godevlturn="1" reviewgodno="GM0122092795931">
-														<span class="like-count" likecnt="1"> 1</span>
-													</button>
-												</li>
-												<li><span class="date">2022.10.25</span></li>
-											</ul>
-											<p class="title-review">
-												부드럽고 좋아요<i class="icon-attach">이미지 첨부</i>
-											</p>
-											<button type="button" class="btn-fold">열기</button>
-										</div>
-									</div>
-									<div class="fold-cont open">
-										<div class="review-group">
-											<ul class="review-prd-info">
-												<li>
-													<div class="prd-name">sil*****&nbsp;</div>
-												</li>
-												<li>
-													<div class="prd-option">
-
-														&nbsp;155cm ,통통한편 &nbsp;/ &nbsp; 구매옵션 : S<em class="prd-option-color"> <span class="pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg">BLACK</span>
-														</em>
-													</div>
-												</li>
-											</ul>
-											<ul class="files">
-												<li class="img-file">
-													<button type="button" onclick="layerViewImg();" style="background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);">
-														<img src="https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg" alt="7AE074DE-6EE9-4107-BFFF-4E1874F1AB83" style="transform: rotate(0deg);">
-													</button>
-												</li>
-											</ul>
-											<div class="txt-box">배송 빨라요. 촉감이 부드러워요. 기본 아이템이로 딱입니다. 다른 색도 구매하고 싶어요. 코디하기 좋습니다.</div>
-											<div class="review-report">
-												<button type="button" class="btn-report" onclick="alert('로그인 후 참여 가능합니다.');location.href='/public/member/login'"></button>
-											</div>
-										</div>
-									</div>
-								</li>
 							</ul>
 						</div>
 					</div>
@@ -294,6 +248,19 @@ $(document).ready(function(){
 			success : function(result) {
 				 var obj = JSON.parse(result);
 				 console.log(obj);
+				 var row ="";
+				 for(var i = 0; i<obj.length;i++){
+					 row +=`<li class='on'><div class='list-row fold-header'><div class='cell-title'><ul class='etc-info'><li><span class='point size-m'><span class='ico' style='width: 100%'>별점 \${obj[i].start_rating}점</span></span></li>
+					        <li><button type='button' class='btn-like2' onclick='addGodEvlLikeCount(this,addLikeList);' godevlturn='1' reviewgodno='GM0122092795931'><span class='like-count' likecnt='1'>\${obj[i].review_like}</span>
+				          </button></li><li><span class='date'>\${obj[i].review_date}</span></li></ul><p class='title-review'>\${obj[i].review_title}<i class='icon-attach'>이미지 첨부</i></p><button type='button' class='btn-fold'>열기</button>
+				    </div></div><div class='fold-cont open'><div class='review-group'><ul class='review-prd-info'><li><div class='prd-name'>\${obj[i].user_id}</div></li>
+				        <li><div class='prd-option'>\${obj[i].height}cm ,\${obj[i].weight}kg<em class='prd-option-color'> <span class='pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg'>구매옵션 : \${obj[i].product_option}</span></em>
+				          </div></li></ul><ul class='files'><li class='img-file'><button type='button' onclick='layerViewImg();' style='background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);'>
+				            <img src='https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg' alt='7AE074DE-6EE9-4107-BFFF-4E1874F1AB83' style='transform: rotate(0deg);'></button>
+				        </li></ul><div class='txt-box'>\${obj[i].review_content}</div><div class='review-report'>
+				        <button type='button' class='btn-report' onclick='alert('로그인 후 참여 가능합니다.');location.href='/public/member/login''></button></div></div></div></li>`;
+				 }
+				 $(".list-content").html(row);
 			},
 			error : function(e) {
 				alert('조회 실패');

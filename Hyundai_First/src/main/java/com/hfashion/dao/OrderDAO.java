@@ -19,7 +19,7 @@ import oracle.jdbc.OracleType;
 import oracle.jdbc.OracleTypes;
 
 public class OrderDAO {
-	private String getOrderList = "{call order_pack.get_order_list(?,?,?,?)}";
+	private String getOrderList = "{call order_package.get_order_list(?,?,?,?)}";
 	private static OrderDAO instance = null;
 
 	private OrderDAO() {
@@ -59,7 +59,8 @@ public class OrderDAO {
 				String order_no = rs.getString(8);
 				Date order_date =rs.getDate(9);
 				String img_url = rs.getString(10);
-				OrderVO oVO = new OrderVO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url);
+				int order_check = rs.getInt(11);
+				OrderVO oVO = new OrderVO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url,order_check);
 				result.add(oVO);
 			}
 			JdbcUtil.close(rs);
