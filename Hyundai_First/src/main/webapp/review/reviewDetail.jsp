@@ -60,7 +60,9 @@
 								class="slide-pagination swiper-pagination-clickable swiper-pagination-bullets"></div>
 						</div>
 						<div class="cont-wrap">
+
 							<h3 class="title">${Rvo.r_title}</h3>
+
 							<div class="txt-wrap">
 								<p class="txt">${Rvo.r_content}</p>
 							</div>
