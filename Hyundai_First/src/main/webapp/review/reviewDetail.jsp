@@ -68,7 +68,7 @@
 							</div>
 							<div class="item-color" style="text-align: right; padding-right: 5px;">
 											<button type="button" class="btn-like2" onclick="insert_like(96);">
-												<span class="like-count">16</span>
+												<span class="like-count">${Rvo.r_like}</span>
 											</button>
 										</div>
 						</div>

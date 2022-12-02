@@ -72,7 +72,7 @@ public class ReviewWriteAction implements Action {
 			RV_VO.setR_content(content);
 	        //RV_VO.setR_img(request.getParameter("r_img"));   // 이미지 일단 1값으로 구현			
 //			RV_VO.setR_img(fileFullPath); // 이미지 일단 1값으로 구현
-			RV_VO.setR_img(fileName); // 이미지 일단 1값으로 구현
+			RV_VO.setR_img(fileName); // 파일 이름 받기
 			// RV_VO.setR_img(request.getParameter("r_img")); // 이미지 일단 1값으로 구현
 //			RV_VO.setR_img(fileFullPath); // 이미지 일단 1값으로 구현
 			RV_VO.setWeight(Integer.parseInt(multi.getParameter("weight")));

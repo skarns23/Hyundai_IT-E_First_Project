@@ -2006,224 +2006,77 @@
 		</h2>
 		<div class="review-plus-list">
 			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-			<div class="review-plus-cont">
-				<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122051250234','5');"> </a>
-				<figure class="item" data-ga-name="[EXCLUSIVE] 헤리티지 플래그 백팩">
-					<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122051250234','5');">
-						<div class="img">
-							<span> <img src="https://cdn.hfashionmall.com/contents/review/2286337880678337.jpeg?RS=300" alt="" style="transform: rotate(90deg)">
-							</span>
-						</div>
-					</a>
-					<figcaption class="info">
-						<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122051250234','5');"> </a><a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122051250234','5');">
-							<div class="point-wrap">
-								<div class="point">
-									<span class="ico" style="width: 100%">별점</span>
-								</div>
-								<div class="item-color">
-									<span class="color">OS / WHITE</span>
-								</div>
-							</div>
-						</a>
-					</figcaption>
-				</figure>
-				<div class="product-list-sub">
-					<figure class="item-box">
-						<span class="item-img"> <a href="javascript:void(0)" onclick="goGodDetail('GM0122051250234')"> <img src="https://cdn.hfashionmall.com/goods/THBR/22/05/12/GM0122051250234_1_ORGINL.jpg"
-								alt="">
-						</a>
-						</span>
-						<figcaption class="item-info">
-							<a href="javascript:void(0)" onclick="goGodDetail('GM0122051250234')">
-								<div class="item-brand">TOMMY JEANS</div>
-								<div class="item-name">[EXCLUSIVE] 헤리티지 플래그 백팩</div>
-								<div class="item-price">
-									<span class="price">117,600</span>
-
-								</div>
+<c:forEach var="rvbestlist" items="${BestReviewList}">
+						<!-- rvbestlist 변수 선언 -->
+						<div class="review-plus-cont" onclick="frmSubmit('${rvbestlist.r_no}');">
+							<a href="javascript:undefined;"
+								onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
+								<figure class="item" data-ga-name="아이코닉 토트백">
+									<div class="img">
+										<span> <img
+											src='${contextPath}/\images/review/${rvbestlist.r_img}'
+											alt="" style="transform: rotate(0deg)">
+									</div>
+								</figure>
 							</a>
-						</figcaption>
-					</figure>
-				</div>
-
-			</div>
-			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-			<div class="review-plus-cont">
-				<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');"> </a>
-				<figure class="item" data-ga-name="울 캐시미어 컴포트 자켓">
-					<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');">
-						<div class="img">
-							<span> <img src="https://cdn.hfashionmall.com/contents/review/2340995115798696.jpeg?RS=300" alt="" style="transform: rotate(0deg)">
-							</span>
-						</div>
-					</a>
-					<figcaption class="info">
-						<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');"> </a><a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122110110036','1');">
-							<div class="point-wrap">
-								<div class="point">
-									<span class="ico" style="width: 100%">별점</span>
-								</div>
-								<div class="item-color">
-									<span class="color">XS / KHAKI</span>
-								</div>
+							<div class="product-list-sub">
+								<a href="javascript:undefined;"
+									onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
+								</a>
+								<figure class="item-box">
+										<span class="item-rank rank-top">BEST <span
+											class="state">REVIEW</span></span>
+											 <span class="item-img"> 
+											<img src='<c:url value='${rvbestlist.img_loc}'></c:url>'>									
+									</span>								
+									</a>
+									<figcaption class="item-info">
+										<a href="javascript:undefined;"
+											onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122093098215','1');">
+										</a><a href="javascript:void(0)"
+											onclick="goGodDetail('GM0122093098215')">
+											<form
+												action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvbestlist.r_no}"
+												method="post"
+												id = "frm${rvbestlist.r_no}">
+												<!-- 리뷰 디테일 jsp로 변수 전달 -->
+												<input type="hidden" name="proname"
+													value="${rvbestlist.pro_name}"> <input type="hidden"
+													name="b_name" value="${rvbestlist.brand_name}"> <input
+													type="hidden" name="img_loc" value="${rvbestlist.img_loc}" style="transform:rotate(90deg);">
+													<input type="hidden" name="r_img" value="${rvbestlist.r_img}" style="transform:rotate(90deg);">
+											
+											</form>
+											<div class="item-brand">${rvbestlist.brand_name}</div>
+											<div class="item-name">${rvbestlist.pro_name}</div>
+											<div class="item-price">
+												<span class="price"><fmt:formatNumber value="${rvbestlist.pro_price}" pattern="#,###" /></span>
+											</div>
+											<div class="item-size">
+												<span>${rvbestlist.size_name}</span>
+											</div>
+										</a>
+									</figcaption>
+								</figure>
 							</div>
-						</a>
-					</figcaption>
-				</figure>
-				<div class="product-list-sub">
-					<figure class="item-box">
-						<span class="item-img"> <a href="javascript:void(0)" onclick="goGodDetail('GM0122110110036')"> <img src="https://cdn.hfashionmall.com/goods/THBR/22/11/01/GM0122110110036_1_ORGINL.jpg"
-								alt="">
-						</a>
-						</span>
-						<figcaption class="item-info">
-							<a href="javascript:void(0)" onclick="goGodDetail('GM0122110110036')">
-								<div class="item-brand">TOMMY HILFIGER WOMEN</div>
-								<div class="item-name">울 캐시미어 컴포트 자켓</div>
-								<div class="item-price">
-									<span class="price">685,000</span>
-								</div>
-							</a>
-						</figcaption>
-					</figure>
-				</div>
+							<figure class="item">
+								<figcaption class="info">
 
-			</div>
-			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-			<div class="review-plus-cont">
-				<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122072975341','17');"> </a>
-				<figure class="item" data-ga-name="스트레치 데님 셔츠">
-					<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122072975341','17');">
-						<div class="img">
-							<span> <img src="https://cdn.hfashionmall.com/contents/review/2166442984415459.jpg?RS=300" alt="" style="transform: rotate(90deg)">
-							</span>
+									<div class="point-wrap">									
+										<div class="item-color">
+											<span class="color" style="font-size: 13px;">SIZE: ${rvbestlist.size_name}          좋아요 수: ${rvbestlist.r_like}
+											</span>
+										</div>
+									</div>
+
+									<div class="item-comment">
+										<span class="comment-txt"> ${rvbestlist.r_content}</span>
+									</div>
+								</figcaption>
+							</figure>
+
 						</div>
-					</a>
-					<figcaption class="info">
-						<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122072975341','17');"> </a><a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122072975341','17');">
-							<div class="point-wrap">
-								<div class="point">
-									<span class="ico" style="width: 100%">별점</span>
-								</div>
-								<div class="item-color">
-									<span class="color">08 / BLUE</span>
-								</div>
-							</div>
-						</a>
-					</figcaption>
-				</figure>
-				<div class="product-list-sub">
-					<figure class="item-box">
-						<span class="item-img"> <a href="javascript:void(0)" onclick="goGodDetail('GM0122072975341')"> <img src="https://cdn.hfashionmall.com/goods/THBR/22/07/29/GM0122072975341_1_ORGINL.jpg"
-								alt="">
-						</a>
-						</span>
-						<figcaption class="item-info">
-							<a href="javascript:void(0)" onclick="goGodDetail('GM0122072975341')">
-								<div class="item-brand">TOMMY HILFIGER KIDS</div>
-								<div class="item-name">스트레치 데님 셔츠</div>
-								<div class="item-price">
-									<span class="price">80,500</span>
-
-								</div>
-							</a>
-						</figcaption>
-
-					</figure>
-				</div>
-
-			</div>
-			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-			<div class="review-plus-cont">
-				<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122071371201','6');"> </a>
-				<figure class="item" data-ga-name="*카프리 M 숄더 패브릭">
-					<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122071371201','6');">
-						<div class="img">
-							<span> <img src="https://cdn.hfashionmall.com/contents/review/1584283867608967.jpeg?RS=300" alt="" style="transform: rotate(0deg)">
-							</span>
-						</div>
-					</a>
-					<figcaption class="info">
-						<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122071371201','6');"> </a><a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GM0122071371201','6');">
-							<div class="point-wrap">
-								<div class="point">
-									<span class="ico" style="width: 100%">별점</span>
-								</div>
-								<div class="item-color">
-									<span class="color">F / BLACK</span>
-								</div>
-							</div>
-						</a>
-					</figcaption>
-				</figure>
-				<div class="product-list-sub">
-					<figure class="item-box">
-						<span class="item-img"> <a href="javascript:void(0)" onclick="goGodDetail('GM0122071371201')"> <img
-								src="https://cdn.hfashionmall.com//goods/HFBR/22/07/13/GM0122071371201_0_ORGINL.jpg" alt="">
-						</a>
-						</span>
-						<figcaption class="item-info">
-							<a href="javascript:void(0)" onclick="goGodDetail('GM0122071371201')">
-								<div class="item-brand">rouge＆lounge</div>
-								<div class="item-name">*카프리 M 숄더 패브릭</div>
-								<div class="item-price">
-									<span class="price">178,800</span>
-
-								</div>
-							</a>
-						</figcaption>
-					</figure>
-				</div>
-
-			</div>
-			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
-			<div class="review-plus-cont">
-				<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GP4X22082481707','2');"> </a>
-				<figure class="item" data-ga-name="Unbalanced Cut-out Top Gray (JWTS2F902G3)">
-					<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GP4X22082481707','2');">
-						<div class="img">
-							<span> <img src="https://cdn.hfashionmall.com/contents/review/528485181267650.jpeg?RS=300" alt="" style="transform: rotate(0deg)">
-							</span>
-						</div>
-					</a>
-					<figcaption class="info">
-						<a href="javascript:undefined;" onclick="javascript:getLayerPopupGoodsReview(null,null,'GP4X22082481707','2');"> </a><a href="javascript:undefined;"
-							onclick="javascript:getLayerPopupGoodsReview(null,null,'GP4X22082481707','2');">
-							<div class="point-wrap">
-								<div class="point">
-									<span class="ico" style="width: 100%">별점</span>
-								</div>
-								<div class="item-color">
-									<span class="color">00S / </span>
-								</div>
-							</div>
-						</a>
-					</figcaption>
-				</figure>
-				<div class="product-list-sub">
-					<figure class="item-box">
-						<span class="item-img"> <a href="javascript:void(0)" onclick="goGodDetail('GP4X22082481707')"> <img src="https://cdn.hfashionmall.com/goods/JSBR/22/08/24/GP4X22082481707_0_ORGINL.jpg"
-								alt="">
-						</a>
-						</span>
-						<figcaption class="item-info">
-							<a href="javascript:void(0)" onclick="goGodDetail('GP4X22082481707')">
-								<div class="item-brand">JSNY</div>
-								<div class="item-name">[10/14 예약배송] Unbalanced Cut-out Top Gray (JWTS2F902G3)</div>
-								<div class="item-price">
-									<span class="price">53,100</span>
-
-								</div>
-							</a>
-						</figcaption>
-					</figure>
-				</div>
-			</div>
+					</c:forEach>
 		</div>
 	</section>
 </div>
@@ -2232,7 +2085,12 @@
 	
 	<button type="button" class="top" onclick="scrollMov(0, 200);"><span>TOP</span></button>
 </div>
+<script>
 
+function frmSubmit(i){
+	$("#frm"+i).submit();
+}
+</script>
 
 
 
