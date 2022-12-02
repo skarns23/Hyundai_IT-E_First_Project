@@ -46,6 +46,11 @@
 							<div class="swiper-slide">
 								<!-- body -->
 								<div class="body">
+								<c:choose>
+								<c:when test="${empty orderList}">
+								<div class="nodata">
+										<p class="txt-nodata">주문/배송 내역이 없습니다.</p>
+									</div></c:when></c:choose>
 									<!-- row -->
 									<c:forEach var="item" items="${orderList}">
 
