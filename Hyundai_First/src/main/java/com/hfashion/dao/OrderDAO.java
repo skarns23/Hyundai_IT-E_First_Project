@@ -80,7 +80,8 @@ public class OrderDAO {
 				Date order_date =rs.getDate(9);
 				String img_url = rs.getString(10);
 				int order_check = rs.getInt(11);
-				OrderVO oVO = new OrderVO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url,order_check);
+				Date cancle_date = rs.getDate(12);
+				OrderVO oVO = new OrderVO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url,order_check,cancle_date);
 				result.add(oVO);
 			}
 			JdbcUtil.close(rs);

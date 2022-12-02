@@ -33,6 +33,7 @@ public class MemberDAO {
 	private String updatePW = "{call mem_pack.update_member_pw(?,?)}";
 	private String outMember = "{call mem_pack.out_member(?)}";
 	private String confirmEmail = "{?=call mem_pack.check_email(?)}";
+	private String searchPW = "{?=call mem_pack.searchPW(?,?,?)}";
 	private MemberDAO() {
 		try {
 			Context con = new InitialContext();
@@ -43,6 +44,26 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public String searchPW(String user_id, String user_name, String user_email) {
+		String result = "";
+		try {
+			Connection conn = ConnectionProvider.getConnection();
+			CallableStatement cstmt = conn.prepareCall(searchPW);
+			cstmt.registerOutParameter(1, java.sql.Types.VARCHAR);
+			cstmt.setString(2, user_id);
+			cstmt.setString(3, user_name);
+			cstmt.setString(4, user_email);
+			cstmt.execute();
+			result = cstmt.getString(1);
+			JdbcUtil.close(cstmt);
+			JdbcUtil.close(conn);
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	public MemberVO loginMember(String user_id, String user_pw) {
 		MemberVO member  = null;

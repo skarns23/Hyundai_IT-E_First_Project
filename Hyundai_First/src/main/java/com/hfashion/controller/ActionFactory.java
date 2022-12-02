@@ -1,4 +1,5 @@
 package com.hfashion.controller;
+
 import com.hfashion.controller.action.Action;
 import com.hfashion.controller.action.CancleOrderAction;
 import com.hfashion.controller.action.CartAction;
@@ -40,6 +41,8 @@ import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
 import com.hfashion.controller.action.goodInsertAction;
+import com.hfashion.controller.action.*;
+
 
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
@@ -134,6 +137,10 @@ public class ActionFactory {
 			action = new CancleOrderAction();
 		}else if(command.equals("orderCancleForm")) {
 			action = new OrderCancleFormActin();
+		}else if(command.equals("searchPwForm")) {
+			action = new SearchPWFormAction();
+		}else if(command.equals("searchPW")) {
+			action = new SearchPWAction();
 		}
 		return action;
 	}

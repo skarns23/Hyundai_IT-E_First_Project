@@ -70,7 +70,7 @@
 							</a>
 						</div>
 						<div class="gnb-category">
-							<a href="${contextPath}/Hfashion?command=productList&category=4"> <span>ACC</span>
+							<a href="${contextPath}/Hfashion?command=productList&category=4"> <span>액세서리</span>
 							</a>
 						</div>
 						<div class="gnb-category">

@@ -98,21 +98,10 @@
 					</div>
 					<div class="write-inner">
 
-						<section class="write-section">
-							<h3 class="sub-title">
-								6. 평점을 남겨주세요. <span class="required">(필수)</span>
-							</h3>
-							<div class="point-select">
-								<span> <input type="radio" name="godGodEvl.totEvlScore" id="pdPointSel5" value="5"> <label for="pdPointSel5">5점</label> <input type="radio" name="godGodEvl.totEvlScore"
-									id="pdPointSel4" value="4"> <label for="pdPointSel4">4점</label> <input type="radio" name="godGodEvl.totEvlScore" id="pdPointSel3" value="3"> <label for="pdPointSel3">3점</label>
-									<input type="radio" name="godGodEvl.totEvlScore" id="pdPointSel2" value="2"> <label for="pdPointSel2">2점</label> <input type="radio" name="godGodEvl.totEvlScore" id="pdPointSel1"
-									value="1"> <label for="pdPointSel1">1점</label>
-								</span>
-							</div>
-						</section>
+						
 						<section class="write-section">
 							<!--사진첨부-->
-							<h3 class="sub-title">7. 사진을 첨부해 주세요.</h3>
+							<h3 class="sub-title">6. 사진을 첨부해 주세요.</h3>
 							<div class="upload-item">
 								<div class="upload-item-list">
 									<span class="item-box"> 

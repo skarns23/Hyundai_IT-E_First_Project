@@ -8,7 +8,7 @@
 	<section class="content-wrap">
 		<input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
 		<!-- snb -->
-				<div class="snb-wrap">
+		<div class="snb-wrap">
 			<h2 class="lnb-title">
 				<a href="${contextPath}/Hfashion?command=mypage">MYPAGE</a>
 			</h2>
@@ -18,7 +18,7 @@
 						<div class="menu-depth1">쇼핑정보</div>
 						<ul class="menu-depth2">
 							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
-							
+
 
 						</ul>
 					</li>
@@ -94,38 +94,40 @@
 																	<div class="cell-inner">
 																		<div class="btns">
 																			<c:choose>
-																				<c:when test ="${item.order_check==0}">
-																						<button type="button" class="btn-type3-sm" onclick="orderCancle('${item.order_no}, '${item.pro_no}', '${item.product_option}','${sessionScope.loginUser.user_id}');">
-																				<span>주문취소</span>
-																			</button>
+
+																				<c:when test="${item.order_check==0}">
+																					<button type="button" class="btn-type3-sm" onclick="orderCancle('${item.order_no}', '${item.pro_no}', '${item.product_option}','${sessionScope.loginUser.user_id}')">
+																						<span>주문취소</span>
+																					</button>
 																				</c:when>
-																				<c:when test = "${item.order_check==1}">
-																						<span class="btn-type3-sm">구매확정</span>
+																				<c:when test="${item.order_check==1}">
+																					<span class="btn-type3-sm">구매확정</span>
 																				</c:when>
 																				<c:otherwise>
 																					<span class="btn-type3-sm">주문취소완료</span>
 																				</c:otherwise>
 																			</c:choose>
-																			
+
 																		</div>
 																		<div>
 																			<c:choose>
-																			<c:when test="${item.order_check==2}">                                       	
-                                       </c:when>
-																			<c:when test= "${item.review_check==0}">
-																			<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
-																				<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden" name="orderno"
-																					value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename" value="${item.product_option}"> 
-																					<button type="submit" class="btn-type3-sm" >리뷰작성</button>
-																			</form>
-																			<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
+																				<c:when test="${item.order_check==2}">
+																				</c:when>
+																				<c:when test="${item.review_check==0}">
+																					<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
+																						<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden"
+																							name="orderno" value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename"
+																							value="${item.product_option}">
+																						<button type="submit" class="btn-type3-sm">리뷰작성</button>
+																					</form>
+																					<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
                                                             <span>후기작성</span> -->
-                                       </c:when>
-                                       
-                                       <c:otherwise>
-                                       	<span class="btn-type3-sm">후기작성 완료</span>
-                                       </c:otherwise>
-                                      </c:choose>
+																				</c:when>
+
+																				<c:otherwise>
+																					<span class="btn-type3-sm">후기작성 완료</span>
+																				</c:otherwise>
+																			</c:choose>
 																		</div>
 																	</div>
 																</div>
@@ -149,7 +151,9 @@
 					</div>
 					<div class="order-links">
 						<ul>
-							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문 조회</a></li>
+							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
+							</a>
+							</li>
 						</ul>
 					</div>
 					<div class="slide-util">
@@ -187,7 +191,7 @@ function orderCancle(o_no, p_no,p_size,user_id){
 				var row = "";
 				var tag = "#order_"+o_no+"_"+p_no+"_"+p_size;
 				row = `<div class='cell-inner'><div class='cell-inner'><div class='btns'><span class='btn-type3-sm'>주문취소완료</span></div><div></div>
-					  </div></div>`
+					  </div></div>`;
 				$(tag).html(row);
 				alert('주문취소 성공');
 			}else
@@ -197,6 +201,6 @@ function orderCancle(o_no, p_no,p_size,user_id){
 			console.log(e)
 		}
 	})
-}
+};
 </script>
 <%@ include file="/layout/footer.jsp"%>

@@ -3,18 +3,18 @@
 <%@ include file="../layout/header.jsp"%>
 <div id="container">
 <section class="content-wrap">
-	<h2 class="page-title">비밀번호 재설정</h2>
+	<h2 class="page-title">비밀번호 찾기</h2>
 	<!-- idpw-wrap -->
 	<div class="idpw-wrap">
-		<form method="post" id="findPwdForm" action="/public/member/viewMbrPwd">
+		<form method="post" id="findPwdForm" action="Hfashion?command=searchPW">
 			<div id="pwTab" class="tab-wrap2 ui-tab initialized">
 				<ul class="tabs tab-btn">
-					<li class="on"><a href="javascript:;">등록된 휴대폰 번호로 찾기</a></li>
+					<li class="on"><a href="javascript:;">등록된 이메일로 찾기</a></li>
 				</ul>
 				<!-- 탭1 -->
 				<div class="tab-cont on">
 					<div class="find-guide-box">
-						<p class="txt">개인정보 보호를 위해 본인인증 후 비밀번호 재설정 해주시기 바랍니다.</p>
+						<p class="txt">등록된 이메일을 활용하여 비밀번호를 찾아주시기 바랍니다.</p>
 					</div>
 					<div class="input-info-wrap">
 						<ul class="input-info-group">
@@ -39,66 +39,58 @@
 							<li>
 								<div class="form-group">
 									<div class="input-box">
-										<input type="text" title="휴대폰번호" name="mobileNumber" id="mobileNumber" maxlength="11" placeholder="휴대폰번호" class="inp-reset">
+										<input type="text" title="이메일" name="mobileNumber" id="mbrEmail"  placeholder="이메일" class="inp-reset">
 										<div class="etc">
-											<button type="button" class="btn-clear" id="mobilClear"><span>지우기</span></button>
+											<button type="button" class="btn-clear" id="descMbrNm"><span>지우기</span></button>
 										</div>
 									</div>
-									<button type="button" class="btn-type1-m" id="sendSmsBtn" disabled="" onclick="sendSms();"><span>인증번호 전송</span></button>
 								</div>
 								<p class="txt-invalid" style="display: block;" id="descMobileNumber"></p>
 							</li>
 							<li id="certiLi" style="display:none;">
-								<div class="input-box">
-									<input type="text" title="인증번호 (숫자 6자리)" placeholder="인증번호 (숫자 6자리)" id="certi_str" name="certi_str" maxlength="6" class="inp-reset">
-									<div class="etc">
-										<button type="button" class="btn-clear"><span>지우기</span></button>
-										<span class="txt-countdown" style="display: block;" id="remainingTime"></span>
-									</div>
-								</div>
 								<p class="txt-invalid" style="display: block;" id="descCerti_str"></p>
 							</li>
 						</ul>
 					</div>
 
 					<div class="btn-box">
-						<a href="javascript:;" class="btn-type2-lg" onclick="chkCertNo(); return false;">확인</a>
+						<button type="button"class="btn-type2-lg" onclick="searchPW()">확인</a>
 					</div>
 				</div>
 
-				<!-- 탭2 -->
-				<div class="tab-cont">
-					<div class="find-input">
-						<div class="form-group">
-							<div class="input-box">
-								<input type="text" title="아이디" placeholder="아이디" id="tab2_mbrId" maxlength="20" class="inp-reset">
-								<div class="etc">
-									<button type="button" class="btn-clear"><span>지우기</span></button>
-								</div>
-							</div>
-							<button type="button" class="btn-type1-m" onclick="isCheckId();return false;"><span>확인</span></button>
-						</div>
-						<p class="txt-invalid" style="display: block;" id="descTab2MbrId"></p>
-					</div>
 
-					<div class="find-guide-box" id="guideBox" style="display:none">
-						<p class="txt">개인정보 보호를 위해 본인인증 후 비밀번호 재설정 해주시기 바랍니다.</p>
-					</div>
-
-					<ul class="auth-btns" id="auth" style="display:none">
-						<li>
-							<a href="javascript:;" onclick="openPCCWindow();" class="btn-auth phone">휴대폰 인증</a>
-						</li>
-						<li>
-							<a href="javascript:;" onclick="openIpinWindow();" class="btn-auth ipin">아이핀 인증</a>
-						</li>
-					</ul>
-				</div>
 			</div>
 		</form>
 	</div>
 	<!-- //idpw-wrap -->
 </section>
-
+<script>
+function searchPW(){
+	var user_id = $("#mbrId").val();
+	var user_name = $("#mbrNm").val();
+	var user_email = $("#mbrEmail").val();
+	$.ajax({
+		url : 'Hfashion?command=searchPW',
+		data : {
+				user_id : user_id,
+				user_name : user_name,
+				user_email : user_email
+		},
+		success : function(result){
+			var obj = JSON.parse(result);
+			if(obj=='null'||obj==''){
+				alert('비밀번호 찾기 실패');
+			}else {
+				alert('사용자의 비밀번호는 '+obj+'입니다.');
+				window.location.replace("Hfashion");
+				return ;
+			}
+		},
+		error : function(e){
+			console.log(e);
+		}
+	})
+}
+</script>
 </div>
 <%@ include file="../layout/footer.jsp"%>
