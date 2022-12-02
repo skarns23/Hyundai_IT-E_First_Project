@@ -120,9 +120,6 @@
 				}
 
 			});
-			btn_update.click(function() {
-
-			})
 		})
 	</script>
 </div>

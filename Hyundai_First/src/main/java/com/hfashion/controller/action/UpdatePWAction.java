@@ -36,12 +36,12 @@ public class UpdatePWAction implements Action{
 		}
 		Gson gson = new Gson();
 		url =  result ==0 ?"Hfashion?command=mypage_updateForm":url;
-		String value = gson.toJson(url);
-		System.out.println("UpdatePWAction : "+url);
-		PrintWriter out = response.getWriter();
-		out.print(value);
-		System.out.println(value);
-		//response.sendRedirect(url);
+		/*
+		 * String value = gson.toJson(url); System.out.println("UpdatePWAction : "+url);
+		 * PrintWriter out = response.getWriter(); out.print(value);
+		 * System.out.println(value);
+		 */
+		response.sendRedirect(url);
 	}
 
 }

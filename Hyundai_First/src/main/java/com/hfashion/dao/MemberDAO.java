@@ -147,6 +147,7 @@ public class MemberDAO {
 			date = cstmt.getDate(5);;
 			member = new MemberVO(result,null,user_name,user_email,user_phone,date);
 		}catch (SQLException e) {
+			
 			e.printStackTrace();
 		}catch (Exception e) {
 			e.printStackTrace();

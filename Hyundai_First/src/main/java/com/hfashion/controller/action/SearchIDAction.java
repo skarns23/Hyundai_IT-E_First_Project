@@ -1,6 +1,7 @@
 package com.hfashion.controller.action;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -22,13 +23,17 @@ public class SearchIDAction implements Action{
 		String phone = request.getParameter("find_phone");
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		MemberVO member = memberDAO.findID(name, email, phone);
-		if(member.getUser_id().length()!=0) {
+		if(member!=null&&member.getUser_id().length()!=0) {
 			request.setAttribute("id", member.getUser_id());
 			HttpSession session = request.getSession();
 			session.setAttribute("id", member.getUser_id());
 			System.out.println(member.getUser_id());
 			System.out.println(member.getJoin_date());
 			request.setAttribute("join_date", member.getJoin_date());
+		}else {
+			url = "Hfashion?command=searchIdForm";
+			response.sendRedirect(url);
+			return;
 		}
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
