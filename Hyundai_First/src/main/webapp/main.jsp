@@ -21,10 +21,12 @@
 			<h2 class="title">BEST <br>RANKING</h2>
 			<ul id="mainCnrKeywordRanking" class="list" style="">
 				<c:forEach var="blist" items="${bestItemList}">
-				<c:set var="i" value="${i+1}"></c:set>
+				<c:set var="i" value="${i+1}"/>
 				<li class="active"><a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="category"> <span class="num">${i}</span> <span class="name">${blist.productName}</span> <span
 						class="state-mid">상승</span>
 				</a>
+					<c:if test="${i eq 1}">
+					
 					<div class="brand open" style="height: 197.25px;">
 						<div class="inner" id="hotKwdGod0">
 							<a href="javascript:void(0);" onclick="clickRecommendProducts(this);" godno="GM0122080576703"
@@ -53,7 +55,9 @@
 								</figure>
 							</a>
 						</div>
-					</div> <a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="link">더보기</a></li>
+					</div> 
+					</c:if>
+					<a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="link">더보기</a></li>
 				</c:forEach>
 				
 			</ul>
