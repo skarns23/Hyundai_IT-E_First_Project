@@ -97,11 +97,12 @@ public class ReviewDAO {
 			while (rs.next()) {
 				review.setR_title(rs.getString(1));
 				review.setR_content(rs.getString(2));
-				review.setR_img(rs.getString(3));
-				review.setWeight(rs.getInt(4));
-				review.setHeight(rs.getInt(5));
-				review.setStar_rating(rs.getInt(6));
-				review.setSize_name(rs.getString(7));
+				review.setR_like(rs.getInt(3));
+				review.setR_img(rs.getString(4));
+				review.setWeight(rs.getInt(5));
+				review.setHeight(rs.getInt(6));
+				review.setStar_rating(rs.getInt(7));
+				review.setSize_name(rs.getString(8));
 			}
 
 			JdbcUtil.close(rs);

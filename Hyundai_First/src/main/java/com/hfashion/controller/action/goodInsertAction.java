@@ -27,14 +27,14 @@ public class goodInsertAction implements Action {
 		MemberVO memberVO = (MemberVO) session.getAttribute("loginUser");
 		String user_id = memberVO.getUser_id();// 유저 아이디 받기	
 	    
-		System.out.println("유저아이디:"+user_id);
+		//System.out.println("유저아이디:"+user_id);
 	    String r_no = request.getParameter("r_no");
 		
 	    int result = gDAO.goodinsert(r_no,user_id); // 리뷰 넘버와 유저 아이디 넣기
 	    
 	    int like= gDAO.SelectLike(r_no); // 좋아요 개수 반환
 	    int[] arr = {like,result};
-	      System.out.println(like);
+	     // System.out.println(like);
 	    Gson gson  = new Gson();
 	    String value = gson.toJson(arr);
 	    

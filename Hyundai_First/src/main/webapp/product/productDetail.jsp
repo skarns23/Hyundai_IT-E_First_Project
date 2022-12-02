@@ -354,8 +354,8 @@ function get_review() {
 	                   </button></li><li><span class='date'>\${obj[i].review_date}</span></li></ul><p class='title-review'>\${obj[i].review_title}<i class='icon-attach'>이미지 첨부</i></p><button type='button' class='btn-fold'>열기</button>
 	             </div></div><div class='fold-cont open'><div class='review-group'><ul class='review-prd-info'><li><div class='prd-name'>\${obj[i].user_id}</div></li>
 	                 <li><div class='prd-option'>\${obj[i].height}cm, \${obj[i].weight}kg <em class='prd-option-color'> <span class='pdColor-/colorchips/GM0122092795931_COLORCHIP.jpg'>&nbsp; / 구매옵션 : \${obj[i].product_option}</span></em>
-	                   </div></li></ul><ul class='files'><li class='img-file'><button type='button' onclick='layerViewImg();' style='background-image: url(https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg); transform: rotate(0deg);'>
-	                     <img src='https://cdn.hfashionmall.com/contents/review/734372004212235.jpeg' alt='7AE074DE-6EE9-4107-BFFF-4E1874F1AB83' style='transform: rotate(0deg);'></button>
+	                   </div></li></ul><ul class='files'><li class='img-file'><button type='button' onclick='layerViewImg();' style='background-image: url('${contextPath}/\images/review/${obj[i].review_img}'); transform: rotate(0deg);'>
+	                     <img src= ${contextPath}/images/review/${obj[i].review_img}  alt='7AE074DE-6EE9-4107-BFFF-4E1874F1AB83' style='transform: rotate(0deg);'/></button>
 	                 </li></ul><div class='txt-box'>\${obj[i].review_content}</div><div class='review-report'>
 	                 <button type='button' class='btn-report' onclick='alert('로그인 후 참여 가능합니다.');location.href='/public/member/login''></button></div></div></div></li>`;
 	          }
@@ -369,7 +369,7 @@ function get_review() {
 
 function insert_like(review_no){   
    var r_no=review_no; //임의 지정
-    alert(review_no);
+   // alert(review_no);
    $.ajax({
        url : 'Hfashion?command=goodinsert', // 연결 url
          type: 'post',        
@@ -380,9 +380,9 @@ function insert_like(review_no){
            var result = JSON.parse(obj);
              
              if(result[1]==0){
-                alert("이 상품은 이미 '좋아요'가 눌렸습니다");
+                alert("이 상품은 이미 '좋아요'를 눌렀습니다");
              } else{
-                alert("좋아요 개수:"+result[0]);
+                //alert("좋아요 개수:"+result[0]);
                 alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
              }
              get_review();
