@@ -17,9 +17,9 @@ public class HfashionServlet extends HttpServlet {
 
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 요청시 보낸 파라미터 command 값을 얻어옴
+
 		String command = request.getParameter("command");
-		// command 확인
+		
 		System.out.println("HfashionServlet에서 요청을 받음을 확인 : " + command);
             
 		ActionFactory af = ActionFactory.getInstance();
