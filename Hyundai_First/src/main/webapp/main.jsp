@@ -56,8 +56,9 @@
 							</a>
 						</div>
 					</div> 
-					</c:if>
 					<a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="link">더보기</a></li>
+					</c:if>
+					<a href="javascript:void(0)" onclick="fn_searchLink('타미'); return false;" class="link"></a></li>
 				</c:forEach>
 				
 			</ul>

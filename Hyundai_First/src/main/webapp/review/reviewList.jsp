@@ -85,17 +85,16 @@ function frmSubmit(i){
 								</figure>
 							</div>
 							<figure class="item">
-								<figcaption class="info">
-
-									<div class="point-wrap">									
-										<div class="item-color">
-											<span class="color" style="font-size: 13px;">SIZE: ${rvbestlist.size_name}          좋아요 수: ${rvbestlist.r_like}
-											</span>
-										</div>
-									</div>
-
+							<figcaption class="info">
 									<div class="item-comment">
 										<span class="comment-txt"> ${rvbestlist.r_content}</span>
+									</div>
+									<div class="point-wrap">
+										<div class="item-color">
+											<button type="button" class="btn-like2" onclick="insert_like(96);">
+												<span class="like-count">1${rvbestlist.r_like}</span>
+											</button>
+										</div>
 									</div>
 								</figcaption>
 							</figure>
@@ -136,13 +135,10 @@ function frmSubmit(i){
 									
 									</span>
 									<figcaption class="item-info">
-										<div class="item-brand">${rvList.brand_name}</div><span>좋아요 ${rvList.r_like}</span>
-										
+										<div class="item-brand">${rvList.brand_name}</div>
 										<div class="item-name">${rvList.pro_name}</div>
-										<span class="color">SIZE ${rvList.size_name}</span>
 										<div class="item-price">
 											<span class="price"><fmt:formatNumber value="${rvList.pro_price}" pattern="#,###" /></span>
-
 										</div>
 									</figcaption>
 								</figure>
