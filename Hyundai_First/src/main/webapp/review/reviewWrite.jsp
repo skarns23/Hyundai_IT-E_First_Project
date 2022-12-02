@@ -66,7 +66,7 @@
 									</button>
 								</div>
 							</div>
-							<span class="str-length"><span id="reviewSjLength">0</span>/50</span>
+							<!-- <span class="str-length"><span id="reviewSjLength">0</span>/50</span> -->
 						</section>
 
 						<!--3. 착용자 정보 입력 -->
@@ -93,7 +93,7 @@
 								4 . 어떤 점이 좋았나요? <span class="required">(필수)</span>
 							</h3>
 							<textarea cols="30" rows="10" name="r_content" title="좋은 점 작성" maxlength="1000" placeholder="상품 문의는 상품 정보 우측 하단의 [상품문의] 버튼을 누르시거나, 또는 [MY PAGE > 리뷰 및 문의 > 1:1문의] 메뉴를 이용해 주시기 바랍니다."></textarea>
-							<span class="str-length"><span id="reviewContLength">0</span>/1,000</span>
+							<!-- <span class="str-length"><span id="reviewContLength">0</span>/1,000</span> -->
 						</section>
 					</div>
 					<div class="write-inner">
