@@ -92,7 +92,7 @@ function frmSubmit(i){
 									<div class="point-wrap">
 										<div class="item-color">
 											<button type="button" class="btn-like2" onclick="insert_like(96);">
-												<span class="like-count">1${rvbestlist.r_like}</span>
+												<span class="like-count">${rvbestlist.r_like}</span>
 											</button>
 										</div>
 									</div>

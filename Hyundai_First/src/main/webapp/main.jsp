@@ -2007,7 +2007,7 @@
 	<section class="dp-section bg-section main-review-plus">
 		<h2 class="dp-title">
 			BEST REVIEW
-			<button type="button" class="btn_more" onclick="location.href='review/reviewList'">전체보기</button>
+			<button type="button" class="btn_more" onclick="location.href='Hfashion?command=reviewlist'">전체보기</button>
 		</h2>
 		<div class="review-plus-list">
 			<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
