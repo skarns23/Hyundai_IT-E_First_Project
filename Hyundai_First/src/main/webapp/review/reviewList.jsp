@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="/layout/header.jsp"%>
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
+
+<!-- 윤태영 작성  -->
+
 <style>
 .item-size{
   margin-top: 10px;
@@ -16,21 +19,14 @@ function frmSubmit(i){
 </script>
 <div id="container">
 	<div class="breadcrumb-wrap"></div>
-	<!-- <script type="text/javascript" src="/js/sns.js"></script> -->
-
-	<!-- <div class="breadcrumb-wrap">
-      <ol class="breadcrumb">
-         <li class="bc-home"><a href="javascript:;"><span>Home</span></a></li>
-         <li class="active">리뷰플러스</li>
-      </ol>
-   </div> -->
 	<section class="content-response ly_full">
+	  <!--  베스트 리뷰 -->
 		<h2 class="page-title type5">BEST REVIEW</h2>
 
 		<div class="rp-list-wrap review-plus">
 			<div class="rp-count-box">
 				<div class="review-plus-list">
-					<!-- 전시 > 메인 > 코너 > KEYWORD RANKING 상품 -->
+					
 					<c:forEach var="rvbestlist" items="${BestReviewList}">
 						<!-- rvbestlist 변수 선언 -->
 						<div class="review-plus-cont" onclick="frmSubmit('${rvbestlist.r_no}');">
@@ -124,6 +120,7 @@ function frmSubmit(i){
 
 
 					<!--일반리뷰 반복 시작 -->
+					
 					<c:forEach var="rvList" items="${ReviewList}">
 			          	   
 						<div class="review-plus-cont grid-item" style="float: left" onclick="frmSubmit('${rvList.r_no}');">						
@@ -135,6 +132,7 @@ function frmSubmit(i){
 									
 									</span>
 									<figcaption class="item-info">
+
 										<div class="item-brand">${rvList.brand_name}</div>
 										<div class="item-name">${rvList.pro_name}</div>
 										<div class="item-price">
@@ -149,7 +147,7 @@ function frmSubmit(i){
 								<div class="img">
 
 									<span> 
-									<!-- 상품이미지 -->
+									<!-- 상품이미지--->
 									<img
 										src='${contextPath}/\images/review/${rvList.r_img}' style="width:100%;height:100%"> 
 										<form action="${contextPath}/Hfashion?command=reviewdetail&R_no=${rvList.r_no}" method="post"

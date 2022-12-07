@@ -1,29 +1,15 @@
 package com.hfashion.vo;
 
 
-
+// 윤태영 작성
+// 리뷰 DTO 작성
 
 import java.util.Date;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-//CREATE TABLE review (
-//	    review_no                       VARCHAR2(20) NOT NULL,
-//	    review_like                     NUMBER NOT NULL,
-//	    review_title                    VARCHAR2(50) NOT NULL,
-//	    review_content                  VARCHAR2(500) NOT NULL,
-//	    review_img                      VARCHAR2(200) NOT NULL,
-//	    review_date                     DATE NOT NULL,
-//	    weight                          NUMBER NOT NULL,
-//	    height                          NUMBER NOT NULL,
-//	    star_rating                     NUMBER NOT NULL,
-//	    order_detail_size_name          VARCHAR2(20) NOT NULL,
-//	    order_detail_pro_no             VARCHAR2(20) NOT NULL,
-//	    order_detail_order_order_no     VARCHAR2(20) NOT NULL, 
-//	    order_detail_order_user_user_id VARCHAR2(30) NOT NULL
-//	--  ERROR: Column name length exceeds maximum allowed length(30) 
-//	);	
+
 @Getter
 @Setter
 @ToString
