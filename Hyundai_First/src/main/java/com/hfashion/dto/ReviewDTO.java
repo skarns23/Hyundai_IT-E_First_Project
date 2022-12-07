@@ -1,4 +1,4 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 
 // 윤태영 작성
@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class ReviewVO {
+public class ReviewDTO {
 
 	private String r_no;
 	private int r_like;

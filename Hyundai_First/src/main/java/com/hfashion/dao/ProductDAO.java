@@ -12,9 +12,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.hfashion.vo.ImgVO;
-import com.hfashion.vo.ProductDTO;
-import com.hfashion.vo.SizeVO;
+import com.hfashion.dto.ImgDTO;
+import com.hfashion.dto.ProductDTO;
+import com.hfashion.dto.SizeDTO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -77,8 +77,8 @@ public class ProductDAO {
 	}
 	
 	// 신수진 - 상품 상세 정보 size select 
-	public List<SizeVO> productDetailSize(String pro_no){
-		List<SizeVO> sList = new ArrayList<>();
+	public List<SizeDTO> productDetailSize(String pro_no){
+		List<SizeDTO> sList = new ArrayList<>();
 		
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(selectDetailSize)){
@@ -90,7 +90,7 @@ public class ProductDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					SizeVO sVO = new SizeVO();
+					SizeDTO sVO = new SizeDTO();
 					String size_name = rs.getString(1);
 					sVO.setSize_name(size_name);
 					sList.add(sVO);
@@ -106,8 +106,8 @@ public class ProductDAO {
 	}
 	
 	// 신수진 - 상품 상세 정보 이미지 select
-	public List<ImgVO> productDetailImg(String pro_no){
-		List<ImgVO> imgList = new ArrayList<>();
+	public List<ImgDTO> productDetailImg(String pro_no){
+		List<ImgDTO> imgList = new ArrayList<>();
 		
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(selectDetailImg)){
@@ -119,7 +119,7 @@ public class ProductDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					ImgVO imgVO = new ImgVO();
+					ImgDTO imgVO = new ImgDTO();
 					String img_loc = rs.getString(2);
 					imgVO.setPro_no(pro_no);
 					imgVO.setImg_loc(img_loc);

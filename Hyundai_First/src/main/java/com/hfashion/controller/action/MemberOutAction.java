@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfashion.dao.MemberDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 /*
  * 남승현 작성 
  */
@@ -27,7 +27,7 @@ public class MemberOutAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		MemberDAO mVO = MemberDAO.getInstance();
-		MemberVO memberVO = (MemberVO)request.getSession().getAttribute("loginUser");
+		MemberDTO memberVO = (MemberDTO)request.getSession().getAttribute("loginUser");
 		int result = mVO.secessionMember(memberVO.getUser_id());
 		if(result == 1) {
 			request.getSession().invalidate();

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 
 /**
  * Servlet Filter implementation class LoginFilter
@@ -56,7 +56,7 @@ public class LoginFilter extends HttpFilter implements Filter {
 		String action = request.getParameter("command");
 		String pno = request.getParameter("pro_no");
 		HttpSession session =  req.getSession();
-		MemberVO memberVO = (MemberVO)session.getAttribute("loginUser");
+		MemberDTO memberVO = (MemberDTO)session.getAttribute("loginUser");
 		if(action!=null&&(action.contains("mypage")||action.contains("cart"))&&memberVO==null){
 			if(request.getParameter("ex_action")!=null)
 				action = request.getParameter("ex_action")+"&pno="+pno;

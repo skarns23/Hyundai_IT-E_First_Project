@@ -1,4 +1,4 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import java.util.List;
 

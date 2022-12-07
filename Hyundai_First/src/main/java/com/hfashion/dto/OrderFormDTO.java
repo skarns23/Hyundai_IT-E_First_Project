@@ -1,4 +1,4 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +17,7 @@ public class OrderFormDTO {
 	private String userName;
 	private String userPhone;
 	private String userEmail;
-	private List<CartDTO> orderList = new ArrayList<CartDTO>(); 
+	private List<CartOrderDTO> orderList = new ArrayList<CartOrderDTO>(); 
 	private int totalPrice;
 	private int deliveryFee;
 }

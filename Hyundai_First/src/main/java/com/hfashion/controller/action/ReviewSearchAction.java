@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfashion.dao.ReviewDAO;
-import com.hfashion.vo.ReviewDTO;
+import com.hfashion.dto.ReviewSearchDTO;
 /*
  * 남승현 작성
  */
@@ -37,7 +37,7 @@ public class ReviewSearchAction implements Action{
 		int w_val = weight.equals("") ? 0 : Integer.parseInt(weight);
 		
 		String pro_size = request.getParameter("pro_size");
-		List<ReviewDTO> rvList = rvDAO.getOptionalReview(pro_no, h_val, w_val, pro_size);
+		List<ReviewSearchDTO> rvList = rvDAO.getOptionalReview(pro_no, h_val, w_val, pro_size);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String value = gson.toJson(rvList);
 		PrintWriter out = response.getWriter();

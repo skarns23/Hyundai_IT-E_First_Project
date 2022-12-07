@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hfashion.dto.MainItemDTO;
+import com.hfashion.dto.ReviewDTO;
 import com.hfashion.service.MainFormService;
-import com.hfashion.vo.MainItemDTO;
-import com.hfashion.vo.ReviewVO;
 
 
 /*
@@ -23,7 +23,7 @@ public class MainAction implements Action {
 		String url = "/main.jsp";
 		
 		List<MainItemDTO> list = null;
-		List<ReviewVO> bestreviewList = null;
+		List<ReviewDTO> bestreviewList = null;
 		
 		MainFormService mainFormService = MainFormService.getInstance();
 		

@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.CartDAO;
-import com.hfashion.vo.CartVO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.CartDTO;
+import com.hfashion.dto.MemberDTO;
 
 /*
  * 신수진 작성
@@ -25,7 +25,7 @@ public class CartAction implements Action{
 		
 		// session에 있는 user의 정보를 받아 저장
 		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("loginUser");
+		MemberDTO member = (MemberDTO) session.getAttribute("loginUser");
 		String user_id = member.getUser_id();
 		
 		// request가 get 방식일 경우
@@ -34,7 +34,7 @@ public class CartAction implements Action{
 			String url = "product/cart.jsp";
 			
 			// user의 장바구니에 대한 정보 select 후, 객체 정보 전달
-			List<CartVO> cList = cartDAO.selectCart(user_id);
+			List<CartDTO> cList = cartDAO.selectCart(user_id);
 			
 			request.setAttribute("cList", cList);
 			
@@ -51,7 +51,7 @@ public class CartAction implements Action{
 			String size_name = request.getParameter("size_name");
 			int cart_amount = Integer.parseInt(request.getParameter("size_amount"));
 			
-			CartVO cartVO = new CartVO(pro_no, size_name, cart_amount, user_id);
+			CartDTO cartVO = new CartDTO(pro_no, size_name, cart_amount, user_id);
 			cartDAO.insertCart(cartVO);
 			
 		}

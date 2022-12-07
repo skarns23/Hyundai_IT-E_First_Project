@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hfashion.dto.MainItemDTO;
+import com.hfashion.dto.MainItemImgDTO;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.MainItemDTO;
-import com.hfashion.vo.MainItemImgDTO;
 
 import oracle.jdbc.OracleTypes;
 

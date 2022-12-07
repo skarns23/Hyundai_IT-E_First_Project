@@ -12,7 +12,7 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
-import com.hfashion.vo.CartVO;
+import com.hfashion.dto.CartDTO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -42,7 +42,7 @@ public class CartDAO {
 	}
 	
 	// 신수진 - 장바구니 담기
-	public boolean insertCart(CartVO cart) {
+	public boolean insertCart(CartDTO cart) {
 		int rs = 0;
 		
 		try(Connection conn = ds.getConnection();
@@ -60,8 +60,8 @@ public class CartDAO {
 	}
 	
 	// 신수진 - 장바구니 목록 select
-	public List<CartVO> selectCart(String user_id){
-		List<CartVO> cList = new ArrayList<>();
+	public List<CartDTO> selectCart(String user_id){
+		List<CartDTO> cList = new ArrayList<>();
 		
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(selectCart);){
@@ -73,7 +73,7 @@ public class CartDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					CartVO cVO;
+					CartDTO cVO;
 					int cart_amount = rs.getInt(1);
 					String size_name = rs.getString(2);
 					String id = rs.getString(3);
@@ -83,7 +83,7 @@ public class CartDAO {
 					String brand_name = rs.getString(7);
 					String img_loc = rs.getString(8);
 					int selected = rs.getInt(9);
-					cVO = new CartVO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc, selected);
+					cVO = new CartDTO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc, selected);
 					cList.add(cVO);
 				}
 			} catch(SQLException e) {

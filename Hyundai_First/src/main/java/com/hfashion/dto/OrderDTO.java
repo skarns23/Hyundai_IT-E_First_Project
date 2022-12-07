@@ -1,4 +1,4 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import java.sql.Date;
 
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class OrderVO {
+public class OrderDTO {
 	private String  order_no;
 	private String brand_name;
 	private String pro_name;

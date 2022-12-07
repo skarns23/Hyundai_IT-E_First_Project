@@ -1,11 +1,11 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class CartVO {
+public class CartDTO {
 	private int cart_amount;
 	private String size_name;
 	private String user_id;
@@ -16,7 +16,7 @@ public class CartVO {
 	private String img_loc;
 	private int selected;
 	
-	public CartVO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, int pro_price, String brand_name, String img_loc, int selected) {
+	public CartDTO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, int pro_price, String brand_name, String img_loc, int selected) {
 		this.cart_amount = cart_amount;
 		this.size_name = size_name;
 		this.user_id = user_id;
@@ -28,7 +28,7 @@ public class CartVO {
 		this.selected = selected;
 	}
 	
-	public CartVO(String pro_no, String size_name, int cart_amount, String user_id) {
+	public CartDTO(String pro_no, String size_name, int cart_amount, String user_id) {
 		this.pro_no = pro_no;
 		this.size_name = size_name;
 		this.cart_amount = cart_amount;

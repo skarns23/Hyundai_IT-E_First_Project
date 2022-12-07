@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hfashion.dto.ProductDTO;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.ProductDTO;
 
 import oracle.jdbc.OracleTypes;
 

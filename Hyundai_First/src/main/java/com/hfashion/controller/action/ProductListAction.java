@@ -8,9 +8,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.hfashion.dto.CategoryDTO;
+import com.hfashion.dto.ProductDTO;
 import com.hfashion.service.ProductService;
-import com.hfashion.vo.CategoryDTO;
-import com.hfashion.vo.ProductDTO;
 
 
 public class ProductListAction implements Action{

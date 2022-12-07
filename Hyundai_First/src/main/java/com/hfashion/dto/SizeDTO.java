@@ -1,11 +1,11 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class SizeVO {
+public class SizeDTO {
 	private String size_name;
 	private int size_amount;
 	

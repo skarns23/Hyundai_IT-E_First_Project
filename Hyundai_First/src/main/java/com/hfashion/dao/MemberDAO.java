@@ -13,9 +13,9 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.dto.MemberDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.MemberVO;
 
 import oracle.jdbc.OracleType;
 import oracle.jdbc.OracleTypes;
@@ -72,8 +72,8 @@ public class MemberDAO {
 	 * 출력 : 해당 조건에 부합한 사용자의 인스턴스
 	 * 기타 : 사용자의 데이터를 읽기위해 CURSOR 사용  
 	 */
-	public MemberVO loginMember(String user_id, String user_pw) {
-		MemberVO member  = null;
+	public MemberDTO loginMember(String user_id, String user_pw) {
+		MemberDTO member  = null;
 		try(Connection conn = ConnectionProvider.getConnection();
 			CallableStatement cstmt = conn.prepareCall(login);){
 			cstmt.setString(1, user_id);
@@ -89,7 +89,7 @@ public class MemberDAO {
 				String email = rs.getString(4);
 				String phone = rs.getString(5);
 				//Date join_date = rs.getDate(6);
-				member = new MemberVO(id,pw,name,email,phone);
+				member = new MemberDTO(id,pw,name,email,phone);
 			}
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -129,7 +129,7 @@ public class MemberDAO {
 	 * 출력 : 회원가입 성공 여부 반환
 	 * 기타 : 유저아이디가 존재하지 않는 인스턴스의 경우, 바로 false 값 반환  
 	 */
-	public boolean signUp(MemberVO member) {
+	public boolean signUp(MemberDTO member) {
 		int rs = 0;
 		if (!confirmID(member.getUser_id())) {
 			return false;
@@ -155,10 +155,10 @@ public class MemberDAO {
 	 * 입력 : 사용자의 이름, 이메일, 휴대폰 번호 
 	 * 출력 : 사용자의 이름, 이메일, 휴대폰 번호,아이디와 가입날짜를 담은 인스턴스
 	 */
-	public MemberVO findID(String user_name, String user_email, String user_phone) {
+	public MemberDTO findID(String user_name, String user_email, String user_phone) {
 		String result = "";
 		Date date = null;
-		MemberVO member = null;
+		MemberDTO member = null;
 		try(Connection conn = ConnectionProvider.getConnection();
 			CallableStatement cstmt = conn.prepareCall(findId)){
 			cstmt.setString(1, user_name);
@@ -169,7 +169,7 @@ public class MemberDAO {
 			cstmt.execute();
 			result = cstmt.getString(4);
 			date = cstmt.getDate(5);;
-			member = new MemberVO(result,null,user_name,user_email,user_phone,date);
+			member = new MemberDTO(result,null,user_name,user_email,user_phone,date);
 		}catch (SQLException e) {
 			
 			e.printStackTrace();

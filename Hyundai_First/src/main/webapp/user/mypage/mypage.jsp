@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
 <c:set var="orderList" value="${orderList}" />
+<%@include file="/layout/header.jsp"%>
 <!-- 남승현 작성  
 			기능 : 마이페이지 이동 시 최근 한달간의 주문내역을 조회하여 JSTL을 사용하여 띄워줌
 	 -->
-<%@include file="/layout/header.jsp"%>
 <div id="container">
 	<section class="content-wrap">
 		<input type="hidden" name="hPointEnableYn" id="hPointEnableYn" value="">
@@ -49,13 +49,11 @@
 							<div class="swiper-slide">
 								<!-- body -->
 								<div class="body">
-									<c:choose>
-										<c:when test="${empty orderList}">
-											<div class="nodata">
-												<p class="txt-nodata">주문/배송 내역이 없습니다.</p>
-											</div>
-										</c:when>
-									</c:choose>
+								<c:choose>
+								<c:when test="${empty orderList}">
+								<div class="nodata">
+										<p class="txt-nodata">주문/배송 내역이 없습니다.</p>
+									</div></c:when></c:choose>
 									<!-- row -->
 									<c:forEach var="item" items="${orderList}">
 
@@ -177,10 +175,13 @@
 		</div>
 	</section>
 </div>
-<script>
 <!-- 남승현 작성  
 기능 : 주문 취소 버튼 클릭 시 주문 및 상품에 대한 정보를 받아 ajax를 통해 주문 취소 후, html 변경
 -->
+<script>
+$(function(){
+	
+});
 function orderCancle(o_no, p_no,p_size,user_id){
 	$.ajax({
 		url : 'Hfashion?command=orderCancle',

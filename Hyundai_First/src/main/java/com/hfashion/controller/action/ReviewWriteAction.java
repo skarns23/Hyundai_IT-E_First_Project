@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.ReviewDAO;
-import com.hfashion.vo.MemberVO;
-import com.hfashion.vo.ReviewVO;
+import com.hfashion.dto.MemberDTO;
+import com.hfashion.dto.ReviewDTO;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
@@ -22,11 +22,11 @@ public class ReviewWriteAction implements Action {
 		String url = "Hfashion?command=reviewlist";
 		// 리뷰작성시 리뷰 리스트로 연결됨
 
-		ReviewVO RV_VO = new ReviewVO();
+		ReviewDTO RV_VO = new ReviewDTO();
 
 		// 리뷰 작성을 위해서는 user id가 필요 - 세션에서 받아옴 
 		HttpSession session = request.getSession();
-		MemberVO memberVO = (MemberVO) session.getAttribute("loginUser");
+		MemberDTO memberVO = (MemberDTO) session.getAttribute("loginUser");
 		String user_id = memberVO.getUser_id();
 
 		//MultipartRequest 메소드 사용해서 파일 저장 및 전송

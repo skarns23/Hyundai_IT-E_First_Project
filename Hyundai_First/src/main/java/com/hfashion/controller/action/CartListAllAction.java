@@ -11,8 +11,8 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.hfashion.dao.CartDAO;
-import com.hfashion.vo.CartVO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.CartDTO;
+import com.hfashion.dto.MemberDTO;
 
 public class CartListAllAction implements Action {
 
@@ -24,10 +24,10 @@ public class CartListAllAction implements Action {
 	    CartDAO cartDAO = CartDAO.getInstance();
 	    
 	    HttpSession session = request.getSession();
-	    MemberVO member = (MemberVO) session.getAttribute("loginUser");
+	    MemberDTO member = (MemberDTO) session.getAttribute("loginUser");
 	    String user_id = member.getUser_id();
 	    
-		List<CartVO> cList = cartDAO.selectCart(user_id);
+		List<CartDTO> cList = cartDAO.selectCart(user_id);
 		
 		Gson gson = new Gson();
 	    String value = gson.toJson(cList);

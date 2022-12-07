@@ -8,10 +8,10 @@ import javax.naming.NamingException;
 
 import com.hfashion.dao.MainBrandItemDAO;
 import com.hfashion.dao.ReviewDAO;
+import com.hfashion.dto.MainItemDTO;
+import com.hfashion.dto.ReviewDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.MainItemDTO;
-import com.hfashion.vo.ReviewVO;
 
 /*
  * 함세강, 윤태영 작성
@@ -48,8 +48,8 @@ public class MainFormService {
 	}
 	
 	//메인 베스트 리뷰 가져오는 메서드
-	public List<ReviewVO> getMainBestReview() {
-		List<ReviewVO> bestreviewList = null;
+	public List<ReviewDTO> getMainBestReview() {
+		List<ReviewDTO> bestreviewList = null;
 		Connection con = null;
 
 		try {

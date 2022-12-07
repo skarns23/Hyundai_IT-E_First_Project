@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.MemberDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 /*
  * 남승현 작성
  */
@@ -30,7 +30,7 @@ public class JoinAction implements Action{
 		String email = request.getParameter("user_email");
 		String name = request.getParameter("user_name");
 		String phone = request.getParameter("user_phone");
-		MemberVO member = new MemberVO(id,pw,name,email,phone);
+		MemberDTO member = new MemberDTO(id,pw,name,email,phone);
 		boolean result = memberDAO.signUp(member);
 		if(!result) {
 			url = "Hfashion?command=signup";

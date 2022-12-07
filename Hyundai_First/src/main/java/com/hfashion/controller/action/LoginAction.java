@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.MemberDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 /*
  * 남승현 작성
  */
@@ -31,7 +31,7 @@ public class LoginAction implements Action {
 		MemberDAO memberDAO = MemberDAO.getInstance();
 		String id = request.getParameter("login_id");
 		String pw = request.getParameter("login_pw");
-		MemberVO member = memberDAO.loginMember(id, pw);
+		MemberDTO member = memberDAO.loginMember(id, pw);
 		String redirectURL = (String) session.getAttribute("redirectURL");
 		if (member != null) {
 			url = "Hfashion";

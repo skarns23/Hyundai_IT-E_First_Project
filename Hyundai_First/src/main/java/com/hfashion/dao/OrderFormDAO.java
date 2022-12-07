@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hfashion.dto.CartOrderDTO;
+import com.hfashion.dto.OrderFormDTO;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.CartDTO;
-import com.hfashion.vo.OrderFormDTO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -29,8 +29,8 @@ public class OrderFormDAO {
 	}
 	
 	//결제 페이지 주문 리스트 불러오는 메서드
-	public List<CartDTO> getSelectedCart(Connection con, String loginId){
-		List<CartDTO> list = new ArrayList<CartDTO>();
+	public List<CartOrderDTO> getSelectedCart(Connection con, String loginId){
+		List<CartOrderDTO> list = new ArrayList<CartOrderDTO>();
 
 		String runProcedure = "{call order_form_package.order_list(?,?)}";
 	
@@ -49,7 +49,7 @@ public class OrderFormDAO {
 				 int price = rs.getInt(6);
 				 String brandName = rs.getString(7);
 				 
-				 CartDTO dto = new CartDTO();
+				 CartOrderDTO dto = new CartOrderDTO();
 				 
 				 dto.setCartAmount(cartAmount);
 				 dto.setProSize(proSize);

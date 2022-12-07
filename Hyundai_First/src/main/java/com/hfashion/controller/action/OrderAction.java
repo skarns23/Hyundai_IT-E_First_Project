@@ -9,12 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.hfashion.dto.CartOrderDTO;
+import com.hfashion.dto.MemberDTO;
+import com.hfashion.dto.OrderCreditDTO;
+import com.hfashion.dto.OrderFormDTO;
 import com.hfashion.service.OrderFormService;
 import com.hfashion.service.OrderService;
-import com.hfashion.vo.CartDTO;
-import com.hfashion.vo.MemberVO;
-import com.hfashion.vo.OrderDTO;
-import com.hfashion.vo.OrderFormDTO;
 
 
 
@@ -33,7 +33,7 @@ public class OrderAction implements Action{
 			
 			HttpSession session = request.getSession();
 			
-			MemberVO memberDTO = (MemberVO)session.getAttribute("loginUser");
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("loginUser");
 			
 			OrderFormService orderFormService = OrderFormService.getInstance();
 			
@@ -41,7 +41,7 @@ public class OrderAction implements Action{
 			
 			request.setAttribute("orderInfo", orderFormDTO);
 			
-			List<CartDTO> list = null;
+			List<CartOrderDTO> list = null;
 			list = orderFormDTO.getOrderList();
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
@@ -55,14 +55,14 @@ public class OrderAction implements Action{
 			
 			HttpSession session = request.getSession();
 			
-			MemberVO memberDTO = (MemberVO)session.getAttribute("loginUser");
+			MemberDTO memberDTO = (MemberDTO)session.getAttribute("loginUser");
 			
 			String postCode = request.getParameter("postCode");
 			String address = request.getParameter("address");
 
 			String userId = memberDTO.getUser_id();
 			
-			OrderDTO dto = new OrderDTO(postCode,address,userId);
+			OrderCreditDTO dto = new OrderCreditDTO(postCode,address,userId);
 			
 			OrderService orderService = OrderService.getInstance();
 			

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.CartDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 
 /*
  * 신수진 작성
@@ -23,7 +23,7 @@ public class CartCntUpdateAction implements Action {
 		String pro_no = request.getParameter("pno");
 		String size_name = request.getParameter("size");
 		HttpSession session = request.getSession();
-		MemberVO member = (MemberVO) session.getAttribute("loginUser");
+		MemberDTO member = (MemberDTO) session.getAttribute("loginUser");
 		String user_id = member.getUser_id();
 		
 		cartDAO.cntUpdateCart(user_id, pro_no, size_name, cnt);

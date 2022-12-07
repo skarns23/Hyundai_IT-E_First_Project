@@ -13,9 +13,9 @@ import java.util.List;
 
 import javax.naming.NamingException;
 
+import com.hfashion.dto.OrderDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.OrderVO;
 
 import oracle.jdbc.OracleType;
 import oracle.jdbc.OracleTypes;
@@ -71,8 +71,8 @@ public class OrderDAO {
 	 * 기타 : 검색된 데이터를 CURSOR를 활용하여 반환
 	 *        이후 ResultSet의 컬럼을 추출하여 인스턴스를 만든 뒤 List에 담아 반환
 	 */
-	public List<OrderVO> getOrderList(String user_id, String start, String end) {
-		List<OrderVO> result = new ArrayList<>();
+	public List<OrderDTO> getOrderList(String user_id, String start, String end) {
+		List<OrderDTO> result = new ArrayList<>();
 		try{
 			Connection conn = ConnectionProvider.getConnection();
 			CallableStatement cstmt = conn.prepareCall(getOrderList);
@@ -95,7 +95,7 @@ public class OrderDAO {
 				String img_url = rs.getString(10);
 				int order_check = rs.getInt(11);
 				Date cancle_date = rs.getDate(12);
-				OrderVO oVO = new OrderVO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url,order_check,cancle_date);
+				OrderDTO oVO = new OrderDTO(order_no,brand_name,pro_name,pro_option,order_amount,pro_price,review_check,pro_no,order_date,img_url,order_check,cancle_date);
 				result.add(oVO);
 			}
 			JdbcUtil.close(rs);

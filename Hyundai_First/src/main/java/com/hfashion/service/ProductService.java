@@ -8,11 +8,11 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import com.hfashion.dao.ProductSortDAO;
+import com.hfashion.dto.CategoryDTO;
+import com.hfashion.dto.ProductDTO;
+import com.hfashion.dto.ProductSortDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.CategoryDTO;
-import com.hfashion.vo.ProductDTO;
-import com.hfashion.vo.ProductSortDTO;
 
 /*
  * 함세강 작성

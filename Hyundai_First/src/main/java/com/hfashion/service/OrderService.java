@@ -6,9 +6,9 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 
 import com.hfashion.dao.OrderCreditDAO;
+import com.hfashion.dto.OrderCreditDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.OrderDTO;
 
 /*
  * 작성자 함세강
@@ -25,7 +25,7 @@ public class OrderService {
 	}
 	
 	//주문하는 서비스 메서드
-	public void orderProductServie (OrderDTO dto) {
+	public void orderProductServie (OrderCreditDTO dto) {
 		Connection con = null;
 		OrderCreditDAO dao = null;
 		try {

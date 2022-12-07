@@ -7,11 +7,11 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import com.hfashion.dao.OrderFormDAO;
+import com.hfashion.dto.CartOrderDTO;
+import com.hfashion.dto.MemberDTO;
+import com.hfashion.dto.OrderFormDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.CartDTO;
-import com.hfashion.vo.MemberVO;
-import com.hfashion.vo.OrderFormDTO;
 
 /*
  * 작성자 함세강
@@ -29,10 +29,10 @@ public class OrderFormService {
 	}
 	
 	//결제창에서 필요한 정보를 가져오는 서비스 메서드
-	public OrderFormDTO getOrderForm(MemberVO memberDTO) {
+	public OrderFormDTO getOrderForm(MemberDTO memberDTO) {
 		OrderFormDTO dto = null;
 		Connection con =null;
-		List<CartDTO> list = null;
+		List<CartOrderDTO> list = null;
 		try {
 			con = ConnectionProvider.getConnection();
 			
@@ -47,7 +47,7 @@ public class OrderFormService {
 			
 			int totalPrice = 0;
 			int deliveryFee = 0;
-			for (CartDTO cartDTO : list) {
+			for (CartOrderDTO cartDTO : list) {
 				totalPrice += cartDTO.getProPrice()*cartDTO.getCartAmount();
 			}
 			

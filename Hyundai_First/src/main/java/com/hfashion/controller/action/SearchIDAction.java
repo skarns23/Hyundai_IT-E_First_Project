@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.MemberDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 /*
  * 남승현 작성 
  */
@@ -31,7 +31,7 @@ public class SearchIDAction implements Action{
 		String email = request.getParameter("find_email");
 		String phone = request.getParameter("find_phone");
 		MemberDAO memberDAO = MemberDAO.getInstance();
-		MemberVO member = memberDAO.findID(name, email, phone);
+		MemberDTO member = memberDAO.findID(name, email, phone);
 		if(member!=null&&member.getUser_id().length()!=0) {
 			request.setAttribute("id", member.getUser_id());
 			HttpSession session = request.getSession();

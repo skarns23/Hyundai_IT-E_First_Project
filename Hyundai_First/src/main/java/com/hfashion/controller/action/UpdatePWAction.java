@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.hfashion.dao.MemberDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 /*
  * 남승현 작성
  */
@@ -30,7 +30,7 @@ public class UpdatePWAction implements Action{
       MemberDAO instance = MemberDAO.getInstance();
       int result = 0;
       if(update_pw.equals(check_pw)){
-         MemberVO mVO = (MemberVO)request.getSession().getAttribute("loginUser");
+         MemberDTO mVO = (MemberDTO)request.getSession().getAttribute("loginUser");
          result = instance.updatePW(mVO.getUser_id(), update_pw);
          if(result==1) {
             mVO.setUser_pw(update_pw);

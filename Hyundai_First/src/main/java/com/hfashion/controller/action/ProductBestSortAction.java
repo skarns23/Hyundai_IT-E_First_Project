@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
+import com.hfashion.dto.ProductDTO;
 import com.hfashion.service.ProductBestService;
-import com.hfashion.vo.ProductDTO;
 
 /*
  * 함세강 작성

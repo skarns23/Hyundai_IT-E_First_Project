@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.dao.ReviewDAO;
-import com.hfashion.vo.ReviewVO;
+import com.hfashion.dto.ReviewDTO;
 
 
 
@@ -24,7 +24,7 @@ public class ReviewDetailAction implements Action{
             // 리뷰 번호에 맞는 리뷰 가져오기위해서 리뷰 번호를 파리미터로 받음
 		    // DAO의 디테일 액션 수핼 
 		    ReviewDAO reviewDAO=ReviewDAO.getInstance();
-		    ReviewVO ReviewVo= reviewDAO.Reviewdetail(r_no);
+		    ReviewDTO ReviewVo= reviewDAO.Reviewdetail(r_no);
 		   
 		    request.setAttribute("Rvo", ReviewVo);
 		    

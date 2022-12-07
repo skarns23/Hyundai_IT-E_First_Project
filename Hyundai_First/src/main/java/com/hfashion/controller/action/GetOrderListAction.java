@@ -13,7 +13,7 @@ import org.json.simple.JSONObject;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.hfashion.dao.OrderDAO;
-import com.hfashion.vo.OrderVO;
+import com.hfashion.dto.OrderDTO;
 
 /*
  * 남승현 작성 
@@ -35,7 +35,7 @@ public class GetOrderListAction implements Action{
 		String start_date = request.getParameter("start_date").replace('-', '/').substring(2);
 		String end_date = request.getParameter("end_date").replace('-', '/').substring(2);
 		String user_id = request.getParameter("user_id");
-		List<OrderVO> orderList = orderDAO.getOrderList(user_id, start_date, end_date);
+		List<OrderDTO> orderList = orderDAO.getOrderList(user_id, start_date, end_date);
 		Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
 		String value = gson.toJson(orderList);
 		PrintWriter out = response.getWriter();

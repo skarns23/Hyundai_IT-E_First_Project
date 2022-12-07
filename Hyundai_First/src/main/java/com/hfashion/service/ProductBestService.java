@@ -7,9 +7,9 @@ import java.util.List;
 import javax.naming.NamingException;
 
 import com.hfashion.dao.ProductBestDAO;
+import com.hfashion.dto.ProductDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.ProductDTO;
 
 /*
  * 함세강 작성

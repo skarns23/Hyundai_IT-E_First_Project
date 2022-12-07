@@ -9,9 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.dao.ProductDAO;
-import com.hfashion.vo.ImgVO;
-import com.hfashion.vo.ProductDTO;
-import com.hfashion.vo.SizeVO;
+import com.hfashion.dto.ImgDTO;
+import com.hfashion.dto.ProductDTO;
+import com.hfashion.dto.SizeDTO;
 
 public class ProductDetailAction implements Action {
 	@Override
@@ -23,8 +23,8 @@ public class ProductDetailAction implements Action {
 		String pro_no = request.getParameter("pno");
 		ProductDTO pVO = productDAO.productDetail(pro_no);
 		pVO.setPro_no(pro_no);
-		List<SizeVO> sList = productDAO.productDetailSize(pro_no);
-		List<ImgVO> imgList = productDAO.productDetailImg(pro_no);
+		List<SizeDTO> sList = productDAO.productDetailSize(pro_no);
+		List<ImgDTO> imgList = productDAO.productDetailImg(pro_no);
 		
 		request.setAttribute("pVO", pVO);
 		request.setAttribute("sList", sList);

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.dao.ReviewDAO;
-import com.hfashion.vo.ReviewVO;
+import com.hfashion.dto.ReviewDTO;
 
 /* 윤태영 작성 리뷰플러스의 베스트 리뷰와 일반 리뷰 출력 액션*/
 
@@ -25,8 +25,8 @@ public class ReviewListAction implements Action {
 		ReviewDAO bestreviewDAO = ReviewDAO.getInstance();
 
 		//reviewdao에서 reviewlist와 bestreviewlist 메소드를 실행후 값 저장
-		ArrayList<ReviewVO> reviewList = reviewDAO.ReviewList();
-		ArrayList<ReviewVO> bestreviewList = bestreviewDAO.BestReviewList();
+		ArrayList<ReviewDTO> reviewList = reviewDAO.ReviewList();
+		ArrayList<ReviewDTO> bestreviewList = bestreviewDAO.BestReviewList();
 
 		request.setAttribute("BestReviewList", bestreviewList);
 		request.setAttribute("ReviewList", reviewList);

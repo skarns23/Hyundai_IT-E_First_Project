@@ -1,4 +1,4 @@
-package com.hfashion.vo;
+package com.hfashion.dto;
 
 import java.sql.Date;
 
@@ -17,7 +17,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class MemberVO {
+public class MemberDTO {
 	
 	private String user_id;
 	private String user_pw;
@@ -27,12 +27,12 @@ public class MemberVO {
 	private Date join_date;
 	
 	
-	public MemberVO(String _uid, String _pwd) {
+	public MemberDTO(String _uid, String _pwd) {
 		this.user_id = _uid;
 		this.user_pw = _pwd;
 	}
 	
-	public MemberVO(String _uid, String _pwd,String name, String email,String phone) {
+	public MemberDTO(String _uid, String _pwd,String name, String email,String phone) {
 		this.user_id = _uid;
 		this.user_pw = _pwd;
 		this.user_name = name;

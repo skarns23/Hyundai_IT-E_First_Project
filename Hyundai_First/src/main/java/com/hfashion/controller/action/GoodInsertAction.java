@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.google.gson.Gson;
 import com.hfashion.dao.GoodDAO;
-import com.hfashion.vo.MemberVO;
+import com.hfashion.dto.MemberDTO;
 
 
 /*윤태영 작성 좋아요 기능 구현 */
@@ -21,9 +21,9 @@ public class GoodInsertAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	    GoodDAO gDAO=GoodDAO.getInstance();//좋아요DAO 인스턴스 생성
-	  
+	    System.err.println("악어의 눈물");
 	    HttpSession session = request.getSession();
-		MemberVO memberVO = (MemberVO) session.getAttribute("loginUser");
+		MemberDTO memberVO = (MemberDTO) session.getAttribute("loginUser");
 		String user_id = memberVO.getUser_id();// 유저 아이디 받기	
 	    String r_no = request.getParameter("r_no");
 		

@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.OrderDAO;
-import com.hfashion.vo.MemberVO;
-import com.hfashion.vo.OrderVO;
+import com.hfashion.dto.MemberDTO;
+import com.hfashion.dto.OrderDTO;
 
 import oracle.sql.DATE;
 /*
@@ -38,7 +38,7 @@ public class MypageFormAction implements Action{
 		String url = "user/mypage/mypage.jsp";
 		OrderDAO orderDAO = OrderDAO.getInstance();
 		HttpSession session =  request.getSession();
-		MemberVO mVO = (MemberVO)session.getAttribute("loginUser");
+		MemberDTO mVO = (MemberDTO)session.getAttribute("loginUser");
 		
 		// 한달 전 날짜 지정 
 		Calendar cal = Calendar.getInstance();
@@ -51,7 +51,7 @@ public class MypageFormAction implements Action{
 		String start = dateFormat.format(cal.getTime());
 
 		// 한달간 주문내역을 받아오는 기능 
-		List<OrderVO> orderList = orderDAO.getOrderList(mVO.getUser_id(), start, end);
+		List<OrderDTO> orderList = orderDAO.getOrderList(mVO.getUser_id(), start, end);
 		request.setAttribute("orderList", orderList);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);

@@ -10,10 +10,10 @@ import java.util.List;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import com.hfashion.dto.ReviewSearchDTO;
+import com.hfashion.dto.ReviewDTO;
 import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
-import com.hfashion.vo.ReviewDTO;
-import com.hfashion.vo.ReviewVO;
 
 import oracle.jdbc.OracleTypes;
 
@@ -31,7 +31,7 @@ public class ReviewDAO {
 	}
 	
 	// 리뷰 생성
-	public void createReview(ReviewVO reviewvo) {
+	public void createReview(ReviewDTO reviewvo) {
 		String insert = "{call review_pack.insert_review(?,?,?,?,?,?,?,?,?,?)}";  // 프로시저 호출
 		Connection con = null;
 
@@ -58,8 +58,8 @@ public class ReviewDAO {
 	}
 
 	// 리뷰 상세 정보 -- 리뷰 번호 입력으로 리뷰제목,내용, 이미지등 상세적인 정보를 얻는다
-	public ReviewVO Reviewdetail(String R_no) {
-		ReviewVO review = new ReviewVO();
+	public ReviewDTO Reviewdetail(String R_no) {
+		ReviewDTO review = new ReviewDTO();
 		String detail = "{call review_pack.review_detail(?,?)}";
 
 		try {
@@ -92,8 +92,8 @@ public class ReviewDAO {
 	}
 
      // 리뷰 플러스 일반 목록 불러오기	
-	public ArrayList<ReviewVO> ReviewList() {
-		ArrayList<ReviewVO> list = new ArrayList<>();
+	public ArrayList<ReviewDTO> ReviewList() {
+		ArrayList<ReviewDTO> list = new ArrayList<>();
 		String sql = "{call review_pack.review_list(?)}"; // 프로시저 실행
 		try {
 			Connection con = ConnectionProvider.getConnection();
@@ -114,7 +114,7 @@ public class ReviewDAO {
 				String img_roc = rs.getString(10);
 				String pro_gen = rs.getString(11);
 				int review_like = rs.getInt(12);
-				ReviewVO rVO = new ReviewVO();
+				ReviewDTO rVO = new ReviewDTO();
 
 				rVO.setR_no(review_no);
 				rVO.setR_title(review_title);
@@ -144,8 +144,8 @@ public class ReviewDAO {
 	}
 
 	// 리뷰 플러스에서 best리뷰 불러오기(좋아요수 기준)
-	public ArrayList<ReviewVO> BestReviewList() {
-		ArrayList<ReviewVO> bestlist = new ArrayList<>();
+	public ArrayList<ReviewDTO> BestReviewList() {
+		ArrayList<ReviewDTO> bestlist = new ArrayList<>();
 		String sql = "{call review_pack.bestreview_list(?)}"; // 프로시저 실행
 		try {
 			Connection con = ConnectionProvider.getConnection();
@@ -167,7 +167,7 @@ public class ReviewDAO {
 				String img_loc = rs.getString(11);
 				String pro_gen = rs.getString(12);
 				
-				ReviewVO brVO = new ReviewVO();
+				ReviewDTO brVO = new ReviewDTO();
 
 				brVO.setR_no(review_no);
 				brVO.setR_like(review_like);
@@ -197,8 +197,8 @@ public class ReviewDAO {
 	}
 
    
-	public List<ReviewDTO> getOptionalReview(String pro_no, int height, int weight, String size) {
-		List<ReviewDTO> result = new ArrayList<>();
+	public List<ReviewSearchDTO> getOptionalReview(String pro_no, int height, int weight, String size) {
+		List<ReviewSearchDTO> result = new ArrayList<>();
 		String sql = "{call review_pack.search_review(?,?,?,?,?)}";
 		try {
 			Connection conn = ConnectionProvider.getConnection();
@@ -223,7 +223,7 @@ public class ReviewDAO {
 				String r_szie = rs.getString(10);
 				String order_no = rs.getString(11);
 				String user_id = rs.getString(12);
-				ReviewDTO rv = new ReviewDTO(reivew_no, review_like, review_title, review_content, review_img,
+				ReviewSearchDTO rv = new ReviewSearchDTO(reivew_no, review_like, review_title, review_content, review_img,
 						review_date, r_weight, r_height, star_rating, r_szie, order_no, user_id);
 				result.add(rv);
 			}
