@@ -13,7 +13,7 @@ import com.hfashion.vo.ProductDTO;
 import oracle.jdbc.OracleTypes;
 
 /*
- * 힘세강 작성
+ * 함세강 작성
  */
 public class ProductBestDAO {
 	//싱글톤 생성
@@ -27,7 +27,7 @@ public class ProductBestDAO {
 	}
 	
 	
-	//best 상품 뿌리기
+	//best 상품 데이터 가져오는 DAO
 	public List<ProductDTO> getProductBest(Connection con){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
@@ -70,7 +70,7 @@ public class ProductBestDAO {
 	}
 	
 	
-	//best 정렬된 상품 뿌리기
+	//best 상품에서 카레고리별로 상품 가져오기
 	public List<ProductDTO> getProductSortBest(Connection con, String gender){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		

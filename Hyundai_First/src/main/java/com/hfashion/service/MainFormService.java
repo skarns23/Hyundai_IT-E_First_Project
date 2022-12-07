@@ -37,7 +37,6 @@ public class MainFormService {
 			MainBrandItemDAO dao = MainBrandItemDAO.getInstance();
 			list = dao.brandItemListMain(con);
 			
-
 			return list;
 			
 		} catch (NamingException | SQLException e) {

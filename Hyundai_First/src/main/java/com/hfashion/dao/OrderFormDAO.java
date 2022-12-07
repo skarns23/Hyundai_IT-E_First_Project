@@ -31,12 +31,9 @@ public class OrderFormDAO {
 	//결제 페이지 주문 리스트 불러오는 메서드
 	public List<CartDTO> getSelectedCart(Connection con, String loginId){
 		List<CartDTO> list = new ArrayList<CartDTO>();
-		
-		
-		
+
 		String runProcedure = "{call order_form_package.order_list(?,?)}";
-		
-		
+	
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
 			cstmt.setString(1, loginId);
@@ -44,8 +41,7 @@ public class OrderFormDAO {
 			cstmt.executeQuery();
 			ResultSet rs = (ResultSet)cstmt.getObject(2);
 			
-			while(rs.next()) {
-				
+			while(rs.next()) {		
 				 int cartAmount = rs.getInt(1);
 				 String proSize = rs.getString(2);
 				 String proName = rs.getString(3);
@@ -65,7 +61,6 @@ public class OrderFormDAO {
 				 list.add(dto);
 				 System.out.println("check");
 			}
-			
 			JdbcUtil.close(rs);
 			JdbcUtil.close(cstmt);
 			
@@ -77,10 +72,9 @@ public class OrderFormDAO {
 	}
 
 	
-
+	//장바구니에서 선택한 상품의 데이터를 가져오는 DAO
 	public OrderFormDTO getOrderMember(Connection con, String loginId) {
 		OrderFormDTO dto = new OrderFormDTO();
-		
 		String runProcedure = "{call order_form_package.order_member(?,?,?,?)}";
 		
 		try {
@@ -90,7 +84,7 @@ public class OrderFormDAO {
 			cstmt.registerOutParameter(3, java.sql.Types.VARCHAR);
 			cstmt.registerOutParameter(4, java.sql.Types.VARCHAR);
 			
-			cstmt.executeQuery();
+			cstmt.execute();
 			
 			String userName = cstmt.getString(2);
 			String userEmail = cstmt.getString(3);
@@ -105,9 +99,6 @@ public class OrderFormDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 		
 		return dto;
 	}

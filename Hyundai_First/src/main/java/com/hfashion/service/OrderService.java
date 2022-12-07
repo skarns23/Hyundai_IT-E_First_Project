@@ -23,8 +23,8 @@ public class OrderService {
 		}
 		return instance;
 	}
-
 	
+	//주문하는 서비스 메서드
 	public void orderProductServie (OrderDTO dto) {
 		Connection con = null;
 		OrderCreditDAO dao = null;
@@ -36,9 +36,7 @@ public class OrderService {
 			String userId = dto.getUserID();
 			
 			dao = OrderCreditDAO.getInstance();
-			con.setAutoCommit(false);
 			dao.orderProduct(con,postCode, address, userId);
-			con.setAutoCommit(true);
 			
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);

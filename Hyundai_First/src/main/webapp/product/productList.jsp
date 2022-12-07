@@ -54,6 +54,7 @@
 </div>
 
 <script>
+/* 카테고리 클릭시 종류에 맞는 데이터 가져오는 ajax 처리 */
 $('.gender').click( function(){
 	
 	var genderVal = $(this).attr("id");
@@ -76,7 +77,6 @@ $('.gender').click( function(){
 				price = price.toLocaleString('ko-KR');
 				tag += `
 					<li godno="GM0122111816388">
-	               <!-- 대형 이미지 클래스 product-sp-->
 	               <figure class="item-box" data-ga-id="GM0122111816388" data-ga-name="플라워 스마일 니트 베스트" data-ga-brand="SJYP" data-ga-price="179100">
 	                  <div class="item-img">
 	                     <div class="img-box">
@@ -106,7 +106,7 @@ $('.gender').click( function(){
 
 		},
 		error:function(){
-			alert("ajax 에러다 요녀석아");
+			alert("ajax 에러입니다.");
 		}
 	});
 });
