@@ -10,16 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashion.dao.ReviewDAO;
 import com.hfashion.vo.ReviewVO;
 
+
+
+/*윤태영 작성 리뷰 세부 정보*/
 public class ReviewDetailAction implements Action{
 
 	@Override
    public void execute(HttpServletRequest request, HttpServletResponse response)
 		      throws ServletException, IOException {
 		    String url= "review/reviewDetail.jsp";
-		    System.out.println("리뷰디테일 액션 수행중");  
+		   
 		    String r_no=request.getParameter("R_no");
-		    System.out.println(r_no);
-            System.out.println("값안들어감 ㅋ");
+            // 리뷰 번호에 맞는 리뷰 가져오기위해서 리뷰 번호를 파리미터로 받음
+		    // DAO의 디테일 액션 수핼 
 		    ReviewDAO reviewDAO=ReviewDAO.getInstance();
 		    ReviewVO ReviewVo= reviewDAO.Reviewdetail(r_no);
 		   

@@ -40,7 +40,7 @@ import com.hfashion.controller.action.SearchIDFormAction;
 import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
-import com.hfashion.controller.action.goodInsertAction;
+import com.hfashion.controller.action.GoodInsertAction;
 import com.hfashion.controller.action.*;
 
 
@@ -122,7 +122,7 @@ public class ActionFactory {
 		}else if (command.equals("joinsuccess")) {
 			action = new JoinSuccessAction();
 		}else if(command.equals("goodinsert")) {
-			action = new goodInsertAction();
+			action = new GoodInsertAction();
 		}else if(command.equals("orderComplete")) {
 			action = new OrderCompleteAction();
 		}else if (command.equals("reviewSearch")) {
