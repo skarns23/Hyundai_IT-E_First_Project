@@ -31,11 +31,6 @@ public class ProductSortAction implements Action{
 		
 		list = productService.productGetSortList(dto);
 		
-		
-		System.out.println("ajax 확인 ");
-		System.out.println(gender);
-		System.out.println(category);
-		
 		for (ProductDTO productDTO : list) {
 			String str = productDTO.getPro_name();
 			System.out.println(str);

@@ -28,7 +28,7 @@ public class OrderFormService {
 		return instance;
 	}
 	
-	
+	//결제창에서 필요한 정보를 가져오는 서비스 메서드
 	public OrderFormDTO getOrderForm(MemberVO memberDTO) {
 		OrderFormDTO dto = null;
 		Connection con =null;
@@ -39,9 +39,7 @@ public class OrderFormService {
 			OrderFormDAO dao = OrderFormDAO.getInstance();
 			
 			String loginId = memberDTO.getUser_id();
-			
-			System.out.println("서비스에서 loginId : "+loginId);
-			
+						
 			list = dao.getSelectedCart(con,loginId);
 				
 			dto = dao.getOrderMember(con,loginId);
@@ -55,10 +53,8 @@ public class OrderFormService {
 			
 			if(totalPrice<30000) {deliveryFee=2500; totalPrice+=deliveryFee;}
 			
-			
 			dto.setTotalPrice(totalPrice);
 			dto.setDeliveryFee(deliveryFee);
-			
 			
 			return dto;
 

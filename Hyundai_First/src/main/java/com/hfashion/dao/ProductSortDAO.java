@@ -28,7 +28,7 @@ public class ProductSortDAO {
 		return instance;
 	}
 	
-	//상품 목록정렬
+	//상품 목록 데이터 가져오기
 	public List<ProductDTO> ProductList(Connection con, String category) {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		String runProcedure = "{call product_pack.pro_list(?,?)}";
@@ -73,7 +73,7 @@ public class ProductSortDAO {
 	}
 	
 	
-	//상품 ajax요청시 정렬 메서드
+	//상품 ajax요청시 카테고리별 정렬해서 데이터 가져오는 메서드
 	public List<ProductDTO> getProductSort(Connection con,String gender, String category){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		String runProcedure = "{call product_pack.pro_list(?,?,?)}";

@@ -49,7 +49,7 @@ public class ProductService {
 	}
 	
 	
-	//정렬된 상품 불러오기
+	//정렬된 상품 목록 불러오는 메서드
 	public List<ProductDTO> productGetSortList(ProductSortDTO dto){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		Connection con = null;
@@ -58,12 +58,9 @@ public class ProductService {
 		String category = dto.getCategory();
 		try {
 			con = ConnectionProvider.getConnection();
-			
 			dao = ProductSortDAO.getInstance();
-			
 			list = dao.getProductSort(con, gender,category);
-			
-			
+				
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
