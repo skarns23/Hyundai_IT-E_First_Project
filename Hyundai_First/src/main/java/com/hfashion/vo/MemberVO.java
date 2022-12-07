@@ -8,6 +8,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+
+/*
+ * 남승현 작성
+ */
 @Getter
 @Setter
 @NoArgsConstructor

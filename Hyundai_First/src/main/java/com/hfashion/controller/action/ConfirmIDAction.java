@@ -9,9 +9,16 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.hfashion.dao.MemberDAO;
-
+/*
+ * 남승현 작성 
+ */
 public class ConfirmIDAction implements Action {
-
+	/*
+	 * 기능 : 사용자가 입력한 아이디의 사용가능 유뮤를 판단 
+	 * 입력 : 사용자가 입력한 아이디
+	 * 출력 : 입력받은 아이디와 동일한 아이디를 갖고 있는 행의 수 반환  
+	 * 기타 : Gson 라이브러리 사용하여 Json 형태로 변환 후 Ajax에 응답 반환 
+	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -19,17 +26,13 @@ public class ConfirmIDAction implements Action {
 		MemberDAO memberDAO = MemberDAO.getInstance();
 
 		int result = memberDAO.confirmID(userId) ? 0 : 1;
-		System.out.println("확인하는 아이디 : " + userId);
 		if (userId == null || userId.length() < 6) {
 			result = 1;
-		} else {
-			System.out.println("사용할 수 있는 아이디입니다.");
 		}
 		Gson gson = new Gson();
 		String value = gson.toJson(result);
 		PrintWriter out = response.getWriter();
 		out.print(value);
-		System.out.println(value);
 	}
 
 }

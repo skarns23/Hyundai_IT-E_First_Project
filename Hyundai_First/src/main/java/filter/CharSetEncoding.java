@@ -15,9 +15,14 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * Servlet Filter implementation class CharSetEncoding
  */
+/*
+ * 남승현 작성
+ */
 @WebFilter("/*")
 public class CharSetEncoding extends HttpFilter implements Filter {
-       
+	/*
+	 * 기능 : 모든 Request와 response에 대해 UTF-8로 인코딩 진행
+	 */ 
     /**
      * @see HttpFilter#HttpFilter()
      */

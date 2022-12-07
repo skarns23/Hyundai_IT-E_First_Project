@@ -10,9 +10,16 @@ import javax.servlet.http.HttpSession;
 
 import com.hfashion.dao.MemberDAO;
 import com.hfashion.vo.MemberVO;
-
+/*
+ * 남승현 작성
+ */
 public class JoinAction implements Action{
-
+	/*
+	 * 기능 : 사용자의 회원가입 기능 
+	 * 입력 : 아이디, 비밀번호, 이메일, 이름, 휴대폰 번호 
+	 * 출력 : Insert 성공 여부 (true, false) 반환 받은 뒤, 결과값에 따른 화면 전환  
+	 * 기타 : 회원가입 성공 시 session에 사용자 id를 붙여, 회원가입 화면에서 바로 뜨도록 설정  
+	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -24,7 +31,6 @@ public class JoinAction implements Action{
 		String name = request.getParameter("user_name");
 		String phone = request.getParameter("user_phone");
 		MemberVO member = new MemberVO(id,pw,name,email,phone);
-		System.out.println(member);
 		boolean result = memberDAO.signUp(member);
 		if(!result) {
 			url = "Hfashion?command=signup";

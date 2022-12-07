@@ -103,6 +103,9 @@
       </div>
       <!-- //snb-content-wrap -->
    </section>
+   	<!-- 남승현 작성  
+			기능 : 새 비밀번호와 새 비밀번호 확인의 값이 유효한지 여부 판단
+	 -->
    <script>
       $(function() {
          let btn_update = $("#btn_update");

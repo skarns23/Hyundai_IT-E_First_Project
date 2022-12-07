@@ -102,6 +102,9 @@ input[type=date]{
 			</div>
 			<!-- //snb-content-wrap -->
 	</section>
+	<!-- 남승현 작성  
+			기능 : 주문 내역 조회 시 시작날짜와 종료날짜를 받아 해당 기간에 포함된 주문내역을 띄워주는 Ajax
+	 -->
 	<script type="text/javascript">
                   $(function(){
                 	 $('#dateEnd').val(new Date().toISOString().slice(0, 7));

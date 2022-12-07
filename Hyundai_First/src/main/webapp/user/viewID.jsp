@@ -2,6 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+	<!-- 남승현 작성  
+			기능 : 아이디 찾기 성공 시 사용자의 아이디 및 가입날짜를 띄워줌
+	 								-->
 <div id="container">
         <!-- content-wrap -->
 <section class="content-wrap">

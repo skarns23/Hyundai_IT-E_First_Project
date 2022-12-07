@@ -70,6 +70,9 @@
 		<!-- //snb-content-wrap -->
 	</section>
 </div>
+	<!-- 남승현 작성  
+			기능 : 회원 탈퇴 버튼 클릭 시 Ajax를 통한 회원탈퇴 성공여부 반환 및 페이지 이동
+	 -->
 <script>
 	$(function() {
 		$("#btn_secession").click(function() {

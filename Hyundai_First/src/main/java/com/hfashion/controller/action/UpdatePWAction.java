@@ -13,7 +13,13 @@ import com.hfashion.vo.MemberVO;
  * 남승현 작성
  */
 public class UpdatePWAction implements Action{
-
+	/*
+	 * 기능 : 비밀번호 변경 기능 (새 비밀번호와 확인할 비밀번호 대조)
+	 * 입력 : 사용자의 id, 새 비밀번호, 확인할 비밀번호 
+	 * 출력 : 비밀번호 업데이트로 영향받은 행의 수 반환
+	 * 기타 : Gson 라이브러리 사용하여 Json 형태로 변환 후 Ajax에 응답 반환
+	 *        성공 시 기존 session에 존재하던 회원 인스턴스를 제거하고, 비밀번호가 변경된 인스턴스로 변경 
+	 */
    @Override
    public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       // TODO Auto-generated method stub
@@ -22,8 +28,6 @@ public class UpdatePWAction implements Action{
       String check_pw = request.getParameter("user_pw_ck");
       
       MemberDAO instance = MemberDAO.getInstance();
-      System.out.println(update_pw);
-      System.out.println(check_pw);
       int result = 0;
       if(update_pw.equals(check_pw)){
          MemberVO mVO = (MemberVO)request.getSession().getAttribute("loginUser");
@@ -35,11 +39,6 @@ public class UpdatePWAction implements Action{
       }
       Gson gson = new Gson();
       url =  result ==0 ?"Hfashion?command=mypage_updateForm":url;
-      /*
-       * String value = gson.toJson(url); System.out.println("UpdatePWAction : "+url);
-       * PrintWriter out = response.getWriter(); out.print(value);
-       * System.out.println(value);
-       */
       response.sendRedirect(url);
    }
 

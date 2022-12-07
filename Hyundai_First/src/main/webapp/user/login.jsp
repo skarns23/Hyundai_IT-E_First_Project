@@ -7,6 +7,9 @@
 	String name = (String)session.getAttribute("id");
 	name = name==null?"":name;
 %>
+	<!-- 남승현 작성  
+			기능 : 로그인 시 session에 id 값이 들어있는 경우 먼저 띄워줌 없는 경우 띄워주지 않도록 공백 설정 
+	 -->
 <div id="container">
 	<javascript>
 		

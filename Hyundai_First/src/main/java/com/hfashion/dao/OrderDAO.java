@@ -1,6 +1,8 @@
 package com.hfashion.dao;
 
-
+/*
+ * 남승현 작성 
+ */
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.Date;
@@ -22,10 +24,12 @@ public class OrderDAO {
 	private String getOrderList = "{call order_package.get_order_list(?,?,?,?)}";
 	private String cancleOrder = "{call order_package.order_cancle(?,?,?,?)}";
 	private static OrderDAO instance = null;
-
 	private OrderDAO() {
 	}
-
+	
+	/*
+	 * 기능 : 싱글턴 패턴에서의 인스턴스를 반환하는 메서드 
+	 */
 	public static OrderDAO getInstance() {
 		if (instance == null) {
 			instance = new OrderDAO();
@@ -33,6 +37,12 @@ public class OrderDAO {
 		return instance;
 	}
 	
+	/*
+	 * 기능 : 주문취소 기능 
+	 * 입력 : 주문 번호, 사용자 아이디, 상품 번호, 상품 사이즈 옵션  
+	 * 출력 : 수행 후 영향받은 행의 수 반환
+	 * 기타 : 주문취소 시 주문취소 날짜가 갱신되며, 해당 상품의 재고를 트리거를 통해 취소 수량만큼 상승시켜줌  
+	 */	
 	public int cancleOrder(String order_no,String user_id, String pro_no, String size_name) {
 		int result = 0;
 		try {
@@ -53,12 +63,16 @@ public class OrderDAO {
 		
 		return result;
 	}
+	
+	/*
+	 * 기능 : 주어진 기간의 주문내역을 조회하여 반환하는 기능 
+	 * 입력 : 사용자 아이디, 조회 시작일, 조회 종료일  
+	 * 출력 : 주어진 기간내의 사용자의 주문내역을 List에 담아 반환 
+	 * 기타 : 검색된 데이터를 CURSOR를 활용하여 반환
+	 *        이후 ResultSet의 컬럼을 추출하여 인스턴스를 만든 뒤 List에 담아 반환
+	 */
 	public List<OrderVO> getOrderList(String user_id, String start, String end) {
 		List<OrderVO> result = new ArrayList<>();
-		System.out.println("getOrderList 메서드 실행");
-		System.out.println(user_id);
-		System.out.println(start);
-		System.out.println(end);
 		try{
 			Connection conn = ConnectionProvider.getConnection();
 			CallableStatement cstmt = conn.prepareCall(getOrderList);

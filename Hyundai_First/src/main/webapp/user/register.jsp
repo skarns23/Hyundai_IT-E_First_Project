@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div id="container">
-
+	<!-- 남승현 작성 	 -->
 	<!-- content-wrap -->
 	<section class="content-wrap">
 		<h2 class="page-title">회원가입</h2>
@@ -78,7 +78,7 @@
 								<th scope="row">아이디</th>
 								<td>
 									<div class="input-box" id="divMbrId">
-										<input type="text" title="아이디" name="user_id" id="mbrId" minlength = "6"maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset" required>
+										<input type="text" title="아이디" name="user_id" id="mbrId" minlength="6" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset" required>
 										<div class="etc">
 											<button type="button" class="btn-clear">
 												<span>지우기</span>
@@ -90,6 +90,9 @@
 								</td>
 							</tr>
 							<script type="text/javascript">
+							<!-- 남승현 작성  
+							기능 : 사용자가 입력한 이메일의 유효성 및 중복성 검사 
+					 -->
 						$(function(){
 							$("#mbrEmail").focusout(function(){
 								$.ajax({
@@ -107,6 +110,9 @@
 								})
 							})
 							
+								<!-- 남승현 작성  
+								기능 : 사용자의 아이디에 대한 유효성 및 중복성 검사
+	 								-->
 							$("#mbrId").focusout(function(){
 								var reg = /^[a-zA-Z0-9_]{5,20}$/;
 								let user_id= $("#mbrId").val();		
@@ -137,7 +143,7 @@
 								<th scope="row">비밀번호</th>
 								<td>
 									<div class="input-box" id="divMbrPw">
-										<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset" required> 
+										<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset" required>
 										<div class="etc">
 											<!-- [D]비밀번호 안전도 : 안전-->
 											<span class="txt-pw-level" id="pwdHigh">안전</span>
@@ -178,7 +184,7 @@
 					</table>
 				</div>
 				<div class="btn-box">
-					<button type="submit" id = "btn_join"class="btn-type2-lg">
+					<button type="submit" id="btn_join" class="btn-type2-lg">
 						<span>가입하기</span>
 					</button>
 				</div>
@@ -186,7 +192,10 @@
 		</form>
 		<!-- //join-wrap -->
 	</section>
-<script>
+	<script>
+	<!-- 남승현 작성  
+	기능 : 회원가입 버튼 클릭 시 비밀번호와 확인 비밀번호가 동일한지 여부 판단 
+			-->
 $(function(){
 	let btn_update = $("#btn_join");
 	$("#mbrCheckPw").focusout(function(){

@@ -25,7 +25,13 @@ import oracle.sql.DATE;
  *  남승현 작성 
  */
 public class MypageFormAction implements Action{
-
+	/*
+	 * 기능 : 마이페이지로 전환 시 최근 1달간의 주문 내역을 받아와 띄워주는 기능 
+	 * 입력 : 사용자의 아이디, 한달전 날짜, 오늘날짜
+	 * 출력 : 한달간의 주문된 주문 내역  
+	 * 기타 : Gson 라이브러리 사용하여 Json 형태로 변환 후 Ajax에 응답 반환
+	 * 		  request에 한달간 주문내역을 붙인 뒤 포워딩 시켜 넘겨줌
+	 */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
@@ -44,12 +50,8 @@ public class MypageFormAction implements Action{
 		cal.add(Calendar.MONTH, -1);
 		String start = dateFormat.format(cal.getTime());
 
-		System.out.println(start);
-		System.out.println(end);
+		// 한달간 주문내역을 받아오는 기능 
 		List<OrderVO> orderList = orderDAO.getOrderList(mVO.getUser_id(), start, end);
-		for(OrderVO o : orderList) {
-			System.out.println(o);
-		}
 		request.setAttribute("orderList", orderList);
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
 		requestDispatcher.forward(request, response);
