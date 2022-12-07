@@ -7,8 +7,8 @@
 
 <body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 
-
 <%@ include file="../layout/header.jsp"%>
+<!--함세강 작성  -->
 <div id="container">
 	<form action="approve" name="orderDTO" id="orderDTO" method="post">
 		<section class="content-wrap">
@@ -20,10 +20,9 @@
 				<div class="order-tbl type-order">
 					<div class="body">
 					
+					<!-- OrderAction에 의해서 장바구니에서 선택된 물건만 불러오는 코딩 -->
 					<c:forEach var="orderItems" items="${orderInfo.orderList}">
 						<div class="row">
-							<!-- 패키지 명 -->
-							<!-- //패키지 명 -->
 							<div class="inner">
 								<div class="cell-pd">
 									<div class="item-img">
@@ -47,7 +46,6 @@
 						</div>
 						</c:forEach>
 						
-						<!-- 배송정보 -->
 						<div class="cell-dlv">
 							<div class="inner">
 								<p>
@@ -56,13 +54,11 @@
 								</p>
 							</div>
 						</div>
-						<!-- //배송정보 -->
 					</div>
 				</div>
 			</section>
 			<section>
 				<div class="order-cont">
-					<!-- 결제 정보 입력 -->
 					<div class="payment-input">
 						<h3 class="sec-title">배송지 정보</h3>
 						<div class="tab-wrap2 ui-tab initialized" id="dlvspTabs">
@@ -109,7 +105,7 @@
 											
 											
 											
-											<!--@@@여기서 부터 코딩  -->
+											<!--주소API를 이용해서 배송지 정보 입력받는 부분  -->
 											<tr>
 												<th scope="row"><span>배송지 주소 <span class="required">(필수)</span></span></th>
 												<td>
@@ -132,10 +128,7 @@
 														</div>
 													</div>
 												</td>		
-											</tr>
-											
-											
-											
+											</tr>	
 										</tbody>
 									</table>
 								</div>
@@ -152,7 +145,6 @@
 							</dd>
 						</dl>
 					</div>
-					<!-- //결제 정보 입력 -->
 
 					<!-- 최종 결제 정보 -->
 					<div class="total-payment">
@@ -167,7 +159,7 @@
 								</span> <span class="num"><span id="deliverySum"><fmt:formatNumber value="${orderInfo.deliveryFee}" pattern="#,###"></fmt:formatNumber></span> 원</span></li>
 							</ul>
 							
-							<!--여기도 코딩  -->
+							<!--결제하기 버튼에 데이터 넘기는 order() 함수를 걸어 놓았다.  -->
 							<div class="btn-box">
 								<a id="btnPayment" class="btn-type2-lg" onclick="order()" >결제하기</a>
 							</div>
@@ -185,7 +177,6 @@
  
  
 <script>
-	/*함세강*/
 	/*동적으로 form 태그를 생성해서 데이터를 넘기는 과정*/
     function order() {
     	var tag_postcode= $('#sample6_postcode').val();
@@ -236,7 +227,7 @@
 
 
 
-<!--출처 : 다음 api  -->
+<!--출처 : daum api  -->
 <script>
     function sample6_execDaumPostcode() {
         new daum.Postcode({

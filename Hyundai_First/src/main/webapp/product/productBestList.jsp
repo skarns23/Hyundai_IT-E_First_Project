@@ -2,6 +2,7 @@
 
 <%@ include file="../layout/header.jsp"%>
 <script>
+/*신수진 작성 : 마우스 클릭으로 인한 효과 처리 */
 $(document).ready(function(){
 	$(".gender").click(function(){
 		$(".tit-tab").removeClass('on');
@@ -15,22 +16,20 @@ $(document).ready(function(){
 	<section class="content-response" id="bestPageGod">
 
 		<h2 class="page-title type2 tit-tab-wrap eng" id="bestPageTitle">
-			<!-- <span class="sub">판매 인기 상품 TOP30을 소개 합니다.</span> -->
 			<span class="tit-tab on" id="brand"> <a class="gender" id="여성">WOMAN BEST</a>
 			</span> <span class="tit-tab" id="category"> <a class="gender" id="남성">MAN BEST</a>
 			</span>
 		</h2>
 
-		<!-- 탭 콘텐츠1 -->
 		<div id="best-tab-cont1" class="best-cont on">
-
+		<!--함세강 작성  -->
+		<!--ProductBestAction에서 베스트 상품 데이터들을 가져와서 보여주는 부분  -->
 			<div class="wrap-product-list">
 				<div class="list-head type02"></div>
 				<ul class="product-list" id ="productBest">
 					<c:forEach var="bestlist" items="${bestInfo}">
 					<c:set var="i" value="${i+1}"/>
 					<li godno="GM0122050247013">
-						<!-- 대형 이미지 클래스 product-sp-->
 						<figure class="item-box" data-ga-id="GM0122050247013" data-ga-name="어반 커뮤터 카드 홀더" data-ga-brand="TOMMY HILFIGER MEN" data-ga-price="47200">
 							<div class="item-img">
 								<div class="img-box">
@@ -54,13 +53,9 @@ $(document).ready(function(){
 									<div class="item-name"><c:out value="${bestlist.pro_name}"></c:out></div>
 									<div class="item-price">
 										<span class="price"><fmt:formatNumber value="${bestlist.pro_price}" pattern="#,###" /> 원</span>
-
-
 									</div>
-
-
-
 								</a>
+								<!-- 상품별 리뷰수를 보여주는 코딩 -->
 								<div class="item-review">
 									<c:choose>
 										<c:when test="${bestlist.reviewCnt>0}">
@@ -70,8 +65,6 @@ $(document).ready(function(){
 											<a href="javascript:void(0);" onclick="goGodDetail('GM0122050247013', '', '', 'Y')"></a>
 										</c:otherwise>
 									</c:choose>
-									
-									
 								</div>
 							</figcaption>
 						</figure>
@@ -85,6 +78,8 @@ $(document).ready(function(){
 
 
 <script>
+/* 함세강 작성 */
+/* 상품 카테고리별 데이터를 가져오는 ajax 처리 */
 $('.gender').click( function(){
 	
 	var genderVal = $(this).attr("id");
@@ -96,13 +91,11 @@ $('.gender').click( function(){
 		data:{
 			gender : genderVal
 		},
-		success: function(result){
-			//alert("ajax 는 쉬운것이다!")
+		success: function(result){		
 			
 			var obj = JSON.parse(result);
-			
-
 			var tag="";
+			
 			for(var i=0; i<obj.length; i++){
 				let price = obj[i].pro_price;
 				price = price.toLocaleString('ko-KR');
@@ -156,19 +149,14 @@ $('.gender').click( function(){
 				
 			}
 			 $("#productBest").html(tag); 
-
 		},
 		error:function(){
-			alert("ajax 에러다 요녀석아");
+			alert("ajax 에러입니다.");
 		}
 	});
 	
 });
-
-
 </script>
-
-
 
 
 <%@ include file="../layout/footer.jsp"%>
