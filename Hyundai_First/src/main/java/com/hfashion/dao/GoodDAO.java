@@ -14,8 +14,15 @@ import com.hfashion.util.JdbcUtil;
 
 import oracle.jdbc.OracleTypes;
 
-public class GoodDAO {
 
+/*
+ * 윤태영 작성
+ */
+
+
+// 좋아요 기능 dao 작성
+public class GoodDAO {
+       
 	private static GoodDAO gDAO = new GoodDAO(); // 인스턴스 생성
 	private DataSource ds = null;
 	// 프로시저 호출s
@@ -44,7 +51,6 @@ public class GoodDAO {
 			cstmt.setString(1, R_no);
 			cstmt.setString(2, user_id);
 			result = cstmt.executeUpdate();
-			System.out.println("잘되는가");
 			JdbcUtil.close(cstmt);
 			JdbcUtil.close(con);
 		} catch (SQLException e) {
@@ -62,18 +68,15 @@ public class GoodDAO {
 		// 좋아요개수 호출 프로 시저 실행
 
 		try {
-			System.out.println("좋아요개수 프로시저 실행 완료");
 			Connection con = ds.getConnection();
 			CallableStatement cstmt = con.prepareCall(selectlike);
 
 			cstmt.setString(1, R_no);
 			cstmt.registerOutParameter(2, OracleTypes.CURSOR);
-			cstmt.executeQuery(); // 쿼리 실
-			System.out.println("잘되는가");
+			cstmt.executeQuery(); // 쿼리 실행
 			ResultSet rs = (ResultSet) cstmt.getObject(2);
 			while (rs.next()) {
 				like = Integer.parseInt(rs.getString(1)); // 좋아요 개수 저장
-				System.out.println("좋아요 개수출력:" + like);
 			}
 			JdbcUtil.close(rs);
 			JdbcUtil.close(cstmt);
@@ -86,8 +89,8 @@ public class GoodDAO {
 		return like; // 좋아요 수 반환
 	}
 
-	public static GoodDAO getInstance() {
-		// TODO Auto-generated method stub
+	public static GoodDAO getInstance() { // 인스턴스 반환
+		
 		return gDAO;
 	}
 

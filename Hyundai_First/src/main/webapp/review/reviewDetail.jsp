@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="/layout/header.jsp"%>
-
+<!-- 윤태영 작성 -->
    <%
       /* detail에서 바로 주문해서 받아온 값  */
       String pro_name ="";
@@ -12,16 +12,14 @@
       img_loc=request.getParameter("img_loc"); 
       String r_img="";
       r_img=request.getParameter("r_img"); 
-      System.out.println(pro_name);
-      System.out.println("못받았음 ");     
+    
 
    %>
 <link rel="stylesheet" type="text/css" href="../css/ui.min.css">
 <div id="container">
-	<!-- s : 리뷰 작성 / 수정 레이어 팝업-->
 	<div id="reviewDetail" class="layer-pop lg review-layer" tabindex="0"
 		style="display: block;">
-		
+		<!-- 리뷰이미지 출력 -->
 		<div class="layer-wrap" tabindex="0">
 			<div class="layer-header">
 				<h2 class="layer-title">REVIEW</h2>
@@ -36,7 +34,7 @@
 									<li
 										class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-active"
 										data-swiper-slide-index="1" style="width: 400px; overflow: hidden"><img
-										src='${contextPath}/\images/review/<%=r_img%>' 
+										src='${contextPath}/\images/review/<%=r_img%>'    
 										style="width:100%;height:100%"></li>
 									<li
 										class="swiper-slide swiper-slide-prev swiper-slide-duplicate-next"

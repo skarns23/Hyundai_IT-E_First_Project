@@ -346,34 +346,31 @@ function get_review() {
 	   })
 	}
 
-// 좋아요 누르기 기능
+// 좋아요 기능
 function insert_like(review_no){   
-   var r_no=review_no; //임의 지정
-   // alert(review_no);
+
+   var r_no=review_no; //리뷰 넘버 변수 받아옴
+   
    $.ajax({
        url : 'Hfashion?command=goodinsert', // 연결 url
-         type: 'post',        
+         type: 'post',                     // post 방식으로 데이터 전달
         data : {
           r_no : r_no,
         },      
-        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터 통째 이름 =data
+        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터를 json으로 파싱, 이때 result 배열에서 1의 인덱스는 아이디당 좋아요 유무
            var result = JSON.parse(obj);
              
              if(result[1]==0){
                 alert("이 상품은 이미 '좋아요'를 눌렀습니다");
-             } else{
-                //alert("좋아요 개수:"+result[0]);
-                alert("'좋아요'가 반영되었습니다!") ;  // data중 put한 것의 이름 like
              }
              get_review();
-          /*  alert(result[0]);
-           alert(result[1]);    */            
+            
            $(this).addClass("on");
         },
        error: 
           function (e){
              console.log(e);
-            alert("로그인 이후에 이용해주세요")                  
+            alert("로그인 이후에 이용해주세요");                  
           }
    });
  };
