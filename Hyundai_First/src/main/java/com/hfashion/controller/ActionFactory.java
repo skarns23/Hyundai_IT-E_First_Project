@@ -37,6 +37,8 @@ import com.hfashion.controller.action.ReviewWriteAction;
 import com.hfashion.controller.action.ReviewWriteFormAction;
 import com.hfashion.controller.action.SearchIDAction;
 import com.hfashion.controller.action.SearchIDFormAction;
+import com.hfashion.controller.action.SearchPWAction;
+import com.hfashion.controller.action.SearchPWFormAction;
 import com.hfashion.controller.action.SignUpAction;
 import com.hfashion.controller.action.UpdateFormAction;
 import com.hfashion.controller.action.UpdatePWAction;
@@ -44,6 +46,9 @@ import com.hfashion.controller.action.GoodInsertAction;
 import com.hfashion.controller.action.*;
 
 
+/*
+ * 공동 작성
+ * */
 public class ActionFactory {
 	private static ActionFactory instance = new ActionFactory();
 	public ActionFactory() {
@@ -56,7 +61,6 @@ public class ActionFactory {
 	
 	public Action getAction(String command) {
 		Action action = null;
-		System.out.println("ActionFactory : " + command);
 		if(command==null) {
 			action = new MainAction();
 		} else if(command.equals("detail")) {

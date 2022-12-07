@@ -10,6 +10,9 @@ import javax.servlet.http.HttpSession;
 import com.hfashion.dao.CartDAO;
 import com.hfashion.vo.MemberVO;
 
+/*
+ * 신수진 작성
+ * */
 public class CartCntUpdateAction implements Action {
 
 	@Override

@@ -1,4 +1,3 @@
-
 var _itmMaxQty = 999;
 var preventCartDblClk = false; //장바구니 담기 이중클릭 방지
 
