@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
+<!-- 함세강 작성 -->
 <div id="container">
 	<section class="content-wrap">
 		<h2 class="page-title">주문완료</h2>
