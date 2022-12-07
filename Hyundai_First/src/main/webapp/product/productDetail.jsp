@@ -1,24 +1,33 @@
+<!-- 신수진 작성 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 <script>
+// 상품 옵션 선택 시 총합 가격 띄우기
+function showTotal(){
+	$(".total").show();
+}
+
+// 장바구니 담기
 function addCart(pno){
-   
    var selSize = document.getElementById("selSize");
    var size = selSize.innerHTML;
    var cnt = document.getElementById("pro_qty").value;
    
+   // 옵션을 선택하지 않고 담는 경우, 경고메세지(alert) 띄우기
    if(size == ""){
       alert("옵션을 다시 선택해 주세요.");
       return false;
    }
-var uid = '<%=request.getSession().getAttribute("loginUser")%>';
+   // 로그인하지 않은 경우, 로그인 페이지로 이동
+	 var uid = '<%=request.getSession().getAttribute("loginUser")%>';
    if(uid == 'null'){
       window.location.replace("Hfashion?command=cart&ex_action=detail&pro_no="+pno);
       return false; 
    }
-
    
+   // 장바구니 상품 담기
    $.ajax({
       url : 'Hfashion?command=cart',
       type : 'post',
@@ -29,15 +38,15 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
          ex_action : 'detail'
       },
       success : function(result){
+    	  // 장바구니 담기 성공한 경우
+    	  // 모달창 띄우기
          $("#layerShoppingBag").css("display", "block");
-         
       },
       error : function(e){
          console.log(e)
       }
    })
 }
-
 </script>
 
 <script type="text/javascript" src="${contextPath}/js/product/productDetail.js"></script>
@@ -46,10 +55,8 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 		<div class="product-view-top">
 			<div class="product-view-img">
 				<div id="pdViewSlide" class="product-view-slide" data-slide-length="${imgSize}">
-
 					<div class="swiper-container">
 						<div id="productImgSlide" class="swiper-wrapper" style="transform: translate3d(0px, 0px, 0px); transition-duration: 0ms;">
-
 							<c:forEach var="imgVO" items="${imgList}">
 								<c:set var="i" value="${i+1}" />
 								<div class="swiper-slide swiper-slide-duplicate" style="text-align: center;" data-swiper-slide-index="${i}">
@@ -72,12 +79,9 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 					</div>
 				</div>
 			</div>
-			<script src="https://unpkg.com/swiper/swiper-bundle.min.js">
-
-    </script>
+			
+			<!-- swiper 슬라이드 script -->
 			<script>
-
-
         var mySwiper = new Swiper('.swiper-container', {
             // 슬라이드를 버튼으로 움직일 수 있습니다.
             navigation: {
@@ -103,32 +107,27 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
             },
         });
         var mySwiper = new Swiper('.swiper-container', {
-
-            // 여기에 옵션을 넣어야 합니다.
-
         });
     </script>
 
 			<div class="product-view-info">
 				<div class="etc-btn">
 					<button type="button" class="btn-like " onclick="addBukmk(this,addBukmkCallback);" godno="GM0122103109697">
-						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"></strong> <span>좋아요</span>
+						<strong class="godBukmkCnt" cnt="6" godno="GM0122103109697"></strong> 
+						<span>좋아요</span>
 					</button>
 					<span class="bar">|</span>
 					<button type="button" class="btn-share" onclick="layerBox.open('layerShare');">
 						<span>공유</span>
 					</button>
 				</div>
-
 				<p class="item-brand">
 					<a href="#"> ${pVO.pro_gender}</a>
 				</p>
-
 				<p class="item-tag">
 					<span class="code">${pVO.brand_name}</span>
 				</p>
 				<p class="item-name">${pVO.pro_name}</p>
-
 				<div class="item-price">
 					<input type="hidden" id="pro-price" value="${pVO.pro_price}">
 					<p class="price">
@@ -146,9 +145,11 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 							<div class="sel-list">
 								<ul optcd="SIZE_OPT">
 									<c:forEach var="sVO" items="${sList}">
-
-										<li><label> <input type="radio" onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="showTotal();"> <span>${sVO.size_name}</span>
-										</label></li>
+										<li>
+											<label> 
+												<input type="radio" onchange="selectActive('pdStickySelSize_0',0,'option');" onclick="showTotal();"> <span>${sVO.size_name}</span>
+											</label>
+										</li>
 									</c:forEach>
 								</ul>
 							</div>
@@ -167,50 +168,53 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 							</span>
 						</div>
 						<div class="total" style="display: none;">
-
-							<strong class="tit">합계</strong> <span class="num"> <fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" />
-
+							<strong class="tit">합계</strong> 
+							<span class="num"> 
+								<fmt:formatNumber value="${pVO.pro_price}" pattern="#,###" />
 							</span>
 						</div>
 						<div class="btn-box">
 							<button name="btnShoppingBag" type="button" class="btn-type4-xlg btnShoppingBag" onclick="addCart('${pVO.pro_no}');">
-
 								<span>장바구니</span>
 							</button>
 						</div>
 					</div>
 				</div>
 
-				<input type="hidden" id="size_name" name="size_name" value=""> <input type="hidden" id="size_amount" name="size_amount" value=""> <input type="hidden" name="ex_action"
-					value="detail">
-
-
+				<input type="hidden" id="size_name" name="size_name" value=""> 
+				<input type="hidden" id="size_amount" name="size_amount" value=""> 
+				<input type="hidden" name="ex_action" value="detail">
 
 				<div class="info-bot">
 					<ul class="list">
-						<li class="row"><span class="tit">배송비</span> <span> <input type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상 구매시 무료(도서산간추가 3000원)
+						<li class="row">
+							<span class="tit">배송비</span> 
+							<span> 
+								<input type="hidden" id="otskrDlvAditCost" value="Y"> 30,000이상 구매시 무료(도서산간추가 3000원)
 								<button type="button" class="btn-tooltip" onclick="tooltip('dlv-hardarea'); $('.list-common.address').niceScroll(dScroll.opt);">툴팁보기</button>
-						</span>
-
+							</span>
 							<div class="dlv-hardarea" style="display: none;">
 								<ul class="txt-list">
 									<li>구매하신 상품에 따라 배송비가 부과됩니다.</li>
-									<li>도서산간 지역은 배송비가 추가 될 수 있습니다.<br> 해당 지역은 FAQ를 통해 확인하실 수 있습니다.
-									</li>
-									<li>H.Point, 한섬마일리지, H.Plus 등의 할인수단으로<br> 배송비 결제가 불가합니다.
-									</li>
+									<li>도서산간 지역은 배송비가 추가 될 수 있습니다.<br> 해당 지역은 FAQ를 통해 확인하실 수 있습니다.</li>
+									<li>H.Point, 한섬마일리지, H.Plus 등의 할인수단으로<br> 배송비 결제가 불가합니다.</li>
 								</ul>
-							</div></li>
-
-						<li><span class="tit">한섬마일리지</span> <span>최대 6% 적립
-								<button type="button" class="btn-tooltip" onclick="tooltip('mileage-info2');">
+							</div>
+						</li>
+						<li>
+							<span class="tit">한섬마일리지</span> 
+							<span>최대 6% 적립</span>
+							<button type="button" class="btn-tooltip" onclick="tooltip('mileage-info2');">
+								<span>툴팁보기</span>
+							</button>
+						<li>
+							<span class="tit">H포인트</span> 
+							<span>0.1% 적립
+								<button type="button" class="btn-tooltip" onclick="tooltip('hpoint-info2', null, null,null,null);">
 									<span>툴팁보기</span>
 								</button>
-								<li><span class="tit">H포인트</span> <span>0.1% 적립
-										<button type="button" class="btn-tooltip" onclick="tooltip('hpoint-info2', null, null,null,null);">
-											<span>툴팁보기</span>
-										</button>
-								</span></li>
+							</span>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -226,8 +230,6 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 							<div id="prdReviewFilter" class="opt">
 								<div class="select">
 									<input type="number" id="search_height" placeholder="키" default='' style="width: 80px;" />cm
-
-
 								</div>
 								<div class="select">
 									<input type="number" id="search_weight" placeholder="몸무게" value='' style="width: 80px;" />kg
@@ -238,13 +240,16 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 									<div class="sel-list">
 										<ul>
 											<c:forEach var="sVO" items="${sList}">
-												<li><label> <input type="radio" name="optValCd1" value="${sVO.size_name}"><span>${sVO.size_name}</span>
-												</label></li>
+												<li>
+													<label> 
+														<input type="radio" name="optValCd1" value="${sVO.size_name}">
+														<span>${sVO.size_name}</span>
+													</label>
+												</li>
 											</c:forEach>
 										</ul>
 									</div>
 								</div>
-
 
 								<button type="button" class="btn-type1-sm" id="btn_search">
 									<span>필터적용</span>
@@ -291,9 +296,7 @@ var uid = '<%=request.getSession().getAttribute("loginUser")%>';
 		</div>
 		<button type="button" class="btn-layer-close" onclick="layer.close('layerShoppingBag');">닫기</button>
 	</div>
-
 </div>
-
 
 <script type="text/javascript">
 
@@ -343,8 +346,8 @@ function get_review() {
 	   })
 	}
 
+// 좋아요 누르기 기능
 function insert_like(review_no){   
-
    var r_no=review_no; //임의 지정
    // alert(review_no);
    $.ajax({
@@ -372,17 +375,8 @@ function insert_like(review_no){
              console.log(e);
             alert("로그인 이후에 이용해주세요")                  
           }
-      
    });
-
  };
-
- 
-
 </script>
-
-
-
-
 
 <%@ include file="../layout/footer.jsp"%>
