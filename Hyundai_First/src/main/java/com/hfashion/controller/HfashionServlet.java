@@ -9,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.hfashion.controller.action.Action;
-import com.hfashion.controller.ActionFactory;
 
+/*
+ * 공동 작성
+ * */
 @WebServlet("/Hfashion")
 public class HfashionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -19,9 +21,7 @@ public class HfashionServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String command = request.getParameter("command");
-		
-		System.out.println("HfashionServlet에서 요청을 받음을 확인 : " + command);
-            
+		            
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		

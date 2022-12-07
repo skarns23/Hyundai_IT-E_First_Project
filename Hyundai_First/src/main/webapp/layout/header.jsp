@@ -1,3 +1,5 @@
+<!-- 신수진 작성 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -38,15 +40,17 @@
 					<a href="${contextPath}/Hfashion">H FASHION MALL</a>
 				</h1>
 				<nav class="header-util">
-					<span> <c:choose>
+						<c:choose>
 							<c:when test="${empty sessionScope.loginUser}">
-								<a href="${contextPath}/Hfashion?command=loginform">로그인</a></span> <span>
-						<a href="${contextPath}/Hfashion?command=signup">회원가입</a> </c:when> <c:otherwise>
-							<a href="${contextPath}/Hfashion?command=logout">로그아웃</a>
-						</c:otherwise> </c:choose>
-					</span> <span> <a href="${contextPath}/Hfashion?command=mypage">마이페이지</a>
-					</span> <span> <a href="${contextPath}/Hfashion?command=cart">장바구니</a>
-					</span>
+								<span><a href="${contextPath}/Hfashion?command=loginform">로그인</a></span> 
+								<span><a href="${contextPath}/Hfashion?command=signup">회원가입</a></span>
+							</c:when> 
+							<c:otherwise>
+								<span><a href="${contextPath}/Hfashion?command=logout">로그아웃</a></span>
+						  </c:otherwise> 
+						</c:choose>
+						<span> <a href="${contextPath}/Hfashion?command=mypage">마이페이지</a></span> 
+						<span> <a href="${contextPath}/Hfashion?command=cart">장바구니</a></span>
 				</nav>
 			</div>
 			<!-- gnb -->
@@ -79,8 +83,6 @@
 						</div>
 					</div>
 				</div>
-
 			</nav>
 		</div>
-
 	</header>

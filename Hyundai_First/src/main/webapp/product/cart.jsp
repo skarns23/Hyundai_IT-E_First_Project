@@ -1,12 +1,15 @@
+<!-- 신수진 작성 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <script type="text/javascript">
 $(document).ready(function(){
+	// 장바구니에 담겨있는 전체 목록을 가져옴
 	cartListAll();
 });
+
 	// 장바구니 목록을 가져오는 함수
 	function cartListAll(){
-
 		$.ajax({
 			type : 'get',
 			url : 'Hfashion?command=cartListAll',
@@ -85,7 +88,6 @@ $(document).ready(function(){
 	
 	// 장바구니 1개 목록 삭제
 	function goodsDel(pro_no, size_name) {
-		console.log("삭제한다!!");
 		$.ajax({
 			url : 'Hfashion?command=delCart',
 			type : 'post',
@@ -111,8 +113,6 @@ $(document).ready(function(){
 				type : 'post',
 				success : function(r){
 					cartListAll();
-					console.log("전체 삭제 성공~");
-					
 				},
 				error : function(e){
 					console.log(e);
@@ -142,7 +142,6 @@ $(document).ready(function(){
 	// 장바구니 수량 변경하기
 	function cntUpdate(i, pro_no, size_name){
 		var cnt = document.getElementById("itmQty"+i).value;
-		
 		$.ajax({
 			url : 'Hfashion?command=cartCntUpdate',
 			type : 'post',
@@ -159,13 +158,11 @@ $(document).ready(function(){
 			}
 		});
 	}	
-	
-	
 </script>
+
 <div id="container">
 	<section class="content-wrap">
 		<h3 class="page-title">장바구니</h3>
-
 		<div id="cartContentList">
 			<div id="cartList" class="order-tbl type-cart">
 				<div class="head">
@@ -180,7 +177,6 @@ $(document).ready(function(){
 				<div class="body">
 					<!-- row -->
 
-					<!-- 배송정보 -->
 				</div>
 				<!-- //body -->
 			</div>
@@ -194,25 +190,34 @@ $(document).ready(function(){
 			<!-- 최종금액 -->
 			<div class="cart-price">
 				<div class="inner">
-					<span class="price"> <span class="txt">상품금액</span> <span id="totalGodAmt" class="num">0</span> 원
-					</span> <span class="symbol-plus">+</span> <span class="price"> <span class="txt">배송비
-							<button type="button" class="btn-tooltip" onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
-								<span>툴팁보기</span>
-							</button>
-					</span> <span id="totalDlvAmt" class="num">0</span> 원
-					</span> <span class="symbol-eq">=</span> <span class="price total"> <span class="txt">결제금액</span> <span id="totalOrdAmt" class="num">0</span> 원
+					<span class="price"> 
+						<span class="txt">상품금액</span> 
+						<span id="totalGodAmt" class="num">0</span> 원
+					</span> <span class="symbol-plus">+</span> 
+					<span class="price"> 
+						<span class="txt">배송비
+						<button type="button" class="btn-tooltip" onmouseenter="tooltip('dlvCost-info', null, '/tooltip?type=costInfo');">
+							<span>툴팁보기</span>
+						</button>
+						</span> 
+						<span id="totalDlvAmt" class="num">0</span> 원
+					</span> 
+					<span class="symbol-eq">=</span> 
+					<span class="price total"> 
+						<span class="txt">결제금액</span> 
+						<span id="totalOrdAmt" class="num">0</span> 원
 					</span>
 				</div>
 			</div>
 
 			<div class="btn-box">
-				<a href="${contextPath}/Hfashion" class="btn-type4-lg" id="test">쇼핑 계속하기</a> <a href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
+				<a href="${contextPath}/Hfashion" class="btn-type4-lg" id="test">쇼핑 계속하기</a> 
+				<a href="${contextPath}/Hfashion?command=order" class="btn-type2-lg">선택상품 주문하기</a>
 			</div>
 
 			<ul class="txt-list">
 				<li>장바구니에 담긴 상품은 30일 동안 보관됩니다. 30일이 지난 상품은 자동 삭제됩니다.</li>
 				<li>장바구니에 최대 50개까지 상품 보관이 가능하며, 실제 구매 시에는 가격이나 혜택이 변동될 수 있습니다.</li>
-				<!-- 200703 text -->
 				<li>장바구니에 담은 상품이 판매종료가 되었을 경우 자동 삭제 됩니다.</li>
 				<li>입점 판매 상품은 장바구니에서 [입점 판매 상품]으로 표시됩니다.
 					<button type="button" class="point-link" onclick="layer.open('layerSaleInfo')">입점 판매 상품 안내 보기</button>
