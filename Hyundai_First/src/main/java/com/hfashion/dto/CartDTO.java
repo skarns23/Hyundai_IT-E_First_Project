@@ -3,6 +3,9 @@ package com.hfashion.dto;
 import lombok.Getter;
 import lombok.Setter;
 
+/*
+ * 신수진 작성
+ * */
 @Getter
 @Setter
 public class CartDTO {
@@ -16,7 +19,8 @@ public class CartDTO {
 	private String img_loc;
 	private int selected;
 	
-	public CartDTO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, int pro_price, String brand_name, String img_loc, int selected) {
+	public CartDTO(int cart_amount, String size_name, String user_id, String pro_no, String pro_name, 
+				   int pro_price, String brand_name, String img_loc, int selected) {
 		this.cart_amount = cart_amount;
 		this.size_name = size_name;
 		this.user_id = user_id;

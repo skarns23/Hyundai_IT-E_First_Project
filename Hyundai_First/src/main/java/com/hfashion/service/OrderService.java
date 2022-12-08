@@ -11,7 +11,7 @@ import com.hfashion.util.ConnectionProvider;
 import com.hfashion.util.JdbcUtil;
 
 /*
- * 작성자 함세강
+ * 함세강 작성
  */
 public class OrderService {
 	//싱글톤 선언
