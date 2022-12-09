@@ -14,8 +14,17 @@ import com.hfashion.dao.CartDAO;
 import com.hfashion.dto.CartDTO;
 import com.hfashion.dto.MemberDTO;
 
+/*
+ * 신수진 작성
+ * */
 public class CartListAllAction implements Action {
 
+	/*
+	 * 기능 :
+	 * 입력 :
+	 * 출력 :
+	 * 기타 :
+	 * */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");

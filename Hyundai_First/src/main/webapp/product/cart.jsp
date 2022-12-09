@@ -1,7 +1,10 @@
 <!-- 신수진 작성 -->
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <%@ include file="../layout/header.jsp"%>
+
+
 <script type="text/javascript">
 $(document).ready(function(){
 	// 장바구니에 담겨있는 전체 목록을 가져옴
@@ -258,3 +261,5 @@ $(document).ready(function(){
 </div>
 
 <%@ include file="../layout/footer.jsp"%>
+
+

@@ -13,7 +13,16 @@ import com.hfashion.dto.ImgDTO;
 import com.hfashion.dto.ProductDTO;
 import com.hfashion.dto.SizeDTO;
 
+/*
+ * 신수진 작성
+ * */
 public class ProductDetailAction implements Action {
+	
+	/*
+	 * 기능 : 상품 상세 정보를 조회해 객체를 전송하는 기능
+	 * 입력 : 상품 번호
+	 * 출력 : 상품에 해당하는 정보를 담은 객체와 상품 사이즈 정보를 담은 List, 상품 이미지를 담은 List
+	 * */
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "product/productDetail.jsp";	
@@ -34,3 +43,4 @@ public class ProductDetailAction implements Action {
 		dispatcher.forward(request, response);
 	}
 }
+

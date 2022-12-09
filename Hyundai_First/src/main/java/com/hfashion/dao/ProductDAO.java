@@ -22,6 +22,8 @@ import oracle.jdbc.OracleTypes;
  * 신수진 작성
  * */
 public class ProductDAO {
+	
+	// 싱글톤 패턴 적용
 	private static ProductDAO pDAO = new ProductDAO();
 	private DataSource ds = null;
 	private String selectDetail = "{call select_product_detail(?, ?, ?, ?, ?)}";
@@ -40,10 +42,13 @@ public class ProductDAO {
 		}
 	}
 	
-	// 신수진 - 상품 상세 정보 select
+	/*
+	 * 기능 : 상품 목록에서 선택한 상품의 상세 정보를 반환하는 기능
+	 * 입력 : 상품 번호
+	 * 출력 : 상품 정보를 담은 DTO
+	 * */
 	public ProductDTO productDetail(String pro_no){
-		ProductDTO pVO = new ProductDTO();
-		
+		ProductDTO pDTO = new ProductDTO();
 		try(Connection conn = ds.getConnection(); 
 				CallableStatement cstmt = conn.prepareCall(selectDetail);){
 			cstmt.setString(1, pro_no);
@@ -58,25 +63,29 @@ public class ProductDAO {
 			String pro_gender = cstmt.getString(4);
 			String brand_name = cstmt.getString(5);
 			
-			pVO.setPro_name(pro_name);
-			pVO.setPro_price(pro_price);
+			pDTO.setPro_name(pro_name);
+			pDTO.setPro_price(pro_price);
 			if(pro_gender.equals("남성")) {
-				pVO.setPro_gender("MAN");
+				pDTO.setPro_gender("MAN");
 			}else if(pro_gender.equals("여성")) {
-				pVO.setPro_gender("WOMAN");
+				pDTO.setPro_gender("WOMAN");
 			}else {
-				pVO.setPro_gender("ALL");
+				pDTO.setPro_gender("ALL");
 			}
-			pVO.setBrand_name(brand_name);
-			
+			pDTO.setBrand_name(brand_name);
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-		return pVO;
+		return pDTO;
 	}
 	
-	// 신수진 - 상품 상세 정보 size select 
+	/*
+	 * 기능 : 해당 상품의 사이즈 정보를 조회해 반환하는 기능
+	 * 입력 : 상품 번호
+	 * 출력 : 상품 사이즈 정보를 담은 List
+	 * 기타 : 검색된 데이터를 CURSOR를 활용하여 반환
+	 * 			ResultSet의 커럼을 추출하여 List에 담아 반환
+	 * */
 	public List<SizeDTO> productDetailSize(String pro_no){
 		List<SizeDTO> sList = new ArrayList<>();
 		
@@ -90,10 +99,10 @@ public class ProductDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					SizeDTO sVO = new SizeDTO();
+					SizeDTO sDTO = new SizeDTO();
 					String size_name = rs.getString(1);
-					sVO.setSize_name(size_name);
-					sList.add(sVO);
+					sDTO.setSize_name(size_name);
+					sList.add(sDTO);
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -105,7 +114,13 @@ public class ProductDAO {
 		return sList;
 	}
 	
-	// 신수진 - 상품 상세 정보 이미지 select
+	/*
+	 * 기능 : 해당 상품의 이미지를 조회해 반환하는 기능
+	 * 입력 : 상품 번호
+	 * 출력 :
+	 * 기타 : 검색된 데이터를 CURSOR를 활용하여 반환
+	 * 			ResultSet의 커럼을 추출하여 List에 담아 반환
+	 * */
 	public List<ImgDTO> productDetailImg(String pro_no){
 		List<ImgDTO> imgList = new ArrayList<>();
 		
@@ -119,11 +134,11 @@ public class ProductDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					ImgDTO imgVO = new ImgDTO();
+					ImgDTO imgDTO = new ImgDTO();
 					String img_loc = rs.getString(2);
-					imgVO.setPro_no(pro_no);
-					imgVO.setImg_loc(img_loc);
-					imgList.add(imgVO);
+					imgDTO.setPro_no(pro_no);
+					imgDTO.setImg_loc(img_loc);
+					imgList.add(imgDTO);
 				}
 			}catch(SQLException e) {
 				e.printStackTrace();

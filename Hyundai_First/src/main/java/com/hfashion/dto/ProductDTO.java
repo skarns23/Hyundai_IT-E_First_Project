@@ -25,7 +25,6 @@ public class ProductDTO {
 	public ProductDTO(String pro_no) {
 		this.pro_no = pro_no;
 	}
-	
-	
-	
 }
+
+

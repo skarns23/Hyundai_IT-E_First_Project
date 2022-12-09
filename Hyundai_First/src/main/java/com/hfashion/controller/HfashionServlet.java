@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.hfashion.controller.ActionFactory;
 import com.hfashion.controller.action.Action;
 
 /*
@@ -16,6 +15,10 @@ import com.hfashion.controller.action.Action;
  * */
 @WebServlet("/Hfashion")
 public class HfashionServlet extends HttpServlet {
+	
+	/*
+	 * 기능 :  
+	 * */
 	private static final long serialVersionUID = 1L;
 
 	@Override

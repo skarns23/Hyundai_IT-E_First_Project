@@ -20,6 +20,8 @@ import oracle.jdbc.OracleTypes;
  * 신수진 작성
  * */
 public class CartDAO {
+	
+	// 싱글톤 패턴 적용
 	private static CartDAO cDAO = new CartDAO();
 	private DataSource ds = null;
 	private String selectCart = "{call cart_pack.select_cart(?, ?)}";
@@ -41,7 +43,11 @@ public class CartDAO {
 		}
 	}
 	
-	// 신수진 - 장바구니 담기
+	/*
+	 * 기능 : 선택한 옵션을 장바구니에 담는 기능
+	 * 입력 : 상품 번호, 사이즈, 사용자 아이디, 수량
+	 * 출력 : 상품 등록 결과 반환
+	 * */
 	public boolean insertCart(CartDTO cart) {
 		int rs = 0;
 		
@@ -55,11 +61,17 @@ public class CartDAO {
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+		// 상품을 등록하지 못한 경우 0, 등록한 경우 insert한 행의 수
 		return rs == 0 ? false : true;
 	}
 	
-	// 신수진 - 장바구니 목록 select
+	/*
+	 * 기능 : 사용자가 담아둔 장바구니 목록을 조회하여 반환하는 기능
+	 * 입력 : 사용자의 아이디
+	 * 출력 : 사용자가 담아둔 장바구니 목록을 List에 담아 반환
+	 * 기타 : 검색된 데이터를 CURSOR를 활용하여 반환
+	 * 			ResultSet의 커럼을 추출하여 List에 담아 반환
+	 * */
 	public List<CartDTO> selectCart(String user_id){
 		List<CartDTO> cList = new ArrayList<>();
 		
@@ -73,7 +85,7 @@ public class CartDAO {
 				ResultSet rs = (ResultSet) cstmt.getObject(2);
 				
 				while(rs.next()) {
-					CartDTO cVO;
+					CartDTO cDTO;
 					int cart_amount = rs.getInt(1);
 					String size_name = rs.getString(2);
 					String id = rs.getString(3);
@@ -83,8 +95,8 @@ public class CartDAO {
 					String brand_name = rs.getString(7);
 					String img_loc = rs.getString(8);
 					int selected = rs.getInt(9);
-					cVO = new CartDTO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc, selected);
-					cList.add(cVO);
+					cDTO = new CartDTO(cart_amount, size_name, id, pro_no, pro_name, pro_price, brand_name, img_loc, selected);
+					cList.add(cDTO);
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
@@ -97,7 +109,10 @@ public class CartDAO {
 		return cList;
 	}
 	
-	// 신수진 - 장바구니 1개 목록 삭제
+	/*
+	 * 기능 : 사용자가 장바구니에서 선택한 1개의 상품을 삭제하는 기능
+	 * 입력 : 상품 번호, 사이즈, 사용자 아이디
+	 * */
 	public void delCart(String pro_no, String size_name, String user_id) {
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(delCart)){
@@ -110,8 +125,11 @@ public class CartDAO {
 		}
 
 	}
-	
-	// 신수진 - 장바구니 전체 삭제
+
+	/*
+	 * 기능 : 사용자의 장바구니에 담긴 모든 상품을 삭제하는 기능
+	 * 입력 : 사용자 아이디
+	 * */
 	public void delAllCart(String user_id) {
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(delAllCart)){
@@ -122,7 +140,11 @@ public class CartDAO {
 		}
 	}
 	
-	// 신수진 - 장바구니 선택 상태 변경
+	/*
+	 * 기능 : 장바구니에 담긴 상품의 선택 유무 상태를 변경하는 기능 
+	 * 입력 : 상품 번호, 사이즈, 사용자 아이디
+	 * 기타 : 상품의 선택 상태에 따라 선택(1) or 해제(0) 상태로 변경
+	 * */
 	public void selUpdateCart(String pro_no, String size_name, String user_id) {
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(selUpdateCart)){
@@ -135,7 +157,10 @@ public class CartDAO {
 		}
 	}
 	
-	// 신수진 - 장바구니 상품 수량 변경
+	/*
+	 * 기능 : 장바구니에 저장된 상품의 수량을 변경하는 기능
+	 * 입력 : 사용자 아이디, 상품 번호, 사이즈, 변경된 수량
+	 * */
 	public void cntUpdateCart(String user_id, String pro_no, String size_name, int cnt) {
 		try(Connection conn = ds.getConnection();
 				CallableStatement cstmt = conn.prepareCall(cntUpdateCart)){
