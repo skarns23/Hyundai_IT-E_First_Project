@@ -2,8 +2,6 @@
 <%@ include file="/layout/header.jsp"%>
 <div id="container">
    <section class="content-wrap">
-
-
       <div class="snb-wrap">
          <h2 class="lnb-title">
             <a href="${contextPath}/Hfashion?command=mypage">MYPAGE</a>
@@ -14,9 +12,6 @@
                   <div class="menu-depth1">쇼핑정보</div>
                   <ul class="menu-depth2">
                      <li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
-                     
-
-
                   </ul>
                </li>
                <li>
@@ -39,7 +34,6 @@
 
             <form action="Hfashion?command=updatePW" method="post" id="updateForm">
                <div class="tbl-write">
-
                   <table>
                      <caption>회원정보 수정</caption>
                      <colgroup>

@@ -65,10 +65,10 @@
 	<!-- //idpw-wrap -->
 </section>
 <script>
-<!-- 남승현 작성  
+/*남승현 작성  
 기능 : 사용자 아이디,이름, 이메일이 동일한 User가 존재하지 여부와
        존재하는 경우 사용자의 비밀번호 alert으로 출력
-		-->
+	*/
 function searchPW(){
 	var user_id = $("#mbrId").val();
 	var user_name = $("#mbrNm").val();

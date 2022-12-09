@@ -22,7 +22,6 @@
 						<ul class="menu-depth2">
 							<li><a href="${contextPath}/Hfashion?command=mypage_searchOrder">주문조회</a></li>
 
-
 						</ul>
 					</li>
 					<li>
@@ -79,8 +78,6 @@
 																		<a href="Hfashion?command=detail&pno=${item.pro_no}"> <span>${item.product_option}</span> <span>수량 : ${item.order_amount} </a>
 																	</div>
 																	<div class="item-btn"></div>
-
-
 																</div>
 															</div>
 															<div class="cell-price">

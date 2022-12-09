@@ -81,14 +81,12 @@ public class MemberDAO {
 			cstmt.registerOutParameter(3, OracleTypes.CURSOR);
 			cstmt.execute();
 			ResultSet rs = (ResultSet)cstmt.getObject(3);
-			//SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yy/mm/dd");
 			while(rs.next()) {
 				String id = rs.getString(1);
 				String pw = rs.getString(2);
 				String name = rs.getString(3);
 				String email = rs.getString(4);
 				String phone = rs.getString(5);
-				//Date join_date = rs.getDate(6);
 				member = new MemberDTO(id,pw,name,email,phone);
 			}
 		}catch (SQLException e) {
