@@ -123,13 +123,13 @@
 																				</c:when>
 																				<c:when test="${item.review_check==0}">
 																					<form action="${contextPath}/Hfashion?command=reviewwriteform" method="post">
-																						<input type="hidden" name="proname" value="${item.pro_name}"> <input type="hidden" name="r_check" value="${item.review_check}"> <input type="hidden"
-																							name="orderno" value="${item.order_no}"> <input type="hidden" name="prono" value="${item.pro_no}"> <input type="hidden" name="sizename"
-																							value="${item.product_option}">
+																						<input type="hidden" name="proname" value="${item.pro_name}"> 
+																						<input type="hidden" name="r_check" value="${item.review_check}"> 
+																						<input type="hidden" name="orderno" value="${item.order_no}"> 
+																						<input type="hidden" name="prono" value="${item.pro_no}"> 
+																						<input type="hidden" name="sizename" value="${item.product_option}">
 																						<button type="submit" class="btn-type3-sm">리뷰작성</button>
 																					</form>
-																					<!-- <button type="button" class="btn-type3-sm" onclick="jsUnitCancel('OD202211267120945', 'Y', 'N');">
-                                                            <span>후기작성</span> -->
 																				</c:when>
 
 																				<c:otherwise>

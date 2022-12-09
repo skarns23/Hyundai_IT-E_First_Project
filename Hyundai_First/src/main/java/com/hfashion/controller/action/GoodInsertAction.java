@@ -21,7 +21,6 @@ public class GoodInsertAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 	    GoodDAO gDAO=GoodDAO.getInstance();//좋아요DAO 인스턴스 생성
-	    System.err.println("악어의 눈물");
 	    HttpSession session = request.getSession();
 		MemberDTO memberVO = (MemberDTO) session.getAttribute("loginUser");
 		String user_id = memberVO.getUser_id();// 유저 아이디 받기	

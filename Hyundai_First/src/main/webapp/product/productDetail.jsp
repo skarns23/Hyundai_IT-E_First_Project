@@ -357,10 +357,10 @@ function insert_like(review_no){
         data : {
           r_no : r_no,
         },      
-        success : function(obj){                     //ajax통신 성공시 넘어오는 데이터를 json으로 파싱, 이때 result 배열에서 1의 인덱스는 아이디당 좋아요 유무
+        success : function(obj){     //ajax통신 성공시 넘어오는 데이터를 json으로 파싱
            var result = JSON.parse(obj);
              
-             if(result[1]==0){
+             if(result[1]==0){          //이때 result 배열에서 1의 인덱스는 아이디당 좋아요 유무
                 alert("이 상품은 이미 '좋아요'를 눌렀습니다");
              }
              get_review();
