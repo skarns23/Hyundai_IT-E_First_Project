@@ -37,8 +37,9 @@
 	<form id="review-frm" name="formm" method="post" encType="multipart/form-data"
 		action="${contextPath}/Hfashion?command=mypage_reviewwrite&proname=${proname}&r_check=${r_check}&order_no=${order_no}&pro_no=${pro_no}&size_name=${size_name}">
 
-		<input type="hidden" name="proname" value="${proname}"> <input type="hidden" name="r_check" value="${r_check}"> <input type="hidden" name="order_no" value="${orderno}"> <input
-			type="hidden" name="pro_no" value="${prono}"> <input type="hidden" name="size_name" value="${sizename}">
+		<input type="hidden" name="proname" value="${proname}"> <input type="hidden" name="r_check" value="${r_check}"> 
+		<input type="hidden" name="order_no" value="${orderno}"> 
+		<input type="hidden" name="pro_no" value="${prono}"> <input type="hidden" name="size_name" value="${sizename}">
 		<!-- post 방식 -->
 		<div class="layer-wrap" tabindex="0">
 			<div class="layer-header">
