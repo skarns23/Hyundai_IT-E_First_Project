@@ -29,11 +29,12 @@ public class MainBrandItemDAO {
 	}
 	
 	
-	
+	//전체 베스트 상품 데이터를 가져오는 메서드
 	public List<MainItemDTO> brandItemListMain(Connection con){
 		List<MainItemDTO> list = new ArrayList<MainItemDTO>();
 		
-		String runProcedure = "{call main_pack.main_brand_list(?)}";
+		String runProcedure = "{call main_pack.main_brand_list(?)}"; 
+							    //베스트 상품 데이터를 가져오는 프로시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -50,7 +51,7 @@ public class MainBrandItemDAO {
 				String proNo = rs.getString(3);
 				
 				
-				MainItemDTO dto = new MainItemDTO();
+				MainItemDTO dto = new MainItemDTO();  //상품명, 브랜드명, 이미지 list가 담기는 dto
 				
 				
 				dto.setProductName(proName);
@@ -58,7 +59,8 @@ public class MainBrandItemDAO {
 				
 				List<String> imgList = null;
 				
-				imgList = dao.getMainImages(con, proNo);
+				imgList = dao.getMainImages(con, proNo); //상품 한개에 해당하는 이미지들을 불러오는 메서드
+						  
 				
 				dto.setMainImgslist(imgList);
 				

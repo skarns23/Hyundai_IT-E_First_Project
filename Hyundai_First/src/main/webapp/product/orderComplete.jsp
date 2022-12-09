@@ -17,6 +17,6 @@
 			<a href="javascript:location.href='${contextPath}/main.jsp'" class="btn-type4-lg">쇼핑 계속하기</a> <a href="${contextPath}/Hfashion?command=mypage" id="btnOrderList" class="btn-type2-lg">주문내역조회</a>
 		</div>
 	</section>
-</div>
+</div>-
 
 <%@ include file="../layout/footer.jsp"%>

@@ -33,6 +33,7 @@ public class OrderFormDAO {
 		List<CartOrderDTO> list = new ArrayList<CartOrderDTO>();
 
 		String runProcedure = "{call order_form_package.order_list(?,?)}";
+		//장바구니에서 선택된 아이템들의 데이터를 불러오는 프로시저 호출
 	
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -59,7 +60,6 @@ public class OrderFormDAO {
 				 dto.setBrandName(brandName);
 				
 				 list.add(dto);
-				 System.out.println("check");
 			}
 			JdbcUtil.close(rs);
 			JdbcUtil.close(cstmt);
@@ -70,12 +70,14 @@ public class OrderFormDAO {
 
 		return list;
 	}
-
 	
-	//장바구니에서 선택한 상품의 데이터를 가져오는 DAO
+	
+	//주문한 회원정보의 데이터를 가져오는 메서드
 	public OrderFormDTO getOrderMember(Connection con, String loginId) {
 		OrderFormDTO dto = new OrderFormDTO();
+		
 		String runProcedure = "{call order_form_package.order_member(?,?,?,?)}";
+		//주문자의 정보를 가져오는 프로시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);

@@ -31,7 +31,10 @@ public class ProductSortDAO {
 	//상품 목록 데이터 가져오기
 	public List<ProductDTO> ProductList(Connection con, String category) {
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
 		String runProcedure = "{call product_pack.pro_list(?,?)}";
+		//카테고리를 매개변수로 입력받아 데이터를 불러오는 프로시저 호출
+		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
 			
@@ -76,7 +79,9 @@ public class ProductSortDAO {
 	//상품 ajax요청시 카테고리별 정렬해서 데이터 가져오는 메서드
 	public List<ProductDTO> getProductSort(Connection con,String gender, String category){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
+		
 		String runProcedure = "{call product_pack.pro_list(?,?,?)}";
+		//성별과 카테고리를 매개변수로 입력받아서 정렬된 데이터를 가져오는 프록시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -112,9 +117,6 @@ public class ProductSortDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} 
-		
-		
-		
 		return list;
 	}
 	

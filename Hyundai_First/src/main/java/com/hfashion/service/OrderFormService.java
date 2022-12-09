@@ -35,23 +35,28 @@ public class OrderFormService {
 		List<CartOrderDTO> list = null;
 		try {
 			con = ConnectionProvider.getConnection();
-			
 			OrderFormDAO dao = OrderFormDAO.getInstance();
 			
-			String loginId = memberDTO.getUser_id();
+			String loginId = memberDTO.getUser_id();		//세션 객체에 담긴 ID 를 가져옴
 						
-			list = dao.getSelectedCart(con,loginId);
+			list = dao.getSelectedCart(con,loginId);		
+			//ID를 매개변수로 입력하여 장바구니에 선택된 상품 데이터 불러옴
 				
 			dto = dao.getOrderMember(con,loginId);
+			//ID를  매개변수로 입력하여 주문자의 데이터를 가져옴
+			
 			dto.setOrderList(list);
+			
 			
 			int totalPrice = 0;
 			int deliveryFee = 0;
-			for (CartOrderDTO cartDTO : list) {
+			for (CartOrderDTO cartDTO : list) {//총 가격을 계산 하는 과정
 				totalPrice += cartDTO.getProPrice()*cartDTO.getCartAmount();
 			}
 			
-			if(totalPrice<30000) {deliveryFee=2500; totalPrice+=deliveryFee;}
+			
+			if(totalPrice<30000) {deliveryFee=2500; totalPrice+=deliveryFee;}	
+			//총 가격이 3만원 이하면 배달비 설정
 			
 			dto.setTotalPrice(totalPrice);
 			dto.setDeliveryFee(deliveryFee);

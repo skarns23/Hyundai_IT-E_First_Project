@@ -27,7 +27,8 @@ public class ProductBestSortAction implements Action{
 		ProductBestService pbs = ProductBestService.getInstance();
 		
 		list = pbs.productBestSortListService(gender);
-
+		//성별을 매개변수로 입력받아서 카테고리 별로 베스트 상품을 가져오기
+		
 		Gson gson = new Gson();
 		String value = gson.toJson(list);
 		PrintWriter out = response.getWriter();

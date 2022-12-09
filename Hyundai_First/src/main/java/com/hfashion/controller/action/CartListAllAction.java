@@ -33,7 +33,6 @@ public class CartListAllAction implements Action {
 	    String value = gson.toJson(cList);
 	    PrintWriter out = response.getWriter();
 	    out.print(value);
-	    System.out.println("test 출력!!" + value.toString());
 		
 	}
 

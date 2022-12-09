@@ -38,7 +38,10 @@ public class ProductService {
 		try {
 			con = ConnectionProvider.getConnection();
 			ProductSortDAO dao = ProductSortDAO.getInstance();
+			
 			list = dao.ProductList(con,category);
+			//카테고리를 입력받아 상품 목록별 데이터를 가져오는 dao 메서드 호출
+			
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
 		} finally {
@@ -60,6 +63,7 @@ public class ProductService {
 			con = ConnectionProvider.getConnection();
 			dao = ProductSortDAO.getInstance();
 			list = dao.getProductSort(con, gender,category);
+			//성별과 카테고리를 입력받아 정렬된 데이터들을 가져오는 dao 메서드 호출
 				
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);
