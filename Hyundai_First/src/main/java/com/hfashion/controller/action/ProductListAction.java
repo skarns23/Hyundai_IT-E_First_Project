@@ -12,7 +12,9 @@ import com.hfashion.dto.CategoryDTO;
 import com.hfashion.dto.ProductDTO;
 import com.hfashion.service.ProductService;
 
-
+/*
+ * 함세강 작성
+ */
 public class ProductListAction implements Action{
 
 	@Override
@@ -21,9 +23,10 @@ public class ProductListAction implements Action{
 		String url = "product/productList.jsp";
 		ProductService productService = ProductService.getInstance();
 		String category = request.getParameter("category");
-		CategoryDTO dto = new CategoryDTO(category);//수정 필요!//설명할 수 없기 때문
+		CategoryDTO dto = new CategoryDTO(category);
 		
 		List<ProductDTO> list = productService.productGetListService(dto);
+		//카테고리 번호를 매개변수로 입력 받아서 상품 목록을 가져오는 메서드 
 		
 		request.setAttribute("productList", list);
 		

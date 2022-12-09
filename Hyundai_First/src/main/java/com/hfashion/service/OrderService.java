@@ -37,6 +37,7 @@ public class OrderService {
 			
 			dao = OrderCreditDAO.getInstance();
 			dao.orderProduct(con,postCode, address, userId);
+			//우편번호, 주소, ID를 입력받아서 DB에 데이터를 저장하는 dao메서드 호출
 			
 		} catch (NamingException | SQLException e) {
 			throw new RuntimeException(e);

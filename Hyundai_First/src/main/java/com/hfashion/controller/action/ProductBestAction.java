@@ -26,6 +26,7 @@ public class ProductBestAction implements Action{
 		ProductBestService productBestService = ProductBestService.getInstance();
 		
 		list = productBestService.productBestListService(gender);
+		//성별을 입력받아서 베스트 상품을 불러오는 서비스 메서드
 		
 		request.setAttribute("bestInfo", list);
 		

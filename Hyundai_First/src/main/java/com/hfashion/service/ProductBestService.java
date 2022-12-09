@@ -26,6 +26,7 @@ public class ProductBestService {
 	}
 
 	
+	//베스트 상품 데이터 가져오는 서비스 메서드
 	public List<ProductDTO> productBestListService(String gender){
 		List<ProductDTO> list = null;
 		Connection con = null;
@@ -34,6 +35,7 @@ public class ProductBestService {
 			con = ConnectionProvider.getConnection();
 			ProductBestDAO dao = ProductBestDAO.getInstance();
 			list = dao.getProductSortBest(con,gender);
+			//성별을 입력받아서 정렬된 데이터를 가져오는 dao메서드
 			
 			return list;
 			
@@ -45,7 +47,7 @@ public class ProductBestService {
 		
 	}
 	
-	// 베스트 정렬 불러오기
+	// 베스트 상품 정렬 데이터 불러오는 서비스 메서드
 	public List<ProductDTO> productBestSortListService(String gender){
 		List<ProductDTO> list = null;
 		Connection con = null;
@@ -53,6 +55,7 @@ public class ProductBestService {
 			con = ConnectionProvider.getConnection();
 			ProductBestDAO dao = ProductBestDAO.getInstance();	
 			list = dao.getProductSortBest(con, gender);
+			//성별을 입력받아서 정렬된 베스트 상품 데이터를 가져오는 dao메서드
 			
 			return list;
 			

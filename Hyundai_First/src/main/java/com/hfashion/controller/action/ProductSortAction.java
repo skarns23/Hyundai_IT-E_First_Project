@@ -29,12 +29,9 @@ public class ProductSortAction implements Action{
 		
 		ProductService productService = ProductService.getInstance();
 		
-		list = productService.productGetSortList(dto);
 		
-		for (ProductDTO productDTO : list) {
-			String str = productDTO.getPro_name();
-			System.out.println(str);
-		}
+		list = productService.productGetSortList(dto);
+		//성별과 카테고리를 담은 객체를 매개변수로 입력하여 정렬된 상품데이터를 가져오는 서비스 메서드
 		
 		Gson gson = new Gson();
 		String value = gson.toJson(list);

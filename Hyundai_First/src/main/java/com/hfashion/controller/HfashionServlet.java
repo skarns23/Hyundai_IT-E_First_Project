@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.hfashion.controller.action.Action;
 
 /*
- * 공동 작성
+ * 윤태영,남승현,신수진,함세강 공동 작성
  * */
 @WebServlet("/Hfashion")
 public class HfashionServlet extends HttpServlet {
@@ -34,3 +34,6 @@ public class HfashionServlet extends HttpServlet {
 		}
 	}
 }
+
+
+

@@ -27,12 +27,12 @@ public class MainAction implements Action {
 		
 		MainFormService mainFormService = MainFormService.getInstance();
 		
-		list = mainFormService.getMainFormItem();
-		bestreviewList = mainFormService.getMainBestReview();
+		list = mainFormService.getMainFormItem();		//베스트 상품 데이터들이 있는 리스트 
+		bestreviewList = mainFormService.getMainBestReview();	
 
-		request.setAttribute("bestItemList", list);
+		request.setAttribute("bestItemList", list);	    //리스트를 "bestItemList"요청으로 설정하기
 		request.setAttribute("BestReviewList", bestreviewList);
-
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 

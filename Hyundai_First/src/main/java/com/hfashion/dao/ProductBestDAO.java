@@ -27,11 +27,12 @@ public class ProductBestDAO {
 	}
 	
 	
-	//best 상품 데이터 가져오는 DAO
+	//베스트 상품 데이터 가져오는 DAO
 	public List<ProductDTO> getProductBest(Connection con){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
 		String runProcedure = "{call best_package.pro_best(?)}";
+		//베스트 상품 데이터 가져오는 프로시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -70,11 +71,12 @@ public class ProductBestDAO {
 	}
 	
 	
-	//best 상품에서 카레고리별로 상품 가져오기
+	//베스트 상품에서 카레고리별로 상품 가져오는 메서드
 	public List<ProductDTO> getProductSortBest(Connection con, String gender){
 		List<ProductDTO> list = new ArrayList<ProductDTO>();
 		
 		String runProcedure = "{call best_package.pro_best(?,?)}";
+		//성별을 입력받아서 정렬된 데이터 가져오는 프로시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);

@@ -24,10 +24,11 @@ public class MainItemImagesDAO {
 	}
 	
 	
+	//상품 번호를 매개변수로 받아 해당하는 이미지들을 가져오는 메서드
 	public List<String> getMainImages(Connection con, String proNo) {
 		List<String> list = new ArrayList<String>();
 		
-		String runProcedure = "{call main_get_images(?,?)}";
+		String runProcedure = "{call main_get_images(?,?)}";	//상품의 이미지를 가져오는 프로시저 호출
 		
 		try {
 			CallableStatement cstmt = con.prepareCall(runProcedure);
@@ -39,9 +40,9 @@ public class MainItemImagesDAO {
 			
 			ResultSet rs = (ResultSet)cstmt.getObject(2);
 			
-			while(rs.next()) {		
+			while(rs.next()) { //상품에 해당하는 여러장의 이미지를 반복문을 통해 list에 담는 과정
 				String img = rs.getString(1);
-				list.add(img);
+				list.add(img);				
 			}
 
 			JdbcUtil.close(rs);
