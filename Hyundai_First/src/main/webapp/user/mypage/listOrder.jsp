@@ -113,21 +113,16 @@ input[type=date]{
                 		    var yy = parseInt(sDate.substr(0, 4), 10);
                 		    var mm = parseInt(sDate.substr(5, 2), 10);
                 		    var dd = parseInt(sDate.substr(8), 10);
-                		 
                 		    d = new Date(yy, mm - 1, dd + nDays);
-                		 
                 		    yy = d.getFullYear();
                 		    mm = d.getMonth() + 1; mm = (mm < 10) ? '0' + mm : mm;
                 		    dd = d.getDate(); dd = (dd < 10) ? '0' + dd : dd;
-                		 
                 		    return '' + yy + '-' +  mm  + '-' + dd;
                 		}
-                	  console.log(new Date());
                      $("#search_period").click(function(){
-                       
                         const start_date = $("#dateStart").val();
                         const end_date = date_add($("#dateEnd").val(),1);
-                        console.log(end_date);
+                        var txt = '주문날짜';
                         if(start_date>=end_date){
                            alert("종료일이 시작일보다 앞일 수 없습니다.");
                            return ;
@@ -149,10 +144,10 @@ input[type=date]{
                               for (var i = 0; i < obj.length; i++) {
                                  let price = obj[i].pro_price.toLocaleString('ko-KR');
                                  var d_val = obj[i].cancle_date;
-                                 var txt = '취소날짜';
+                                 var status = '주문취소';
                                  if(!obj[i].cancle_date){
                                 	 d_val = obj[i].order_date;
-                                	 txt = '주문날짜';
+                                	 status = '주문완료'
                                  }
                                  row += `<div class='row'><div class='inner'><div class='cell-pd-wrap'><div class='inner-row'><div class='info-row'><div class='cell-pd'><div class='item-img' godno='GM0122062466107'>
                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'> <img src='${contextPath}/\${obj[i].img_url}'></a></div><div class='item-info'><div class='item-brand'>
@@ -160,24 +155,17 @@ input[type=date]{
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'>\${obj[i].pro_name}</a></div><div class='item-opt'>
                                                     <a href='Hfashion?command=detail&pno=${obj[i].pro_no}'><span>\${obj[i].product_option}</span> <span>수량 : \${obj[i].order_amount} </a></div><div class="item-btn"></div>
                                                 </div></div><div class='cell-price'><div class='cell-inner'><div class='price'><span><span class='num'>\${price}</span> 원</span>
-                                                  </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>\${txt}<br> <span class='txt-cmt pcolor'>\${d_val}</span></div></div></div></div></div></div></div></div></div></div>`;
+                                                  </div></div></div><div class='cell-status'><div class='cell-inner'><div class='status'>\${txt}<br> <span class='txt-cmt pcolor'>\${obj[i].order_date}</br>\${status}</span></div></div></div></div></div></div></div></div></div></div>`;
                               }
-                              	
                               }
                               $(".body").html(row);
-                              
                            },
                            error : function(e){
                               alert('조회 실패');
                            }
                         })
                      });
-                     
                   })
-                  
-               </script>
-	<script>
-               	
                </script>
 </div>
 <%@include file="/layout/footer.jsp"%>

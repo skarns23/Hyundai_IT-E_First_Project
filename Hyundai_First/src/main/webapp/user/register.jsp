@@ -6,13 +6,8 @@
 	<section class="content-wrap">
 		<h2 class="page-title">회원가입</h2>
 		<form id="addMbrForm" name="addMbrForm" action="${contextPath}/Hfashion?command=join" method="post">
-			<input type="hidden" name="calMemberAge" id="calMemberAge"> <input type="hidden" id="pwdCheck"> <input type="hidden" id="mobilNo" name="mbr.mobilNo"> <input type="hidden"
-				name="mbrIdCntc.idCntcTpCd" id="idCntcTpCd" value=""> <input type="hidden" name="mbrIdCntc.toknId" id="idCntcToknId" value=""> <input type="hidden" name="mbrIdCntc.loginId"
-				value=""> <input type="hidden" id="wlfrAuthYn" value=""> <input type="hidden" id="wlfrMbrName" value=""> <input type="hidden" id="wlfrMbrMobileNo" value="">
 			<!-- join-wrap -->
 			<div class="join-wrap">
-
-
 				<h3 class="sec-title mt0">필수 정보</h3>
 				<div class="tbl-write">
 					<table>
@@ -79,20 +74,15 @@
 								<td>
 									<div class="input-box" id="divMbrId">
 										<input type="text" title="아이디" name="user_id" id="mbrId" minlength="6" maxlength="20" placeholder="" onblur="idCheckResult();" class="inp-reset" required>
-										<div class="etc">
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMbrId"></p>
 									<p class="txt-form-cmt">6-20자의 영문, 숫자 또는 영문 + 숫자 조합으로 입력 가능</p>
 								</td>
 							</tr>
 							<script type="text/javascript">
-							<!-- 남승현 작성  
+							/* 남승현 작성  
 							기능 : 사용자가 입력한 이메일의 유효성 및 중복성 검사 
-					 -->
+					 		*/
 						$(function(){
 							$("#mbrEmail").focusout(function(){
 								$.ajax({
@@ -109,10 +99,9 @@
 									}
 								})
 							})
-							
-								<!-- 남승현 작성  
+								/*남승현 작성  
 								기능 : 사용자의 아이디에 대한 유효성 및 중복성 검사
-	 								-->
+	 								*/
 							$("#mbrId").focusout(function(){
 								var reg = /^[a-zA-Z0-9_]{5,20}$/;
 								let user_id= $("#mbrId").val();		
@@ -144,38 +133,13 @@
 								<td>
 									<div class="input-box" id="divMbrPw">
 										<input type="password" title="비밀번호" name="user_pw" id="mbrPw" minlength="8" maxlength="15" onblur="passwordResult();" placeholder="" class="inp-reset" required>
-										<div class="etc">
-											<!-- [D]비밀번호 안전도 : 안전-->
-											<span class="txt-pw-level" id="pwdHigh">안전</span>
-											<!-- [D]비밀번호 안전도 : 보통 -->
-											<span class="txt-pw-level" id="pwdNormal">보통</span>
 
-											<button type="button" class="btn-masking">
-												<span>마스킹</span>
-											</button>
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMbrPw"></p>
 									<p class="txt-form-cmt">영문, 숫자, 특수문자 조합 8-15자로 사용 가능</p>
 
 									<div class="input-box" id="divMbrCheckPw">
 										<input type="password" title="비밀번호 확인" name="user_pw_ck" id="mbrCheckPw" maxlength="15" onblur="passwordCheckResult();" placeholder="비밀번호 확인" class="inp-reset">
-										<div class="etc">
-											<!-- [D]비밀번호 안전도 : 안전-->
-											<span class="txt-pw-level" id="checkPwdHigh">안전</span>
-											<!-- [D]비밀번호 안전도 : 보통 -->
-											<span class="txt-pw-level" id="checkPwdNormal">보통</span>
-
-											<button type="button" class="btn-masking">
-												<span>마스킹</span>
-											</button>
-											<button type="button" class="btn-clear">
-												<span>지우기</span>
-											</button>
-										</div>
 									</div>
 									<p class="txt-invalid" style="display: block;" id="descMbrCheckPw"></p>
 								</td>
@@ -193,9 +157,9 @@
 		<!-- //join-wrap -->
 	</section>
 	<script>
-	<!-- 남승현 작성  
-	기능 : 회원가입 버튼 클릭 시 비밀번호와 확인 비밀번호가 동일한지 여부 판단 
-			-->
+	/* 남승현 작성  
+	기능 : 비밀번호와 확인 비밀번호가 동일한지 여부 판단 
+		*/
 $(function(){
 	let btn_update = $("#btn_join");
 	$("#mbrCheckPw").focusout(function(){

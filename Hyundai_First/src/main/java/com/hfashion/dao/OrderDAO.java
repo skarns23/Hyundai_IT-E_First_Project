@@ -101,13 +101,10 @@ public class OrderDAO {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(cstmt);
 			JdbcUtil.close(conn);
-			
-		}catch (SQLException e) {
-			e.printStackTrace();
-		} catch (NamingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		}catch (SQLException e) {e.printStackTrace();} 
+		catch (NamingException e) {e.printStackTrace();}
 		return result;
 	}
 }
+
+
